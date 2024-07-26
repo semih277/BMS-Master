@@ -1,0 +1,2420 @@
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/main.cpp"
+  20              		.section	.text._ZL12MX_GPIO_Initv,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZL12MX_GPIO_Initv:
+  27              		.fnstart
+  28              	.LFB243:
+   1:Core/Src/main.cpp **** /* USER CODE BEGIN Header */
+   2:Core/Src/main.cpp **** /**
+   3:Core/Src/main.cpp ****   ******************************************************************************
+   4:Core/Src/main.cpp ****   * @file           : main.c
+   5:Core/Src/main.cpp ****   * @brief          : Main program body
+   6:Core/Src/main.cpp ****   ******************************************************************************
+   7:Core/Src/main.cpp ****   * @attention
+   8:Core/Src/main.cpp ****   *
+   9:Core/Src/main.cpp ****   * Copyright (c) 2024 STMicroelectronics.
+  10:Core/Src/main.cpp ****   * All rights reserved.
+  11:Core/Src/main.cpp ****   *
+  12:Core/Src/main.cpp ****   * This software is licensed under terms that can be found in the LICENSE file
+  13:Core/Src/main.cpp ****   * in the root directory of this software component.
+  14:Core/Src/main.cpp ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  15:Core/Src/main.cpp ****   *
+  16:Core/Src/main.cpp ****   ******************************************************************************
+  17:Core/Src/main.cpp ****   */
+  18:Core/Src/main.cpp **** /* USER CODE END Header */
+  19:Core/Src/main.cpp **** /* Includes ------------------------------------------------------------------*/
+  20:Core/Src/main.cpp **** #include "main.h"
+  21:Core/Src/main.cpp **** 
+  22:Core/Src/main.cpp **** /* Private includes ----------------------------------------------------------*/
+  23:Core/Src/main.cpp **** /* USER CODE BEGIN Includes */
+  24:Core/Src/main.cpp **** //#include "ADBMS.h"
+  25:Core/Src/main.cpp **** //#include "stdio.h"
+  26:Core/Src/main.cpp **** 
+  27:Core/Src/main.cpp **** /* USER CODE END Includes */
+  28:Core/Src/main.cpp **** 
+  29:Core/Src/main.cpp **** /* Private typedef -----------------------------------------------------------*/
+  30:Core/Src/main.cpp **** /* USER CODE BEGIN PTD */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 2
+
+
+  31:Core/Src/main.cpp **** 
+  32:Core/Src/main.cpp **** /* USER CODE END PTD */
+  33:Core/Src/main.cpp **** 
+  34:Core/Src/main.cpp **** /* Private define ------------------------------------------------------------*/
+  35:Core/Src/main.cpp **** /* USER CODE BEGIN PD */
+  36:Core/Src/main.cpp **** //#define TOTAL_IC 1
+  37:Core/Src/main.cpp **** //cell_asic IC[TOTAL_IC];
+  38:Core/Src/main.cpp **** /* USER CODE END PD */
+  39:Core/Src/main.cpp **** 
+  40:Core/Src/main.cpp **** /* Private macro -------------------------------------------------------------*/
+  41:Core/Src/main.cpp **** /* USER CODE BEGIN PM */
+  42:Core/Src/main.cpp **** 
+  43:Core/Src/main.cpp **** /* USER CODE END PM */
+  44:Core/Src/main.cpp **** 
+  45:Core/Src/main.cpp **** /* Private variables ---------------------------------------------------------*/
+  46:Core/Src/main.cpp **** ADC_HandleTypeDef hadc1;
+  47:Core/Src/main.cpp **** DMA_HandleTypeDef hdma_adc1;
+  48:Core/Src/main.cpp **** 
+  49:Core/Src/main.cpp **** SPI_HandleTypeDef hspi1;
+  50:Core/Src/main.cpp **** SPI_HandleTypeDef hspi2;
+  51:Core/Src/main.cpp **** 
+  52:Core/Src/main.cpp **** TIM_HandleTypeDef htim2;
+  53:Core/Src/main.cpp **** 
+  54:Core/Src/main.cpp **** UART_HandleTypeDef huart3;
+  55:Core/Src/main.cpp **** 
+  56:Core/Src/main.cpp **** /* USER CODE BEGIN PV */
+  57:Core/Src/main.cpp **** 
+  58:Core/Src/main.cpp **** /* USER CODE END PV */
+  59:Core/Src/main.cpp **** 
+  60:Core/Src/main.cpp **** /* Private function prototypes -----------------------------------------------*/
+  61:Core/Src/main.cpp **** void SystemClock_Config(void);
+  62:Core/Src/main.cpp **** static void MX_GPIO_Init(void);
+  63:Core/Src/main.cpp **** static void MX_DMA_Init(void);
+  64:Core/Src/main.cpp **** static void MX_ADC1_Init(void);
+  65:Core/Src/main.cpp **** static void MX_USART3_UART_Init(void);
+  66:Core/Src/main.cpp **** static void MX_TIM2_Init(void);
+  67:Core/Src/main.cpp **** static void MX_SPI1_Init(void);
+  68:Core/Src/main.cpp **** static void MX_SPI2_Init(void);
+  69:Core/Src/main.cpp **** /* USER CODE BEGIN PFP */
+  70:Core/Src/main.cpp **** uint16_t adc = 0;
+  71:Core/Src/main.cpp **** double volt_bc = 0, volt_ac = 0;
+  72:Core/Src/main.cpp **** uint16_t adc_data[2];
+  73:Core/Src/main.cpp **** /* USER CODE END PFP */
+  74:Core/Src/main.cpp **** 
+  75:Core/Src/main.cpp **** /* Private user code ---------------------------------------------------------*/
+  76:Core/Src/main.cpp **** /* USER CODE BEGIN 0 */
+  77:Core/Src/main.cpp **** 
+  78:Core/Src/main.cpp **** /* USER CODE END 0 */
+  79:Core/Src/main.cpp **** 
+  80:Core/Src/main.cpp **** /**
+  81:Core/Src/main.cpp ****   * @brief  The application entry point.
+  82:Core/Src/main.cpp ****   * @retval int
+  83:Core/Src/main.cpp ****   */
+  84:Core/Src/main.cpp **** int main(void)
+  85:Core/Src/main.cpp **** {
+  86:Core/Src/main.cpp ****   /* USER CODE BEGIN 1 */
+  87:Core/Src/main.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 3
+
+
+  88:Core/Src/main.cpp ****   /* USER CODE END 1 */
+  89:Core/Src/main.cpp **** 
+  90:Core/Src/main.cpp ****   /* MCU Configuration--------------------------------------------------------*/
+  91:Core/Src/main.cpp **** 
+  92:Core/Src/main.cpp ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  93:Core/Src/main.cpp ****   HAL_Init();
+  94:Core/Src/main.cpp **** 
+  95:Core/Src/main.cpp ****   /* USER CODE BEGIN Init */
+  96:Core/Src/main.cpp **** 
+  97:Core/Src/main.cpp ****   /* USER CODE END Init */
+  98:Core/Src/main.cpp **** 
+  99:Core/Src/main.cpp ****   /* Configure the system clock */
+ 100:Core/Src/main.cpp ****   SystemClock_Config();
+ 101:Core/Src/main.cpp **** 
+ 102:Core/Src/main.cpp ****   /* USER CODE BEGIN SysInit */
+ 103:Core/Src/main.cpp **** 
+ 104:Core/Src/main.cpp ****   /* USER CODE END SysInit */
+ 105:Core/Src/main.cpp **** 
+ 106:Core/Src/main.cpp ****   /* Initialize all configured peripherals */
+ 107:Core/Src/main.cpp ****   MX_GPIO_Init();
+ 108:Core/Src/main.cpp ****   MX_DMA_Init();
+ 109:Core/Src/main.cpp ****   MX_ADC1_Init();
+ 110:Core/Src/main.cpp ****   MX_USART3_UART_Init();
+ 111:Core/Src/main.cpp ****   MX_TIM2_Init();
+ 112:Core/Src/main.cpp ****   MX_SPI1_Init();
+ 113:Core/Src/main.cpp ****   MX_SPI2_Init();
+ 114:Core/Src/main.cpp ****   /* USER CODE BEGIN 2 */
+ 115:Core/Src/main.cpp **** 
+ 116:Core/Src/main.cpp ****   HAL_Delay(500);
+ 117:Core/Src/main.cpp ****   HAL_UART_Transmit(&huart3, (uint8_t*)"started", 8, 100);
+ 118:Core/Src/main.cpp ****   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_data, 2);
+ 119:Core/Src/main.cpp **** 
+ 120:Core/Src/main.cpp ****   //adBms6830_init_config(TOTAL_IC, &IC[0]);
+ 121:Core/Src/main.cpp **** 
+ 122:Core/Src/main.cpp ****   /* USER CODE END 2 */
+ 123:Core/Src/main.cpp **** 
+ 124:Core/Src/main.cpp ****   /* Infinite loop */
+ 125:Core/Src/main.cpp ****   /* USER CODE BEGIN WHILE */
+ 126:Core/Src/main.cpp ****   while (1)
+ 127:Core/Src/main.cpp ****   {
+ 128:Core/Src/main.cpp **** //	adBms6830_start_avgcell_voltage_measurment(TOTAL_IC);
+ 129:Core/Src/main.cpp **** //	adBms6830_read_avgcell_voltages(TOTAL_IC, &IC[0]);
+ 130:Core/Src/main.cpp **** 
+ 131:Core/Src/main.cpp **** 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+ 132:Core/Src/main.cpp **** 	HAL_Delay(100);
+ 133:Core/Src/main.cpp **** 
+ 134:Core/Src/main.cpp ****     /* USER CODE END WHILE */
+ 135:Core/Src/main.cpp **** 
+ 136:Core/Src/main.cpp ****     /* USER CODE BEGIN 3 */
+ 137:Core/Src/main.cpp ****   }
+ 138:Core/Src/main.cpp ****   /* USER CODE END 3 */
+ 139:Core/Src/main.cpp **** }
+ 140:Core/Src/main.cpp **** 
+ 141:Core/Src/main.cpp **** /**
+ 142:Core/Src/main.cpp ****   * @brief System Clock Configuration
+ 143:Core/Src/main.cpp ****   * @retval None
+ 144:Core/Src/main.cpp ****   */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 4
+
+
+ 145:Core/Src/main.cpp **** void SystemClock_Config(void)
+ 146:Core/Src/main.cpp **** {
+ 147:Core/Src/main.cpp ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 148:Core/Src/main.cpp ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 149:Core/Src/main.cpp **** 
+ 150:Core/Src/main.cpp ****   /** Configure the main internal regulator output voltage
+ 151:Core/Src/main.cpp ****   */
+ 152:Core/Src/main.cpp ****   __HAL_RCC_PWR_CLK_ENABLE();
+ 153:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 154:Core/Src/main.cpp **** 
+ 155:Core/Src/main.cpp ****   /** Initializes the RCC Oscillators according to the specified parameters
+ 156:Core/Src/main.cpp ****   * in the RCC_OscInitTypeDef structure.
+ 157:Core/Src/main.cpp ****   */
+ 158:Core/Src/main.cpp ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+ 159:Core/Src/main.cpp ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 160:Core/Src/main.cpp ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 161:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 162:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 163:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLM = 12;
+ 164:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLN = 168;
+ 165:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 166:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLQ = 2;
+ 167:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLR = 2;
+ 168:Core/Src/main.cpp ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 169:Core/Src/main.cpp ****   {
+ 170:Core/Src/main.cpp ****     Error_Handler();
+ 171:Core/Src/main.cpp ****   }
+ 172:Core/Src/main.cpp **** 
+ 173:Core/Src/main.cpp ****   /** Initializes the CPU, AHB and APB buses clocks
+ 174:Core/Src/main.cpp ****   */
+ 175:Core/Src/main.cpp ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 176:Core/Src/main.cpp ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 177:Core/Src/main.cpp ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 178:Core/Src/main.cpp ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 179:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+ 180:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+ 181:Core/Src/main.cpp **** 
+ 182:Core/Src/main.cpp ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
+ 183:Core/Src/main.cpp ****   {
+ 184:Core/Src/main.cpp ****     Error_Handler();
+ 185:Core/Src/main.cpp ****   }
+ 186:Core/Src/main.cpp **** }
+ 187:Core/Src/main.cpp **** 
+ 188:Core/Src/main.cpp **** /**
+ 189:Core/Src/main.cpp ****   * @brief ADC1 Initialization Function
+ 190:Core/Src/main.cpp ****   * @param None
+ 191:Core/Src/main.cpp ****   * @retval None
+ 192:Core/Src/main.cpp ****   */
+ 193:Core/Src/main.cpp **** static void MX_ADC1_Init(void)
+ 194:Core/Src/main.cpp **** {
+ 195:Core/Src/main.cpp **** 
+ 196:Core/Src/main.cpp ****   /* USER CODE BEGIN ADC1_Init 0 */
+ 197:Core/Src/main.cpp **** 
+ 198:Core/Src/main.cpp ****   /* USER CODE END ADC1_Init 0 */
+ 199:Core/Src/main.cpp **** 
+ 200:Core/Src/main.cpp ****   ADC_ChannelConfTypeDef sConfig = {0};
+ 201:Core/Src/main.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 5
+
+
+ 202:Core/Src/main.cpp ****   /* USER CODE BEGIN ADC1_Init 1 */
+ 203:Core/Src/main.cpp **** 
+ 204:Core/Src/main.cpp ****   /* USER CODE END ADC1_Init 1 */
+ 205:Core/Src/main.cpp **** 
+ 206:Core/Src/main.cpp ****   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of con
+ 207:Core/Src/main.cpp ****   */
+ 208:Core/Src/main.cpp ****   hadc1.Instance = ADC1;
+ 209:Core/Src/main.cpp ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+ 210:Core/Src/main.cpp ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+ 211:Core/Src/main.cpp ****   hadc1.Init.ScanConvMode = ENABLE;
+ 212:Core/Src/main.cpp ****   hadc1.Init.ContinuousConvMode = ENABLE;
+ 213:Core/Src/main.cpp ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
+ 214:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+ 215:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+ 216:Core/Src/main.cpp ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+ 217:Core/Src/main.cpp ****   hadc1.Init.NbrOfConversion = 2;
+ 218:Core/Src/main.cpp ****   hadc1.Init.DMAContinuousRequests = ENABLE;
+ 219:Core/Src/main.cpp ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+ 220:Core/Src/main.cpp ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
+ 221:Core/Src/main.cpp ****   {
+ 222:Core/Src/main.cpp ****     Error_Handler();
+ 223:Core/Src/main.cpp ****   }
+ 224:Core/Src/main.cpp **** 
+ 225:Core/Src/main.cpp ****   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and it
+ 226:Core/Src/main.cpp ****   */
+ 227:Core/Src/main.cpp ****   sConfig.Channel = ADC_CHANNEL_1;
+ 228:Core/Src/main.cpp ****   sConfig.Rank = 1;
+ 229:Core/Src/main.cpp ****   sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+ 230:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 231:Core/Src/main.cpp ****   {
+ 232:Core/Src/main.cpp ****     Error_Handler();
+ 233:Core/Src/main.cpp ****   }
+ 234:Core/Src/main.cpp **** 
+ 235:Core/Src/main.cpp ****   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and it
+ 236:Core/Src/main.cpp ****   */
+ 237:Core/Src/main.cpp ****   sConfig.Channel = ADC_CHANNEL_2;
+ 238:Core/Src/main.cpp ****   sConfig.Rank = 2;
+ 239:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 240:Core/Src/main.cpp ****   {
+ 241:Core/Src/main.cpp ****     Error_Handler();
+ 242:Core/Src/main.cpp ****   }
+ 243:Core/Src/main.cpp ****   /* USER CODE BEGIN ADC1_Init 2 */
+ 244:Core/Src/main.cpp **** 
+ 245:Core/Src/main.cpp ****   /* USER CODE END ADC1_Init 2 */
+ 246:Core/Src/main.cpp **** 
+ 247:Core/Src/main.cpp **** }
+ 248:Core/Src/main.cpp **** 
+ 249:Core/Src/main.cpp **** /**
+ 250:Core/Src/main.cpp ****   * @brief SPI1 Initialization Function
+ 251:Core/Src/main.cpp ****   * @param None
+ 252:Core/Src/main.cpp ****   * @retval None
+ 253:Core/Src/main.cpp ****   */
+ 254:Core/Src/main.cpp **** static void MX_SPI1_Init(void)
+ 255:Core/Src/main.cpp **** {
+ 256:Core/Src/main.cpp **** 
+ 257:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI1_Init 0 */
+ 258:Core/Src/main.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 6
+
+
+ 259:Core/Src/main.cpp ****   /* USER CODE END SPI1_Init 0 */
+ 260:Core/Src/main.cpp **** 
+ 261:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI1_Init 1 */
+ 262:Core/Src/main.cpp **** 
+ 263:Core/Src/main.cpp ****   /* USER CODE END SPI1_Init 1 */
+ 264:Core/Src/main.cpp ****   /* SPI1 parameter configuration*/
+ 265:Core/Src/main.cpp ****   hspi1.Instance = SPI1;
+ 266:Core/Src/main.cpp ****   hspi1.Init.Mode = SPI_MODE_MASTER;
+ 267:Core/Src/main.cpp ****   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+ 268:Core/Src/main.cpp ****   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+ 269:Core/Src/main.cpp ****   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 270:Core/Src/main.cpp ****   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 271:Core/Src/main.cpp ****   hspi1.Init.NSS = SPI_NSS_SOFT;
+ 272:Core/Src/main.cpp ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+ 273:Core/Src/main.cpp ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 274:Core/Src/main.cpp ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+ 275:Core/Src/main.cpp ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 276:Core/Src/main.cpp ****   hspi1.Init.CRCPolynomial = 10;
+ 277:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
+ 278:Core/Src/main.cpp ****   {
+ 279:Core/Src/main.cpp ****     Error_Handler();
+ 280:Core/Src/main.cpp ****   }
+ 281:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI1_Init 2 */
+ 282:Core/Src/main.cpp **** 
+ 283:Core/Src/main.cpp ****   /* USER CODE END SPI1_Init 2 */
+ 284:Core/Src/main.cpp **** 
+ 285:Core/Src/main.cpp **** }
+ 286:Core/Src/main.cpp **** 
+ 287:Core/Src/main.cpp **** /**
+ 288:Core/Src/main.cpp ****   * @brief SPI2 Initialization Function
+ 289:Core/Src/main.cpp ****   * @param None
+ 290:Core/Src/main.cpp ****   * @retval None
+ 291:Core/Src/main.cpp ****   */
+ 292:Core/Src/main.cpp **** static void MX_SPI2_Init(void)
+ 293:Core/Src/main.cpp **** {
+ 294:Core/Src/main.cpp **** 
+ 295:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI2_Init 0 */
+ 296:Core/Src/main.cpp **** 
+ 297:Core/Src/main.cpp ****   /* USER CODE END SPI2_Init 0 */
+ 298:Core/Src/main.cpp **** 
+ 299:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI2_Init 1 */
+ 300:Core/Src/main.cpp **** 
+ 301:Core/Src/main.cpp ****   /* USER CODE END SPI2_Init 1 */
+ 302:Core/Src/main.cpp ****   /* SPI2 parameter configuration*/
+ 303:Core/Src/main.cpp ****   hspi2.Instance = SPI2;
+ 304:Core/Src/main.cpp ****   hspi2.Init.Mode = SPI_MODE_MASTER;
+ 305:Core/Src/main.cpp ****   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+ 306:Core/Src/main.cpp ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+ 307:Core/Src/main.cpp ****   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 308:Core/Src/main.cpp ****   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 309:Core/Src/main.cpp ****   hspi2.Init.NSS = SPI_NSS_SOFT;
+ 310:Core/Src/main.cpp ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+ 311:Core/Src/main.cpp ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 312:Core/Src/main.cpp ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+ 313:Core/Src/main.cpp ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 314:Core/Src/main.cpp ****   hspi2.Init.CRCPolynomial = 10;
+ 315:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 7
+
+
+ 316:Core/Src/main.cpp ****   {
+ 317:Core/Src/main.cpp ****     Error_Handler();
+ 318:Core/Src/main.cpp ****   }
+ 319:Core/Src/main.cpp ****   /* USER CODE BEGIN SPI2_Init 2 */
+ 320:Core/Src/main.cpp **** 
+ 321:Core/Src/main.cpp ****   /* USER CODE END SPI2_Init 2 */
+ 322:Core/Src/main.cpp **** 
+ 323:Core/Src/main.cpp **** }
+ 324:Core/Src/main.cpp **** 
+ 325:Core/Src/main.cpp **** /**
+ 326:Core/Src/main.cpp ****   * @brief TIM2 Initialization Function
+ 327:Core/Src/main.cpp ****   * @param None
+ 328:Core/Src/main.cpp ****   * @retval None
+ 329:Core/Src/main.cpp ****   */
+ 330:Core/Src/main.cpp **** static void MX_TIM2_Init(void)
+ 331:Core/Src/main.cpp **** {
+ 332:Core/Src/main.cpp **** 
+ 333:Core/Src/main.cpp ****   /* USER CODE BEGIN TIM2_Init 0 */
+ 334:Core/Src/main.cpp **** 
+ 335:Core/Src/main.cpp ****   /* USER CODE END TIM2_Init 0 */
+ 336:Core/Src/main.cpp **** 
+ 337:Core/Src/main.cpp ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+ 338:Core/Src/main.cpp ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 339:Core/Src/main.cpp **** 
+ 340:Core/Src/main.cpp ****   /* USER CODE BEGIN TIM2_Init 1 */
+ 341:Core/Src/main.cpp **** 
+ 342:Core/Src/main.cpp ****   /* USER CODE END TIM2_Init 1 */
+ 343:Core/Src/main.cpp ****   htim2.Instance = TIM2;
+ 344:Core/Src/main.cpp ****   htim2.Init.Prescaler = 56;
+ 345:Core/Src/main.cpp ****   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 346:Core/Src/main.cpp ****   htim2.Init.Period = 1000-1;
+ 347:Core/Src/main.cpp ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 348:Core/Src/main.cpp ****   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 349:Core/Src/main.cpp ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+ 350:Core/Src/main.cpp ****   {
+ 351:Core/Src/main.cpp ****     Error_Handler();
+ 352:Core/Src/main.cpp ****   }
+ 353:Core/Src/main.cpp ****   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+ 354:Core/Src/main.cpp ****   if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+ 355:Core/Src/main.cpp ****   {
+ 356:Core/Src/main.cpp ****     Error_Handler();
+ 357:Core/Src/main.cpp ****   }
+ 358:Core/Src/main.cpp ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+ 359:Core/Src/main.cpp ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 360:Core/Src/main.cpp ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+ 361:Core/Src/main.cpp ****   {
+ 362:Core/Src/main.cpp ****     Error_Handler();
+ 363:Core/Src/main.cpp ****   }
+ 364:Core/Src/main.cpp ****   /* USER CODE BEGIN TIM2_Init 2 */
+ 365:Core/Src/main.cpp **** 
+ 366:Core/Src/main.cpp ****   /* USER CODE END TIM2_Init 2 */
+ 367:Core/Src/main.cpp **** 
+ 368:Core/Src/main.cpp **** }
+ 369:Core/Src/main.cpp **** 
+ 370:Core/Src/main.cpp **** /**
+ 371:Core/Src/main.cpp ****   * @brief USART3 Initialization Function
+ 372:Core/Src/main.cpp ****   * @param None
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 8
+
+
+ 373:Core/Src/main.cpp ****   * @retval None
+ 374:Core/Src/main.cpp ****   */
+ 375:Core/Src/main.cpp **** static void MX_USART3_UART_Init(void)
+ 376:Core/Src/main.cpp **** {
+ 377:Core/Src/main.cpp **** 
+ 378:Core/Src/main.cpp ****   /* USER CODE BEGIN USART3_Init 0 */
+ 379:Core/Src/main.cpp **** 
+ 380:Core/Src/main.cpp ****   /* USER CODE END USART3_Init 0 */
+ 381:Core/Src/main.cpp **** 
+ 382:Core/Src/main.cpp ****   /* USER CODE BEGIN USART3_Init 1 */
+ 383:Core/Src/main.cpp **** 
+ 384:Core/Src/main.cpp ****   /* USER CODE END USART3_Init 1 */
+ 385:Core/Src/main.cpp ****   huart3.Instance = USART3;
+ 386:Core/Src/main.cpp ****   huart3.Init.BaudRate = 115200;
+ 387:Core/Src/main.cpp ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 388:Core/Src/main.cpp ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 389:Core/Src/main.cpp ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 390:Core/Src/main.cpp ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 391:Core/Src/main.cpp ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 392:Core/Src/main.cpp ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 393:Core/Src/main.cpp ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 394:Core/Src/main.cpp ****   {
+ 395:Core/Src/main.cpp ****     Error_Handler();
+ 396:Core/Src/main.cpp ****   }
+ 397:Core/Src/main.cpp ****   /* USER CODE BEGIN USART3_Init 2 */
+ 398:Core/Src/main.cpp **** 
+ 399:Core/Src/main.cpp ****   /* USER CODE END USART3_Init 2 */
+ 400:Core/Src/main.cpp **** 
+ 401:Core/Src/main.cpp **** }
+ 402:Core/Src/main.cpp **** 
+ 403:Core/Src/main.cpp **** /**
+ 404:Core/Src/main.cpp ****   * Enable DMA controller clock
+ 405:Core/Src/main.cpp ****   */
+ 406:Core/Src/main.cpp **** static void MX_DMA_Init(void)
+ 407:Core/Src/main.cpp **** {
+ 408:Core/Src/main.cpp **** 
+ 409:Core/Src/main.cpp ****   /* DMA controller clock enable */
+ 410:Core/Src/main.cpp ****   __HAL_RCC_DMA2_CLK_ENABLE();
+ 411:Core/Src/main.cpp **** 
+ 412:Core/Src/main.cpp ****   /* DMA interrupt init */
+ 413:Core/Src/main.cpp ****   /* DMA2_Stream0_IRQn interrupt configuration */
+ 414:Core/Src/main.cpp ****   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+ 415:Core/Src/main.cpp ****   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+ 416:Core/Src/main.cpp **** 
+ 417:Core/Src/main.cpp **** }
+ 418:Core/Src/main.cpp **** 
+ 419:Core/Src/main.cpp **** /**
+ 420:Core/Src/main.cpp ****   * @brief GPIO Initialization Function
+ 421:Core/Src/main.cpp ****   * @param None
+ 422:Core/Src/main.cpp ****   * @retval None
+ 423:Core/Src/main.cpp ****   */
+ 424:Core/Src/main.cpp **** static void MX_GPIO_Init(void)
+ 425:Core/Src/main.cpp **** {
+  29              		.loc 1 425 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 32
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 9
+
+
+  33 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  34              		.save {r4, r5, r6, r7, r8, r9, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 28
+  37              		.cfi_offset 4, -28
+  38              		.cfi_offset 5, -24
+  39              		.cfi_offset 6, -20
+  40              		.cfi_offset 7, -16
+  41              		.cfi_offset 8, -12
+  42              		.cfi_offset 9, -8
+  43              		.cfi_offset 14, -4
+  44              		.pad #36
+  45 0004 89B0     		sub	sp, sp, #36
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 64
+ 426:Core/Src/main.cpp ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  48              		.loc 1 426 3 view .LVU1
+  49              		.loc 1 426 20 is_stmt 0 view .LVU2
+  50 0006 0024     		movs	r4, #0
+  51 0008 0394     		str	r4, [sp, #12]
+  52 000a 0494     		str	r4, [sp, #16]
+  53 000c 0594     		str	r4, [sp, #20]
+  54 000e 0694     		str	r4, [sp, #24]
+  55 0010 0794     		str	r4, [sp, #28]
+ 427:Core/Src/main.cpp **** 
+ 428:Core/Src/main.cpp ****   /* GPIO Ports Clock Enable */
+ 429:Core/Src/main.cpp ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  56              		.loc 1 429 3 is_stmt 1 view .LVU3
+  57              	.LBB4:
+  58              		.loc 1 429 3 view .LVU4
+  59 0012 0094     		str	r4, [sp]
+  60              		.loc 1 429 3 view .LVU5
+  61 0014 2A4B     		ldr	r3, .L3
+  62 0016 1A6B     		ldr	r2, [r3, #48]
+  63 0018 42F00402 		orr	r2, r2, #4
+  64 001c 1A63     		str	r2, [r3, #48]
+  65              		.loc 1 429 3 view .LVU6
+  66 001e 1A6B     		ldr	r2, [r3, #48]
+  67 0020 02F00402 		and	r2, r2, #4
+  68 0024 0092     		str	r2, [sp]
+  69              		.loc 1 429 3 view .LVU7
+  70 0026 009A     		ldr	r2, [sp]
+  71              	.LBE4:
+  72              		.loc 1 429 3 view .LVU8
+ 430:Core/Src/main.cpp ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  73              		.loc 1 430 3 view .LVU9
+  74              	.LBB5:
+  75              		.loc 1 430 3 view .LVU10
+  76 0028 0194     		str	r4, [sp, #4]
+  77              		.loc 1 430 3 view .LVU11
+  78 002a 1A6B     		ldr	r2, [r3, #48]
+  79 002c 42F00102 		orr	r2, r2, #1
+  80 0030 1A63     		str	r2, [r3, #48]
+  81              		.loc 1 430 3 view .LVU12
+  82 0032 1A6B     		ldr	r2, [r3, #48]
+  83 0034 02F00102 		and	r2, r2, #1
+  84 0038 0192     		str	r2, [sp, #4]
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 10
+
+
+  85              		.loc 1 430 3 view .LVU13
+  86 003a 019A     		ldr	r2, [sp, #4]
+  87              	.LBE5:
+  88              		.loc 1 430 3 view .LVU14
+ 431:Core/Src/main.cpp ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  89              		.loc 1 431 3 view .LVU15
+  90              	.LBB6:
+  91              		.loc 1 431 3 view .LVU16
+  92 003c 0294     		str	r4, [sp, #8]
+  93              		.loc 1 431 3 view .LVU17
+  94 003e 1A6B     		ldr	r2, [r3, #48]
+  95 0040 42F00202 		orr	r2, r2, #2
+  96 0044 1A63     		str	r2, [r3, #48]
+  97              		.loc 1 431 3 view .LVU18
+  98 0046 1B6B     		ldr	r3, [r3, #48]
+  99 0048 03F00203 		and	r3, r3, #2
+ 100 004c 0293     		str	r3, [sp, #8]
+ 101              		.loc 1 431 3 view .LVU19
+ 102 004e 029B     		ldr	r3, [sp, #8]
+ 103              	.LBE6:
+ 104              		.loc 1 431 3 view .LVU20
+ 432:Core/Src/main.cpp **** 
+ 433:Core/Src/main.cpp ****   /*Configure GPIO pin Output Level */
+ 434:Core/Src/main.cpp ****   HAL_GPIO_WritePin(GPIOC, SPI2_CS_Pin|SPI1_CS_Pin, GPIO_PIN_SET);
+ 105              		.loc 1 434 3 view .LVU21
+ 106              		.loc 1 434 20 is_stmt 0 view .LVU22
+ 107 0050 DFF87490 		ldr	r9, .L3+8
+ 108 0054 0122     		movs	r2, #1
+ 109 0056 40F20111 		movw	r1, #257
+ 110 005a 4846     		mov	r0, r9
+ 111 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 112              	.LVL0:
+ 435:Core/Src/main.cpp **** 
+ 436:Core/Src/main.cpp ****   /*Configure GPIO pin Output Level */
+ 437:Core/Src/main.cpp ****   HAL_GPIO_WritePin(ERROR_OUT_GPIO_Port, ERROR_OUT_Pin, GPIO_PIN_RESET);
+ 113              		.loc 1 437 3 is_stmt 1 view .LVU23
+ 114              		.loc 1 437 20 is_stmt 0 view .LVU24
+ 115 0060 DFF86880 		ldr	r8, .L3+12
+ 116 0064 2246     		mov	r2, r4
+ 117 0066 0121     		movs	r1, #1
+ 118 0068 4046     		mov	r0, r8
+ 119 006a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 120              	.LVL1:
+ 438:Core/Src/main.cpp **** 
+ 439:Core/Src/main.cpp ****   /*Configure GPIO pin Output Level */
+ 440:Core/Src/main.cpp ****   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+ 121              		.loc 1 440 3 is_stmt 1 view .LVU25
+ 122              		.loc 1 440 20 is_stmt 0 view .LVU26
+ 123 006e 154E     		ldr	r6, .L3+4
+ 124 0070 2246     		mov	r2, r4
+ 125 0072 4FF48071 		mov	r1, #256
+ 126 0076 3046     		mov	r0, r6
+ 127 0078 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 128              	.LVL2:
+ 441:Core/Src/main.cpp **** 
+ 442:Core/Src/main.cpp ****   /*Configure GPIO pins : SPI2_CS_Pin SPI1_CS_Pin */
+ 443:Core/Src/main.cpp ****   GPIO_InitStruct.Pin = SPI2_CS_Pin|SPI1_CS_Pin;
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 11
+
+
+ 129              		.loc 1 443 3 is_stmt 1 view .LVU27
+ 130              		.loc 1 443 23 is_stmt 0 view .LVU28
+ 131 007c 40F20113 		movw	r3, #257
+ 132 0080 0393     		str	r3, [sp, #12]
+ 444:Core/Src/main.cpp ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 133              		.loc 1 444 3 is_stmt 1 view .LVU29
+ 134              		.loc 1 444 24 is_stmt 0 view .LVU30
+ 135 0082 0125     		movs	r5, #1
+ 136 0084 0495     		str	r5, [sp, #16]
+ 445:Core/Src/main.cpp ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 137              		.loc 1 445 3 is_stmt 1 view .LVU31
+ 138              		.loc 1 445 24 is_stmt 0 view .LVU32
+ 139 0086 0594     		str	r4, [sp, #20]
+ 446:Core/Src/main.cpp ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 140              		.loc 1 446 3 is_stmt 1 view .LVU33
+ 141              		.loc 1 446 25 is_stmt 0 view .LVU34
+ 142 0088 0327     		movs	r7, #3
+ 143 008a 0697     		str	r7, [sp, #24]
+ 447:Core/Src/main.cpp ****   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 144              		.loc 1 447 3 is_stmt 1 view .LVU35
+ 145              		.loc 1 447 16 is_stmt 0 view .LVU36
+ 146 008c 03A9     		add	r1, sp, #12
+ 147 008e 4846     		mov	r0, r9
+ 148 0090 FFF7FEFF 		bl	HAL_GPIO_Init
+ 149              	.LVL3:
+ 448:Core/Src/main.cpp **** 
+ 449:Core/Src/main.cpp ****   /*Configure GPIO pin : ERROR_OUT_Pin */
+ 450:Core/Src/main.cpp ****   GPIO_InitStruct.Pin = ERROR_OUT_Pin;
+ 150              		.loc 1 450 3 is_stmt 1 view .LVU37
+ 151              		.loc 1 450 23 is_stmt 0 view .LVU38
+ 152 0094 0395     		str	r5, [sp, #12]
+ 451:Core/Src/main.cpp ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 153              		.loc 1 451 3 is_stmt 1 view .LVU39
+ 154              		.loc 1 451 24 is_stmt 0 view .LVU40
+ 155 0096 0495     		str	r5, [sp, #16]
+ 452:Core/Src/main.cpp ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 156              		.loc 1 452 3 is_stmt 1 view .LVU41
+ 157              		.loc 1 452 24 is_stmt 0 view .LVU42
+ 158 0098 0594     		str	r4, [sp, #20]
+ 453:Core/Src/main.cpp ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 159              		.loc 1 453 3 is_stmt 1 view .LVU43
+ 160              		.loc 1 453 25 is_stmt 0 view .LVU44
+ 161 009a 0694     		str	r4, [sp, #24]
+ 454:Core/Src/main.cpp ****   HAL_GPIO_Init(ERROR_OUT_GPIO_Port, &GPIO_InitStruct);
+ 162              		.loc 1 454 3 is_stmt 1 view .LVU45
+ 163              		.loc 1 454 16 is_stmt 0 view .LVU46
+ 164 009c 03A9     		add	r1, sp, #12
+ 165 009e 4046     		mov	r0, r8
+ 166 00a0 FFF7FEFF 		bl	HAL_GPIO_Init
+ 167              	.LVL4:
+ 455:Core/Src/main.cpp **** 
+ 456:Core/Src/main.cpp ****   /*Configure GPIO pin : LED_Pin */
+ 457:Core/Src/main.cpp ****   GPIO_InitStruct.Pin = LED_Pin;
+ 168              		.loc 1 457 3 is_stmt 1 view .LVU47
+ 169              		.loc 1 457 23 is_stmt 0 view .LVU48
+ 170 00a4 4FF48073 		mov	r3, #256
+ 171 00a8 0393     		str	r3, [sp, #12]
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 12
+
+
+ 458:Core/Src/main.cpp ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 172              		.loc 1 458 3 is_stmt 1 view .LVU49
+ 173              		.loc 1 458 24 is_stmt 0 view .LVU50
+ 174 00aa 0495     		str	r5, [sp, #16]
+ 459:Core/Src/main.cpp ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 175              		.loc 1 459 3 is_stmt 1 view .LVU51
+ 176              		.loc 1 459 24 is_stmt 0 view .LVU52
+ 177 00ac 0594     		str	r4, [sp, #20]
+ 460:Core/Src/main.cpp ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 178              		.loc 1 460 3 is_stmt 1 view .LVU53
+ 179              		.loc 1 460 25 is_stmt 0 view .LVU54
+ 180 00ae 0697     		str	r7, [sp, #24]
+ 461:Core/Src/main.cpp ****   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+ 181              		.loc 1 461 3 is_stmt 1 view .LVU55
+ 182              		.loc 1 461 16 is_stmt 0 view .LVU56
+ 183 00b0 03A9     		add	r1, sp, #12
+ 184 00b2 3046     		mov	r0, r6
+ 185 00b4 FFF7FEFF 		bl	HAL_GPIO_Init
+ 186              	.LVL5:
+ 462:Core/Src/main.cpp **** 
+ 463:Core/Src/main.cpp **** }
+ 187              		.loc 1 463 1 view .LVU57
+ 188 00b8 09B0     		add	sp, sp, #36
+ 189              	.LCFI2:
+ 190              		.cfi_def_cfa_offset 28
+ 191              		@ sp needed
+ 192 00ba BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 193              	.L4:
+ 194 00be 00BF     		.align	2
+ 195              	.L3:
+ 196 00c0 00380240 		.word	1073887232
+ 197 00c4 00000240 		.word	1073872896
+ 198 00c8 00080240 		.word	1073874944
+ 199 00cc 00040240 		.word	1073873920
+ 200              		.cfi_endproc
+ 201              	.LFE243:
+ 202              		.fnend
+ 204              		.section	.text._ZL11MX_DMA_Initv,"ax",%progbits
+ 205              		.align	1
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	_ZL11MX_DMA_Initv:
+ 211              		.fnstart
+ 212              	.LFB242:
+ 407:Core/Src/main.cpp **** 
+ 213              		.loc 1 407 1 is_stmt 1 view -0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 8
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217 0000 00B5     		push	{lr}
+ 218              		.save {lr}
+ 219              	.LCFI3:
+ 220              		.cfi_def_cfa_offset 4
+ 221              		.cfi_offset 14, -4
+ 222              		.pad #12
+ 223 0002 83B0     		sub	sp, sp, #12
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 13
+
+
+ 224              	.LCFI4:
+ 225              		.cfi_def_cfa_offset 16
+ 410:Core/Src/main.cpp **** 
+ 226              		.loc 1 410 3 view .LVU59
+ 227              	.LBB7:
+ 410:Core/Src/main.cpp **** 
+ 228              		.loc 1 410 3 view .LVU60
+ 229 0004 0021     		movs	r1, #0
+ 230 0006 0191     		str	r1, [sp, #4]
+ 410:Core/Src/main.cpp **** 
+ 231              		.loc 1 410 3 view .LVU61
+ 232 0008 094B     		ldr	r3, .L7
+ 233 000a 1A6B     		ldr	r2, [r3, #48]
+ 234 000c 42F48002 		orr	r2, r2, #4194304
+ 235 0010 1A63     		str	r2, [r3, #48]
+ 410:Core/Src/main.cpp **** 
+ 236              		.loc 1 410 3 view .LVU62
+ 237 0012 1B6B     		ldr	r3, [r3, #48]
+ 238 0014 03F48003 		and	r3, r3, #4194304
+ 239 0018 0193     		str	r3, [sp, #4]
+ 410:Core/Src/main.cpp **** 
+ 240              		.loc 1 410 3 view .LVU63
+ 241 001a 019B     		ldr	r3, [sp, #4]
+ 242              	.LBE7:
+ 410:Core/Src/main.cpp **** 
+ 243              		.loc 1 410 3 view .LVU64
+ 414:Core/Src/main.cpp ****   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+ 244              		.loc 1 414 3 view .LVU65
+ 414:Core/Src/main.cpp ****   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+ 245              		.loc 1 414 23 is_stmt 0 view .LVU66
+ 246 001c 0A46     		mov	r2, r1
+ 247 001e 3820     		movs	r0, #56
+ 248 0020 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 249              	.LVL6:
+ 415:Core/Src/main.cpp **** 
+ 250              		.loc 1 415 3 is_stmt 1 view .LVU67
+ 415:Core/Src/main.cpp **** 
+ 251              		.loc 1 415 21 is_stmt 0 view .LVU68
+ 252 0024 3820     		movs	r0, #56
+ 253 0026 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 254              	.LVL7:
+ 417:Core/Src/main.cpp **** 
+ 255              		.loc 1 417 1 view .LVU69
+ 256 002a 03B0     		add	sp, sp, #12
+ 257              	.LCFI5:
+ 258              		.cfi_def_cfa_offset 4
+ 259              		@ sp needed
+ 260 002c 5DF804FB 		ldr	pc, [sp], #4
+ 261              	.L8:
+ 262              		.align	2
+ 263              	.L7:
+ 264 0030 00380240 		.word	1073887232
+ 265              		.cfi_endproc
+ 266              	.LFE242:
+ 267              		.fnend
+ 269              		.global	__aeabi_ui2d
+ 270              		.global	__aeabi_dsub
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 14
+
+
+ 271              		.global	__aeabi_ddiv
+ 272              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	HAL_ADC_ConvCpltCallback
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	HAL_ADC_ConvCpltCallback:
+ 280              		.fnstart
+ 281              	.LVL8:
+ 282              	.LFB244:
+ 464:Core/Src/main.cpp **** 
+ 465:Core/Src/main.cpp **** /* USER CODE BEGIN 4 */
+ 466:Core/Src/main.cpp **** 
+ 467:Core/Src/main.cpp **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
+ 283              		.loc 1 467 55 is_stmt 1 view -0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 0
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+ 287              		.loc 1 467 55 is_stmt 0 view .LVU71
+ 288 0000 10B5     		push	{r4, lr}
+ 289              	.LCFI6:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 4, -8
+ 292              		.cfi_offset 14, -4
+ 468:Core/Src/main.cpp **** 
+ 469:Core/Src/main.cpp **** 	volt_bc = ((double)adc_data[0] - 56.15) / 5.083;
+ 293              		.loc 1 469 2 is_stmt 1 view .LVU72
+ 294              		.loc 1 469 31 is_stmt 0 view .LVU73
+ 295 0002 154C     		ldr	r4, .L11+16
+ 296              		.loc 1 469 13 view .LVU74
+ 297 0004 2088     		ldrh	r0, [r4]
+ 298              	.LVL9:
+ 299              		.loc 1 469 13 view .LVU75
+ 300 0006 FFF7FEFF 		bl	__aeabi_ui2d
+ 301              	.LVL10:
+ 302              		.loc 1 469 33 view .LVU76
+ 303 000a 0FA3     		adr	r3, .L11
+ 304 000c D3E90023 		ldrd	r2, [r3]
+ 305 0010 FFF7FEFF 		bl	__aeabi_dsub
+ 306              	.LVL11:
+ 307              		.loc 1 469 42 view .LVU77
+ 308 0014 0EA3     		adr	r3, .L11+8
+ 309 0016 D3E90023 		ldrd	r2, [r3]
+ 310 001a FFF7FEFF 		bl	__aeabi_ddiv
+ 311              	.LVL12:
+ 312              		.loc 1 469 10 view .LVU78
+ 313 001e 0F4B     		ldr	r3, .L11+20
+ 314 0020 C3E90001 		strd	r0, [r3]
+ 470:Core/Src/main.cpp **** 	volt_ac = ((double)adc_data[1] - 56.15) / 5.083;
+ 315              		.loc 1 470 2 is_stmt 1 view .LVU79
+ 316              		.loc 1 470 13 is_stmt 0 view .LVU80
+ 317 0024 6088     		ldrh	r0, [r4, #2]
+ 318 0026 FFF7FEFF 		bl	__aeabi_ui2d
+ 319              	.LVL13:
+ 320              		.loc 1 470 33 view .LVU81
+ 321 002a 07A3     		adr	r3, .L11
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 15
+
+
+ 322 002c D3E90023 		ldrd	r2, [r3]
+ 323 0030 FFF7FEFF 		bl	__aeabi_dsub
+ 324              	.LVL14:
+ 325              		.loc 1 470 42 view .LVU82
+ 326 0034 06A3     		adr	r3, .L11+8
+ 327 0036 D3E90023 		ldrd	r2, [r3]
+ 328 003a FFF7FEFF 		bl	__aeabi_ddiv
+ 329              	.LVL15:
+ 330              		.loc 1 470 10 view .LVU83
+ 331 003e 084B     		ldr	r3, .L11+24
+ 332 0040 C3E90001 		strd	r0, [r3]
+ 471:Core/Src/main.cpp **** }
+ 333              		.loc 1 471 1 view .LVU84
+ 334 0044 10BD     		pop	{r4, pc}
+ 335              	.L12:
+ 336 0046 00BF     		.align	3
+ 337              	.L11:
+ 338 0048 33333333 		.word	858993459
+ 339 004c 33134C40 		.word	1078727475
+ 340 0050 A245B6F3 		.word	-206158430
+ 341 0054 FD541440 		.word	1075074301
+ 342 0058 00000000 		.word	adc_data
+ 343 005c 00000000 		.word	volt_bc
+ 344 0060 00000000 		.word	volt_ac
+ 345              		.cfi_endproc
+ 346              	.LFE244:
+ 347              		.cantunwind
+ 348              		.fnend
+ 350              		.section	.text._Z6_writeiPci,"ax",%progbits
+ 351              		.align	1
+ 352              		.global	_Z6_writeiPci
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 357              	_Z6_writeiPci:
+ 358              		.fnstart
+ 359              	.LVL16:
+ 360              	.LFB245:
+ 472:Core/Src/main.cpp **** 
+ 473:Core/Src/main.cpp **** int _write(int file, char *ptr, int len)
+ 474:Core/Src/main.cpp **** {
+ 361              		.loc 1 474 1 is_stmt 1 view -0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 0
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 365              		.loc 1 474 1 is_stmt 0 view .LVU86
+ 366 0000 10B5     		push	{r4, lr}
+ 367              		.save {r4, lr}
+ 368              	.LCFI7:
+ 369              		.cfi_def_cfa_offset 8
+ 370              		.cfi_offset 4, -8
+ 371              		.cfi_offset 14, -4
+ 372 0002 1446     		mov	r4, r2
+ 475:Core/Src/main.cpp **** 	HAL_UART_Transmit(&huart3, (uint8_t*)ptr, len, HAL_MAX_DELAY);
+ 373              		.loc 1 475 2 is_stmt 1 view .LVU87
+ 374              		.loc 1 475 19 is_stmt 0 view .LVU88
+ 375 0004 4FF0FF33 		mov	r3, #-1
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 16
+
+
+ 376 0008 92B2     		uxth	r2, r2
+ 377              	.LVL17:
+ 378              		.loc 1 475 19 view .LVU89
+ 379 000a 0248     		ldr	r0, .L15
+ 380              	.LVL18:
+ 381              		.loc 1 475 19 view .LVU90
+ 382 000c FFF7FEFF 		bl	HAL_UART_Transmit
+ 383              	.LVL19:
+ 476:Core/Src/main.cpp **** 	return len;
+ 384              		.loc 1 476 2 is_stmt 1 view .LVU91
+ 477:Core/Src/main.cpp **** }
+ 385              		.loc 1 477 1 is_stmt 0 view .LVU92
+ 386 0010 2046     		mov	r0, r4
+ 387 0012 10BD     		pop	{r4, pc}
+ 388              	.LVL20:
+ 389              	.L16:
+ 390              		.loc 1 477 1 view .LVU93
+ 391              		.align	2
+ 392              	.L15:
+ 393 0014 00000000 		.word	huart3
+ 394              		.cfi_endproc
+ 395              	.LFE245:
+ 396              		.fnend
+ 398              		.section	.text.Error_Handler,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	Error_Handler
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ 405              	Error_Handler:
+ 406              		.fnstart
+ 407              	.LFB246:
+ 478:Core/Src/main.cpp **** /* USER CODE END 4 */
+ 479:Core/Src/main.cpp **** 
+ 480:Core/Src/main.cpp **** /**
+ 481:Core/Src/main.cpp ****   * @brief  This function is executed in case of error occurrence.
+ 482:Core/Src/main.cpp ****   * @retval None
+ 483:Core/Src/main.cpp ****   */
+ 484:Core/Src/main.cpp **** void Error_Handler(void)
+ 485:Core/Src/main.cpp **** {
+ 408              		.loc 1 485 1 is_stmt 1 view -0
+ 409              		.cfi_startproc
+ 410              		@ Volatile: function does not return.
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413              		@ link register save eliminated.
+ 486:Core/Src/main.cpp ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 487:Core/Src/main.cpp ****   /* User can add his own implementation to report the HAL error return state */
+ 488:Core/Src/main.cpp ****   __disable_irq();
+ 414              		.loc 1 488 3 view .LVU95
+ 415              	.LBB8:
+ 416              	.LBI8:
+ 417              		.file 2 "Drivers/CMSIS/Include/cmsis_gcc.h"
+   1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
+   2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
+   4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.0.4
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 17
+
+
+   5:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @date     09. April 2018
+   6:Drivers/CMSIS/Include/cmsis_gcc.h ****  ******************************************************************************/
+   7:Drivers/CMSIS/Include/cmsis_gcc.h **** /*
+   8:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
+   9:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  10:Drivers/CMSIS/Include/cmsis_gcc.h ****  * SPDX-License-Identifier: Apache-2.0
+  11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
+  13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
+  14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
+  15:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
+  17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
+  18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
+  19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+  20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
+  22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+  23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+  24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
+  27:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
+  29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
+  30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
+  35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
+  36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
+  37:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  38:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+  39:Drivers/CMSIS/Include/cmsis_gcc.h **** /* CMSIS compiler specific defines */
+  40:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ASM
+  41:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ASM                                  __asm
+  42:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  43:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __INLINE
+  44:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __INLINE                               inline
+  45:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  46:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_INLINE
+  47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
+  48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE                 
+  50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
+  51:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif                                           
+  52:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __NO_RETURN
+  53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
+  54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+  56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
+  57:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
+  59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
+  60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 18
+
+
+  62:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
+  63:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  64:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
+  65:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
+  66:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  67:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED_UNION
+  68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
+  69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
+  71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  72:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
+  75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
+  77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
+  79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
+  83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  84:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_WRITE(addr, val)    (void)((((struct T_UINT16_WRITE *)(void *)(addr))-
+  85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
+  87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
+  91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+  92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
+  93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+  94:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_WRITE
+  95:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+  96:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+  97:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+  98:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_WRITE { uint32_t v; };
+  99:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 100:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_WRITE(addr, val)    (void)((((struct T_UINT32_WRITE *)(void *)(addr))-
+ 101:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 102:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32_READ
+ 103:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ 104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
+ 105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
+ 106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
+ 107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
+ 108:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32_READ(addr)          (((const struct T_UINT32_READ *)(const void *)(add
+ 109:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
+ 111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
+ 112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
+ 114:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __RESTRICT                             __restrict
+ 115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+ 116:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 117:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 118:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 19
+
+
+ 119:Drivers/CMSIS/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+ 120:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+ 121:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
+ 122:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 123:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 124:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+ 126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+ 127:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 128:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 129:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __enable_irq(void)
+ 130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+ 132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
+ 133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
+ 135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
+ 136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ 137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+ 138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
+ 140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
+ 418              		.loc 2 140 27 view .LVU96
+ 419              	.LBB9:
+ 141:Drivers/CMSIS/Include/cmsis_gcc.h **** {
+ 142:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+ 420              		.loc 2 142 3 view .LVU97
+ 421              		.syntax unified
+ 422              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+ 423 0000 72B6     		cpsid i
+ 424              	@ 0 "" 2
+ 425              		.thumb
+ 426              		.syntax unified
+ 427              	.L18:
+ 428              	.LBE9:
+ 429              	.LBE8:
+ 489:Core/Src/main.cpp ****   while (1)
+ 430              		.loc 1 489 3 discriminator 1 view .LVU98
+ 431              		.loc 1 489 3 discriminator 1 view .LVU99
+ 432 0002 FEE7     		b	.L18
+ 433              		.cfi_endproc
+ 434              	.LFE246:
+ 435              		.cantunwind
+ 436              		.fnend
+ 438              		.section	.text._ZL12MX_ADC1_Initv,"ax",%progbits
+ 439              		.align	1
+ 440              		.syntax unified
+ 441              		.thumb
+ 442              		.thumb_func
+ 444              	_ZL12MX_ADC1_Initv:
+ 445              		.fnstart
+ 446              	.LFB237:
+ 194:Core/Src/main.cpp **** 
+ 447              		.loc 1 194 1 view -0
+ 448              		.cfi_startproc
+ 449              		@ args = 0, pretend = 0, frame = 16
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 20
+
+
+ 451 0000 00B5     		push	{lr}
+ 452              		.save {lr}
+ 453              	.LCFI8:
+ 454              		.cfi_def_cfa_offset 4
+ 455              		.cfi_offset 14, -4
+ 456              		.pad #20
+ 457 0002 85B0     		sub	sp, sp, #20
+ 458              	.LCFI9:
+ 459              		.cfi_def_cfa_offset 24
+ 200:Core/Src/main.cpp **** 
+ 460              		.loc 1 200 3 view .LVU101
+ 200:Core/Src/main.cpp **** 
+ 461              		.loc 1 200 26 is_stmt 0 view .LVU102
+ 462 0004 0023     		movs	r3, #0
+ 463 0006 0093     		str	r3, [sp]
+ 464 0008 0193     		str	r3, [sp, #4]
+ 465 000a 0293     		str	r3, [sp, #8]
+ 466 000c 0393     		str	r3, [sp, #12]
+ 208:Core/Src/main.cpp ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+ 467              		.loc 1 208 3 is_stmt 1 view .LVU103
+ 208:Core/Src/main.cpp ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+ 468              		.loc 1 208 18 is_stmt 0 view .LVU104
+ 469 000e 1848     		ldr	r0, .L27
+ 470 0010 184A     		ldr	r2, .L27+4
+ 471 0012 0260     		str	r2, [r0]
+ 209:Core/Src/main.cpp ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+ 472              		.loc 1 209 3 is_stmt 1 view .LVU105
+ 209:Core/Src/main.cpp ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+ 473              		.loc 1 209 29 is_stmt 0 view .LVU106
+ 474 0014 4360     		str	r3, [r0, #4]
+ 210:Core/Src/main.cpp ****   hadc1.Init.ScanConvMode = ENABLE;
+ 475              		.loc 1 210 3 is_stmt 1 view .LVU107
+ 210:Core/Src/main.cpp ****   hadc1.Init.ScanConvMode = ENABLE;
+ 476              		.loc 1 210 25 is_stmt 0 view .LVU108
+ 477 0016 8360     		str	r3, [r0, #8]
+ 211:Core/Src/main.cpp ****   hadc1.Init.ContinuousConvMode = ENABLE;
+ 478              		.loc 1 211 3 is_stmt 1 view .LVU109
+ 211:Core/Src/main.cpp ****   hadc1.Init.ContinuousConvMode = ENABLE;
+ 479              		.loc 1 211 27 is_stmt 0 view .LVU110
+ 480 0018 0122     		movs	r2, #1
+ 481 001a 0261     		str	r2, [r0, #16]
+ 212:Core/Src/main.cpp ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
+ 482              		.loc 1 212 3 is_stmt 1 view .LVU111
+ 212:Core/Src/main.cpp ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
+ 483              		.loc 1 212 33 is_stmt 0 view .LVU112
+ 484 001c 0276     		strb	r2, [r0, #24]
+ 213:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+ 485              		.loc 1 213 3 is_stmt 1 view .LVU113
+ 213:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+ 486              		.loc 1 213 36 is_stmt 0 view .LVU114
+ 487 001e 80F82030 		strb	r3, [r0, #32]
+ 214:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+ 488              		.loc 1 214 3 is_stmt 1 view .LVU115
+ 214:Core/Src/main.cpp ****   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+ 489              		.loc 1 214 35 is_stmt 0 view .LVU116
+ 490 0022 C362     		str	r3, [r0, #44]
+ 215:Core/Src/main.cpp ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 21
+
+
+ 491              		.loc 1 215 3 is_stmt 1 view .LVU117
+ 215:Core/Src/main.cpp ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+ 492              		.loc 1 215 31 is_stmt 0 view .LVU118
+ 493 0024 1449     		ldr	r1, .L27+8
+ 494 0026 8162     		str	r1, [r0, #40]
+ 216:Core/Src/main.cpp ****   hadc1.Init.NbrOfConversion = 2;
+ 495              		.loc 1 216 3 is_stmt 1 view .LVU119
+ 216:Core/Src/main.cpp ****   hadc1.Init.NbrOfConversion = 2;
+ 496              		.loc 1 216 24 is_stmt 0 view .LVU120
+ 497 0028 C360     		str	r3, [r0, #12]
+ 217:Core/Src/main.cpp ****   hadc1.Init.DMAContinuousRequests = ENABLE;
+ 498              		.loc 1 217 3 is_stmt 1 view .LVU121
+ 217:Core/Src/main.cpp ****   hadc1.Init.DMAContinuousRequests = ENABLE;
+ 499              		.loc 1 217 30 is_stmt 0 view .LVU122
+ 500 002a 0223     		movs	r3, #2
+ 501 002c C361     		str	r3, [r0, #28]
+ 218:Core/Src/main.cpp ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+ 502              		.loc 1 218 3 is_stmt 1 view .LVU123
+ 218:Core/Src/main.cpp ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+ 503              		.loc 1 218 36 is_stmt 0 view .LVU124
+ 504 002e 80F83020 		strb	r2, [r0, #48]
+ 219:Core/Src/main.cpp ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
+ 505              		.loc 1 219 3 is_stmt 1 view .LVU125
+ 219:Core/Src/main.cpp ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
+ 506              		.loc 1 219 27 is_stmt 0 view .LVU126
+ 507 0032 4261     		str	r2, [r0, #20]
+ 220:Core/Src/main.cpp ****   {
+ 508              		.loc 1 220 3 is_stmt 1 view .LVU127
+ 220:Core/Src/main.cpp ****   {
+ 509              		.loc 1 220 19 is_stmt 0 view .LVU128
+ 510 0034 FFF7FEFF 		bl	HAL_ADC_Init
+ 511              	.LVL21:
+ 220:Core/Src/main.cpp ****   {
+ 512              		.loc 1 220 3 view .LVU129
+ 513 0038 A0B9     		cbnz	r0, .L24
+ 227:Core/Src/main.cpp ****   sConfig.Rank = 1;
+ 514              		.loc 1 227 3 is_stmt 1 view .LVU130
+ 227:Core/Src/main.cpp ****   sConfig.Rank = 1;
+ 515              		.loc 1 227 19 is_stmt 0 view .LVU131
+ 516 003a 0123     		movs	r3, #1
+ 517 003c 0093     		str	r3, [sp]
+ 228:Core/Src/main.cpp ****   sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+ 518              		.loc 1 228 3 is_stmt 1 view .LVU132
+ 228:Core/Src/main.cpp ****   sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+ 519              		.loc 1 228 16 is_stmt 0 view .LVU133
+ 520 003e 0193     		str	r3, [sp, #4]
+ 229:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 521              		.loc 1 229 3 is_stmt 1 view .LVU134
+ 229:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 522              		.loc 1 229 24 is_stmt 0 view .LVU135
+ 523 0040 0723     		movs	r3, #7
+ 524 0042 0293     		str	r3, [sp, #8]
+ 230:Core/Src/main.cpp ****   {
+ 525              		.loc 1 230 3 is_stmt 1 view .LVU136
+ 230:Core/Src/main.cpp ****   {
+ 526              		.loc 1 230 28 is_stmt 0 view .LVU137
+ 527 0044 6946     		mov	r1, sp
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 22
+
+
+ 528 0046 0A48     		ldr	r0, .L27
+ 529 0048 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 530              	.LVL22:
+ 230:Core/Src/main.cpp ****   {
+ 531              		.loc 1 230 3 view .LVU138
+ 532 004c 60B9     		cbnz	r0, .L25
+ 237:Core/Src/main.cpp ****   sConfig.Rank = 2;
+ 533              		.loc 1 237 3 is_stmt 1 view .LVU139
+ 237:Core/Src/main.cpp ****   sConfig.Rank = 2;
+ 534              		.loc 1 237 19 is_stmt 0 view .LVU140
+ 535 004e 0223     		movs	r3, #2
+ 536 0050 0093     		str	r3, [sp]
+ 238:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 537              		.loc 1 238 3 is_stmt 1 view .LVU141
+ 238:Core/Src/main.cpp ****   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+ 538              		.loc 1 238 16 is_stmt 0 view .LVU142
+ 539 0052 0193     		str	r3, [sp, #4]
+ 239:Core/Src/main.cpp ****   {
+ 540              		.loc 1 239 3 is_stmt 1 view .LVU143
+ 239:Core/Src/main.cpp ****   {
+ 541              		.loc 1 239 28 is_stmt 0 view .LVU144
+ 542 0054 6946     		mov	r1, sp
+ 543 0056 0648     		ldr	r0, .L27
+ 544 0058 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+ 545              	.LVL23:
+ 239:Core/Src/main.cpp ****   {
+ 546              		.loc 1 239 3 view .LVU145
+ 547 005c 30B9     		cbnz	r0, .L26
+ 247:Core/Src/main.cpp **** 
+ 548              		.loc 1 247 1 view .LVU146
+ 549 005e 05B0     		add	sp, sp, #20
+ 550              	.LCFI10:
+ 551              		.cfi_remember_state
+ 552              		.cfi_def_cfa_offset 4
+ 553              		@ sp needed
+ 554 0060 5DF804FB 		ldr	pc, [sp], #4
+ 555              	.L24:
+ 556              	.LCFI11:
+ 557              		.cfi_restore_state
+ 222:Core/Src/main.cpp ****   }
+ 558              		.loc 1 222 5 is_stmt 1 view .LVU147
+ 222:Core/Src/main.cpp ****   }
+ 559              		.loc 1 222 18 is_stmt 0 view .LVU148
+ 560 0064 FFF7FEFF 		bl	Error_Handler
+ 561              	.LVL24:
+ 562              	.L25:
+ 232:Core/Src/main.cpp ****   }
+ 563              		.loc 1 232 5 is_stmt 1 view .LVU149
+ 232:Core/Src/main.cpp ****   }
+ 564              		.loc 1 232 18 is_stmt 0 view .LVU150
+ 565 0068 FFF7FEFF 		bl	Error_Handler
+ 566              	.LVL25:
+ 567              	.L26:
+ 241:Core/Src/main.cpp ****   }
+ 568              		.loc 1 241 5 is_stmt 1 view .LVU151
+ 241:Core/Src/main.cpp ****   }
+ 569              		.loc 1 241 18 is_stmt 0 view .LVU152
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 23
+
+
+ 570 006c FFF7FEFF 		bl	Error_Handler
+ 571              	.LVL26:
+ 572              	.L28:
+ 573              		.align	2
+ 574              	.L27:
+ 575 0070 00000000 		.word	hadc1
+ 576 0074 00200140 		.word	1073815552
+ 577 0078 0100000F 		.word	251658241
+ 578              		.cfi_endproc
+ 579              	.LFE237:
+ 580              		.fnend
+ 582              		.section	.text._ZL19MX_USART3_UART_Initv,"ax",%progbits
+ 583              		.align	1
+ 584              		.syntax unified
+ 585              		.thumb
+ 586              		.thumb_func
+ 588              	_ZL19MX_USART3_UART_Initv:
+ 589              		.fnstart
+ 590              	.LFB241:
+ 376:Core/Src/main.cpp **** 
+ 591              		.loc 1 376 1 is_stmt 1 view -0
+ 592              		.cfi_startproc
+ 593              		@ args = 0, pretend = 0, frame = 0
+ 594              		@ frame_needed = 0, uses_anonymous_args = 0
+ 595 0000 08B5     		push	{r3, lr}
+ 596              		.save {r3, lr}
+ 597              	.LCFI12:
+ 598              		.cfi_def_cfa_offset 8
+ 599              		.cfi_offset 3, -8
+ 600              		.cfi_offset 14, -4
+ 385:Core/Src/main.cpp ****   huart3.Init.BaudRate = 115200;
+ 601              		.loc 1 385 3 view .LVU154
+ 385:Core/Src/main.cpp ****   huart3.Init.BaudRate = 115200;
+ 602              		.loc 1 385 19 is_stmt 0 view .LVU155
+ 603 0002 0A48     		ldr	r0, .L33
+ 604 0004 0A4B     		ldr	r3, .L33+4
+ 605 0006 0360     		str	r3, [r0]
+ 386:Core/Src/main.cpp ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 606              		.loc 1 386 3 is_stmt 1 view .LVU156
+ 386:Core/Src/main.cpp ****   huart3.Init.WordLength = UART_WORDLENGTH_8B;
+ 607              		.loc 1 386 24 is_stmt 0 view .LVU157
+ 608 0008 4FF4E133 		mov	r3, #115200
+ 609 000c 4360     		str	r3, [r0, #4]
+ 387:Core/Src/main.cpp ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 610              		.loc 1 387 3 is_stmt 1 view .LVU158
+ 387:Core/Src/main.cpp ****   huart3.Init.StopBits = UART_STOPBITS_1;
+ 611              		.loc 1 387 26 is_stmt 0 view .LVU159
+ 612 000e 0023     		movs	r3, #0
+ 613 0010 8360     		str	r3, [r0, #8]
+ 388:Core/Src/main.cpp ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 614              		.loc 1 388 3 is_stmt 1 view .LVU160
+ 388:Core/Src/main.cpp ****   huart3.Init.Parity = UART_PARITY_NONE;
+ 615              		.loc 1 388 24 is_stmt 0 view .LVU161
+ 616 0012 C360     		str	r3, [r0, #12]
+ 389:Core/Src/main.cpp ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ 617              		.loc 1 389 3 is_stmt 1 view .LVU162
+ 389:Core/Src/main.cpp ****   huart3.Init.Mode = UART_MODE_TX_RX;
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 24
+
+
+ 618              		.loc 1 389 22 is_stmt 0 view .LVU163
+ 619 0014 0361     		str	r3, [r0, #16]
+ 390:Core/Src/main.cpp ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 620              		.loc 1 390 3 is_stmt 1 view .LVU164
+ 390:Core/Src/main.cpp ****   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+ 621              		.loc 1 390 20 is_stmt 0 view .LVU165
+ 622 0016 0C22     		movs	r2, #12
+ 623 0018 4261     		str	r2, [r0, #20]
+ 391:Core/Src/main.cpp ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 624              		.loc 1 391 3 is_stmt 1 view .LVU166
+ 391:Core/Src/main.cpp ****   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+ 625              		.loc 1 391 25 is_stmt 0 view .LVU167
+ 626 001a 8361     		str	r3, [r0, #24]
+ 392:Core/Src/main.cpp ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 627              		.loc 1 392 3 is_stmt 1 view .LVU168
+ 392:Core/Src/main.cpp ****   if (HAL_UART_Init(&huart3) != HAL_OK)
+ 628              		.loc 1 392 28 is_stmt 0 view .LVU169
+ 629 001c C361     		str	r3, [r0, #28]
+ 393:Core/Src/main.cpp ****   {
+ 630              		.loc 1 393 3 is_stmt 1 view .LVU170
+ 393:Core/Src/main.cpp ****   {
+ 631              		.loc 1 393 20 is_stmt 0 view .LVU171
+ 632 001e FFF7FEFF 		bl	HAL_UART_Init
+ 633              	.LVL27:
+ 393:Core/Src/main.cpp ****   {
+ 634              		.loc 1 393 3 view .LVU172
+ 635 0022 00B9     		cbnz	r0, .L32
+ 401:Core/Src/main.cpp **** 
+ 636              		.loc 1 401 1 view .LVU173
+ 637 0024 08BD     		pop	{r3, pc}
+ 638              	.L32:
+ 395:Core/Src/main.cpp ****   }
+ 639              		.loc 1 395 5 is_stmt 1 view .LVU174
+ 395:Core/Src/main.cpp ****   }
+ 640              		.loc 1 395 18 is_stmt 0 view .LVU175
+ 641 0026 FFF7FEFF 		bl	Error_Handler
+ 642              	.LVL28:
+ 643              	.L34:
+ 644 002a 00BF     		.align	2
+ 645              	.L33:
+ 646 002c 00000000 		.word	huart3
+ 647 0030 00480040 		.word	1073760256
+ 648              		.cfi_endproc
+ 649              	.LFE241:
+ 650              		.fnend
+ 652              		.section	.text._ZL12MX_TIM2_Initv,"ax",%progbits
+ 653              		.align	1
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	_ZL12MX_TIM2_Initv:
+ 659              		.fnstart
+ 660              	.LFB240:
+ 331:Core/Src/main.cpp **** 
+ 661              		.loc 1 331 1 is_stmt 1 view -0
+ 662              		.cfi_startproc
+ 663              		@ args = 0, pretend = 0, frame = 24
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 25
+
+
+ 664              		@ frame_needed = 0, uses_anonymous_args = 0
+ 665 0000 00B5     		push	{lr}
+ 666              		.save {lr}
+ 667              	.LCFI13:
+ 668              		.cfi_def_cfa_offset 4
+ 669              		.cfi_offset 14, -4
+ 670              		.pad #28
+ 671 0002 87B0     		sub	sp, sp, #28
+ 672              	.LCFI14:
+ 673              		.cfi_def_cfa_offset 32
+ 337:Core/Src/main.cpp ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 674              		.loc 1 337 3 view .LVU177
+ 337:Core/Src/main.cpp ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
+ 675              		.loc 1 337 26 is_stmt 0 view .LVU178
+ 676 0004 0023     		movs	r3, #0
+ 677 0006 0293     		str	r3, [sp, #8]
+ 678 0008 0393     		str	r3, [sp, #12]
+ 679 000a 0493     		str	r3, [sp, #16]
+ 680 000c 0593     		str	r3, [sp, #20]
+ 338:Core/Src/main.cpp **** 
+ 681              		.loc 1 338 3 is_stmt 1 view .LVU179
+ 338:Core/Src/main.cpp **** 
+ 682              		.loc 1 338 27 is_stmt 0 view .LVU180
+ 683 000e 0093     		str	r3, [sp]
+ 684 0010 0193     		str	r3, [sp, #4]
+ 343:Core/Src/main.cpp ****   htim2.Init.Prescaler = 56;
+ 685              		.loc 1 343 3 is_stmt 1 view .LVU181
+ 343:Core/Src/main.cpp ****   htim2.Init.Prescaler = 56;
+ 686              		.loc 1 343 18 is_stmt 0 view .LVU182
+ 687 0012 1448     		ldr	r0, .L43
+ 688 0014 4FF08042 		mov	r2, #1073741824
+ 689 0018 0260     		str	r2, [r0]
+ 344:Core/Src/main.cpp ****   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 690              		.loc 1 344 3 is_stmt 1 view .LVU183
+ 344:Core/Src/main.cpp ****   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+ 691              		.loc 1 344 24 is_stmt 0 view .LVU184
+ 692 001a 3822     		movs	r2, #56
+ 693 001c 4260     		str	r2, [r0, #4]
+ 345:Core/Src/main.cpp ****   htim2.Init.Period = 1000-1;
+ 694              		.loc 1 345 3 is_stmt 1 view .LVU185
+ 345:Core/Src/main.cpp ****   htim2.Init.Period = 1000-1;
+ 695              		.loc 1 345 26 is_stmt 0 view .LVU186
+ 696 001e 8360     		str	r3, [r0, #8]
+ 346:Core/Src/main.cpp ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 697              		.loc 1 346 3 is_stmt 1 view .LVU187
+ 346:Core/Src/main.cpp ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+ 698              		.loc 1 346 21 is_stmt 0 view .LVU188
+ 699 0020 40F2E732 		movw	r2, #999
+ 700 0024 C260     		str	r2, [r0, #12]
+ 347:Core/Src/main.cpp ****   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 701              		.loc 1 347 3 is_stmt 1 view .LVU189
+ 347:Core/Src/main.cpp ****   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+ 702              		.loc 1 347 28 is_stmt 0 view .LVU190
+ 703 0026 0361     		str	r3, [r0, #16]
+ 348:Core/Src/main.cpp ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+ 704              		.loc 1 348 3 is_stmt 1 view .LVU191
+ 348:Core/Src/main.cpp ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 26
+
+
+ 705              		.loc 1 348 32 is_stmt 0 view .LVU192
+ 706 0028 8361     		str	r3, [r0, #24]
+ 349:Core/Src/main.cpp ****   {
+ 707              		.loc 1 349 3 is_stmt 1 view .LVU193
+ 349:Core/Src/main.cpp ****   {
+ 708              		.loc 1 349 24 is_stmt 0 view .LVU194
+ 709 002a FFF7FEFF 		bl	HAL_TIM_Base_Init
+ 710              	.LVL29:
+ 349:Core/Src/main.cpp ****   {
+ 711              		.loc 1 349 3 view .LVU195
+ 712 002e 90B9     		cbnz	r0, .L40
+ 353:Core/Src/main.cpp ****   if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+ 713              		.loc 1 353 3 is_stmt 1 view .LVU196
+ 353:Core/Src/main.cpp ****   if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+ 714              		.loc 1 353 34 is_stmt 0 view .LVU197
+ 715 0030 4FF48053 		mov	r3, #4096
+ 716 0034 0293     		str	r3, [sp, #8]
+ 354:Core/Src/main.cpp ****   {
+ 717              		.loc 1 354 3 is_stmt 1 view .LVU198
+ 354:Core/Src/main.cpp ****   {
+ 718              		.loc 1 354 32 is_stmt 0 view .LVU199
+ 719 0036 02A9     		add	r1, sp, #8
+ 720 0038 0A48     		ldr	r0, .L43
+ 721 003a FFF7FEFF 		bl	HAL_TIM_ConfigClockSource
+ 722              	.LVL30:
+ 354:Core/Src/main.cpp ****   {
+ 723              		.loc 1 354 3 view .LVU200
+ 724 003e 60B9     		cbnz	r0, .L41
+ 358:Core/Src/main.cpp ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 725              		.loc 1 358 3 is_stmt 1 view .LVU201
+ 358:Core/Src/main.cpp ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+ 726              		.loc 1 358 37 is_stmt 0 view .LVU202
+ 727 0040 0023     		movs	r3, #0
+ 728 0042 0093     		str	r3, [sp]
+ 359:Core/Src/main.cpp ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+ 729              		.loc 1 359 3 is_stmt 1 view .LVU203
+ 359:Core/Src/main.cpp ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+ 730              		.loc 1 359 33 is_stmt 0 view .LVU204
+ 731 0044 0193     		str	r3, [sp, #4]
+ 360:Core/Src/main.cpp ****   {
+ 732              		.loc 1 360 3 is_stmt 1 view .LVU205
+ 360:Core/Src/main.cpp ****   {
+ 733              		.loc 1 360 44 is_stmt 0 view .LVU206
+ 734 0046 6946     		mov	r1, sp
+ 735 0048 0648     		ldr	r0, .L43
+ 736 004a FFF7FEFF 		bl	HAL_TIMEx_MasterConfigSynchronization
+ 737              	.LVL31:
+ 360:Core/Src/main.cpp ****   {
+ 738              		.loc 1 360 3 view .LVU207
+ 739 004e 30B9     		cbnz	r0, .L42
+ 368:Core/Src/main.cpp **** 
+ 740              		.loc 1 368 1 view .LVU208
+ 741 0050 07B0     		add	sp, sp, #28
+ 742              	.LCFI15:
+ 743              		.cfi_remember_state
+ 744              		.cfi_def_cfa_offset 4
+ 745              		@ sp needed
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 27
+
+
+ 746 0052 5DF804FB 		ldr	pc, [sp], #4
+ 747              	.L40:
+ 748              	.LCFI16:
+ 749              		.cfi_restore_state
+ 351:Core/Src/main.cpp ****   }
+ 750              		.loc 1 351 5 is_stmt 1 view .LVU209
+ 351:Core/Src/main.cpp ****   }
+ 751              		.loc 1 351 18 is_stmt 0 view .LVU210
+ 752 0056 FFF7FEFF 		bl	Error_Handler
+ 753              	.LVL32:
+ 754              	.L41:
+ 356:Core/Src/main.cpp ****   }
+ 755              		.loc 1 356 5 is_stmt 1 view .LVU211
+ 356:Core/Src/main.cpp ****   }
+ 756              		.loc 1 356 18 is_stmt 0 view .LVU212
+ 757 005a FFF7FEFF 		bl	Error_Handler
+ 758              	.LVL33:
+ 759              	.L42:
+ 362:Core/Src/main.cpp ****   }
+ 760              		.loc 1 362 5 is_stmt 1 view .LVU213
+ 362:Core/Src/main.cpp ****   }
+ 761              		.loc 1 362 18 is_stmt 0 view .LVU214
+ 762 005e FFF7FEFF 		bl	Error_Handler
+ 763              	.LVL34:
+ 764              	.L44:
+ 765 0062 00BF     		.align	2
+ 766              	.L43:
+ 767 0064 00000000 		.word	htim2
+ 768              		.cfi_endproc
+ 769              	.LFE240:
+ 770              		.fnend
+ 772              		.section	.text._ZL12MX_SPI1_Initv,"ax",%progbits
+ 773              		.align	1
+ 774              		.syntax unified
+ 775              		.thumb
+ 776              		.thumb_func
+ 778              	_ZL12MX_SPI1_Initv:
+ 779              		.fnstart
+ 780              	.LFB238:
+ 255:Core/Src/main.cpp **** 
+ 781              		.loc 1 255 1 is_stmt 1 view -0
+ 782              		.cfi_startproc
+ 783              		@ args = 0, pretend = 0, frame = 0
+ 784              		@ frame_needed = 0, uses_anonymous_args = 0
+ 785 0000 08B5     		push	{r3, lr}
+ 786              		.save {r3, lr}
+ 787              	.LCFI17:
+ 788              		.cfi_def_cfa_offset 8
+ 789              		.cfi_offset 3, -8
+ 790              		.cfi_offset 14, -4
+ 265:Core/Src/main.cpp ****   hspi1.Init.Mode = SPI_MODE_MASTER;
+ 791              		.loc 1 265 3 view .LVU216
+ 265:Core/Src/main.cpp ****   hspi1.Init.Mode = SPI_MODE_MASTER;
+ 792              		.loc 1 265 18 is_stmt 0 view .LVU217
+ 793 0002 0D48     		ldr	r0, .L49
+ 794 0004 0D4B     		ldr	r3, .L49+4
+ 795 0006 0360     		str	r3, [r0]
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 28
+
+
+ 266:Core/Src/main.cpp ****   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+ 796              		.loc 1 266 3 is_stmt 1 view .LVU218
+ 266:Core/Src/main.cpp ****   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+ 797              		.loc 1 266 19 is_stmt 0 view .LVU219
+ 798 0008 4FF48273 		mov	r3, #260
+ 799 000c 4360     		str	r3, [r0, #4]
+ 267:Core/Src/main.cpp ****   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+ 800              		.loc 1 267 3 is_stmt 1 view .LVU220
+ 267:Core/Src/main.cpp ****   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+ 801              		.loc 1 267 24 is_stmt 0 view .LVU221
+ 802 000e 0023     		movs	r3, #0
+ 803 0010 8360     		str	r3, [r0, #8]
+ 268:Core/Src/main.cpp ****   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 804              		.loc 1 268 3 is_stmt 1 view .LVU222
+ 268:Core/Src/main.cpp ****   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 805              		.loc 1 268 23 is_stmt 0 view .LVU223
+ 806 0012 C360     		str	r3, [r0, #12]
+ 269:Core/Src/main.cpp ****   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 807              		.loc 1 269 3 is_stmt 1 view .LVU224
+ 269:Core/Src/main.cpp ****   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 808              		.loc 1 269 26 is_stmt 0 view .LVU225
+ 809 0014 0361     		str	r3, [r0, #16]
+ 270:Core/Src/main.cpp ****   hspi1.Init.NSS = SPI_NSS_SOFT;
+ 810              		.loc 1 270 3 is_stmt 1 view .LVU226
+ 270:Core/Src/main.cpp ****   hspi1.Init.NSS = SPI_NSS_SOFT;
+ 811              		.loc 1 270 23 is_stmt 0 view .LVU227
+ 812 0016 4361     		str	r3, [r0, #20]
+ 271:Core/Src/main.cpp ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+ 813              		.loc 1 271 3 is_stmt 1 view .LVU228
+ 271:Core/Src/main.cpp ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+ 814              		.loc 1 271 18 is_stmt 0 view .LVU229
+ 815 0018 4FF40072 		mov	r2, #512
+ 816 001c 8261     		str	r2, [r0, #24]
+ 272:Core/Src/main.cpp ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 817              		.loc 1 272 3 is_stmt 1 view .LVU230
+ 272:Core/Src/main.cpp ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 818              		.loc 1 272 32 is_stmt 0 view .LVU231
+ 819 001e 3022     		movs	r2, #48
+ 820 0020 C261     		str	r2, [r0, #28]
+ 273:Core/Src/main.cpp ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+ 821              		.loc 1 273 3 is_stmt 1 view .LVU232
+ 273:Core/Src/main.cpp ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+ 822              		.loc 1 273 23 is_stmt 0 view .LVU233
+ 823 0022 0362     		str	r3, [r0, #32]
+ 274:Core/Src/main.cpp ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 824              		.loc 1 274 3 is_stmt 1 view .LVU234
+ 274:Core/Src/main.cpp ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 825              		.loc 1 274 21 is_stmt 0 view .LVU235
+ 826 0024 4362     		str	r3, [r0, #36]
+ 275:Core/Src/main.cpp ****   hspi1.Init.CRCPolynomial = 10;
+ 827              		.loc 1 275 3 is_stmt 1 view .LVU236
+ 275:Core/Src/main.cpp ****   hspi1.Init.CRCPolynomial = 10;
+ 828              		.loc 1 275 29 is_stmt 0 view .LVU237
+ 829 0026 8362     		str	r3, [r0, #40]
+ 276:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
+ 830              		.loc 1 276 3 is_stmt 1 view .LVU238
+ 276:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 29
+
+
+ 831              		.loc 1 276 28 is_stmt 0 view .LVU239
+ 832 0028 0A23     		movs	r3, #10
+ 833 002a C362     		str	r3, [r0, #44]
+ 277:Core/Src/main.cpp ****   {
+ 834              		.loc 1 277 3 is_stmt 1 view .LVU240
+ 277:Core/Src/main.cpp ****   {
+ 835              		.loc 1 277 19 is_stmt 0 view .LVU241
+ 836 002c FFF7FEFF 		bl	HAL_SPI_Init
+ 837              	.LVL35:
+ 277:Core/Src/main.cpp ****   {
+ 838              		.loc 1 277 3 view .LVU242
+ 839 0030 00B9     		cbnz	r0, .L48
+ 285:Core/Src/main.cpp **** 
+ 840              		.loc 1 285 1 view .LVU243
+ 841 0032 08BD     		pop	{r3, pc}
+ 842              	.L48:
+ 279:Core/Src/main.cpp ****   }
+ 843              		.loc 1 279 5 is_stmt 1 view .LVU244
+ 279:Core/Src/main.cpp ****   }
+ 844              		.loc 1 279 18 is_stmt 0 view .LVU245
+ 845 0034 FFF7FEFF 		bl	Error_Handler
+ 846              	.LVL36:
+ 847              	.L50:
+ 848              		.align	2
+ 849              	.L49:
+ 850 0038 00000000 		.word	hspi1
+ 851 003c 00300140 		.word	1073819648
+ 852              		.cfi_endproc
+ 853              	.LFE238:
+ 854              		.fnend
+ 856              		.section	.text._ZL12MX_SPI2_Initv,"ax",%progbits
+ 857              		.align	1
+ 858              		.syntax unified
+ 859              		.thumb
+ 860              		.thumb_func
+ 862              	_ZL12MX_SPI2_Initv:
+ 863              		.fnstart
+ 864              	.LFB239:
+ 293:Core/Src/main.cpp **** 
+ 865              		.loc 1 293 1 is_stmt 1 view -0
+ 866              		.cfi_startproc
+ 867              		@ args = 0, pretend = 0, frame = 0
+ 868              		@ frame_needed = 0, uses_anonymous_args = 0
+ 869 0000 08B5     		push	{r3, lr}
+ 870              		.save {r3, lr}
+ 871              	.LCFI18:
+ 872              		.cfi_def_cfa_offset 8
+ 873              		.cfi_offset 3, -8
+ 874              		.cfi_offset 14, -4
+ 303:Core/Src/main.cpp ****   hspi2.Init.Mode = SPI_MODE_MASTER;
+ 875              		.loc 1 303 3 view .LVU247
+ 303:Core/Src/main.cpp ****   hspi2.Init.Mode = SPI_MODE_MASTER;
+ 876              		.loc 1 303 18 is_stmt 0 view .LVU248
+ 877 0002 0D48     		ldr	r0, .L55
+ 878 0004 0D4B     		ldr	r3, .L55+4
+ 879 0006 0360     		str	r3, [r0]
+ 304:Core/Src/main.cpp ****   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 30
+
+
+ 880              		.loc 1 304 3 is_stmt 1 view .LVU249
+ 304:Core/Src/main.cpp ****   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+ 881              		.loc 1 304 19 is_stmt 0 view .LVU250
+ 882 0008 4FF48273 		mov	r3, #260
+ 883 000c 4360     		str	r3, [r0, #4]
+ 305:Core/Src/main.cpp ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+ 884              		.loc 1 305 3 is_stmt 1 view .LVU251
+ 305:Core/Src/main.cpp ****   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+ 885              		.loc 1 305 24 is_stmt 0 view .LVU252
+ 886 000e 0023     		movs	r3, #0
+ 887 0010 8360     		str	r3, [r0, #8]
+ 306:Core/Src/main.cpp ****   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 888              		.loc 1 306 3 is_stmt 1 view .LVU253
+ 306:Core/Src/main.cpp ****   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 889              		.loc 1 306 23 is_stmt 0 view .LVU254
+ 890 0012 C360     		str	r3, [r0, #12]
+ 307:Core/Src/main.cpp ****   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 891              		.loc 1 307 3 is_stmt 1 view .LVU255
+ 307:Core/Src/main.cpp ****   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 892              		.loc 1 307 26 is_stmt 0 view .LVU256
+ 893 0014 0361     		str	r3, [r0, #16]
+ 308:Core/Src/main.cpp ****   hspi2.Init.NSS = SPI_NSS_SOFT;
+ 894              		.loc 1 308 3 is_stmt 1 view .LVU257
+ 308:Core/Src/main.cpp ****   hspi2.Init.NSS = SPI_NSS_SOFT;
+ 895              		.loc 1 308 23 is_stmt 0 view .LVU258
+ 896 0016 4361     		str	r3, [r0, #20]
+ 309:Core/Src/main.cpp ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+ 897              		.loc 1 309 3 is_stmt 1 view .LVU259
+ 309:Core/Src/main.cpp ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
+ 898              		.loc 1 309 18 is_stmt 0 view .LVU260
+ 899 0018 4FF40072 		mov	r2, #512
+ 900 001c 8261     		str	r2, [r0, #24]
+ 310:Core/Src/main.cpp ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 901              		.loc 1 310 3 is_stmt 1 view .LVU261
+ 310:Core/Src/main.cpp ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 902              		.loc 1 310 32 is_stmt 0 view .LVU262
+ 903 001e 2822     		movs	r2, #40
+ 904 0020 C261     		str	r2, [r0, #28]
+ 311:Core/Src/main.cpp ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+ 905              		.loc 1 311 3 is_stmt 1 view .LVU263
+ 311:Core/Src/main.cpp ****   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+ 906              		.loc 1 311 23 is_stmt 0 view .LVU264
+ 907 0022 0362     		str	r3, [r0, #32]
+ 312:Core/Src/main.cpp ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 908              		.loc 1 312 3 is_stmt 1 view .LVU265
+ 312:Core/Src/main.cpp ****   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 909              		.loc 1 312 21 is_stmt 0 view .LVU266
+ 910 0024 4362     		str	r3, [r0, #36]
+ 313:Core/Src/main.cpp ****   hspi2.Init.CRCPolynomial = 10;
+ 911              		.loc 1 313 3 is_stmt 1 view .LVU267
+ 313:Core/Src/main.cpp ****   hspi2.Init.CRCPolynomial = 10;
+ 912              		.loc 1 313 29 is_stmt 0 view .LVU268
+ 913 0026 8362     		str	r3, [r0, #40]
+ 314:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
+ 914              		.loc 1 314 3 is_stmt 1 view .LVU269
+ 314:Core/Src/main.cpp ****   if (HAL_SPI_Init(&hspi2) != HAL_OK)
+ 915              		.loc 1 314 28 is_stmt 0 view .LVU270
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 31
+
+
+ 916 0028 0A23     		movs	r3, #10
+ 917 002a C362     		str	r3, [r0, #44]
+ 315:Core/Src/main.cpp ****   {
+ 918              		.loc 1 315 3 is_stmt 1 view .LVU271
+ 315:Core/Src/main.cpp ****   {
+ 919              		.loc 1 315 19 is_stmt 0 view .LVU272
+ 920 002c FFF7FEFF 		bl	HAL_SPI_Init
+ 921              	.LVL37:
+ 315:Core/Src/main.cpp ****   {
+ 922              		.loc 1 315 3 view .LVU273
+ 923 0030 00B9     		cbnz	r0, .L54
+ 323:Core/Src/main.cpp **** 
+ 924              		.loc 1 323 1 view .LVU274
+ 925 0032 08BD     		pop	{r3, pc}
+ 926              	.L54:
+ 317:Core/Src/main.cpp ****   }
+ 927              		.loc 1 317 5 is_stmt 1 view .LVU275
+ 317:Core/Src/main.cpp ****   }
+ 928              		.loc 1 317 18 is_stmt 0 view .LVU276
+ 929 0034 FFF7FEFF 		bl	Error_Handler
+ 930              	.LVL38:
+ 931              	.L56:
+ 932              		.align	2
+ 933              	.L55:
+ 934 0038 00000000 		.word	hspi2
+ 935 003c 00380040 		.word	1073756160
+ 936              		.cfi_endproc
+ 937              	.LFE239:
+ 938              		.fnend
+ 940              		.section	.text._Z18SystemClock_Configv,"ax",%progbits
+ 941              		.align	1
+ 942              		.global	_Z18SystemClock_Configv
+ 943              		.syntax unified
+ 944              		.thumb
+ 945              		.thumb_func
+ 947              	_Z18SystemClock_Configv:
+ 948              		.fnstart
+ 949              	.LFB236:
+ 146:Core/Src/main.cpp ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+ 950              		.loc 1 146 1 is_stmt 1 view -0
+ 951              		.cfi_startproc
+ 952              		@ args = 0, pretend = 0, frame = 80
+ 953              		@ frame_needed = 0, uses_anonymous_args = 0
+ 954 0000 00B5     		push	{lr}
+ 955              		.save {lr}
+ 956              	.LCFI19:
+ 957              		.cfi_def_cfa_offset 4
+ 958              		.cfi_offset 14, -4
+ 959              		.pad #84
+ 960 0002 95B0     		sub	sp, sp, #84
+ 961              	.LCFI20:
+ 962              		.cfi_def_cfa_offset 88
+ 147:Core/Src/main.cpp ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 963              		.loc 1 147 3 view .LVU278
+ 147:Core/Src/main.cpp ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ 964              		.loc 1 147 22 is_stmt 0 view .LVU279
+ 965 0004 3422     		movs	r2, #52
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 32
+
+
+ 966 0006 0021     		movs	r1, #0
+ 967 0008 07A8     		add	r0, sp, #28
+ 968 000a FFF7FEFF 		bl	memset
+ 969              	.LVL39:
+ 148:Core/Src/main.cpp **** 
+ 970              		.loc 1 148 3 is_stmt 1 view .LVU280
+ 148:Core/Src/main.cpp **** 
+ 971              		.loc 1 148 22 is_stmt 0 view .LVU281
+ 972 000e 0023     		movs	r3, #0
+ 973 0010 0293     		str	r3, [sp, #8]
+ 974 0012 0393     		str	r3, [sp, #12]
+ 975 0014 0493     		str	r3, [sp, #16]
+ 976 0016 0593     		str	r3, [sp, #20]
+ 977 0018 0693     		str	r3, [sp, #24]
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 978              		.loc 1 152 3 is_stmt 1 view .LVU282
+ 979              	.LBB10:
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 980              		.loc 1 152 3 view .LVU283
+ 981 001a 0093     		str	r3, [sp]
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 982              		.loc 1 152 3 view .LVU284
+ 983 001c 204A     		ldr	r2, .L63
+ 984 001e 116C     		ldr	r1, [r2, #64]
+ 985 0020 41F08051 		orr	r1, r1, #268435456
+ 986 0024 1164     		str	r1, [r2, #64]
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 987              		.loc 1 152 3 view .LVU285
+ 988 0026 126C     		ldr	r2, [r2, #64]
+ 989 0028 02F08052 		and	r2, r2, #268435456
+ 990 002c 0092     		str	r2, [sp]
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 991              		.loc 1 152 3 view .LVU286
+ 992 002e 009A     		ldr	r2, [sp]
+ 993              	.LBE10:
+ 152:Core/Src/main.cpp ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+ 994              		.loc 1 152 3 view .LVU287
+ 153:Core/Src/main.cpp **** 
+ 995              		.loc 1 153 3 view .LVU288
+ 996              	.LBB11:
+ 153:Core/Src/main.cpp **** 
+ 997              		.loc 1 153 3 view .LVU289
+ 998 0030 0193     		str	r3, [sp, #4]
+ 153:Core/Src/main.cpp **** 
+ 999              		.loc 1 153 3 view .LVU290
+ 1000 0032 1C49     		ldr	r1, .L63+4
+ 1001 0034 0A68     		ldr	r2, [r1]
+ 1002 0036 22F44042 		bic	r2, r2, #49152
+ 1003 003a 42F48042 		orr	r2, r2, #16384
+ 1004 003e 0A60     		str	r2, [r1]
+ 153:Core/Src/main.cpp **** 
+ 1005              		.loc 1 153 3 view .LVU291
+ 1006 0040 0A68     		ldr	r2, [r1]
+ 1007 0042 02F44042 		and	r2, r2, #49152
+ 1008 0046 0192     		str	r2, [sp, #4]
+ 153:Core/Src/main.cpp **** 
+ 1009              		.loc 1 153 3 view .LVU292
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 33
+
+
+ 1010 0048 019A     		ldr	r2, [sp, #4]
+ 1011              	.LBE11:
+ 153:Core/Src/main.cpp **** 
+ 1012              		.loc 1 153 3 view .LVU293
+ 158:Core/Src/main.cpp ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 1013              		.loc 1 158 3 view .LVU294
+ 158:Core/Src/main.cpp ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+ 1014              		.loc 1 158 36 is_stmt 0 view .LVU295
+ 1015 004a 0222     		movs	r2, #2
+ 1016 004c 0792     		str	r2, [sp, #28]
+ 159:Core/Src/main.cpp ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 1017              		.loc 1 159 3 is_stmt 1 view .LVU296
+ 159:Core/Src/main.cpp ****   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+ 1018              		.loc 1 159 30 is_stmt 0 view .LVU297
+ 1019 004e 0121     		movs	r1, #1
+ 1020 0050 0A91     		str	r1, [sp, #40]
+ 160:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 1021              		.loc 1 160 3 is_stmt 1 view .LVU298
+ 160:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 1022              		.loc 1 160 41 is_stmt 0 view .LVU299
+ 1023 0052 1021     		movs	r1, #16
+ 1024 0054 0B91     		str	r1, [sp, #44]
+ 161:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 1025              		.loc 1 161 3 is_stmt 1 view .LVU300
+ 161:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+ 1026              		.loc 1 161 34 is_stmt 0 view .LVU301
+ 1027 0056 0D92     		str	r2, [sp, #52]
+ 162:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLM = 12;
+ 1028              		.loc 1 162 3 is_stmt 1 view .LVU302
+ 162:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLM = 12;
+ 1029              		.loc 1 162 35 is_stmt 0 view .LVU303
+ 1030 0058 0E93     		str	r3, [sp, #56]
+ 163:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLN = 168;
+ 1031              		.loc 1 163 3 is_stmt 1 view .LVU304
+ 163:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLN = 168;
+ 1032              		.loc 1 163 30 is_stmt 0 view .LVU305
+ 1033 005a 0C23     		movs	r3, #12
+ 1034 005c 0F93     		str	r3, [sp, #60]
+ 164:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 1035              		.loc 1 164 3 is_stmt 1 view .LVU306
+ 164:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+ 1036              		.loc 1 164 30 is_stmt 0 view .LVU307
+ 1037 005e A823     		movs	r3, #168
+ 1038 0060 1093     		str	r3, [sp, #64]
+ 165:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLQ = 2;
+ 1039              		.loc 1 165 3 is_stmt 1 view .LVU308
+ 165:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLQ = 2;
+ 1040              		.loc 1 165 30 is_stmt 0 view .LVU309
+ 1041 0062 1192     		str	r2, [sp, #68]
+ 166:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLR = 2;
+ 1042              		.loc 1 166 3 is_stmt 1 view .LVU310
+ 166:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLR = 2;
+ 1043              		.loc 1 166 30 is_stmt 0 view .LVU311
+ 1044 0064 1292     		str	r2, [sp, #72]
+ 167:Core/Src/main.cpp ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ 1045              		.loc 1 167 3 is_stmt 1 view .LVU312
+ 167:Core/Src/main.cpp ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 34
+
+
+ 1046              		.loc 1 167 30 is_stmt 0 view .LVU313
+ 1047 0066 1392     		str	r2, [sp, #76]
+ 168:Core/Src/main.cpp ****   {
+ 1048              		.loc 1 168 3 is_stmt 1 view .LVU314
+ 168:Core/Src/main.cpp ****   {
+ 1049              		.loc 1 168 24 is_stmt 0 view .LVU315
+ 1050 0068 07A8     		add	r0, sp, #28
+ 1051 006a FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 1052              	.LVL40:
+ 168:Core/Src/main.cpp ****   {
+ 1053              		.loc 1 168 3 view .LVU316
+ 1054 006e 98B9     		cbnz	r0, .L61
+ 175:Core/Src/main.cpp ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 1055              		.loc 1 175 3 is_stmt 1 view .LVU317
+ 175:Core/Src/main.cpp ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 1056              		.loc 1 175 31 is_stmt 0 view .LVU318
+ 1057 0070 0F23     		movs	r3, #15
+ 1058 0072 0293     		str	r3, [sp, #8]
+ 177:Core/Src/main.cpp ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 1059              		.loc 1 177 3 is_stmt 1 view .LVU319
+ 177:Core/Src/main.cpp ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 1060              		.loc 1 177 34 is_stmt 0 view .LVU320
+ 1061 0074 0223     		movs	r3, #2
+ 1062 0076 0393     		str	r3, [sp, #12]
+ 178:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+ 1063              		.loc 1 178 3 is_stmt 1 view .LVU321
+ 178:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+ 1064              		.loc 1 178 35 is_stmt 0 view .LVU322
+ 1065 0078 0023     		movs	r3, #0
+ 1066 007a 0493     		str	r3, [sp, #16]
+ 179:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+ 1067              		.loc 1 179 3 is_stmt 1 view .LVU323
+ 179:Core/Src/main.cpp ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+ 1068              		.loc 1 179 36 is_stmt 0 view .LVU324
+ 1069 007c 4FF4A053 		mov	r3, #5120
+ 1070 0080 0593     		str	r3, [sp, #20]
+ 180:Core/Src/main.cpp **** 
+ 1071              		.loc 1 180 3 is_stmt 1 view .LVU325
+ 180:Core/Src/main.cpp **** 
+ 1072              		.loc 1 180 36 is_stmt 0 view .LVU326
+ 1073 0082 4FF48053 		mov	r3, #4096
+ 1074 0086 0693     		str	r3, [sp, #24]
+ 182:Core/Src/main.cpp ****   {
+ 1075              		.loc 1 182 3 is_stmt 1 view .LVU327
+ 182:Core/Src/main.cpp ****   {
+ 1076              		.loc 1 182 26 is_stmt 0 view .LVU328
+ 1077 0088 0321     		movs	r1, #3
+ 1078 008a 02A8     		add	r0, sp, #8
+ 1079 008c FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 1080              	.LVL41:
+ 182:Core/Src/main.cpp ****   {
+ 1081              		.loc 1 182 3 view .LVU329
+ 1082 0090 20B9     		cbnz	r0, .L62
+ 186:Core/Src/main.cpp **** 
+ 1083              		.loc 1 186 1 view .LVU330
+ 1084 0092 15B0     		add	sp, sp, #84
+ 1085              	.LCFI21:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 35
+
+
+ 1086              		.cfi_remember_state
+ 1087              		.cfi_def_cfa_offset 4
+ 1088              		@ sp needed
+ 1089 0094 5DF804FB 		ldr	pc, [sp], #4
+ 1090              	.L61:
+ 1091              	.LCFI22:
+ 1092              		.cfi_restore_state
+ 170:Core/Src/main.cpp ****   }
+ 1093              		.loc 1 170 5 is_stmt 1 view .LVU331
+ 170:Core/Src/main.cpp ****   }
+ 1094              		.loc 1 170 18 is_stmt 0 view .LVU332
+ 1095 0098 FFF7FEFF 		bl	Error_Handler
+ 1096              	.LVL42:
+ 1097              	.L62:
+ 184:Core/Src/main.cpp ****   }
+ 1098              		.loc 1 184 5 is_stmt 1 view .LVU333
+ 184:Core/Src/main.cpp ****   }
+ 1099              		.loc 1 184 18 is_stmt 0 view .LVU334
+ 1100 009c FFF7FEFF 		bl	Error_Handler
+ 1101              	.LVL43:
+ 1102              	.L64:
+ 1103              		.align	2
+ 1104              	.L63:
+ 1105 00a0 00380240 		.word	1073887232
+ 1106 00a4 00700040 		.word	1073770496
+ 1107              		.cfi_endproc
+ 1108              	.LFE236:
+ 1109              		.fnend
+ 1111              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ 1112              		.align	2
+ 1113              	.LC0:
+ 1114 0000 73746172 		.ascii	"started\000"
+ 1114      74656400 
+ 1115              		.section	.text.main,"ax",%progbits
+ 1116              		.align	1
+ 1117              		.global	main
+ 1118              		.syntax unified
+ 1119              		.thumb
+ 1120              		.thumb_func
+ 1122              	main:
+ 1123              		.fnstart
+ 1124              	.LFB235:
+  85:Core/Src/main.cpp ****   /* USER CODE BEGIN 1 */
+ 1125              		.loc 1 85 1 is_stmt 1 view -0
+ 1126              		.cfi_startproc
+ 1127              		@ args = 0, pretend = 0, frame = 0
+ 1128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1129 0000 08B5     		push	{r3, lr}
+ 1130              		.save {r3, lr}
+ 1131              	.LCFI23:
+ 1132              		.cfi_def_cfa_offset 8
+ 1133              		.cfi_offset 3, -8
+ 1134              		.cfi_offset 14, -4
+  93:Core/Src/main.cpp **** 
+ 1135              		.loc 1 93 3 view .LVU336
+  93:Core/Src/main.cpp **** 
+ 1136              		.loc 1 93 11 is_stmt 0 view .LVU337
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 36
+
+
+ 1137 0002 FFF7FEFF 		bl	HAL_Init
+ 1138              	.LVL44:
+ 100:Core/Src/main.cpp **** 
+ 1139              		.loc 1 100 3 is_stmt 1 view .LVU338
+ 100:Core/Src/main.cpp **** 
+ 1140              		.loc 1 100 21 is_stmt 0 view .LVU339
+ 1141 0006 FFF7FEFF 		bl	_Z18SystemClock_Configv
+ 1142              	.LVL45:
+ 107:Core/Src/main.cpp ****   MX_DMA_Init();
+ 1143              		.loc 1 107 3 is_stmt 1 view .LVU340
+ 107:Core/Src/main.cpp ****   MX_DMA_Init();
+ 1144              		.loc 1 107 15 is_stmt 0 view .LVU341
+ 1145 000a FFF7FEFF 		bl	_ZL12MX_GPIO_Initv
+ 1146              	.LVL46:
+ 108:Core/Src/main.cpp ****   MX_ADC1_Init();
+ 1147              		.loc 1 108 3 is_stmt 1 view .LVU342
+ 108:Core/Src/main.cpp ****   MX_ADC1_Init();
+ 1148              		.loc 1 108 14 is_stmt 0 view .LVU343
+ 1149 000e FFF7FEFF 		bl	_ZL11MX_DMA_Initv
+ 1150              	.LVL47:
+ 109:Core/Src/main.cpp ****   MX_USART3_UART_Init();
+ 1151              		.loc 1 109 3 is_stmt 1 view .LVU344
+ 109:Core/Src/main.cpp ****   MX_USART3_UART_Init();
+ 1152              		.loc 1 109 15 is_stmt 0 view .LVU345
+ 1153 0012 FFF7FEFF 		bl	_ZL12MX_ADC1_Initv
+ 1154              	.LVL48:
+ 110:Core/Src/main.cpp ****   MX_TIM2_Init();
+ 1155              		.loc 1 110 3 is_stmt 1 view .LVU346
+ 110:Core/Src/main.cpp ****   MX_TIM2_Init();
+ 1156              		.loc 1 110 22 is_stmt 0 view .LVU347
+ 1157 0016 FFF7FEFF 		bl	_ZL19MX_USART3_UART_Initv
+ 1158              	.LVL49:
+ 111:Core/Src/main.cpp ****   MX_SPI1_Init();
+ 1159              		.loc 1 111 3 is_stmt 1 view .LVU348
+ 111:Core/Src/main.cpp ****   MX_SPI1_Init();
+ 1160              		.loc 1 111 15 is_stmt 0 view .LVU349
+ 1161 001a FFF7FEFF 		bl	_ZL12MX_TIM2_Initv
+ 1162              	.LVL50:
+ 112:Core/Src/main.cpp ****   MX_SPI2_Init();
+ 1163              		.loc 1 112 3 is_stmt 1 view .LVU350
+ 112:Core/Src/main.cpp ****   MX_SPI2_Init();
+ 1164              		.loc 1 112 15 is_stmt 0 view .LVU351
+ 1165 001e FFF7FEFF 		bl	_ZL12MX_SPI1_Initv
+ 1166              	.LVL51:
+ 113:Core/Src/main.cpp ****   /* USER CODE BEGIN 2 */
+ 1167              		.loc 1 113 3 is_stmt 1 view .LVU352
+ 113:Core/Src/main.cpp ****   /* USER CODE BEGIN 2 */
+ 1168              		.loc 1 113 15 is_stmt 0 view .LVU353
+ 1169 0022 FFF7FEFF 		bl	_ZL12MX_SPI2_Initv
+ 1170              	.LVL52:
+ 116:Core/Src/main.cpp ****   HAL_UART_Transmit(&huart3, (uint8_t*)"started", 8, 100);
+ 1171              		.loc 1 116 3 is_stmt 1 view .LVU354
+ 116:Core/Src/main.cpp ****   HAL_UART_Transmit(&huart3, (uint8_t*)"started", 8, 100);
+ 1172              		.loc 1 116 12 is_stmt 0 view .LVU355
+ 1173 0026 4FF4FA70 		mov	r0, #500
+ 1174 002a FFF7FEFF 		bl	HAL_Delay
+ 1175              	.LVL53:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 37
+
+
+ 117:Core/Src/main.cpp ****   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_data, 2);
+ 1176              		.loc 1 117 3 is_stmt 1 view .LVU356
+ 117:Core/Src/main.cpp ****   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_data, 2);
+ 1177              		.loc 1 117 20 is_stmt 0 view .LVU357
+ 1178 002e 6423     		movs	r3, #100
+ 1179 0030 0822     		movs	r2, #8
+ 1180 0032 0949     		ldr	r1, .L68
+ 1181 0034 0948     		ldr	r0, .L68+4
+ 1182 0036 FFF7FEFF 		bl	HAL_UART_Transmit
+ 1183              	.LVL54:
+ 118:Core/Src/main.cpp **** 
+ 1184              		.loc 1 118 3 is_stmt 1 view .LVU358
+ 118:Core/Src/main.cpp **** 
+ 1185              		.loc 1 118 20 is_stmt 0 view .LVU359
+ 1186 003a 0222     		movs	r2, #2
+ 1187 003c 0849     		ldr	r1, .L68+8
+ 1188 003e 0948     		ldr	r0, .L68+12
+ 1189 0040 FFF7FEFF 		bl	HAL_ADC_Start_DMA
+ 1190              	.LVL55:
+ 1191              	.L66:
+ 126:Core/Src/main.cpp ****   {
+ 1192              		.loc 1 126 3 is_stmt 1 discriminator 1 view .LVU360
+ 131:Core/Src/main.cpp **** 	HAL_Delay(100);
+ 1193              		.loc 1 131 2 discriminator 1 view .LVU361
+ 131:Core/Src/main.cpp **** 	HAL_Delay(100);
+ 1194              		.loc 1 131 20 is_stmt 0 discriminator 1 view .LVU362
+ 1195 0044 4FF48071 		mov	r1, #256
+ 1196 0048 0748     		ldr	r0, .L68+16
+ 1197 004a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 1198              	.LVL56:
+ 132:Core/Src/main.cpp **** 
+ 1199              		.loc 1 132 2 is_stmt 1 discriminator 1 view .LVU363
+ 132:Core/Src/main.cpp **** 
+ 1200              		.loc 1 132 11 is_stmt 0 discriminator 1 view .LVU364
+ 1201 004e 6420     		movs	r0, #100
+ 1202 0050 FFF7FEFF 		bl	HAL_Delay
+ 1203              	.LVL57:
+ 126:Core/Src/main.cpp ****   {
+ 1204              		.loc 1 126 3 is_stmt 1 discriminator 1 view .LVU365
+ 1205 0054 F6E7     		b	.L66
+ 1206              	.L69:
+ 1207 0056 00BF     		.align	2
+ 1208              	.L68:
+ 1209 0058 00000000 		.word	.LC0
+ 1210 005c 00000000 		.word	huart3
+ 1211 0060 00000000 		.word	adc_data
+ 1212 0064 00000000 		.word	hadc1
+ 1213 0068 00000240 		.word	1073872896
+ 1214              		.cfi_endproc
+ 1215              	.LFE235:
+ 1216              		.fnend
+ 1218              		.global	adc_data
+ 1219              		.section	.bss.adc_data,"aw",%nobits
+ 1220              		.align	2
+ 1223              	adc_data:
+ 1224 0000 00000000 		.space	4
+ 1225              		.global	volt_ac
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 38
+
+
+ 1226              		.section	.bss.volt_ac,"aw",%nobits
+ 1227              		.align	3
+ 1230              	volt_ac:
+ 1231 0000 00000000 		.space	8
+ 1231      00000000 
+ 1232              		.global	volt_bc
+ 1233              		.section	.bss.volt_bc,"aw",%nobits
+ 1234              		.align	3
+ 1237              	volt_bc:
+ 1238 0000 00000000 		.space	8
+ 1238      00000000 
+ 1239              		.global	adc
+ 1240              		.section	.bss.adc,"aw",%nobits
+ 1241              		.align	1
+ 1244              	adc:
+ 1245 0000 0000     		.space	2
+ 1246              		.global	huart3
+ 1247              		.section	.bss.huart3,"aw",%nobits
+ 1248              		.align	2
+ 1251              	huart3:
+ 1252 0000 00000000 		.space	68
+ 1252      00000000 
+ 1252      00000000 
+ 1252      00000000 
+ 1252      00000000 
+ 1253              		.global	htim2
+ 1254              		.section	.bss.htim2,"aw",%nobits
+ 1255              		.align	2
+ 1258              	htim2:
+ 1259 0000 00000000 		.space	72
+ 1259      00000000 
+ 1259      00000000 
+ 1259      00000000 
+ 1259      00000000 
+ 1260              		.global	hspi2
+ 1261              		.section	.bss.hspi2,"aw",%nobits
+ 1262              		.align	2
+ 1265              	hspi2:
+ 1266 0000 00000000 		.space	88
+ 1266      00000000 
+ 1266      00000000 
+ 1266      00000000 
+ 1266      00000000 
+ 1267              		.global	hspi1
+ 1268              		.section	.bss.hspi1,"aw",%nobits
+ 1269              		.align	2
+ 1272              	hspi1:
+ 1273 0000 00000000 		.space	88
+ 1273      00000000 
+ 1273      00000000 
+ 1273      00000000 
+ 1273      00000000 
+ 1274              		.global	hdma_adc1
+ 1275              		.section	.bss.hdma_adc1,"aw",%nobits
+ 1276              		.align	2
+ 1279              	hdma_adc1:
+ 1280 0000 00000000 		.space	96
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 39
+
+
+ 1280      00000000 
+ 1280      00000000 
+ 1280      00000000 
+ 1280      00000000 
+ 1281              		.global	hadc1
+ 1282              		.section	.bss.hadc1,"aw",%nobits
+ 1283              		.align	2
+ 1286              	hadc1:
+ 1287 0000 00000000 		.space	72
+ 1287      00000000 
+ 1287      00000000 
+ 1287      00000000 
+ 1287      00000000 
+ 1288              		.text
+ 1289              	.Letext0:
+ 1290              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1291              		.file 4 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 1292              		.file 5 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 1293              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1294              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1295              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 1296              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 1297              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1298              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1299              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 1300              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1301              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1302              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1303              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1304              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 1305              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 40
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:21     .text._ZL12MX_GPIO_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:26     .text._ZL12MX_GPIO_Initv:00000000 _ZL12MX_GPIO_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:196    .text._ZL12MX_GPIO_Initv:000000c0 $d
+.ARM.exidx.text._ZL12MX_GPIO_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:205    .text._ZL11MX_DMA_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:210    .text._ZL11MX_DMA_Initv:00000000 _ZL11MX_DMA_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:264    .text._ZL11MX_DMA_Initv:00000030 $d
+.ARM.exidx.text._ZL11MX_DMA_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:273    .text.HAL_ADC_ConvCpltCallback:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:279    .text.HAL_ADC_ConvCpltCallback:00000000 HAL_ADC_ConvCpltCallback
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:338    .text.HAL_ADC_ConvCpltCallback:00000048 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1223   .bss.adc_data:00000000 adc_data
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1237   .bss.volt_bc:00000000 volt_bc
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1230   .bss.volt_ac:00000000 volt_ac
+.ARM.exidx.text.HAL_ADC_ConvCpltCallback:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:351    .text._Z6_writeiPci:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:357    .text._Z6_writeiPci:00000000 _Z6_writeiPci
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:393    .text._Z6_writeiPci:00000014 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1251   .bss.huart3:00000000 huart3
+    .ARM.exidx.text._Z6_writeiPci:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:399    .text.Error_Handler:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:405    .text.Error_Handler:00000000 Error_Handler
+    .ARM.exidx.text.Error_Handler:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:439    .text._ZL12MX_ADC1_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:444    .text._ZL12MX_ADC1_Initv:00000000 _ZL12MX_ADC1_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:575    .text._ZL12MX_ADC1_Initv:00000070 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1286   .bss.hadc1:00000000 hadc1
+.ARM.exidx.text._ZL12MX_ADC1_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:583    .text._ZL19MX_USART3_UART_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:588    .text._ZL19MX_USART3_UART_Initv:00000000 _ZL19MX_USART3_UART_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:646    .text._ZL19MX_USART3_UART_Initv:0000002c $d
+.ARM.extab.text._ZL19MX_USART3_UART_Initv:00000000 $d
+.ARM.exidx.text._ZL19MX_USART3_UART_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:653    .text._ZL12MX_TIM2_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:658    .text._ZL12MX_TIM2_Initv:00000000 _ZL12MX_TIM2_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:767    .text._ZL12MX_TIM2_Initv:00000064 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1258   .bss.htim2:00000000 htim2
+.ARM.exidx.text._ZL12MX_TIM2_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:773    .text._ZL12MX_SPI1_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:778    .text._ZL12MX_SPI1_Initv:00000000 _ZL12MX_SPI1_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:850    .text._ZL12MX_SPI1_Initv:00000038 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1272   .bss.hspi1:00000000 hspi1
+.ARM.extab.text._ZL12MX_SPI1_Initv:00000000 $d
+.ARM.exidx.text._ZL12MX_SPI1_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:857    .text._ZL12MX_SPI2_Initv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:862    .text._ZL12MX_SPI2_Initv:00000000 _ZL12MX_SPI2_Initv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:934    .text._ZL12MX_SPI2_Initv:00000038 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1265   .bss.hspi2:00000000 hspi2
+.ARM.extab.text._ZL12MX_SPI2_Initv:00000000 $d
+.ARM.exidx.text._ZL12MX_SPI2_Initv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:941    .text._Z18SystemClock_Configv:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:947    .text._Z18SystemClock_Configv:00000000 _Z18SystemClock_Configv
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1105   .text._Z18SystemClock_Configv:000000a0 $d
+.ARM.exidx.text._Z18SystemClock_Configv:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1112   .rodata.main.str1.4:00000000 $d
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s 			page 41
+
+
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1116   .text.main:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1122   .text.main:00000000 main
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1209   .text.main:00000058 $d
+             .ARM.extab.text.main:00000000 $d
+             .ARM.exidx.text.main:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1220   .bss.adc_data:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1227   .bss.volt_ac:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1234   .bss.volt_bc:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1244   .bss.adc:00000000 adc
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1241   .bss.adc:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1248   .bss.huart3:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1255   .bss.htim2:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1262   .bss.hspi2:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1269   .bss.hspi1:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1279   .bss.hdma_adc1:00000000 hdma_adc1
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1276   .bss.hdma_adc1:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccNHVX0K.s:1283   .bss.hadc1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init
+__aeabi_unwind_cpp_pr0
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+__aeabi_ui2d
+__aeabi_dsub
+__aeabi_ddiv
+HAL_UART_Transmit
+HAL_ADC_Init
+HAL_ADC_ConfigChannel
+HAL_UART_Init
+__aeabi_unwind_cpp_pr1
+HAL_TIM_Base_Init
+HAL_TIM_ConfigClockSource
+HAL_TIMEx_MasterConfigSynchronization
+HAL_SPI_Init
+memset
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_Init
+HAL_Delay
+HAL_ADC_Start_DMA
+HAL_GPIO_TogglePin

@@ -1,0 +1,16 @@
+../Core/Src/serialPrintResult.c:1067:6:printWriteConfig	6
+../Core/Src/serialPrintResult.c:1137:6:printReadConfig	6
+../Core/Src/serialPrintResult.c:1235:6:printVoltages	29
+../Core/Src/serialPrintResult.c:1346:6:printStatus	9
+../Core/Src/serialPrintResult.c:1566:6:printDeviceSID	3
+../Core/Src/serialPrintResult.c:1607:6:printWritePwmDutyCycle	5
+../Core/Src/serialPrintResult.c:1666:6:printReadPwmDutyCycle	5
+../Core/Src/serialPrintResult.c:1745:6:printWriteCommData	3
+../Core/Src/serialPrintResult.c:1782:6:printReadCommData	3
+../Core/Src/serialPrintResult.c:1824:6:printDiagnosticTestResult	13
+../Core/Src/serialPrintResult.c:1908:6:diagnosticTestResultPrint	2
+../Core/Src/serialPrintResult.c:1938:6:printOpenWireTestResult	10
+../Core/Src/serialPrintResult.c:1999:6:openWireResultPrint	2
+../Core/Src/serialPrintResult.c:2022:6:printPollAdcConvTime	1
+../Core/Src/serialPrintResult.c:2038:6:printMenu	1
+../Core/Src/serialPrintResult.c:2085:7:getVoltage	1

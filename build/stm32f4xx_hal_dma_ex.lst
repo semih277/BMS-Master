@@ -1,0 +1,3371 @@
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hal_dma_ex.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp"
+  20              		.section	.text._ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB238:
+   1:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+   2:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   ******************************************************************************
+   3:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @file    stm32f4xx_hal_dma_ex.c
+   4:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @author  MCD Application Team
+   5:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief   DMA Extension HAL module driver
+   6:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *         This file provides firmware functions to manage the following 
+   7:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *         functionalities of the DMA Extension peripheral:
+   8:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *           + Extended features functions
+   9:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *
+  10:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   @verbatim
+  11:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   ==============================================================================
+  12:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****                         ##### How to use this driver #####
+  13:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   ==============================================================================
+  14:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   [..]
+  15:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   The DMA Extension HAL driver can be used as follows:
+  16:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****    (#) Start a multi buffer transfer using the HAL_DMA_MultiBufferStart() function
+  17:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****        for polling mode or HAL_DMA_MultiBufferStart_IT() for interrupt mode.
+  18:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****                    
+  19:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****      -@-  In Memory-to-Memory transfer mode, Multi (Double) Buffer mode is not allowed.
+  20:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****      -@-  When Multi (Double) Buffer mode is enabled the, transfer is circular by default.
+  21:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****      -@-  In Multi (Double) buffer mode, it is possible to update the base address for 
+  22:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****           the AHB memory port on the fly (DMA_SxM0AR or DMA_SxM1AR) when the stream is enabled. 
+  23:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+  24:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   @endverbatim
+  25:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   ******************************************************************************
+  26:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @attention
+  27:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *
+  28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * Copyright (c) 2017 STMicroelectronics.
+  29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * All rights reserved.
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 2
+
+
+  30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *
+  31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * This software is licensed under terms that can be found in the LICENSE file in
+  32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * the root directory of this software component.
+  33:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  34:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *
+  35:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   ******************************************************************************
+  36:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  37:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  38:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Includes ------------------------------------------------------------------*/
+  39:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** #include "stm32f4xx_hal.h"
+  40:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  41:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @addtogroup STM32F4xx_HAL_Driver
+  42:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+  43:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  44:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  45:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @defgroup DMAEx DMAEx
+  46:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief DMA Extended HAL module driver
+  47:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+  48:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  49:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  50:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** #ifdef HAL_DMA_MODULE_ENABLED
+  51:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  52:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Private types -------------------------------------------------------------*/
+  53:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Private variables ---------------------------------------------------------*/
+  54:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Private Constants ---------------------------------------------------------*/
+  55:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Private macros ------------------------------------------------------------*/
+  56:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Private functions ---------------------------------------------------------*/
+  57:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @addtogroup DMAEx_Private_Functions
+  58:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+  59:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  60:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** static void DMA_MultiBufferSetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddr
+  61:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+  62:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @}
+  63:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  64:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  65:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /* Exported functions ---------------------------------------------------------*/
+  66:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  67:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @addtogroup DMAEx_Exported_Functions
+  68:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+  69:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  70:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  71:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  72:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @addtogroup DMAEx_Exported_Functions_Group1
+  73:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *
+  74:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** @verbatim   
+  75:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****  ===============================================================================
+  76:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****                 #####  Extended features functions  #####
+  77:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****  ===============================================================================  
+  78:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     [..]  This section provides functions allowing to:
+  79:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       (+) Configure the source, destination address and data length and 
+  80:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****           Start MultiBuffer DMA transfer
+  81:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       (+) Configure the source, destination address and data length and 
+  82:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****           Start MultiBuffer DMA transfer with interrupt
+  83:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       (+) Change on the fly the memory0 or memory1 address.
+  84:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+  85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** @endverbatim
+  86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 3
+
+
+  87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+  88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+  90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+  91:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief  Starts the multi_buffer DMA Transfer.
+  92:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+  93:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                     the configuration information for the specified DMA Stream.  
+  94:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  SrcAddress The source memory Buffer address
+  95:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DstAddress The destination memory Buffer address
+  96:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  SecondMemAddress The second memory Buffer address in case of multi buffer Transfer  
+  97:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DataLength The length of data to be transferred from source to destination
+  98:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @retval HAL status
+  99:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 100:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t
+ 101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** {
+ 102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 103:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 104:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Check the parameters */
+ 105:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   assert_param(IS_DMA_BUFFER_SIZE(DataLength));
+ 106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Memory-to-memory transfer not supported in double buffering mode */
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if (hdma->Init.Direction == DMA_MEMORY_TO_MEMORY)
+ 109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->ErrorCode = HAL_DMA_ERROR_NOT_SUPPORTED;
+ 111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     status = HAL_ERROR;
+ 112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   else
+ 114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 115:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Process Locked */
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_LOCK(hdma);
+ 117:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     if(HAL_DMA_STATE_READY == hdma->State)
+ 119:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 120:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Change DMA peripheral state */
+ 121:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       hdma->State = HAL_DMA_STATE_BUSY; 
+ 122:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Enable the double buffer mode */
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       hdma->Instance->CR |= (uint32_t)DMA_SxCR_DBM;
+ 125:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Configure DMA Stream destination address */
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       hdma->Instance->M1AR = SecondMemAddress;
+ 128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Configure the source, destination address and the data length */
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       DMA_MultiBufferSetConfig(hdma, SrcAddress, DstAddress, DataLength);
+ 131:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 132:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Enable the peripheral */
+ 133:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       __HAL_DMA_ENABLE(hdma);
+ 134:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 135:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     else
+ 136:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       /* Return error status */
+ 138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       status = HAL_BUSY;
+ 139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   return status;
+ 142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** }
+ 143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 4
+
+
+ 144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+ 145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief  Starts the multi_buffer DMA Transfer with interrupt enabled.
+ 146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+ 147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                     the configuration information for the specified DMA Stream.  
+ 148:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  SrcAddress The source memory Buffer address
+ 149:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DstAddress The destination memory Buffer address
+ 150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  SecondMemAddress The second memory Buffer address in case of multi buffer Transfer  
+ 151:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DataLength The length of data to be transferred from source to destination
+ 152:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @retval HAL status
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 154:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint3
+ 155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** {
+ 156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 158:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Check the parameters */
+ 159:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   assert_param(IS_DMA_BUFFER_SIZE(DataLength));
+ 160:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 161:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Memory-to-memory transfer not supported in double buffering mode */
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if (hdma->Init.Direction == DMA_MEMORY_TO_MEMORY)
+ 163:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->ErrorCode = HAL_DMA_ERROR_NOT_SUPPORTED;
+ 165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 167:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Check callback functions */
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if ((NULL == hdma->XferCpltCallback) || (NULL == hdma->XferM1CpltCallback) || (NULL == hdma->Xfer
+ 170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->ErrorCode = HAL_DMA_ERROR_PARAM;
+ 172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 173:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 174:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 175:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Process locked */
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   __HAL_LOCK(hdma);
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if(HAL_DMA_STATE_READY == hdma->State)
+ 179:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 180:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Change DMA peripheral state */
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->State = HAL_DMA_STATE_BUSY;
+ 182:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 183:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Initialize the error code */
+ 184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->ErrorCode = HAL_DMA_ERROR_NONE;
+ 185:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 186:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Enable the Double buffer mode */
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->CR |= (uint32_t)DMA_SxCR_DBM;
+ 188:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 189:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure DMA Stream destination address */
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->M1AR = SecondMemAddress;
+ 191:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 192:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure the source, destination address and the data length */
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     DMA_MultiBufferSetConfig(hdma, SrcAddress, DstAddress, DataLength); 
+ 194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Clear all flags */
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TC_FLAG_INDEX(hdma));
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 5
+
+
+ 201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Enable Common interrupts*/
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->CR  |= DMA_IT_TC | DMA_IT_TE | DMA_IT_DME;
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->FCR |= DMA_IT_FE;
+ 205:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     if((hdma->XferHalfCpltCallback != NULL) || (hdma->XferM1HalfCpltCallback != NULL))
+ 207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       hdma->Instance->CR  |= DMA_IT_HT;
+ 209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Enable the peripheral */
+ 212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_ENABLE(hdma); 
+ 213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   else
+ 215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {     
+ 216:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Process unlocked */
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_UNLOCK(hdma);	  
+ 218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Return error status */
+ 220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     status = HAL_BUSY;
+ 221:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }  
+ 222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   return status; 
+ 223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** }
+ 224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+ 226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief  Change the memory0 or memory1 address on the fly.
+ 227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+ 228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                     the configuration information for the specified DMA Stream.  
+ 229:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  Address    The new address
+ 230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  memory     the memory to be changed, This parameter can be one of 
+ 231:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                     the following values:
+ 232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                      MEMORY0 /
+ 233:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                      MEMORY1
+ 234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @note   The MEMORY0 address can be changed only when the current transfer use
+ 235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *         MEMORY1 and the MEMORY1 address can be changed only when the current 
+ 236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *         transfer use MEMORY0.
+ 237:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @retval HAL status
+ 238:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** HAL_StatusTypeDef HAL_DMAEx_ChangeMemory(DMA_HandleTypeDef *hdma, uint32_t Address, HAL_DMA_MemoryT
+ 240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** {
+ 241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if(memory == MEMORY0)
+ 242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 243:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* change the memory0 address */
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->M0AR = Address;
+ 245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   else
+ 247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* change the memory1 address */
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->M1AR = Address;
+ 250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   return HAL_OK;
+ 253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** }
+ 254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+ 256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @}
+ 257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 6
+
+
+ 258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+ 260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @}
+ 261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /** @addtogroup DMAEx_Private_Functions
+ 264:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @{
+ 265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 266:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** /**
+ 268:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @brief  Set the DMA Transfer parameter.
+ 269:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+ 270:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   *                     the configuration information for the specified DMA Stream.  
+ 271:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  SrcAddress The source memory Buffer address
+ 272:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DstAddress The destination memory Buffer address
+ 273:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @param  DataLength The length of data to be transferred from source to destination
+ 274:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   * @retval HAL status
+ 275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   */
+ 276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** static void DMA_MultiBufferSetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddr
+ 277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** {  
+  30              		.loc 1 277 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              		.loc 1 277 1 is_stmt 0 view .LVU1
+  36 0000 10B4     		push	{r4}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 4
+  39              		.cfi_offset 4, -4
+ 278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Configure DMA Stream data length */
+ 279:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   hdma->Instance->NDTR = DataLength;
+  40              		.loc 1 279 3 is_stmt 1 view .LVU2
+  41              		.loc 1 279 24 is_stmt 0 view .LVU3
+  42 0002 0468     		ldr	r4, [r0]
+  43 0004 6360     		str	r3, [r4, #4]
+ 280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Peripheral to Memory */
+ 282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if((hdma->Init.Direction) == DMA_MEMORY_TO_PERIPH)
+  44              		.loc 1 282 3 is_stmt 1 view .LVU4
+  45              		.loc 1 282 18 is_stmt 0 view .LVU5
+  46 0006 8368     		ldr	r3, [r0, #8]
+  47              	.LVL1:
+  48              		.loc 1 282 3 view .LVU6
+  49 0008 402B     		cmp	r3, #64
+  50 000a 06D0     		beq	.L5
+ 283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {   
+ 284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure DMA Stream destination address */
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->PAR = DstAddress;
+ 286:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure DMA Stream source address */
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->M0AR = SrcAddress;
+ 289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   /* Memory to Peripheral */
+ 291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   else
+ 292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 293:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure DMA Stream source address */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 7
+
+
+ 294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->PAR = SrcAddress;
+  51              		.loc 1 294 5 is_stmt 1 view .LVU7
+  52              		.loc 1 294 11 is_stmt 0 view .LVU8
+  53 000c 0368     		ldr	r3, [r0]
+  54              		.loc 1 294 25 view .LVU9
+  55 000e 9960     		str	r1, [r3, #8]
+  56              	.LVL2:
+ 295:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     /* Configure DMA Stream destination address */
+ 297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->M0AR = DstAddress;
+  57              		.loc 1 297 5 is_stmt 1 view .LVU10
+  58              		.loc 1 297 11 is_stmt 0 view .LVU11
+  59 0010 0368     		ldr	r3, [r0]
+  60              		.loc 1 297 26 view .LVU12
+  61 0012 DA60     		str	r2, [r3, #12]
+  62              	.L1:
+ 298:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** }
+  63              		.loc 1 299 1 view .LVU13
+  64 0014 5DF8044B 		ldr	r4, [sp], #4
+  65              	.LCFI1:
+  66              		.cfi_remember_state
+  67              		.cfi_restore 4
+  68              		.cfi_def_cfa_offset 0
+  69 0018 7047     		bx	lr
+  70              	.LVL3:
+  71              	.L5:
+  72              	.LCFI2:
+  73              		.cfi_restore_state
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+  74              		.loc 1 285 5 is_stmt 1 view .LVU14
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+  75              		.loc 1 285 11 is_stmt 0 view .LVU15
+  76 001a 0368     		ldr	r3, [r0]
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+  77              		.loc 1 285 25 view .LVU16
+  78 001c 9A60     		str	r2, [r3, #8]
+  79              	.LVL4:
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+  80              		.loc 1 288 5 is_stmt 1 view .LVU17
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+  81              		.loc 1 288 11 is_stmt 0 view .LVU18
+  82 001e 0368     		ldr	r3, [r0]
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+  83              		.loc 1 288 26 view .LVU19
+  84 0020 D960     		str	r1, [r3, #12]
+  85 0022 F7E7     		b	.L1
+  86              		.cfi_endproc
+  87              	.LFE238:
+  88              		.cantunwind
+  89              		.fnend
+  91              		.section	.text.HAL_DMAEx_MultiBufferStart,"ax",%progbits
+  92              		.align	1
+  93              		.global	HAL_DMAEx_MultiBufferStart
+  94              		.syntax unified
+  95              		.thumb
+  96              		.thumb_func
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 8
+
+
+  98              	HAL_DMAEx_MultiBufferStart:
+  99              		.fnstart
+ 100              	.LVL5:
+ 101              	.LFB235:
+ 101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 102              		.loc 1 101 1 is_stmt 1 view -0
+ 103              		.cfi_startproc
+ 104              		@ args = 4, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 106              		.loc 1 101 1 is_stmt 0 view .LVU21
+ 107 0000 38B5     		push	{r3, r4, r5, lr}
+ 108              	.LCFI3:
+ 109              		.cfi_def_cfa_offset 16
+ 110              		.cfi_offset 3, -16
+ 111              		.cfi_offset 4, -12
+ 112              		.cfi_offset 5, -8
+ 113              		.cfi_offset 14, -4
+ 114 0002 0446     		mov	r4, r0
+ 102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 115              		.loc 1 102 3 is_stmt 1 view .LVU22
+ 116              	.LVL6:
+ 105:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 117              		.loc 1 105 3 view .LVU23
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 118              		.loc 1 108 3 view .LVU24
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 119              		.loc 1 108 18 is_stmt 0 view .LVU25
+ 120 0004 8068     		ldr	r0, [r0, #8]
+ 121              	.LVL7:
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 122              		.loc 1 108 3 view .LVU26
+ 123 0006 8028     		cmp	r0, #128
+ 124 0008 0DD0     		beq	.L12
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 125              		.loc 1 116 5 is_stmt 1 view .LVU27
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 126              		.loc 1 116 5 view .LVU28
+ 127 000a 94F83400 		ldrb	r0, [r4, #52]	@ zero_extendqisi2
+ 128 000e 0128     		cmp	r0, #1
+ 129 0010 23D0     		beq	.L9
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 130              		.loc 1 116 5 discriminator 2 view .LVU29
+ 131 0012 0120     		movs	r0, #1
+ 132 0014 84F83400 		strb	r0, [r4, #52]
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 133              		.loc 1 116 5 discriminator 2 view .LVU30
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 134              		.loc 1 118 5 discriminator 2 view .LVU31
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 135              		.loc 1 118 37 is_stmt 0 discriminator 2 view .LVU32
+ 136 0018 94F83500 		ldrb	r0, [r4, #53]	@ zero_extendqisi2
+ 137 001c C0B2     		uxtb	r0, r0
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 138              		.loc 1 118 5 discriminator 2 view .LVU33
+ 139 001e 0128     		cmp	r0, #1
+ 140 0020 06D0     		beq	.L13
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 9
+
+
+ 138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 141              		.loc 1 138 14 view .LVU34
+ 142 0022 0220     		movs	r0, #2
+ 143              	.LVL8:
+ 144              	.L8:
+ 142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 145              		.loc 1 142 1 view .LVU35
+ 146 0024 38BD     		pop	{r3, r4, r5, pc}
+ 147              	.LVL9:
+ 148              	.L12:
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     status = HAL_ERROR;
+ 149              		.loc 1 110 5 is_stmt 1 view .LVU36
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     status = HAL_ERROR;
+ 150              		.loc 1 110 21 is_stmt 0 view .LVU37
+ 151 0026 4FF48073 		mov	r3, #256
+ 152              	.LVL10:
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     status = HAL_ERROR;
+ 153              		.loc 1 110 21 view .LVU38
+ 154 002a 6365     		str	r3, [r4, #84]
+ 111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 155              		.loc 1 111 5 is_stmt 1 view .LVU39
+ 156              	.LVL11:
+ 111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 157              		.loc 1 111 12 is_stmt 0 view .LVU40
+ 158 002c 0120     		movs	r0, #1
+ 159 002e F9E7     		b	.L8
+ 160              	.LVL12:
+ 161              	.L13:
+ 121:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 162              		.loc 1 121 7 is_stmt 1 view .LVU41
+ 121:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 163              		.loc 1 121 19 is_stmt 0 view .LVU42
+ 164 0030 0220     		movs	r0, #2
+ 165 0032 84F83500 		strb	r0, [r4, #53]
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 166              		.loc 1 124 7 is_stmt 1 view .LVU43
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 167              		.loc 1 124 13 is_stmt 0 view .LVU44
+ 168 0036 2568     		ldr	r5, [r4]
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 169              		.loc 1 124 23 view .LVU45
+ 170 0038 2868     		ldr	r0, [r5]
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 171              		.loc 1 124 26 view .LVU46
+ 172 003a 40F48020 		orr	r0, r0, #262144
+ 173 003e 2860     		str	r0, [r5]
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 174              		.loc 1 127 7 is_stmt 1 view .LVU47
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 175              		.loc 1 127 13 is_stmt 0 view .LVU48
+ 176 0040 2068     		ldr	r0, [r4]
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 177              		.loc 1 127 28 view .LVU49
+ 178 0042 0361     		str	r3, [r0, #16]
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 179              		.loc 1 130 7 is_stmt 1 view .LVU50
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 10
+
+
+ 180              		.loc 1 130 31 is_stmt 0 view .LVU51
+ 181 0044 049B     		ldr	r3, [sp, #16]
+ 182              	.LVL13:
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 183              		.loc 1 130 31 view .LVU52
+ 184 0046 2046     		mov	r0, r4
+ 185              	.LVL14:
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****       
+ 186              		.loc 1 130 31 view .LVU53
+ 187 0048 FFF7FEFF 		bl	_ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm
+ 188              	.LVL15:
+ 133:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 189              		.loc 1 133 7 is_stmt 1 view .LVU54
+ 190 004c 2268     		ldr	r2, [r4]
+ 191 004e 1368     		ldr	r3, [r2]
+ 192 0050 43F00103 		orr	r3, r3, #1
+ 193 0054 1360     		str	r3, [r2]
+ 102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 194              		.loc 1 102 21 is_stmt 0 view .LVU55
+ 195 0056 0020     		movs	r0, #0
+ 196 0058 E4E7     		b	.L8
+ 197              	.LVL16:
+ 198              	.L9:
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 199              		.loc 1 116 5 view .LVU56
+ 200 005a 0220     		movs	r0, #2
+ 201 005c E2E7     		b	.L8
+ 202              		.cfi_endproc
+ 203              	.LFE235:
+ 204              		.cantunwind
+ 205              		.fnend
+ 207              		.section	.text.HAL_DMAEx_MultiBufferStart_IT,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	HAL_DMAEx_MultiBufferStart_IT
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	HAL_DMAEx_MultiBufferStart_IT:
+ 215              		.fnstart
+ 216              	.LVL17:
+ 217              	.LFB236:
+ 155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 218              		.loc 1 155 1 is_stmt 1 view -0
+ 219              		.cfi_startproc
+ 220              		@ args = 4, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   HAL_StatusTypeDef status = HAL_OK;
+ 222              		.loc 1 155 1 is_stmt 0 view .LVU58
+ 223 0000 38B5     		push	{r3, r4, r5, lr}
+ 224              	.LCFI4:
+ 225              		.cfi_def_cfa_offset 16
+ 226              		.cfi_offset 3, -16
+ 227              		.cfi_offset 4, -12
+ 228              		.cfi_offset 5, -8
+ 229              		.cfi_offset 14, -4
+ 230 0002 0446     		mov	r4, r0
+ 156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 11
+
+
+ 231              		.loc 1 156 3 is_stmt 1 view .LVU59
+ 232              	.LVL18:
+ 159:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 233              		.loc 1 159 3 view .LVU60
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 234              		.loc 1 162 3 view .LVU61
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 235              		.loc 1 162 18 is_stmt 0 view .LVU62
+ 236 0004 8068     		ldr	r0, [r0, #8]
+ 237              	.LVL19:
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 238              		.loc 1 162 3 view .LVU63
+ 239 0006 8028     		cmp	r0, #128
+ 240 0008 17D0     		beq	.L304
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 241              		.loc 1 169 3 is_stmt 1 view .LVU64
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 242              		.loc 1 169 22 is_stmt 0 view .LVU65
+ 243 000a E06B     		ldr	r0, [r4, #60]
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 244              		.loc 1 169 3 view .LVU66
+ 245 000c D0B1     		cbz	r0, .L17
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 246              		.loc 1 169 58 discriminator 1 view .LVU67
+ 247 000e 606C     		ldr	r0, [r4, #68]
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 248              		.loc 1 169 40 discriminator 1 view .LVU68
+ 249 0010 C0B1     		cbz	r0, .L17
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 250              		.loc 1 169 96 discriminator 2 view .LVU69
+ 251 0012 E06C     		ldr	r0, [r4, #76]
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 252              		.loc 1 169 78 discriminator 2 view .LVU70
+ 253 0014 B0B1     		cbz	r0, .L17
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 254              		.loc 1 176 3 is_stmt 1 view .LVU71
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 255              		.loc 1 176 3 view .LVU72
+ 256 0016 94F83400 		ldrb	r0, [r4, #52]	@ zero_extendqisi2
+ 257 001a 0128     		cmp	r0, #1
+ 258 001c 00F06987 		beq	.L62
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 259              		.loc 1 176 3 discriminator 2 view .LVU73
+ 260 0020 0120     		movs	r0, #1
+ 261 0022 84F83400 		strb	r0, [r4, #52]
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 262              		.loc 1 176 3 discriminator 2 view .LVU74
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 263              		.loc 1 178 3 discriminator 2 view .LVU75
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 264              		.loc 1 178 35 is_stmt 0 discriminator 2 view .LVU76
+ 265 0026 94F83500 		ldrb	r0, [r4, #53]	@ zero_extendqisi2
+ 266 002a C0B2     		uxtb	r0, r0
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 267              		.loc 1 178 3 discriminator 2 view .LVU77
+ 268 002c 0128     		cmp	r0, #1
+ 269 002e 0DD0     		beq	.L305
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 12
+
+
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 270              		.loc 1 217 5 is_stmt 1 view .LVU78
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 271              		.loc 1 217 5 view .LVU79
+ 272 0030 0023     		movs	r3, #0
+ 273              	.LVL20:
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 274              		.loc 1 217 5 is_stmt 0 view .LVU80
+ 275 0032 84F83430 		strb	r3, [r4, #52]
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 276              		.loc 1 217 5 is_stmt 1 view .LVU81
+ 220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }  
+ 277              		.loc 1 220 5 view .LVU82
+ 278              	.LVL21:
+ 220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }  
+ 279              		.loc 1 220 12 is_stmt 0 view .LVU83
+ 280 0036 0220     		movs	r0, #2
+ 281 0038 07E0     		b	.L16
+ 282              	.LVL22:
+ 283              	.L304:
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 284              		.loc 1 164 5 is_stmt 1 view .LVU84
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 285              		.loc 1 164 21 is_stmt 0 view .LVU85
+ 286 003a 4FF48073 		mov	r3, #256
+ 287              	.LVL23:
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 288              		.loc 1 164 21 view .LVU86
+ 289 003e 6365     		str	r3, [r4, #84]
+ 165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 290              		.loc 1 165 5 is_stmt 1 view .LVU87
+ 165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 291              		.loc 1 165 12 is_stmt 0 view .LVU88
+ 292 0040 0120     		movs	r0, #1
+ 293 0042 02E0     		b	.L16
+ 294              	.LVL24:
+ 295              	.L17:
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 296              		.loc 1 171 5 is_stmt 1 view .LVU89
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 297              		.loc 1 171 21 is_stmt 0 view .LVU90
+ 298 0044 4023     		movs	r3, #64
+ 299              	.LVL25:
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     return HAL_ERROR;
+ 300              		.loc 1 171 21 view .LVU91
+ 301 0046 6365     		str	r3, [r4, #84]
+ 172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 302              		.loc 1 172 5 is_stmt 1 view .LVU92
+ 172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 303              		.loc 1 172 12 is_stmt 0 view .LVU93
+ 304 0048 0120     		movs	r0, #1
+ 305              	.LVL26:
+ 306              	.L16:
+ 223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 307              		.loc 1 223 1 view .LVU94
+ 308 004a 38BD     		pop	{r3, r4, r5, pc}
+ 309              	.LVL27:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 13
+
+
+ 310              	.L305:
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 311              		.loc 1 181 5 is_stmt 1 view .LVU95
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 312              		.loc 1 181 17 is_stmt 0 view .LVU96
+ 313 004c 0220     		movs	r0, #2
+ 314 004e 84F83500 		strb	r0, [r4, #53]
+ 184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 315              		.loc 1 184 5 is_stmt 1 view .LVU97
+ 184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 316              		.loc 1 184 21 is_stmt 0 view .LVU98
+ 317 0052 0020     		movs	r0, #0
+ 318 0054 6065     		str	r0, [r4, #84]
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 319              		.loc 1 187 5 is_stmt 1 view .LVU99
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 320              		.loc 1 187 11 is_stmt 0 view .LVU100
+ 321 0056 2568     		ldr	r5, [r4]
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 322              		.loc 1 187 21 view .LVU101
+ 323 0058 2868     		ldr	r0, [r5]
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 324              		.loc 1 187 24 view .LVU102
+ 325 005a 40F48020 		orr	r0, r0, #262144
+ 326 005e 2860     		str	r0, [r5]
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 327              		.loc 1 190 5 is_stmt 1 view .LVU103
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 328              		.loc 1 190 11 is_stmt 0 view .LVU104
+ 329 0060 2068     		ldr	r0, [r4]
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 330              		.loc 1 190 26 view .LVU105
+ 331 0062 0361     		str	r3, [r0, #16]
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 332              		.loc 1 193 5 is_stmt 1 view .LVU106
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 333              		.loc 1 193 29 is_stmt 0 view .LVU107
+ 334 0064 049B     		ldr	r3, [sp, #16]
+ 335              	.LVL28:
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 336              		.loc 1 193 29 view .LVU108
+ 337 0066 2046     		mov	r0, r4
+ 338              	.LVL29:
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 339              		.loc 1 193 29 view .LVU109
+ 340 0068 FFF7FEFF 		bl	_ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm
+ 341              	.LVL30:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 342              		.loc 1 196 5 is_stmt 1 view .LVU110
+ 343 006c 2368     		ldr	r3, [r4]
+ 344 006e A54A     		ldr	r2, .L327
+ 345 0070 9342     		cmp	r3, r2
+ 346 0072 40F29880 		bls	.L20
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 347              		.loc 1 196 5 is_stmt 0 discriminator 1 view .LVU111
+ 348 0076 A2F58962 		sub	r2, r2, #1096
+ 349 007a 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 14
+
+
+ 350 007c 31D0     		beq	.L63
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 351              		.loc 1 196 5 discriminator 3 view .LVU112
+ 352 007e 02F58062 		add	r2, r2, #1024
+ 353 0082 9342     		cmp	r3, r2
+ 354 0084 74D0     		beq	.L64
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 355              		.loc 1 196 5 discriminator 5 view .LVU113
+ 356 0086 A2F56872 		sub	r2, r2, #928
+ 357 008a 9342     		cmp	r3, r2
+ 358 008c 72D0     		beq	.L65
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 359              		.loc 1 196 5 discriminator 7 view .LVU114
+ 360 008e 02F58062 		add	r2, r2, #1024
+ 361 0092 9342     		cmp	r3, r2
+ 362 0094 70D0     		beq	.L66
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 363              		.loc 1 196 5 discriminator 9 view .LVU115
+ 364 0096 A2F58962 		sub	r2, r2, #1096
+ 365 009a 9342     		cmp	r3, r2
+ 366 009c 6ED0     		beq	.L67
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 367              		.loc 1 196 5 discriminator 11 view .LVU116
+ 368 009e 02F58062 		add	r2, r2, #1024
+ 369 00a2 9342     		cmp	r3, r2
+ 370 00a4 6DD0     		beq	.L68
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 371              		.loc 1 196 5 discriminator 13 view .LVU117
+ 372 00a6 A2F56872 		sub	r2, r2, #928
+ 373 00aa 9342     		cmp	r3, r2
+ 374 00ac 6CD0     		beq	.L69
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 375              		.loc 1 196 5 discriminator 15 view .LVU118
+ 376 00ae 02F58062 		add	r2, r2, #1024
+ 377 00b2 9342     		cmp	r3, r2
+ 378 00b4 6BD0     		beq	.L70
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 379              		.loc 1 196 5 discriminator 17 view .LVU119
+ 380 00b6 A2F58962 		sub	r2, r2, #1096
+ 381 00ba 9342     		cmp	r3, r2
+ 382 00bc 6AD0     		beq	.L71
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 383              		.loc 1 196 5 discriminator 19 view .LVU120
+ 384 00be 02F58062 		add	r2, r2, #1024
+ 385 00c2 9342     		cmp	r3, r2
+ 386 00c4 69D0     		beq	.L72
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 387              		.loc 1 196 5 discriminator 21 view .LVU121
+ 388 00c6 A2F56872 		sub	r2, r2, #928
+ 389 00ca 9342     		cmp	r3, r2
+ 390 00cc 68D0     		beq	.L73
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 391              		.loc 1 196 5 discriminator 23 view .LVU122
+ 392 00ce 02F58062 		add	r2, r2, #1024
+ 393 00d2 9342     		cmp	r3, r2
+ 394 00d4 02D0     		beq	.L306
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 15
+
+
+ 395              		.loc 1 196 5 view .LVU123
+ 396 00d6 4FF00062 		mov	r2, #134217728
+ 397 00da 03E0     		b	.L21
+ 398              	.L306:
+ 399 00dc 4FF40012 		mov	r2, #2097152
+ 400 00e0 00E0     		b	.L21
+ 401              	.L63:
+ 402 00e2 2022     		movs	r2, #32
+ 403              	.L21:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 404              		.loc 1 196 5 discriminator 50 view .LVU124
+ 405 00e4 884B     		ldr	r3, .L327+4
+ 406 00e6 DA60     		str	r2, [r3, #12]
+ 407              	.LVL31:
+ 408              	.L22:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 409              		.loc 1 197 5 is_stmt 1 view .LVU125
+ 410 00e8 2368     		ldr	r3, [r4]
+ 411 00ea 864A     		ldr	r2, .L327
+ 412 00ec 9342     		cmp	r3, r2
+ 413 00ee 40F2CC81 		bls	.L28
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 414              		.loc 1 197 5 is_stmt 0 discriminator 1 view .LVU126
+ 415 00f2 A2F58962 		sub	r2, r2, #1096
+ 416 00f6 9342     		cmp	r3, r2
+ 417 00f8 00F06581 		beq	.L111
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 418              		.loc 1 197 5 discriminator 3 view .LVU127
+ 419 00fc 02F58062 		add	r2, r2, #1024
+ 420 0100 9342     		cmp	r3, r2
+ 421 0102 00F0A781 		beq	.L112
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 422              		.loc 1 197 5 discriminator 5 view .LVU128
+ 423 0106 A2F56872 		sub	r2, r2, #928
+ 424 010a 9342     		cmp	r3, r2
+ 425 010c 00F0A481 		beq	.L113
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 426              		.loc 1 197 5 discriminator 7 view .LVU129
+ 427 0110 02F58062 		add	r2, r2, #1024
+ 428 0114 9342     		cmp	r3, r2
+ 429 0116 00F0A181 		beq	.L114
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 430              		.loc 1 197 5 discriminator 9 view .LVU130
+ 431 011a A2F58962 		sub	r2, r2, #1096
+ 432 011e 9342     		cmp	r3, r2
+ 433 0120 00F09E81 		beq	.L115
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 434              		.loc 1 197 5 discriminator 11 view .LVU131
+ 435 0124 02F58062 		add	r2, r2, #1024
+ 436 0128 9342     		cmp	r3, r2
+ 437 012a 00F09C81 		beq	.L116
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 438              		.loc 1 197 5 discriminator 13 view .LVU132
+ 439 012e A2F56872 		sub	r2, r2, #928
+ 440 0132 9342     		cmp	r3, r2
+ 441 0134 00F09A81 		beq	.L117
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 16
+
+
+ 442              		.loc 1 197 5 discriminator 15 view .LVU133
+ 443 0138 02F58062 		add	r2, r2, #1024
+ 444 013c 9342     		cmp	r3, r2
+ 445 013e 00F09881 		beq	.L118
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 446              		.loc 1 197 5 discriminator 17 view .LVU134
+ 447 0142 A2F58962 		sub	r2, r2, #1096
+ 448 0146 9342     		cmp	r3, r2
+ 449 0148 00F09681 		beq	.L119
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 450              		.loc 1 197 5 discriminator 19 view .LVU135
+ 451 014c 02F58062 		add	r2, r2, #1024
+ 452 0150 9342     		cmp	r3, r2
+ 453 0152 00F09481 		beq	.L120
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 454              		.loc 1 197 5 discriminator 21 view .LVU136
+ 455 0156 A2F56872 		sub	r2, r2, #928
+ 456 015a 9342     		cmp	r3, r2
+ 457 015c 00F09281 		beq	.L121
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 458              		.loc 1 197 5 discriminator 23 view .LVU137
+ 459 0160 02F58062 		add	r2, r2, #1024
+ 460 0164 9342     		cmp	r3, r2
+ 461 0166 00F02B81 		beq	.L307
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 462              		.loc 1 197 5 view .LVU138
+ 463 016a 4FF08062 		mov	r2, #67108864
+ 464 016e 2BE1     		b	.L29
+ 465              	.LVL32:
+ 466              	.L64:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 467              		.loc 1 196 5 view .LVU139
+ 468 0170 2022     		movs	r2, #32
+ 469 0172 B7E7     		b	.L21
+ 470              	.L65:
+ 471 0174 2022     		movs	r2, #32
+ 472 0176 B5E7     		b	.L21
+ 473              	.L66:
+ 474 0178 2022     		movs	r2, #32
+ 475 017a B3E7     		b	.L21
+ 476              	.L67:
+ 477 017c 4FF40062 		mov	r2, #2048
+ 478 0180 B0E7     		b	.L21
+ 479              	.L68:
+ 480 0182 4FF40062 		mov	r2, #2048
+ 481 0186 ADE7     		b	.L21
+ 482              	.L69:
+ 483 0188 4FF40062 		mov	r2, #2048
+ 484 018c AAE7     		b	.L21
+ 485              	.L70:
+ 486 018e 4FF40062 		mov	r2, #2048
+ 487 0192 A7E7     		b	.L21
+ 488              	.L71:
+ 489 0194 4FF40012 		mov	r2, #2097152
+ 490 0198 A4E7     		b	.L21
+ 491              	.L72:
+ 492 019a 4FF40012 		mov	r2, #2097152
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 17
+
+
+ 493 019e A1E7     		b	.L21
+ 494              	.L73:
+ 495 01a0 4FF40012 		mov	r2, #2097152
+ 496 01a4 9EE7     		b	.L21
+ 497              	.L20:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 498              		.loc 1 196 5 discriminator 2 view .LVU140
+ 499 01a6 594A     		ldr	r2, .L327+8
+ 500 01a8 9342     		cmp	r3, r2
+ 501 01aa 53D9     		bls	.L23
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 502              		.loc 1 196 5 discriminator 51 view .LVU141
+ 503 01ac A83A     		subs	r2, r2, #168
+ 504 01ae 9342     		cmp	r3, r2
+ 505 01b0 31D0     		beq	.L75
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 506              		.loc 1 196 5 discriminator 53 view .LVU142
+ 507 01b2 02F58062 		add	r2, r2, #1024
+ 508 01b6 9342     		cmp	r3, r2
+ 509 01b8 31D0     		beq	.L76
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 510              		.loc 1 196 5 discriminator 55 view .LVU143
+ 511 01ba A2F56872 		sub	r2, r2, #928
+ 512 01be 9342     		cmp	r3, r2
+ 513 01c0 2FD0     		beq	.L77
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 514              		.loc 1 196 5 discriminator 57 view .LVU144
+ 515 01c2 02F58062 		add	r2, r2, #1024
+ 516 01c6 9342     		cmp	r3, r2
+ 517 01c8 2DD0     		beq	.L78
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 518              		.loc 1 196 5 discriminator 59 view .LVU145
+ 519 01ca A2F58962 		sub	r2, r2, #1096
+ 520 01ce 9342     		cmp	r3, r2
+ 521 01d0 2BD0     		beq	.L79
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 522              		.loc 1 196 5 discriminator 61 view .LVU146
+ 523 01d2 02F58062 		add	r2, r2, #1024
+ 524 01d6 9342     		cmp	r3, r2
+ 525 01d8 2AD0     		beq	.L80
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 526              		.loc 1 196 5 discriminator 63 view .LVU147
+ 527 01da A2F56872 		sub	r2, r2, #928
+ 528 01de 9342     		cmp	r3, r2
+ 529 01e0 29D0     		beq	.L81
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 530              		.loc 1 196 5 discriminator 65 view .LVU148
+ 531 01e2 02F58062 		add	r2, r2, #1024
+ 532 01e6 9342     		cmp	r3, r2
+ 533 01e8 28D0     		beq	.L82
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 534              		.loc 1 196 5 discriminator 67 view .LVU149
+ 535 01ea A2F58962 		sub	r2, r2, #1096
+ 536 01ee 9342     		cmp	r3, r2
+ 537 01f0 27D0     		beq	.L83
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 538              		.loc 1 196 5 discriminator 69 view .LVU150
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 18
+
+
+ 539 01f2 02F58062 		add	r2, r2, #1024
+ 540 01f6 9342     		cmp	r3, r2
+ 541 01f8 26D0     		beq	.L84
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 542              		.loc 1 196 5 discriminator 71 view .LVU151
+ 543 01fa A2F56872 		sub	r2, r2, #928
+ 544 01fe 9342     		cmp	r3, r2
+ 545 0200 25D0     		beq	.L85
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 546              		.loc 1 196 5 discriminator 73 view .LVU152
+ 547 0202 02F58062 		add	r2, r2, #1024
+ 548 0206 9342     		cmp	r3, r2
+ 549 0208 02D0     		beq	.L308
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 550              		.loc 1 196 5 view .LVU153
+ 551 020a 4FF00063 		mov	r3, #134217728
+ 552 020e 03E0     		b	.L24
+ 553              	.L308:
+ 554 0210 4FF40013 		mov	r3, #2097152
+ 555 0214 00E0     		b	.L24
+ 556              	.L75:
+ 557 0216 2023     		movs	r3, #32
+ 558              	.L24:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 559              		.loc 1 196 5 discriminator 100 view .LVU154
+ 560 0218 3B4A     		ldr	r2, .L327+4
+ 561 021a 9360     		str	r3, [r2, #8]
+ 562              	.LVL33:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 563              		.loc 1 196 5 discriminator 100 view .LVU155
+ 564 021c 64E7     		b	.L22
+ 565              	.LVL34:
+ 566              	.L76:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 567              		.loc 1 196 5 view .LVU156
+ 568 021e 2023     		movs	r3, #32
+ 569 0220 FAE7     		b	.L24
+ 570              	.L77:
+ 571 0222 2023     		movs	r3, #32
+ 572 0224 F8E7     		b	.L24
+ 573              	.L78:
+ 574 0226 2023     		movs	r3, #32
+ 575 0228 F6E7     		b	.L24
+ 576              	.L79:
+ 577 022a 4FF40063 		mov	r3, #2048
+ 578 022e F3E7     		b	.L24
+ 579              	.L80:
+ 580 0230 4FF40063 		mov	r3, #2048
+ 581 0234 F0E7     		b	.L24
+ 582              	.L81:
+ 583 0236 4FF40063 		mov	r3, #2048
+ 584 023a EDE7     		b	.L24
+ 585              	.L82:
+ 586 023c 4FF40063 		mov	r3, #2048
+ 587 0240 EAE7     		b	.L24
+ 588              	.L83:
+ 589 0242 4FF40013 		mov	r3, #2097152
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 19
+
+
+ 590 0246 E7E7     		b	.L24
+ 591              	.L84:
+ 592 0248 4FF40013 		mov	r3, #2097152
+ 593 024c E4E7     		b	.L24
+ 594              	.L85:
+ 595 024e 4FF40013 		mov	r3, #2097152
+ 596 0252 E1E7     		b	.L24
+ 597              	.L23:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 598              		.loc 1 196 5 discriminator 52 view .LVU157
+ 599 0254 2E4A     		ldr	r2, .L327+12
+ 600 0256 9342     		cmp	r3, r2
+ 601 0258 5ED9     		bls	.L25
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 602              		.loc 1 196 5 discriminator 101 view .LVU158
+ 603 025a 483A     		subs	r2, r2, #72
+ 604 025c 9342     		cmp	r3, r2
+ 605 025e 31D0     		beq	.L87
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 606              		.loc 1 196 5 discriminator 103 view .LVU159
+ 607 0260 02F58062 		add	r2, r2, #1024
+ 608 0264 9342     		cmp	r3, r2
+ 609 0266 31D0     		beq	.L88
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 610              		.loc 1 196 5 discriminator 105 view .LVU160
+ 611 0268 A2F56872 		sub	r2, r2, #928
+ 612 026c 9342     		cmp	r3, r2
+ 613 026e 2FD0     		beq	.L89
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 614              		.loc 1 196 5 discriminator 107 view .LVU161
+ 615 0270 02F58062 		add	r2, r2, #1024
+ 616 0274 9342     		cmp	r3, r2
+ 617 0276 2DD0     		beq	.L90
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 618              		.loc 1 196 5 discriminator 109 view .LVU162
+ 619 0278 A2F58962 		sub	r2, r2, #1096
+ 620 027c 9342     		cmp	r3, r2
+ 621 027e 2BD0     		beq	.L91
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 622              		.loc 1 196 5 discriminator 111 view .LVU163
+ 623 0280 02F58062 		add	r2, r2, #1024
+ 624 0284 9342     		cmp	r3, r2
+ 625 0286 2AD0     		beq	.L92
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 626              		.loc 1 196 5 discriminator 113 view .LVU164
+ 627 0288 A2F56872 		sub	r2, r2, #928
+ 628 028c 9342     		cmp	r3, r2
+ 629 028e 29D0     		beq	.L93
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 630              		.loc 1 196 5 discriminator 115 view .LVU165
+ 631 0290 02F58062 		add	r2, r2, #1024
+ 632 0294 9342     		cmp	r3, r2
+ 633 0296 28D0     		beq	.L94
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 634              		.loc 1 196 5 discriminator 117 view .LVU166
+ 635 0298 A2F58962 		sub	r2, r2, #1096
+ 636 029c 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 20
+
+
+ 637 029e 27D0     		beq	.L95
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 638              		.loc 1 196 5 discriminator 119 view .LVU167
+ 639 02a0 02F58062 		add	r2, r2, #1024
+ 640 02a4 9342     		cmp	r3, r2
+ 641 02a6 26D0     		beq	.L96
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 642              		.loc 1 196 5 discriminator 121 view .LVU168
+ 643 02a8 A2F56872 		sub	r2, r2, #928
+ 644 02ac 9342     		cmp	r3, r2
+ 645 02ae 25D0     		beq	.L97
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 646              		.loc 1 196 5 discriminator 123 view .LVU169
+ 647 02b0 02F58062 		add	r2, r2, #1024
+ 648 02b4 9342     		cmp	r3, r2
+ 649 02b6 02D0     		beq	.L309
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 650              		.loc 1 196 5 view .LVU170
+ 651 02b8 4FF00063 		mov	r3, #134217728
+ 652 02bc 03E0     		b	.L26
+ 653              	.L309:
+ 654 02be 4FF40013 		mov	r3, #2097152
+ 655 02c2 00E0     		b	.L26
+ 656              	.L87:
+ 657 02c4 2023     		movs	r3, #32
+ 658              	.L26:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 659              		.loc 1 196 5 discriminator 150 view .LVU171
+ 660 02c6 134A     		ldr	r2, .L327+16
+ 661 02c8 D360     		str	r3, [r2, #12]
+ 662              	.LVL35:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 663              		.loc 1 196 5 discriminator 150 view .LVU172
+ 664 02ca 0DE7     		b	.L22
+ 665              	.LVL36:
+ 666              	.L88:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 667              		.loc 1 196 5 view .LVU173
+ 668 02cc 2023     		movs	r3, #32
+ 669 02ce FAE7     		b	.L26
+ 670              	.L89:
+ 671 02d0 2023     		movs	r3, #32
+ 672 02d2 F8E7     		b	.L26
+ 673              	.L90:
+ 674 02d4 2023     		movs	r3, #32
+ 675 02d6 F6E7     		b	.L26
+ 676              	.L91:
+ 677 02d8 4FF40063 		mov	r3, #2048
+ 678 02dc F3E7     		b	.L26
+ 679              	.L92:
+ 680 02de 4FF40063 		mov	r3, #2048
+ 681 02e2 F0E7     		b	.L26
+ 682              	.L93:
+ 683 02e4 4FF40063 		mov	r3, #2048
+ 684 02e8 EDE7     		b	.L26
+ 685              	.L94:
+ 686 02ea 4FF40063 		mov	r3, #2048
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 21
+
+
+ 687 02ee EAE7     		b	.L26
+ 688              	.L95:
+ 689 02f0 4FF40013 		mov	r3, #2097152
+ 690 02f4 E7E7     		b	.L26
+ 691              	.L96:
+ 692 02f6 4FF40013 		mov	r3, #2097152
+ 693 02fa E4E7     		b	.L26
+ 694              	.L97:
+ 695 02fc 4FF40013 		mov	r3, #2097152
+ 696 0300 E1E7     		b	.L26
+ 697              	.L328:
+ 698 0302 00BF     		.align	2
+ 699              	.L327:
+ 700 0304 58640240 		.word	1073898584
+ 701 0308 00640240 		.word	1073898496
+ 702 030c B8600240 		.word	1073897656
+ 703 0310 58600240 		.word	1073897560
+ 704 0314 00600240 		.word	1073897472
+ 705              	.L25:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 706              		.loc 1 196 5 discriminator 102 view .LVU174
+ 707 0318 B14A     		ldr	r2, .L329
+ 708 031a 9342     		cmp	r3, r2
+ 709 031c 31D0     		beq	.L99
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 710              		.loc 1 196 5 discriminator 151 view .LVU175
+ 711 031e 02F58062 		add	r2, r2, #1024
+ 712 0322 9342     		cmp	r3, r2
+ 713 0324 31D0     		beq	.L100
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 714              		.loc 1 196 5 discriminator 153 view .LVU176
+ 715 0326 A2F56872 		sub	r2, r2, #928
+ 716 032a 9342     		cmp	r3, r2
+ 717 032c 2FD0     		beq	.L101
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 718              		.loc 1 196 5 discriminator 155 view .LVU177
+ 719 032e 02F58062 		add	r2, r2, #1024
+ 720 0332 9342     		cmp	r3, r2
+ 721 0334 2DD0     		beq	.L102
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 722              		.loc 1 196 5 discriminator 157 view .LVU178
+ 723 0336 A2F58962 		sub	r2, r2, #1096
+ 724 033a 9342     		cmp	r3, r2
+ 725 033c 2BD0     		beq	.L103
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 726              		.loc 1 196 5 discriminator 159 view .LVU179
+ 727 033e 02F58062 		add	r2, r2, #1024
+ 728 0342 9342     		cmp	r3, r2
+ 729 0344 2AD0     		beq	.L104
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 730              		.loc 1 196 5 discriminator 161 view .LVU180
+ 731 0346 A2F56872 		sub	r2, r2, #928
+ 732 034a 9342     		cmp	r3, r2
+ 733 034c 29D0     		beq	.L105
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 734              		.loc 1 196 5 discriminator 163 view .LVU181
+ 735 034e 02F58062 		add	r2, r2, #1024
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 22
+
+
+ 736 0352 9342     		cmp	r3, r2
+ 737 0354 28D0     		beq	.L106
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 738              		.loc 1 196 5 discriminator 165 view .LVU182
+ 739 0356 A2F58962 		sub	r2, r2, #1096
+ 740 035a 9342     		cmp	r3, r2
+ 741 035c 27D0     		beq	.L107
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 742              		.loc 1 196 5 discriminator 167 view .LVU183
+ 743 035e 02F58062 		add	r2, r2, #1024
+ 744 0362 9342     		cmp	r3, r2
+ 745 0364 26D0     		beq	.L108
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 746              		.loc 1 196 5 discriminator 169 view .LVU184
+ 747 0366 A2F56872 		sub	r2, r2, #928
+ 748 036a 9342     		cmp	r3, r2
+ 749 036c 25D0     		beq	.L109
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 750              		.loc 1 196 5 discriminator 171 view .LVU185
+ 751 036e 02F58062 		add	r2, r2, #1024
+ 752 0372 9342     		cmp	r3, r2
+ 753 0374 02D0     		beq	.L310
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 754              		.loc 1 196 5 view .LVU186
+ 755 0376 4FF00063 		mov	r3, #134217728
+ 756 037a 03E0     		b	.L27
+ 757              	.L310:
+ 758 037c 4FF40013 		mov	r3, #2097152
+ 759 0380 00E0     		b	.L27
+ 760              	.L99:
+ 761 0382 2023     		movs	r3, #32
+ 762              	.L27:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 763              		.loc 1 196 5 discriminator 198 view .LVU187
+ 764 0384 974A     		ldr	r2, .L329+4
+ 765 0386 9360     		str	r3, [r2, #8]
+ 766              	.LVL37:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 767              		.loc 1 196 5 discriminator 198 view .LVU188
+ 768 0388 AEE6     		b	.L22
+ 769              	.LVL38:
+ 770              	.L100:
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+ 771              		.loc 1 196 5 view .LVU189
+ 772 038a 2023     		movs	r3, #32
+ 773 038c FAE7     		b	.L27
+ 774              	.L101:
+ 775 038e 2023     		movs	r3, #32
+ 776 0390 F8E7     		b	.L27
+ 777              	.L102:
+ 778 0392 2023     		movs	r3, #32
+ 779 0394 F6E7     		b	.L27
+ 780              	.L103:
+ 781 0396 4FF40063 		mov	r3, #2048
+ 782 039a F3E7     		b	.L27
+ 783              	.L104:
+ 784 039c 4FF40063 		mov	r3, #2048
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 23
+
+
+ 785 03a0 F0E7     		b	.L27
+ 786              	.L105:
+ 787 03a2 4FF40063 		mov	r3, #2048
+ 788 03a6 EDE7     		b	.L27
+ 789              	.L106:
+ 790 03a8 4FF40063 		mov	r3, #2048
+ 791 03ac EAE7     		b	.L27
+ 792              	.L107:
+ 793 03ae 4FF40013 		mov	r3, #2097152
+ 794 03b2 E7E7     		b	.L27
+ 795              	.L108:
+ 796 03b4 4FF40013 		mov	r3, #2097152
+ 797 03b8 E4E7     		b	.L27
+ 798              	.L109:
+ 799 03ba 4FF40013 		mov	r3, #2097152
+ 800 03be E1E7     		b	.L27
+ 801              	.LVL39:
+ 802              	.L307:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 803              		.loc 1 197 5 view .LVU190
+ 804 03c0 4FF48012 		mov	r2, #1048576
+ 805 03c4 00E0     		b	.L29
+ 806              	.L111:
+ 807 03c6 1022     		movs	r2, #16
+ 808              	.L29:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 809              		.loc 1 197 5 discriminator 50 view .LVU191
+ 810 03c8 874B     		ldr	r3, .L329+8
+ 811 03ca DA60     		str	r2, [r3, #12]
+ 812              	.L30:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 813              		.loc 1 198 5 is_stmt 1 view .LVU192
+ 814 03cc 2368     		ldr	r3, [r4]
+ 815 03ce 874A     		ldr	r2, .L329+12
+ 816 03d0 9342     		cmp	r3, r2
+ 817 03d2 40F2CD81 		bls	.L36
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 818              		.loc 1 198 5 is_stmt 0 discriminator 1 view .LVU193
+ 819 03d6 A2F58962 		sub	r2, r2, #1096
+ 820 03da 9342     		cmp	r3, r2
+ 821 03dc 00F06681 		beq	.L159
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 822              		.loc 1 198 5 discriminator 3 view .LVU194
+ 823 03e0 02F58062 		add	r2, r2, #1024
+ 824 03e4 9342     		cmp	r3, r2
+ 825 03e6 00F0A881 		beq	.L160
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 826              		.loc 1 198 5 discriminator 5 view .LVU195
+ 827 03ea A2F56872 		sub	r2, r2, #928
+ 828 03ee 9342     		cmp	r3, r2
+ 829 03f0 00F0A581 		beq	.L161
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 830              		.loc 1 198 5 discriminator 7 view .LVU196
+ 831 03f4 02F58062 		add	r2, r2, #1024
+ 832 03f8 9342     		cmp	r3, r2
+ 833 03fa 00F0A281 		beq	.L162
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 24
+
+
+ 834              		.loc 1 198 5 discriminator 9 view .LVU197
+ 835 03fe A2F58962 		sub	r2, r2, #1096
+ 836 0402 9342     		cmp	r3, r2
+ 837 0404 00F09F81 		beq	.L163
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 838              		.loc 1 198 5 discriminator 11 view .LVU198
+ 839 0408 02F58062 		add	r2, r2, #1024
+ 840 040c 9342     		cmp	r3, r2
+ 841 040e 00F09D81 		beq	.L164
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 842              		.loc 1 198 5 discriminator 13 view .LVU199
+ 843 0412 A2F56872 		sub	r2, r2, #928
+ 844 0416 9342     		cmp	r3, r2
+ 845 0418 00F09B81 		beq	.L165
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 846              		.loc 1 198 5 discriminator 15 view .LVU200
+ 847 041c 02F58062 		add	r2, r2, #1024
+ 848 0420 9342     		cmp	r3, r2
+ 849 0422 00F09981 		beq	.L166
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 850              		.loc 1 198 5 discriminator 17 view .LVU201
+ 851 0426 A2F58962 		sub	r2, r2, #1096
+ 852 042a 9342     		cmp	r3, r2
+ 853 042c 00F09781 		beq	.L167
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 854              		.loc 1 198 5 discriminator 19 view .LVU202
+ 855 0430 02F58062 		add	r2, r2, #1024
+ 856 0434 9342     		cmp	r3, r2
+ 857 0436 00F09581 		beq	.L168
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 858              		.loc 1 198 5 discriminator 21 view .LVU203
+ 859 043a A2F56872 		sub	r2, r2, #928
+ 860 043e 9342     		cmp	r3, r2
+ 861 0440 00F09381 		beq	.L169
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 862              		.loc 1 198 5 discriminator 23 view .LVU204
+ 863 0444 02F58062 		add	r2, r2, #1024
+ 864 0448 9342     		cmp	r3, r2
+ 865 044a 00F02C81 		beq	.L311
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 866              		.loc 1 198 5 view .LVU205
+ 867 044e 4FF00072 		mov	r2, #33554432
+ 868 0452 2CE1     		b	.L37
+ 869              	.L112:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 870              		.loc 1 197 5 view .LVU206
+ 871 0454 1022     		movs	r2, #16
+ 872 0456 B7E7     		b	.L29
+ 873              	.L113:
+ 874 0458 1022     		movs	r2, #16
+ 875 045a B5E7     		b	.L29
+ 876              	.L114:
+ 877 045c 1022     		movs	r2, #16
+ 878 045e B3E7     		b	.L29
+ 879              	.L115:
+ 880 0460 4FF48062 		mov	r2, #1024
+ 881 0464 B0E7     		b	.L29
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 25
+
+
+ 882              	.L116:
+ 883 0466 4FF48062 		mov	r2, #1024
+ 884 046a ADE7     		b	.L29
+ 885              	.L117:
+ 886 046c 4FF48062 		mov	r2, #1024
+ 887 0470 AAE7     		b	.L29
+ 888              	.L118:
+ 889 0472 4FF48062 		mov	r2, #1024
+ 890 0476 A7E7     		b	.L29
+ 891              	.L119:
+ 892 0478 4FF48012 		mov	r2, #1048576
+ 893 047c A4E7     		b	.L29
+ 894              	.L120:
+ 895 047e 4FF48012 		mov	r2, #1048576
+ 896 0482 A1E7     		b	.L29
+ 897              	.L121:
+ 898 0484 4FF48012 		mov	r2, #1048576
+ 899 0488 9EE7     		b	.L29
+ 900              	.L28:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 901              		.loc 1 197 5 discriminator 2 view .LVU207
+ 902 048a 594A     		ldr	r2, .L329+16
+ 903 048c 9342     		cmp	r3, r2
+ 904 048e 53D9     		bls	.L31
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 905              		.loc 1 197 5 discriminator 51 view .LVU208
+ 906 0490 A83A     		subs	r2, r2, #168
+ 907 0492 9342     		cmp	r3, r2
+ 908 0494 31D0     		beq	.L123
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 909              		.loc 1 197 5 discriminator 53 view .LVU209
+ 910 0496 02F58062 		add	r2, r2, #1024
+ 911 049a 9342     		cmp	r3, r2
+ 912 049c 31D0     		beq	.L124
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 913              		.loc 1 197 5 discriminator 55 view .LVU210
+ 914 049e A2F56872 		sub	r2, r2, #928
+ 915 04a2 9342     		cmp	r3, r2
+ 916 04a4 2FD0     		beq	.L125
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 917              		.loc 1 197 5 discriminator 57 view .LVU211
+ 918 04a6 02F58062 		add	r2, r2, #1024
+ 919 04aa 9342     		cmp	r3, r2
+ 920 04ac 2DD0     		beq	.L126
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 921              		.loc 1 197 5 discriminator 59 view .LVU212
+ 922 04ae A2F58962 		sub	r2, r2, #1096
+ 923 04b2 9342     		cmp	r3, r2
+ 924 04b4 2BD0     		beq	.L127
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 925              		.loc 1 197 5 discriminator 61 view .LVU213
+ 926 04b6 02F58062 		add	r2, r2, #1024
+ 927 04ba 9342     		cmp	r3, r2
+ 928 04bc 2AD0     		beq	.L128
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 929              		.loc 1 197 5 discriminator 63 view .LVU214
+ 930 04be A2F56872 		sub	r2, r2, #928
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 26
+
+
+ 931 04c2 9342     		cmp	r3, r2
+ 932 04c4 29D0     		beq	.L129
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 933              		.loc 1 197 5 discriminator 65 view .LVU215
+ 934 04c6 02F58062 		add	r2, r2, #1024
+ 935 04ca 9342     		cmp	r3, r2
+ 936 04cc 28D0     		beq	.L130
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 937              		.loc 1 197 5 discriminator 67 view .LVU216
+ 938 04ce A2F58962 		sub	r2, r2, #1096
+ 939 04d2 9342     		cmp	r3, r2
+ 940 04d4 27D0     		beq	.L131
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 941              		.loc 1 197 5 discriminator 69 view .LVU217
+ 942 04d6 02F58062 		add	r2, r2, #1024
+ 943 04da 9342     		cmp	r3, r2
+ 944 04dc 26D0     		beq	.L132
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 945              		.loc 1 197 5 discriminator 71 view .LVU218
+ 946 04de A2F56872 		sub	r2, r2, #928
+ 947 04e2 9342     		cmp	r3, r2
+ 948 04e4 25D0     		beq	.L133
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 949              		.loc 1 197 5 discriminator 73 view .LVU219
+ 950 04e6 02F58062 		add	r2, r2, #1024
+ 951 04ea 9342     		cmp	r3, r2
+ 952 04ec 02D0     		beq	.L312
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 953              		.loc 1 197 5 view .LVU220
+ 954 04ee 4FF08063 		mov	r3, #67108864
+ 955 04f2 03E0     		b	.L32
+ 956              	.L312:
+ 957 04f4 4FF48013 		mov	r3, #1048576
+ 958 04f8 00E0     		b	.L32
+ 959              	.L123:
+ 960 04fa 1023     		movs	r3, #16
+ 961              	.L32:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 962              		.loc 1 197 5 discriminator 100 view .LVU221
+ 963 04fc 3A4A     		ldr	r2, .L329+8
+ 964 04fe 9360     		str	r3, [r2, #8]
+ 965 0500 64E7     		b	.L30
+ 966              	.L124:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 967              		.loc 1 197 5 view .LVU222
+ 968 0502 1023     		movs	r3, #16
+ 969 0504 FAE7     		b	.L32
+ 970              	.L125:
+ 971 0506 1023     		movs	r3, #16
+ 972 0508 F8E7     		b	.L32
+ 973              	.L126:
+ 974 050a 1023     		movs	r3, #16
+ 975 050c F6E7     		b	.L32
+ 976              	.L127:
+ 977 050e 4FF48063 		mov	r3, #1024
+ 978 0512 F3E7     		b	.L32
+ 979              	.L128:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 27
+
+
+ 980 0514 4FF48063 		mov	r3, #1024
+ 981 0518 F0E7     		b	.L32
+ 982              	.L129:
+ 983 051a 4FF48063 		mov	r3, #1024
+ 984 051e EDE7     		b	.L32
+ 985              	.L130:
+ 986 0520 4FF48063 		mov	r3, #1024
+ 987 0524 EAE7     		b	.L32
+ 988              	.L131:
+ 989 0526 4FF48013 		mov	r3, #1048576
+ 990 052a E7E7     		b	.L32
+ 991              	.L132:
+ 992 052c 4FF48013 		mov	r3, #1048576
+ 993 0530 E4E7     		b	.L32
+ 994              	.L133:
+ 995 0532 4FF48013 		mov	r3, #1048576
+ 996 0536 E1E7     		b	.L32
+ 997              	.L31:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 998              		.loc 1 197 5 discriminator 52 view .LVU223
+ 999 0538 2E4A     		ldr	r2, .L329+20
+ 1000 053a 9342     		cmp	r3, r2
+ 1001 053c 5FD9     		bls	.L33
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1002              		.loc 1 197 5 discriminator 101 view .LVU224
+ 1003 053e 483A     		subs	r2, r2, #72
+ 1004 0540 9342     		cmp	r3, r2
+ 1005 0542 31D0     		beq	.L135
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1006              		.loc 1 197 5 discriminator 103 view .LVU225
+ 1007 0544 02F58062 		add	r2, r2, #1024
+ 1008 0548 9342     		cmp	r3, r2
+ 1009 054a 31D0     		beq	.L136
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1010              		.loc 1 197 5 discriminator 105 view .LVU226
+ 1011 054c A2F56872 		sub	r2, r2, #928
+ 1012 0550 9342     		cmp	r3, r2
+ 1013 0552 2FD0     		beq	.L137
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1014              		.loc 1 197 5 discriminator 107 view .LVU227
+ 1015 0554 02F58062 		add	r2, r2, #1024
+ 1016 0558 9342     		cmp	r3, r2
+ 1017 055a 2DD0     		beq	.L138
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1018              		.loc 1 197 5 discriminator 109 view .LVU228
+ 1019 055c A2F58962 		sub	r2, r2, #1096
+ 1020 0560 9342     		cmp	r3, r2
+ 1021 0562 2BD0     		beq	.L139
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1022              		.loc 1 197 5 discriminator 111 view .LVU229
+ 1023 0564 02F58062 		add	r2, r2, #1024
+ 1024 0568 9342     		cmp	r3, r2
+ 1025 056a 2AD0     		beq	.L140
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1026              		.loc 1 197 5 discriminator 113 view .LVU230
+ 1027 056c A2F56872 		sub	r2, r2, #928
+ 1028 0570 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 28
+
+
+ 1029 0572 29D0     		beq	.L141
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1030              		.loc 1 197 5 discriminator 115 view .LVU231
+ 1031 0574 02F58062 		add	r2, r2, #1024
+ 1032 0578 9342     		cmp	r3, r2
+ 1033 057a 28D0     		beq	.L142
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1034              		.loc 1 197 5 discriminator 117 view .LVU232
+ 1035 057c A2F58962 		sub	r2, r2, #1096
+ 1036 0580 9342     		cmp	r3, r2
+ 1037 0582 27D0     		beq	.L143
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1038              		.loc 1 197 5 discriminator 119 view .LVU233
+ 1039 0584 02F58062 		add	r2, r2, #1024
+ 1040 0588 9342     		cmp	r3, r2
+ 1041 058a 26D0     		beq	.L144
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1042              		.loc 1 197 5 discriminator 121 view .LVU234
+ 1043 058c A2F56872 		sub	r2, r2, #928
+ 1044 0590 9342     		cmp	r3, r2
+ 1045 0592 31D0     		beq	.L145
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1046              		.loc 1 197 5 discriminator 123 view .LVU235
+ 1047 0594 02F58062 		add	r2, r2, #1024
+ 1048 0598 9342     		cmp	r3, r2
+ 1049 059a 02D0     		beq	.L313
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1050              		.loc 1 197 5 view .LVU236
+ 1051 059c 4FF08063 		mov	r3, #67108864
+ 1052 05a0 03E0     		b	.L34
+ 1053              	.L313:
+ 1054 05a2 4FF48013 		mov	r3, #1048576
+ 1055 05a6 00E0     		b	.L34
+ 1056              	.L135:
+ 1057 05a8 1023     		movs	r3, #16
+ 1058              	.L34:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1059              		.loc 1 197 5 discriminator 150 view .LVU237
+ 1060 05aa 0E4A     		ldr	r2, .L329+4
+ 1061 05ac D360     		str	r3, [r2, #12]
+ 1062 05ae 0DE7     		b	.L30
+ 1063              	.L136:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1064              		.loc 1 197 5 view .LVU238
+ 1065 05b0 1023     		movs	r3, #16
+ 1066 05b2 FAE7     		b	.L34
+ 1067              	.L137:
+ 1068 05b4 1023     		movs	r3, #16
+ 1069 05b6 F8E7     		b	.L34
+ 1070              	.L138:
+ 1071 05b8 1023     		movs	r3, #16
+ 1072 05ba F6E7     		b	.L34
+ 1073              	.L139:
+ 1074 05bc 4FF48063 		mov	r3, #1024
+ 1075 05c0 F3E7     		b	.L34
+ 1076              	.L140:
+ 1077 05c2 4FF48063 		mov	r3, #1024
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 29
+
+
+ 1078 05c6 F0E7     		b	.L34
+ 1079              	.L141:
+ 1080 05c8 4FF48063 		mov	r3, #1024
+ 1081 05cc EDE7     		b	.L34
+ 1082              	.L142:
+ 1083 05ce 4FF48063 		mov	r3, #1024
+ 1084 05d2 EAE7     		b	.L34
+ 1085              	.L143:
+ 1086 05d4 4FF48013 		mov	r3, #1048576
+ 1087 05d8 E7E7     		b	.L34
+ 1088              	.L144:
+ 1089 05da 4FF48013 		mov	r3, #1048576
+ 1090 05de E4E7     		b	.L34
+ 1091              	.L330:
+ 1092              		.align	2
+ 1093              	.L329:
+ 1094 05e0 10600240 		.word	1073897488
+ 1095 05e4 00600240 		.word	1073897472
+ 1096 05e8 00640240 		.word	1073898496
+ 1097 05ec 58640240 		.word	1073898584
+ 1098 05f0 B8600240 		.word	1073897656
+ 1099 05f4 58600240 		.word	1073897560
+ 1100              	.L145:
+ 1101 05f8 4FF48013 		mov	r3, #1048576
+ 1102 05fc D5E7     		b	.L34
+ 1103              	.L33:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1104              		.loc 1 197 5 discriminator 102 view .LVU239
+ 1105 05fe B24A     		ldr	r2, .L331
+ 1106 0600 9342     		cmp	r3, r2
+ 1107 0602 31D0     		beq	.L147
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1108              		.loc 1 197 5 discriminator 151 view .LVU240
+ 1109 0604 02F58062 		add	r2, r2, #1024
+ 1110 0608 9342     		cmp	r3, r2
+ 1111 060a 31D0     		beq	.L148
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1112              		.loc 1 197 5 discriminator 153 view .LVU241
+ 1113 060c A2F56872 		sub	r2, r2, #928
+ 1114 0610 9342     		cmp	r3, r2
+ 1115 0612 2FD0     		beq	.L149
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1116              		.loc 1 197 5 discriminator 155 view .LVU242
+ 1117 0614 02F58062 		add	r2, r2, #1024
+ 1118 0618 9342     		cmp	r3, r2
+ 1119 061a 2DD0     		beq	.L150
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1120              		.loc 1 197 5 discriminator 157 view .LVU243
+ 1121 061c A2F58962 		sub	r2, r2, #1096
+ 1122 0620 9342     		cmp	r3, r2
+ 1123 0622 2BD0     		beq	.L151
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1124              		.loc 1 197 5 discriminator 159 view .LVU244
+ 1125 0624 02F58062 		add	r2, r2, #1024
+ 1126 0628 9342     		cmp	r3, r2
+ 1127 062a 2AD0     		beq	.L152
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 30
+
+
+ 1128              		.loc 1 197 5 discriminator 161 view .LVU245
+ 1129 062c A2F56872 		sub	r2, r2, #928
+ 1130 0630 9342     		cmp	r3, r2
+ 1131 0632 29D0     		beq	.L153
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1132              		.loc 1 197 5 discriminator 163 view .LVU246
+ 1133 0634 02F58062 		add	r2, r2, #1024
+ 1134 0638 9342     		cmp	r3, r2
+ 1135 063a 28D0     		beq	.L154
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1136              		.loc 1 197 5 discriminator 165 view .LVU247
+ 1137 063c A2F58962 		sub	r2, r2, #1096
+ 1138 0640 9342     		cmp	r3, r2
+ 1139 0642 27D0     		beq	.L155
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1140              		.loc 1 197 5 discriminator 167 view .LVU248
+ 1141 0644 02F58062 		add	r2, r2, #1024
+ 1142 0648 9342     		cmp	r3, r2
+ 1143 064a 26D0     		beq	.L156
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1144              		.loc 1 197 5 discriminator 169 view .LVU249
+ 1145 064c A2F56872 		sub	r2, r2, #928
+ 1146 0650 9342     		cmp	r3, r2
+ 1147 0652 25D0     		beq	.L157
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1148              		.loc 1 197 5 discriminator 171 view .LVU250
+ 1149 0654 02F58062 		add	r2, r2, #1024
+ 1150 0658 9342     		cmp	r3, r2
+ 1151 065a 02D0     		beq	.L314
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1152              		.loc 1 197 5 view .LVU251
+ 1153 065c 4FF08063 		mov	r3, #67108864
+ 1154 0660 03E0     		b	.L35
+ 1155              	.L314:
+ 1156 0662 4FF48013 		mov	r3, #1048576
+ 1157 0666 00E0     		b	.L35
+ 1158              	.L147:
+ 1159 0668 1023     		movs	r3, #16
+ 1160              	.L35:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1161              		.loc 1 197 5 discriminator 198 view .LVU252
+ 1162 066a 984A     		ldr	r2, .L331+4
+ 1163 066c 9360     		str	r3, [r2, #8]
+ 1164 066e ADE6     		b	.L30
+ 1165              	.L148:
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+ 1166              		.loc 1 197 5 view .LVU253
+ 1167 0670 1023     		movs	r3, #16
+ 1168 0672 FAE7     		b	.L35
+ 1169              	.L149:
+ 1170 0674 1023     		movs	r3, #16
+ 1171 0676 F8E7     		b	.L35
+ 1172              	.L150:
+ 1173 0678 1023     		movs	r3, #16
+ 1174 067a F6E7     		b	.L35
+ 1175              	.L151:
+ 1176 067c 4FF48063 		mov	r3, #1024
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 31
+
+
+ 1177 0680 F3E7     		b	.L35
+ 1178              	.L152:
+ 1179 0682 4FF48063 		mov	r3, #1024
+ 1180 0686 F0E7     		b	.L35
+ 1181              	.L153:
+ 1182 0688 4FF48063 		mov	r3, #1024
+ 1183 068c EDE7     		b	.L35
+ 1184              	.L154:
+ 1185 068e 4FF48063 		mov	r3, #1024
+ 1186 0692 EAE7     		b	.L35
+ 1187              	.L155:
+ 1188 0694 4FF48013 		mov	r3, #1048576
+ 1189 0698 E7E7     		b	.L35
+ 1190              	.L156:
+ 1191 069a 4FF48013 		mov	r3, #1048576
+ 1192 069e E4E7     		b	.L35
+ 1193              	.L157:
+ 1194 06a0 4FF48013 		mov	r3, #1048576
+ 1195 06a4 E1E7     		b	.L35
+ 1196              	.L311:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1197              		.loc 1 198 5 view .LVU254
+ 1198 06a6 4FF40022 		mov	r2, #524288
+ 1199 06aa 00E0     		b	.L37
+ 1200              	.L159:
+ 1201 06ac 0822     		movs	r2, #8
+ 1202              	.L37:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1203              		.loc 1 198 5 discriminator 50 view .LVU255
+ 1204 06ae 884B     		ldr	r3, .L331+8
+ 1205 06b0 DA60     		str	r2, [r3, #12]
+ 1206              	.L38:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1207              		.loc 1 199 5 is_stmt 1 view .LVU256
+ 1208 06b2 2368     		ldr	r3, [r4]
+ 1209 06b4 874A     		ldr	r2, .L331+12
+ 1210 06b6 9342     		cmp	r3, r2
+ 1211 06b8 40F2CE81 		bls	.L44
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1212              		.loc 1 199 5 is_stmt 0 discriminator 1 view .LVU257
+ 1213 06bc A2F58962 		sub	r2, r2, #1096
+ 1214 06c0 9342     		cmp	r3, r2
+ 1215 06c2 00F06781 		beq	.L207
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1216              		.loc 1 199 5 discriminator 3 view .LVU258
+ 1217 06c6 02F58062 		add	r2, r2, #1024
+ 1218 06ca 9342     		cmp	r3, r2
+ 1219 06cc 00F0A981 		beq	.L208
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1220              		.loc 1 199 5 discriminator 5 view .LVU259
+ 1221 06d0 A2F56872 		sub	r2, r2, #928
+ 1222 06d4 9342     		cmp	r3, r2
+ 1223 06d6 00F0A681 		beq	.L209
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1224              		.loc 1 199 5 discriminator 7 view .LVU260
+ 1225 06da 02F58062 		add	r2, r2, #1024
+ 1226 06de 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 32
+
+
+ 1227 06e0 00F0A381 		beq	.L210
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1228              		.loc 1 199 5 discriminator 9 view .LVU261
+ 1229 06e4 A2F58962 		sub	r2, r2, #1096
+ 1230 06e8 9342     		cmp	r3, r2
+ 1231 06ea 00F0A081 		beq	.L211
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1232              		.loc 1 199 5 discriminator 11 view .LVU262
+ 1233 06ee 02F58062 		add	r2, r2, #1024
+ 1234 06f2 9342     		cmp	r3, r2
+ 1235 06f4 00F09E81 		beq	.L212
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1236              		.loc 1 199 5 discriminator 13 view .LVU263
+ 1237 06f8 A2F56872 		sub	r2, r2, #928
+ 1238 06fc 9342     		cmp	r3, r2
+ 1239 06fe 00F09C81 		beq	.L213
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1240              		.loc 1 199 5 discriminator 15 view .LVU264
+ 1241 0702 02F58062 		add	r2, r2, #1024
+ 1242 0706 9342     		cmp	r3, r2
+ 1243 0708 00F09A81 		beq	.L214
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1244              		.loc 1 199 5 discriminator 17 view .LVU265
+ 1245 070c A2F58962 		sub	r2, r2, #1096
+ 1246 0710 9342     		cmp	r3, r2
+ 1247 0712 00F09881 		beq	.L215
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1248              		.loc 1 199 5 discriminator 19 view .LVU266
+ 1249 0716 02F58062 		add	r2, r2, #1024
+ 1250 071a 9342     		cmp	r3, r2
+ 1251 071c 00F09681 		beq	.L216
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1252              		.loc 1 199 5 discriminator 21 view .LVU267
+ 1253 0720 A2F56872 		sub	r2, r2, #928
+ 1254 0724 9342     		cmp	r3, r2
+ 1255 0726 00F09481 		beq	.L217
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1256              		.loc 1 199 5 discriminator 23 view .LVU268
+ 1257 072a 02F58062 		add	r2, r2, #1024
+ 1258 072e 9342     		cmp	r3, r2
+ 1259 0730 00F02D81 		beq	.L315
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1260              		.loc 1 199 5 view .LVU269
+ 1261 0734 4FF08072 		mov	r2, #16777216
+ 1262 0738 2DE1     		b	.L45
+ 1263              	.L160:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1264              		.loc 1 198 5 view .LVU270
+ 1265 073a 0822     		movs	r2, #8
+ 1266 073c B7E7     		b	.L37
+ 1267              	.L161:
+ 1268 073e 0822     		movs	r2, #8
+ 1269 0740 B5E7     		b	.L37
+ 1270              	.L162:
+ 1271 0742 0822     		movs	r2, #8
+ 1272 0744 B3E7     		b	.L37
+ 1273              	.L163:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 33
+
+
+ 1274 0746 4FF40072 		mov	r2, #512
+ 1275 074a B0E7     		b	.L37
+ 1276              	.L164:
+ 1277 074c 4FF40072 		mov	r2, #512
+ 1278 0750 ADE7     		b	.L37
+ 1279              	.L165:
+ 1280 0752 4FF40072 		mov	r2, #512
+ 1281 0756 AAE7     		b	.L37
+ 1282              	.L166:
+ 1283 0758 4FF40072 		mov	r2, #512
+ 1284 075c A7E7     		b	.L37
+ 1285              	.L167:
+ 1286 075e 4FF40022 		mov	r2, #524288
+ 1287 0762 A4E7     		b	.L37
+ 1288              	.L168:
+ 1289 0764 4FF40022 		mov	r2, #524288
+ 1290 0768 A1E7     		b	.L37
+ 1291              	.L169:
+ 1292 076a 4FF40022 		mov	r2, #524288
+ 1293 076e 9EE7     		b	.L37
+ 1294              	.L36:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1295              		.loc 1 198 5 discriminator 2 view .LVU271
+ 1296 0770 594A     		ldr	r2, .L331+16
+ 1297 0772 9342     		cmp	r3, r2
+ 1298 0774 53D9     		bls	.L39
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1299              		.loc 1 198 5 discriminator 51 view .LVU272
+ 1300 0776 A83A     		subs	r2, r2, #168
+ 1301 0778 9342     		cmp	r3, r2
+ 1302 077a 31D0     		beq	.L171
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1303              		.loc 1 198 5 discriminator 53 view .LVU273
+ 1304 077c 02F58062 		add	r2, r2, #1024
+ 1305 0780 9342     		cmp	r3, r2
+ 1306 0782 31D0     		beq	.L172
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1307              		.loc 1 198 5 discriminator 55 view .LVU274
+ 1308 0784 A2F56872 		sub	r2, r2, #928
+ 1309 0788 9342     		cmp	r3, r2
+ 1310 078a 2FD0     		beq	.L173
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1311              		.loc 1 198 5 discriminator 57 view .LVU275
+ 1312 078c 02F58062 		add	r2, r2, #1024
+ 1313 0790 9342     		cmp	r3, r2
+ 1314 0792 2DD0     		beq	.L174
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1315              		.loc 1 198 5 discriminator 59 view .LVU276
+ 1316 0794 A2F58962 		sub	r2, r2, #1096
+ 1317 0798 9342     		cmp	r3, r2
+ 1318 079a 2BD0     		beq	.L175
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1319              		.loc 1 198 5 discriminator 61 view .LVU277
+ 1320 079c 02F58062 		add	r2, r2, #1024
+ 1321 07a0 9342     		cmp	r3, r2
+ 1322 07a2 2AD0     		beq	.L176
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 34
+
+
+ 1323              		.loc 1 198 5 discriminator 63 view .LVU278
+ 1324 07a4 A2F56872 		sub	r2, r2, #928
+ 1325 07a8 9342     		cmp	r3, r2
+ 1326 07aa 29D0     		beq	.L177
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1327              		.loc 1 198 5 discriminator 65 view .LVU279
+ 1328 07ac 02F58062 		add	r2, r2, #1024
+ 1329 07b0 9342     		cmp	r3, r2
+ 1330 07b2 28D0     		beq	.L178
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1331              		.loc 1 198 5 discriminator 67 view .LVU280
+ 1332 07b4 A2F58962 		sub	r2, r2, #1096
+ 1333 07b8 9342     		cmp	r3, r2
+ 1334 07ba 27D0     		beq	.L179
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1335              		.loc 1 198 5 discriminator 69 view .LVU281
+ 1336 07bc 02F58062 		add	r2, r2, #1024
+ 1337 07c0 9342     		cmp	r3, r2
+ 1338 07c2 26D0     		beq	.L180
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1339              		.loc 1 198 5 discriminator 71 view .LVU282
+ 1340 07c4 A2F56872 		sub	r2, r2, #928
+ 1341 07c8 9342     		cmp	r3, r2
+ 1342 07ca 25D0     		beq	.L181
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1343              		.loc 1 198 5 discriminator 73 view .LVU283
+ 1344 07cc 02F58062 		add	r2, r2, #1024
+ 1345 07d0 9342     		cmp	r3, r2
+ 1346 07d2 02D0     		beq	.L316
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1347              		.loc 1 198 5 view .LVU284
+ 1348 07d4 4FF00073 		mov	r3, #33554432
+ 1349 07d8 03E0     		b	.L40
+ 1350              	.L316:
+ 1351 07da 4FF40023 		mov	r3, #524288
+ 1352 07de 00E0     		b	.L40
+ 1353              	.L171:
+ 1354 07e0 0823     		movs	r3, #8
+ 1355              	.L40:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1356              		.loc 1 198 5 discriminator 100 view .LVU285
+ 1357 07e2 3B4A     		ldr	r2, .L331+8
+ 1358 07e4 9360     		str	r3, [r2, #8]
+ 1359 07e6 64E7     		b	.L38
+ 1360              	.L172:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1361              		.loc 1 198 5 view .LVU286
+ 1362 07e8 0823     		movs	r3, #8
+ 1363 07ea FAE7     		b	.L40
+ 1364              	.L173:
+ 1365 07ec 0823     		movs	r3, #8
+ 1366 07ee F8E7     		b	.L40
+ 1367              	.L174:
+ 1368 07f0 0823     		movs	r3, #8
+ 1369 07f2 F6E7     		b	.L40
+ 1370              	.L175:
+ 1371 07f4 4FF40073 		mov	r3, #512
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 35
+
+
+ 1372 07f8 F3E7     		b	.L40
+ 1373              	.L176:
+ 1374 07fa 4FF40073 		mov	r3, #512
+ 1375 07fe F0E7     		b	.L40
+ 1376              	.L177:
+ 1377 0800 4FF40073 		mov	r3, #512
+ 1378 0804 EDE7     		b	.L40
+ 1379              	.L178:
+ 1380 0806 4FF40073 		mov	r3, #512
+ 1381 080a EAE7     		b	.L40
+ 1382              	.L179:
+ 1383 080c 4FF40023 		mov	r3, #524288
+ 1384 0810 E7E7     		b	.L40
+ 1385              	.L180:
+ 1386 0812 4FF40023 		mov	r3, #524288
+ 1387 0816 E4E7     		b	.L40
+ 1388              	.L181:
+ 1389 0818 4FF40023 		mov	r3, #524288
+ 1390 081c E1E7     		b	.L40
+ 1391              	.L39:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1392              		.loc 1 198 5 discriminator 52 view .LVU287
+ 1393 081e 2F4A     		ldr	r2, .L331+20
+ 1394 0820 9342     		cmp	r3, r2
+ 1395 0822 60D9     		bls	.L41
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1396              		.loc 1 198 5 discriminator 101 view .LVU288
+ 1397 0824 483A     		subs	r2, r2, #72
+ 1398 0826 9342     		cmp	r3, r2
+ 1399 0828 31D0     		beq	.L183
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1400              		.loc 1 198 5 discriminator 103 view .LVU289
+ 1401 082a 02F58062 		add	r2, r2, #1024
+ 1402 082e 9342     		cmp	r3, r2
+ 1403 0830 31D0     		beq	.L184
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1404              		.loc 1 198 5 discriminator 105 view .LVU290
+ 1405 0832 A2F56872 		sub	r2, r2, #928
+ 1406 0836 9342     		cmp	r3, r2
+ 1407 0838 2FD0     		beq	.L185
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1408              		.loc 1 198 5 discriminator 107 view .LVU291
+ 1409 083a 02F58062 		add	r2, r2, #1024
+ 1410 083e 9342     		cmp	r3, r2
+ 1411 0840 2DD0     		beq	.L186
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1412              		.loc 1 198 5 discriminator 109 view .LVU292
+ 1413 0842 A2F58962 		sub	r2, r2, #1096
+ 1414 0846 9342     		cmp	r3, r2
+ 1415 0848 2BD0     		beq	.L187
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1416              		.loc 1 198 5 discriminator 111 view .LVU293
+ 1417 084a 02F58062 		add	r2, r2, #1024
+ 1418 084e 9342     		cmp	r3, r2
+ 1419 0850 2AD0     		beq	.L188
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1420              		.loc 1 198 5 discriminator 113 view .LVU294
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 36
+
+
+ 1421 0852 A2F56872 		sub	r2, r2, #928
+ 1422 0856 9342     		cmp	r3, r2
+ 1423 0858 29D0     		beq	.L189
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1424              		.loc 1 198 5 discriminator 115 view .LVU295
+ 1425 085a 02F58062 		add	r2, r2, #1024
+ 1426 085e 9342     		cmp	r3, r2
+ 1427 0860 28D0     		beq	.L190
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1428              		.loc 1 198 5 discriminator 117 view .LVU296
+ 1429 0862 A2F58962 		sub	r2, r2, #1096
+ 1430 0866 9342     		cmp	r3, r2
+ 1431 0868 27D0     		beq	.L191
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1432              		.loc 1 198 5 discriminator 119 view .LVU297
+ 1433 086a 02F58062 		add	r2, r2, #1024
+ 1434 086e 9342     		cmp	r3, r2
+ 1435 0870 26D0     		beq	.L192
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1436              		.loc 1 198 5 discriminator 121 view .LVU298
+ 1437 0872 A2F56872 		sub	r2, r2, #928
+ 1438 0876 9342     		cmp	r3, r2
+ 1439 0878 32D0     		beq	.L193
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1440              		.loc 1 198 5 discriminator 123 view .LVU299
+ 1441 087a 02F58062 		add	r2, r2, #1024
+ 1442 087e 9342     		cmp	r3, r2
+ 1443 0880 02D0     		beq	.L317
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1444              		.loc 1 198 5 view .LVU300
+ 1445 0882 4FF00073 		mov	r3, #33554432
+ 1446 0886 03E0     		b	.L42
+ 1447              	.L317:
+ 1448 0888 4FF40023 		mov	r3, #524288
+ 1449 088c 00E0     		b	.L42
+ 1450              	.L183:
+ 1451 088e 0823     		movs	r3, #8
+ 1452              	.L42:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1453              		.loc 1 198 5 discriminator 150 view .LVU301
+ 1454 0890 0E4A     		ldr	r2, .L331+4
+ 1455 0892 D360     		str	r3, [r2, #12]
+ 1456 0894 0DE7     		b	.L38
+ 1457              	.L184:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1458              		.loc 1 198 5 view .LVU302
+ 1459 0896 0823     		movs	r3, #8
+ 1460 0898 FAE7     		b	.L42
+ 1461              	.L185:
+ 1462 089a 0823     		movs	r3, #8
+ 1463 089c F8E7     		b	.L42
+ 1464              	.L186:
+ 1465 089e 0823     		movs	r3, #8
+ 1466 08a0 F6E7     		b	.L42
+ 1467              	.L187:
+ 1468 08a2 4FF40073 		mov	r3, #512
+ 1469 08a6 F3E7     		b	.L42
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 37
+
+
+ 1470              	.L188:
+ 1471 08a8 4FF40073 		mov	r3, #512
+ 1472 08ac F0E7     		b	.L42
+ 1473              	.L189:
+ 1474 08ae 4FF40073 		mov	r3, #512
+ 1475 08b2 EDE7     		b	.L42
+ 1476              	.L190:
+ 1477 08b4 4FF40073 		mov	r3, #512
+ 1478 08b8 EAE7     		b	.L42
+ 1479              	.L191:
+ 1480 08ba 4FF40023 		mov	r3, #524288
+ 1481 08be E7E7     		b	.L42
+ 1482              	.L192:
+ 1483 08c0 4FF40023 		mov	r3, #524288
+ 1484 08c4 E4E7     		b	.L42
+ 1485              	.L332:
+ 1486 08c6 00BF     		.align	2
+ 1487              	.L331:
+ 1488 08c8 10600240 		.word	1073897488
+ 1489 08cc 00600240 		.word	1073897472
+ 1490 08d0 00640240 		.word	1073898496
+ 1491 08d4 58640240 		.word	1073898584
+ 1492 08d8 B8600240 		.word	1073897656
+ 1493 08dc 58600240 		.word	1073897560
+ 1494              	.L193:
+ 1495 08e0 4FF40023 		mov	r3, #524288
+ 1496 08e4 D4E7     		b	.L42
+ 1497              	.L41:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1498              		.loc 1 198 5 discriminator 102 view .LVU303
+ 1499 08e6 B24A     		ldr	r2, .L333
+ 1500 08e8 9342     		cmp	r3, r2
+ 1501 08ea 31D0     		beq	.L195
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1502              		.loc 1 198 5 discriminator 151 view .LVU304
+ 1503 08ec 02F58062 		add	r2, r2, #1024
+ 1504 08f0 9342     		cmp	r3, r2
+ 1505 08f2 31D0     		beq	.L196
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1506              		.loc 1 198 5 discriminator 153 view .LVU305
+ 1507 08f4 A2F56872 		sub	r2, r2, #928
+ 1508 08f8 9342     		cmp	r3, r2
+ 1509 08fa 2FD0     		beq	.L197
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1510              		.loc 1 198 5 discriminator 155 view .LVU306
+ 1511 08fc 02F58062 		add	r2, r2, #1024
+ 1512 0900 9342     		cmp	r3, r2
+ 1513 0902 2DD0     		beq	.L198
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1514              		.loc 1 198 5 discriminator 157 view .LVU307
+ 1515 0904 A2F58962 		sub	r2, r2, #1096
+ 1516 0908 9342     		cmp	r3, r2
+ 1517 090a 2BD0     		beq	.L199
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1518              		.loc 1 198 5 discriminator 159 view .LVU308
+ 1519 090c 02F58062 		add	r2, r2, #1024
+ 1520 0910 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 38
+
+
+ 1521 0912 2AD0     		beq	.L200
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1522              		.loc 1 198 5 discriminator 161 view .LVU309
+ 1523 0914 A2F56872 		sub	r2, r2, #928
+ 1524 0918 9342     		cmp	r3, r2
+ 1525 091a 29D0     		beq	.L201
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1526              		.loc 1 198 5 discriminator 163 view .LVU310
+ 1527 091c 02F58062 		add	r2, r2, #1024
+ 1528 0920 9342     		cmp	r3, r2
+ 1529 0922 28D0     		beq	.L202
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1530              		.loc 1 198 5 discriminator 165 view .LVU311
+ 1531 0924 A2F58962 		sub	r2, r2, #1096
+ 1532 0928 9342     		cmp	r3, r2
+ 1533 092a 27D0     		beq	.L203
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1534              		.loc 1 198 5 discriminator 167 view .LVU312
+ 1535 092c 02F58062 		add	r2, r2, #1024
+ 1536 0930 9342     		cmp	r3, r2
+ 1537 0932 26D0     		beq	.L204
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1538              		.loc 1 198 5 discriminator 169 view .LVU313
+ 1539 0934 A2F56872 		sub	r2, r2, #928
+ 1540 0938 9342     		cmp	r3, r2
+ 1541 093a 25D0     		beq	.L205
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1542              		.loc 1 198 5 discriminator 171 view .LVU314
+ 1543 093c 02F58062 		add	r2, r2, #1024
+ 1544 0940 9342     		cmp	r3, r2
+ 1545 0942 02D0     		beq	.L318
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1546              		.loc 1 198 5 view .LVU315
+ 1547 0944 4FF00073 		mov	r3, #33554432
+ 1548 0948 03E0     		b	.L43
+ 1549              	.L318:
+ 1550 094a 4FF40023 		mov	r3, #524288
+ 1551 094e 00E0     		b	.L43
+ 1552              	.L195:
+ 1553 0950 0823     		movs	r3, #8
+ 1554              	.L43:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1555              		.loc 1 198 5 discriminator 198 view .LVU316
+ 1556 0952 984A     		ldr	r2, .L333+4
+ 1557 0954 9360     		str	r3, [r2, #8]
+ 1558 0956 ACE6     		b	.L38
+ 1559              	.L196:
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+ 1560              		.loc 1 198 5 view .LVU317
+ 1561 0958 0823     		movs	r3, #8
+ 1562 095a FAE7     		b	.L43
+ 1563              	.L197:
+ 1564 095c 0823     		movs	r3, #8
+ 1565 095e F8E7     		b	.L43
+ 1566              	.L198:
+ 1567 0960 0823     		movs	r3, #8
+ 1568 0962 F6E7     		b	.L43
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 39
+
+
+ 1569              	.L199:
+ 1570 0964 4FF40073 		mov	r3, #512
+ 1571 0968 F3E7     		b	.L43
+ 1572              	.L200:
+ 1573 096a 4FF40073 		mov	r3, #512
+ 1574 096e F0E7     		b	.L43
+ 1575              	.L201:
+ 1576 0970 4FF40073 		mov	r3, #512
+ 1577 0974 EDE7     		b	.L43
+ 1578              	.L202:
+ 1579 0976 4FF40073 		mov	r3, #512
+ 1580 097a EAE7     		b	.L43
+ 1581              	.L203:
+ 1582 097c 4FF40023 		mov	r3, #524288
+ 1583 0980 E7E7     		b	.L43
+ 1584              	.L204:
+ 1585 0982 4FF40023 		mov	r3, #524288
+ 1586 0986 E4E7     		b	.L43
+ 1587              	.L205:
+ 1588 0988 4FF40023 		mov	r3, #524288
+ 1589 098c E1E7     		b	.L43
+ 1590              	.L315:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1591              		.loc 1 199 5 view .LVU318
+ 1592 098e 4FF48022 		mov	r2, #262144
+ 1593 0992 00E0     		b	.L45
+ 1594              	.L207:
+ 1595 0994 0422     		movs	r2, #4
+ 1596              	.L45:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1597              		.loc 1 199 5 discriminator 50 view .LVU319
+ 1598 0996 884B     		ldr	r3, .L333+8
+ 1599 0998 DA60     		str	r2, [r3, #12]
+ 1600              	.L46:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1601              		.loc 1 200 5 is_stmt 1 view .LVU320
+ 1602 099a 2368     		ldr	r3, [r4]
+ 1603 099c 874A     		ldr	r2, .L333+12
+ 1604 099e 9342     		cmp	r3, r2
+ 1605 09a0 40F2A181 		bls	.L52
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1606              		.loc 1 200 5 is_stmt 0 discriminator 1 view .LVU321
+ 1607 09a4 A2F58962 		sub	r2, r2, #1096
+ 1608 09a8 9342     		cmp	r3, r2
+ 1609 09aa 00F06781 		beq	.L255
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1610              		.loc 1 200 5 discriminator 3 view .LVU322
+ 1611 09ae 02F58062 		add	r2, r2, #1024
+ 1612 09b2 9342     		cmp	r3, r2
+ 1613 09b4 00F08081 		beq	.L256
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1614              		.loc 1 200 5 discriminator 5 view .LVU323
+ 1615 09b8 A2F56872 		sub	r2, r2, #928
+ 1616 09bc 9342     		cmp	r3, r2
+ 1617 09be 00F07D81 		beq	.L257
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1618              		.loc 1 200 5 discriminator 7 view .LVU324
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 40
+
+
+ 1619 09c2 02F58062 		add	r2, r2, #1024
+ 1620 09c6 9342     		cmp	r3, r2
+ 1621 09c8 00F07A81 		beq	.L258
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1622              		.loc 1 200 5 discriminator 9 view .LVU325
+ 1623 09cc A2F58962 		sub	r2, r2, #1096
+ 1624 09d0 9342     		cmp	r3, r2
+ 1625 09d2 00F07781 		beq	.L259
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1626              		.loc 1 200 5 discriminator 11 view .LVU326
+ 1627 09d6 02F58062 		add	r2, r2, #1024
+ 1628 09da 9342     		cmp	r3, r2
+ 1629 09dc 00F07481 		beq	.L260
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1630              		.loc 1 200 5 discriminator 13 view .LVU327
+ 1631 09e0 A2F56872 		sub	r2, r2, #928
+ 1632 09e4 9342     		cmp	r3, r2
+ 1633 09e6 00F07181 		beq	.L261
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1634              		.loc 1 200 5 discriminator 15 view .LVU328
+ 1635 09ea 02F58062 		add	r2, r2, #1024
+ 1636 09ee 9342     		cmp	r3, r2
+ 1637 09f0 00F06E81 		beq	.L262
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1638              		.loc 1 200 5 discriminator 17 view .LVU329
+ 1639 09f4 A2F58962 		sub	r2, r2, #1096
+ 1640 09f8 9342     		cmp	r3, r2
+ 1641 09fa 00F06B81 		beq	.L263
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1642              		.loc 1 200 5 discriminator 19 view .LVU330
+ 1643 09fe 02F58062 		add	r2, r2, #1024
+ 1644 0a02 9342     		cmp	r3, r2
+ 1645 0a04 00F06981 		beq	.L264
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1646              		.loc 1 200 5 discriminator 21 view .LVU331
+ 1647 0a08 A2F56872 		sub	r2, r2, #928
+ 1648 0a0c 9342     		cmp	r3, r2
+ 1649 0a0e 00F06781 		beq	.L265
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1650              		.loc 1 200 5 discriminator 23 view .LVU332
+ 1651 0a12 02F58062 		add	r2, r2, #1024
+ 1652 0a16 9342     		cmp	r3, r2
+ 1653 0a18 00F02D81 		beq	.L319
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1654              		.loc 1 200 5 view .LVU333
+ 1655 0a1c 4FF48002 		mov	r2, #4194304
+ 1656 0a20 2DE1     		b	.L53
+ 1657              	.L208:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1658              		.loc 1 199 5 view .LVU334
+ 1659 0a22 0422     		movs	r2, #4
+ 1660 0a24 B7E7     		b	.L45
+ 1661              	.L209:
+ 1662 0a26 0422     		movs	r2, #4
+ 1663 0a28 B5E7     		b	.L45
+ 1664              	.L210:
+ 1665 0a2a 0422     		movs	r2, #4
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 41
+
+
+ 1666 0a2c B3E7     		b	.L45
+ 1667              	.L211:
+ 1668 0a2e 4FF48072 		mov	r2, #256
+ 1669 0a32 B0E7     		b	.L45
+ 1670              	.L212:
+ 1671 0a34 4FF48072 		mov	r2, #256
+ 1672 0a38 ADE7     		b	.L45
+ 1673              	.L213:
+ 1674 0a3a 4FF48072 		mov	r2, #256
+ 1675 0a3e AAE7     		b	.L45
+ 1676              	.L214:
+ 1677 0a40 4FF48072 		mov	r2, #256
+ 1678 0a44 A7E7     		b	.L45
+ 1679              	.L215:
+ 1680 0a46 4FF48022 		mov	r2, #262144
+ 1681 0a4a A4E7     		b	.L45
+ 1682              	.L216:
+ 1683 0a4c 4FF48022 		mov	r2, #262144
+ 1684 0a50 A1E7     		b	.L45
+ 1685              	.L217:
+ 1686 0a52 4FF48022 		mov	r2, #262144
+ 1687 0a56 9EE7     		b	.L45
+ 1688              	.L44:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1689              		.loc 1 199 5 discriminator 2 view .LVU335
+ 1690 0a58 594A     		ldr	r2, .L333+16
+ 1691 0a5a 9342     		cmp	r3, r2
+ 1692 0a5c 53D9     		bls	.L47
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1693              		.loc 1 199 5 discriminator 51 view .LVU336
+ 1694 0a5e A83A     		subs	r2, r2, #168
+ 1695 0a60 9342     		cmp	r3, r2
+ 1696 0a62 31D0     		beq	.L219
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1697              		.loc 1 199 5 discriminator 53 view .LVU337
+ 1698 0a64 02F58062 		add	r2, r2, #1024
+ 1699 0a68 9342     		cmp	r3, r2
+ 1700 0a6a 31D0     		beq	.L220
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1701              		.loc 1 199 5 discriminator 55 view .LVU338
+ 1702 0a6c A2F56872 		sub	r2, r2, #928
+ 1703 0a70 9342     		cmp	r3, r2
+ 1704 0a72 2FD0     		beq	.L221
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1705              		.loc 1 199 5 discriminator 57 view .LVU339
+ 1706 0a74 02F58062 		add	r2, r2, #1024
+ 1707 0a78 9342     		cmp	r3, r2
+ 1708 0a7a 2DD0     		beq	.L222
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1709              		.loc 1 199 5 discriminator 59 view .LVU340
+ 1710 0a7c A2F58962 		sub	r2, r2, #1096
+ 1711 0a80 9342     		cmp	r3, r2
+ 1712 0a82 2BD0     		beq	.L223
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1713              		.loc 1 199 5 discriminator 61 view .LVU341
+ 1714 0a84 02F58062 		add	r2, r2, #1024
+ 1715 0a88 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 42
+
+
+ 1716 0a8a 2AD0     		beq	.L224
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1717              		.loc 1 199 5 discriminator 63 view .LVU342
+ 1718 0a8c A2F56872 		sub	r2, r2, #928
+ 1719 0a90 9342     		cmp	r3, r2
+ 1720 0a92 29D0     		beq	.L225
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1721              		.loc 1 199 5 discriminator 65 view .LVU343
+ 1722 0a94 02F58062 		add	r2, r2, #1024
+ 1723 0a98 9342     		cmp	r3, r2
+ 1724 0a9a 28D0     		beq	.L226
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1725              		.loc 1 199 5 discriminator 67 view .LVU344
+ 1726 0a9c A2F58962 		sub	r2, r2, #1096
+ 1727 0aa0 9342     		cmp	r3, r2
+ 1728 0aa2 27D0     		beq	.L227
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1729              		.loc 1 199 5 discriminator 69 view .LVU345
+ 1730 0aa4 02F58062 		add	r2, r2, #1024
+ 1731 0aa8 9342     		cmp	r3, r2
+ 1732 0aaa 26D0     		beq	.L228
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1733              		.loc 1 199 5 discriminator 71 view .LVU346
+ 1734 0aac A2F56872 		sub	r2, r2, #928
+ 1735 0ab0 9342     		cmp	r3, r2
+ 1736 0ab2 25D0     		beq	.L229
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1737              		.loc 1 199 5 discriminator 73 view .LVU347
+ 1738 0ab4 02F58062 		add	r2, r2, #1024
+ 1739 0ab8 9342     		cmp	r3, r2
+ 1740 0aba 02D0     		beq	.L320
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1741              		.loc 1 199 5 view .LVU348
+ 1742 0abc 4FF08073 		mov	r3, #16777216
+ 1743 0ac0 03E0     		b	.L48
+ 1744              	.L320:
+ 1745 0ac2 4FF48023 		mov	r3, #262144
+ 1746 0ac6 00E0     		b	.L48
+ 1747              	.L219:
+ 1748 0ac8 0423     		movs	r3, #4
+ 1749              	.L48:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1750              		.loc 1 199 5 discriminator 100 view .LVU349
+ 1751 0aca 3B4A     		ldr	r2, .L333+8
+ 1752 0acc 9360     		str	r3, [r2, #8]
+ 1753 0ace 64E7     		b	.L46
+ 1754              	.L220:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1755              		.loc 1 199 5 view .LVU350
+ 1756 0ad0 0423     		movs	r3, #4
+ 1757 0ad2 FAE7     		b	.L48
+ 1758              	.L221:
+ 1759 0ad4 0423     		movs	r3, #4
+ 1760 0ad6 F8E7     		b	.L48
+ 1761              	.L222:
+ 1762 0ad8 0423     		movs	r3, #4
+ 1763 0ada F6E7     		b	.L48
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 43
+
+
+ 1764              	.L223:
+ 1765 0adc 4FF48073 		mov	r3, #256
+ 1766 0ae0 F3E7     		b	.L48
+ 1767              	.L224:
+ 1768 0ae2 4FF48073 		mov	r3, #256
+ 1769 0ae6 F0E7     		b	.L48
+ 1770              	.L225:
+ 1771 0ae8 4FF48073 		mov	r3, #256
+ 1772 0aec EDE7     		b	.L48
+ 1773              	.L226:
+ 1774 0aee 4FF48073 		mov	r3, #256
+ 1775 0af2 EAE7     		b	.L48
+ 1776              	.L227:
+ 1777 0af4 4FF48023 		mov	r3, #262144
+ 1778 0af8 E7E7     		b	.L48
+ 1779              	.L228:
+ 1780 0afa 4FF48023 		mov	r3, #262144
+ 1781 0afe E4E7     		b	.L48
+ 1782              	.L229:
+ 1783 0b00 4FF48023 		mov	r3, #262144
+ 1784 0b04 E1E7     		b	.L48
+ 1785              	.L47:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1786              		.loc 1 199 5 discriminator 52 view .LVU351
+ 1787 0b06 2F4A     		ldr	r2, .L333+20
+ 1788 0b08 9342     		cmp	r3, r2
+ 1789 0b0a 60D9     		bls	.L49
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1790              		.loc 1 199 5 discriminator 101 view .LVU352
+ 1791 0b0c 483A     		subs	r2, r2, #72
+ 1792 0b0e 9342     		cmp	r3, r2
+ 1793 0b10 31D0     		beq	.L231
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1794              		.loc 1 199 5 discriminator 103 view .LVU353
+ 1795 0b12 02F58062 		add	r2, r2, #1024
+ 1796 0b16 9342     		cmp	r3, r2
+ 1797 0b18 31D0     		beq	.L232
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1798              		.loc 1 199 5 discriminator 105 view .LVU354
+ 1799 0b1a A2F56872 		sub	r2, r2, #928
+ 1800 0b1e 9342     		cmp	r3, r2
+ 1801 0b20 2FD0     		beq	.L233
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1802              		.loc 1 199 5 discriminator 107 view .LVU355
+ 1803 0b22 02F58062 		add	r2, r2, #1024
+ 1804 0b26 9342     		cmp	r3, r2
+ 1805 0b28 2DD0     		beq	.L234
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1806              		.loc 1 199 5 discriminator 109 view .LVU356
+ 1807 0b2a A2F58962 		sub	r2, r2, #1096
+ 1808 0b2e 9342     		cmp	r3, r2
+ 1809 0b30 2BD0     		beq	.L235
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1810              		.loc 1 199 5 discriminator 111 view .LVU357
+ 1811 0b32 02F58062 		add	r2, r2, #1024
+ 1812 0b36 9342     		cmp	r3, r2
+ 1813 0b38 2AD0     		beq	.L236
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 44
+
+
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1814              		.loc 1 199 5 discriminator 113 view .LVU358
+ 1815 0b3a A2F56872 		sub	r2, r2, #928
+ 1816 0b3e 9342     		cmp	r3, r2
+ 1817 0b40 29D0     		beq	.L237
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1818              		.loc 1 199 5 discriminator 115 view .LVU359
+ 1819 0b42 02F58062 		add	r2, r2, #1024
+ 1820 0b46 9342     		cmp	r3, r2
+ 1821 0b48 28D0     		beq	.L238
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1822              		.loc 1 199 5 discriminator 117 view .LVU360
+ 1823 0b4a A2F58962 		sub	r2, r2, #1096
+ 1824 0b4e 9342     		cmp	r3, r2
+ 1825 0b50 27D0     		beq	.L239
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1826              		.loc 1 199 5 discriminator 119 view .LVU361
+ 1827 0b52 02F58062 		add	r2, r2, #1024
+ 1828 0b56 9342     		cmp	r3, r2
+ 1829 0b58 26D0     		beq	.L240
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1830              		.loc 1 199 5 discriminator 121 view .LVU362
+ 1831 0b5a A2F56872 		sub	r2, r2, #928
+ 1832 0b5e 9342     		cmp	r3, r2
+ 1833 0b60 32D0     		beq	.L241
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1834              		.loc 1 199 5 discriminator 123 view .LVU363
+ 1835 0b62 02F58062 		add	r2, r2, #1024
+ 1836 0b66 9342     		cmp	r3, r2
+ 1837 0b68 02D0     		beq	.L321
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1838              		.loc 1 199 5 view .LVU364
+ 1839 0b6a 4FF08073 		mov	r3, #16777216
+ 1840 0b6e 03E0     		b	.L50
+ 1841              	.L321:
+ 1842 0b70 4FF48023 		mov	r3, #262144
+ 1843 0b74 00E0     		b	.L50
+ 1844              	.L231:
+ 1845 0b76 0423     		movs	r3, #4
+ 1846              	.L50:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1847              		.loc 1 199 5 discriminator 150 view .LVU365
+ 1848 0b78 0E4A     		ldr	r2, .L333+4
+ 1849 0b7a D360     		str	r3, [r2, #12]
+ 1850 0b7c 0DE7     		b	.L46
+ 1851              	.L232:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1852              		.loc 1 199 5 view .LVU366
+ 1853 0b7e 0423     		movs	r3, #4
+ 1854 0b80 FAE7     		b	.L50
+ 1855              	.L233:
+ 1856 0b82 0423     		movs	r3, #4
+ 1857 0b84 F8E7     		b	.L50
+ 1858              	.L234:
+ 1859 0b86 0423     		movs	r3, #4
+ 1860 0b88 F6E7     		b	.L50
+ 1861              	.L235:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 45
+
+
+ 1862 0b8a 4FF48073 		mov	r3, #256
+ 1863 0b8e F3E7     		b	.L50
+ 1864              	.L236:
+ 1865 0b90 4FF48073 		mov	r3, #256
+ 1866 0b94 F0E7     		b	.L50
+ 1867              	.L237:
+ 1868 0b96 4FF48073 		mov	r3, #256
+ 1869 0b9a EDE7     		b	.L50
+ 1870              	.L238:
+ 1871 0b9c 4FF48073 		mov	r3, #256
+ 1872 0ba0 EAE7     		b	.L50
+ 1873              	.L239:
+ 1874 0ba2 4FF48023 		mov	r3, #262144
+ 1875 0ba6 E7E7     		b	.L50
+ 1876              	.L240:
+ 1877 0ba8 4FF48023 		mov	r3, #262144
+ 1878 0bac E4E7     		b	.L50
+ 1879              	.L334:
+ 1880 0bae 00BF     		.align	2
+ 1881              	.L333:
+ 1882 0bb0 10600240 		.word	1073897488
+ 1883 0bb4 00600240 		.word	1073897472
+ 1884 0bb8 00640240 		.word	1073898496
+ 1885 0bbc 58640240 		.word	1073898584
+ 1886 0bc0 B8600240 		.word	1073897656
+ 1887 0bc4 58600240 		.word	1073897560
+ 1888              	.L241:
+ 1889 0bc8 4FF48023 		mov	r3, #262144
+ 1890 0bcc D4E7     		b	.L50
+ 1891              	.L49:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1892              		.loc 1 199 5 discriminator 102 view .LVU367
+ 1893 0bce 994A     		ldr	r2, .L335
+ 1894 0bd0 9342     		cmp	r3, r2
+ 1895 0bd2 31D0     		beq	.L243
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1896              		.loc 1 199 5 discriminator 151 view .LVU368
+ 1897 0bd4 02F58062 		add	r2, r2, #1024
+ 1898 0bd8 9342     		cmp	r3, r2
+ 1899 0bda 31D0     		beq	.L244
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1900              		.loc 1 199 5 discriminator 153 view .LVU369
+ 1901 0bdc A2F56872 		sub	r2, r2, #928
+ 1902 0be0 9342     		cmp	r3, r2
+ 1903 0be2 2FD0     		beq	.L245
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1904              		.loc 1 199 5 discriminator 155 view .LVU370
+ 1905 0be4 02F58062 		add	r2, r2, #1024
+ 1906 0be8 9342     		cmp	r3, r2
+ 1907 0bea 2DD0     		beq	.L246
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1908              		.loc 1 199 5 discriminator 157 view .LVU371
+ 1909 0bec A2F58962 		sub	r2, r2, #1096
+ 1910 0bf0 9342     		cmp	r3, r2
+ 1911 0bf2 2BD0     		beq	.L247
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1912              		.loc 1 199 5 discriminator 159 view .LVU372
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 46
+
+
+ 1913 0bf4 02F58062 		add	r2, r2, #1024
+ 1914 0bf8 9342     		cmp	r3, r2
+ 1915 0bfa 2AD0     		beq	.L248
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1916              		.loc 1 199 5 discriminator 161 view .LVU373
+ 1917 0bfc A2F56872 		sub	r2, r2, #928
+ 1918 0c00 9342     		cmp	r3, r2
+ 1919 0c02 29D0     		beq	.L249
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1920              		.loc 1 199 5 discriminator 163 view .LVU374
+ 1921 0c04 02F58062 		add	r2, r2, #1024
+ 1922 0c08 9342     		cmp	r3, r2
+ 1923 0c0a 28D0     		beq	.L250
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1924              		.loc 1 199 5 discriminator 165 view .LVU375
+ 1925 0c0c A2F58962 		sub	r2, r2, #1096
+ 1926 0c10 9342     		cmp	r3, r2
+ 1927 0c12 27D0     		beq	.L251
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1928              		.loc 1 199 5 discriminator 167 view .LVU376
+ 1929 0c14 02F58062 		add	r2, r2, #1024
+ 1930 0c18 9342     		cmp	r3, r2
+ 1931 0c1a 26D0     		beq	.L252
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1932              		.loc 1 199 5 discriminator 169 view .LVU377
+ 1933 0c1c A2F56872 		sub	r2, r2, #928
+ 1934 0c20 9342     		cmp	r3, r2
+ 1935 0c22 25D0     		beq	.L253
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1936              		.loc 1 199 5 discriminator 171 view .LVU378
+ 1937 0c24 02F58062 		add	r2, r2, #1024
+ 1938 0c28 9342     		cmp	r3, r2
+ 1939 0c2a 02D0     		beq	.L322
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1940              		.loc 1 199 5 view .LVU379
+ 1941 0c2c 4FF08073 		mov	r3, #16777216
+ 1942 0c30 03E0     		b	.L51
+ 1943              	.L322:
+ 1944 0c32 4FF48023 		mov	r3, #262144
+ 1945 0c36 00E0     		b	.L51
+ 1946              	.L243:
+ 1947 0c38 0423     		movs	r3, #4
+ 1948              	.L51:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1949              		.loc 1 199 5 discriminator 198 view .LVU380
+ 1950 0c3a 7F4A     		ldr	r2, .L335+4
+ 1951 0c3c 9360     		str	r3, [r2, #8]
+ 1952 0c3e ACE6     		b	.L46
+ 1953              	.L244:
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+ 1954              		.loc 1 199 5 view .LVU381
+ 1955 0c40 0423     		movs	r3, #4
+ 1956 0c42 FAE7     		b	.L51
+ 1957              	.L245:
+ 1958 0c44 0423     		movs	r3, #4
+ 1959 0c46 F8E7     		b	.L51
+ 1960              	.L246:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 47
+
+
+ 1961 0c48 0423     		movs	r3, #4
+ 1962 0c4a F6E7     		b	.L51
+ 1963              	.L247:
+ 1964 0c4c 4FF48073 		mov	r3, #256
+ 1965 0c50 F3E7     		b	.L51
+ 1966              	.L248:
+ 1967 0c52 4FF48073 		mov	r3, #256
+ 1968 0c56 F0E7     		b	.L51
+ 1969              	.L249:
+ 1970 0c58 4FF48073 		mov	r3, #256
+ 1971 0c5c EDE7     		b	.L51
+ 1972              	.L250:
+ 1973 0c5e 4FF48073 		mov	r3, #256
+ 1974 0c62 EAE7     		b	.L51
+ 1975              	.L251:
+ 1976 0c64 4FF48023 		mov	r3, #262144
+ 1977 0c68 E7E7     		b	.L51
+ 1978              	.L252:
+ 1979 0c6a 4FF48023 		mov	r3, #262144
+ 1980 0c6e E4E7     		b	.L51
+ 1981              	.L253:
+ 1982 0c70 4FF48023 		mov	r3, #262144
+ 1983 0c74 E1E7     		b	.L51
+ 1984              	.L319:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1985              		.loc 1 200 5 view .LVU382
+ 1986 0c76 4FF48032 		mov	r2, #65536
+ 1987 0c7a 00E0     		b	.L53
+ 1988              	.L255:
+ 1989 0c7c 0122     		movs	r2, #1
+ 1990              	.L53:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 1991              		.loc 1 200 5 discriminator 50 view .LVU383
+ 1992 0c7e 6F4B     		ldr	r3, .L335+8
+ 1993 0c80 DA60     		str	r2, [r3, #12]
+ 1994              	.L54:
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->FCR |= DMA_IT_FE;
+ 1995              		.loc 1 203 5 is_stmt 1 view .LVU384
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->FCR |= DMA_IT_FE;
+ 1996              		.loc 1 203 11 is_stmt 0 view .LVU385
+ 1997 0c82 2268     		ldr	r2, [r4]
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->FCR |= DMA_IT_FE;
+ 1998              		.loc 1 203 21 view .LVU386
+ 1999 0c84 1368     		ldr	r3, [r2]
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     hdma->Instance->FCR |= DMA_IT_FE;
+ 2000              		.loc 1 203 25 view .LVU387
+ 2001 0c86 43F01603 		orr	r3, r3, #22
+ 2002 0c8a 1360     		str	r3, [r2]
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 2003              		.loc 1 204 5 is_stmt 1 view .LVU388
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 2004              		.loc 1 204 11 is_stmt 0 view .LVU389
+ 2005 0c8c 2268     		ldr	r2, [r4]
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ 2006              		.loc 1 204 21 view .LVU390
+ 2007 0c8e 5369     		ldr	r3, [r2, #20]
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 48
+
+
+ 2008              		.loc 1 204 25 view .LVU391
+ 2009 0c90 43F08003 		orr	r3, r3, #128
+ 2010 0c94 5361     		str	r3, [r2, #20]
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 2011              		.loc 1 206 5 is_stmt 1 view .LVU392
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 2012              		.loc 1 206 15 is_stmt 0 view .LVU393
+ 2013 0c96 236C     		ldr	r3, [r4, #64]
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 2014              		.loc 1 206 5 view .LVU394
+ 2015 0c98 002B     		cmp	r3, #0
+ 2016 0c9a 00F02581 		beq	.L323
+ 2017              	.L60:
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 2018              		.loc 1 208 7 is_stmt 1 view .LVU395
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 2019              		.loc 1 208 13 is_stmt 0 view .LVU396
+ 2020 0c9e 2268     		ldr	r2, [r4]
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 2021              		.loc 1 208 23 view .LVU397
+ 2022 0ca0 1368     		ldr	r3, [r2]
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     }
+ 2023              		.loc 1 208 27 view .LVU398
+ 2024 0ca2 43F00803 		orr	r3, r3, #8
+ 2025 0ca6 1360     		str	r3, [r2]
+ 2026              	.L61:
+ 212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2027              		.loc 1 212 5 is_stmt 1 view .LVU399
+ 2028 0ca8 2268     		ldr	r2, [r4]
+ 2029 0caa 1368     		ldr	r3, [r2]
+ 2030 0cac 43F00103 		orr	r3, r3, #1
+ 2031 0cb0 1360     		str	r3, [r2]
+ 156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 2032              		.loc 1 156 21 is_stmt 0 view .LVU400
+ 2033 0cb2 0020     		movs	r0, #0
+ 2034 0cb4 FFF7C9B9 		b	.L16
+ 2035              	.L256:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2036              		.loc 1 200 5 view .LVU401
+ 2037 0cb8 0122     		movs	r2, #1
+ 2038 0cba E0E7     		b	.L53
+ 2039              	.L257:
+ 2040 0cbc 0122     		movs	r2, #1
+ 2041 0cbe DEE7     		b	.L53
+ 2042              	.L258:
+ 2043 0cc0 0122     		movs	r2, #1
+ 2044 0cc2 DCE7     		b	.L53
+ 2045              	.L259:
+ 2046 0cc4 4022     		movs	r2, #64
+ 2047 0cc6 DAE7     		b	.L53
+ 2048              	.L260:
+ 2049 0cc8 4022     		movs	r2, #64
+ 2050 0cca D8E7     		b	.L53
+ 2051              	.L261:
+ 2052 0ccc 4022     		movs	r2, #64
+ 2053 0cce D6E7     		b	.L53
+ 2054              	.L262:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 49
+
+
+ 2055 0cd0 4022     		movs	r2, #64
+ 2056 0cd2 D4E7     		b	.L53
+ 2057              	.L263:
+ 2058 0cd4 4FF48032 		mov	r2, #65536
+ 2059 0cd8 D1E7     		b	.L53
+ 2060              	.L264:
+ 2061 0cda 4FF48032 		mov	r2, #65536
+ 2062 0cde CEE7     		b	.L53
+ 2063              	.L265:
+ 2064 0ce0 4FF48032 		mov	r2, #65536
+ 2065 0ce4 CBE7     		b	.L53
+ 2066              	.L52:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2067              		.loc 1 200 5 discriminator 2 view .LVU402
+ 2068 0ce6 564A     		ldr	r2, .L335+12
+ 2069 0ce8 9342     		cmp	r3, r2
+ 2070 0cea 4FD9     		bls	.L55
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2071              		.loc 1 200 5 discriminator 51 view .LVU403
+ 2072 0cec A83A     		subs	r2, r2, #168
+ 2073 0cee 9342     		cmp	r3, r2
+ 2074 0cf0 31D0     		beq	.L267
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2075              		.loc 1 200 5 discriminator 53 view .LVU404
+ 2076 0cf2 02F58062 		add	r2, r2, #1024
+ 2077 0cf6 9342     		cmp	r3, r2
+ 2078 0cf8 31D0     		beq	.L268
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2079              		.loc 1 200 5 discriminator 55 view .LVU405
+ 2080 0cfa A2F56872 		sub	r2, r2, #928
+ 2081 0cfe 9342     		cmp	r3, r2
+ 2082 0d00 2FD0     		beq	.L269
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2083              		.loc 1 200 5 discriminator 57 view .LVU406
+ 2084 0d02 02F58062 		add	r2, r2, #1024
+ 2085 0d06 9342     		cmp	r3, r2
+ 2086 0d08 2DD0     		beq	.L270
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2087              		.loc 1 200 5 discriminator 59 view .LVU407
+ 2088 0d0a A2F58962 		sub	r2, r2, #1096
+ 2089 0d0e 9342     		cmp	r3, r2
+ 2090 0d10 2BD0     		beq	.L271
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2091              		.loc 1 200 5 discriminator 61 view .LVU408
+ 2092 0d12 02F58062 		add	r2, r2, #1024
+ 2093 0d16 9342     		cmp	r3, r2
+ 2094 0d18 29D0     		beq	.L272
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2095              		.loc 1 200 5 discriminator 63 view .LVU409
+ 2096 0d1a A2F56872 		sub	r2, r2, #928
+ 2097 0d1e 9342     		cmp	r3, r2
+ 2098 0d20 27D0     		beq	.L273
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2099              		.loc 1 200 5 discriminator 65 view .LVU410
+ 2100 0d22 02F58062 		add	r2, r2, #1024
+ 2101 0d26 9342     		cmp	r3, r2
+ 2102 0d28 25D0     		beq	.L274
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 50
+
+
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2103              		.loc 1 200 5 discriminator 67 view .LVU411
+ 2104 0d2a A2F58962 		sub	r2, r2, #1096
+ 2105 0d2e 9342     		cmp	r3, r2
+ 2106 0d30 23D0     		beq	.L275
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2107              		.loc 1 200 5 discriminator 69 view .LVU412
+ 2108 0d32 02F58062 		add	r2, r2, #1024
+ 2109 0d36 9342     		cmp	r3, r2
+ 2110 0d38 22D0     		beq	.L276
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2111              		.loc 1 200 5 discriminator 71 view .LVU413
+ 2112 0d3a A2F56872 		sub	r2, r2, #928
+ 2113 0d3e 9342     		cmp	r3, r2
+ 2114 0d40 21D0     		beq	.L277
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2115              		.loc 1 200 5 discriminator 73 view .LVU414
+ 2116 0d42 02F58062 		add	r2, r2, #1024
+ 2117 0d46 9342     		cmp	r3, r2
+ 2118 0d48 02D0     		beq	.L324
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2119              		.loc 1 200 5 view .LVU415
+ 2120 0d4a 4FF48003 		mov	r3, #4194304
+ 2121 0d4e 03E0     		b	.L56
+ 2122              	.L324:
+ 2123 0d50 4FF48033 		mov	r3, #65536
+ 2124 0d54 00E0     		b	.L56
+ 2125              	.L267:
+ 2126 0d56 0123     		movs	r3, #1
+ 2127              	.L56:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2128              		.loc 1 200 5 discriminator 100 view .LVU416
+ 2129 0d58 384A     		ldr	r2, .L335+8
+ 2130 0d5a 9360     		str	r3, [r2, #8]
+ 2131 0d5c 91E7     		b	.L54
+ 2132              	.L268:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2133              		.loc 1 200 5 view .LVU417
+ 2134 0d5e 0123     		movs	r3, #1
+ 2135 0d60 FAE7     		b	.L56
+ 2136              	.L269:
+ 2137 0d62 0123     		movs	r3, #1
+ 2138 0d64 F8E7     		b	.L56
+ 2139              	.L270:
+ 2140 0d66 0123     		movs	r3, #1
+ 2141 0d68 F6E7     		b	.L56
+ 2142              	.L271:
+ 2143 0d6a 4023     		movs	r3, #64
+ 2144 0d6c F4E7     		b	.L56
+ 2145              	.L272:
+ 2146 0d6e 4023     		movs	r3, #64
+ 2147 0d70 F2E7     		b	.L56
+ 2148              	.L273:
+ 2149 0d72 4023     		movs	r3, #64
+ 2150 0d74 F0E7     		b	.L56
+ 2151              	.L274:
+ 2152 0d76 4023     		movs	r3, #64
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 51
+
+
+ 2153 0d78 EEE7     		b	.L56
+ 2154              	.L275:
+ 2155 0d7a 4FF48033 		mov	r3, #65536
+ 2156 0d7e EBE7     		b	.L56
+ 2157              	.L276:
+ 2158 0d80 4FF48033 		mov	r3, #65536
+ 2159 0d84 E8E7     		b	.L56
+ 2160              	.L277:
+ 2161 0d86 4FF48033 		mov	r3, #65536
+ 2162 0d8a E5E7     		b	.L56
+ 2163              	.L55:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2164              		.loc 1 200 5 discriminator 52 view .LVU418
+ 2165 0d8c 2D4A     		ldr	r2, .L335+16
+ 2166 0d8e 9342     		cmp	r3, r2
+ 2167 0d90 5AD9     		bls	.L57
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2168              		.loc 1 200 5 discriminator 101 view .LVU419
+ 2169 0d92 483A     		subs	r2, r2, #72
+ 2170 0d94 9342     		cmp	r3, r2
+ 2171 0d96 31D0     		beq	.L279
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2172              		.loc 1 200 5 discriminator 103 view .LVU420
+ 2173 0d98 02F58062 		add	r2, r2, #1024
+ 2174 0d9c 9342     		cmp	r3, r2
+ 2175 0d9e 31D0     		beq	.L280
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2176              		.loc 1 200 5 discriminator 105 view .LVU421
+ 2177 0da0 A2F56872 		sub	r2, r2, #928
+ 2178 0da4 9342     		cmp	r3, r2
+ 2179 0da6 2FD0     		beq	.L281
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2180              		.loc 1 200 5 discriminator 107 view .LVU422
+ 2181 0da8 02F58062 		add	r2, r2, #1024
+ 2182 0dac 9342     		cmp	r3, r2
+ 2183 0dae 2DD0     		beq	.L282
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2184              		.loc 1 200 5 discriminator 109 view .LVU423
+ 2185 0db0 A2F58962 		sub	r2, r2, #1096
+ 2186 0db4 9342     		cmp	r3, r2
+ 2187 0db6 2BD0     		beq	.L283
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2188              		.loc 1 200 5 discriminator 111 view .LVU424
+ 2189 0db8 02F58062 		add	r2, r2, #1024
+ 2190 0dbc 9342     		cmp	r3, r2
+ 2191 0dbe 29D0     		beq	.L284
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2192              		.loc 1 200 5 discriminator 113 view .LVU425
+ 2193 0dc0 A2F56872 		sub	r2, r2, #928
+ 2194 0dc4 9342     		cmp	r3, r2
+ 2195 0dc6 27D0     		beq	.L285
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2196              		.loc 1 200 5 discriminator 115 view .LVU426
+ 2197 0dc8 02F58062 		add	r2, r2, #1024
+ 2198 0dcc 9342     		cmp	r3, r2
+ 2199 0dce 25D0     		beq	.L286
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 52
+
+
+ 2200              		.loc 1 200 5 discriminator 117 view .LVU427
+ 2201 0dd0 A2F58962 		sub	r2, r2, #1096
+ 2202 0dd4 9342     		cmp	r3, r2
+ 2203 0dd6 23D0     		beq	.L287
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2204              		.loc 1 200 5 discriminator 119 view .LVU428
+ 2205 0dd8 02F58062 		add	r2, r2, #1024
+ 2206 0ddc 9342     		cmp	r3, r2
+ 2207 0dde 22D0     		beq	.L288
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2208              		.loc 1 200 5 discriminator 121 view .LVU429
+ 2209 0de0 A2F56872 		sub	r2, r2, #928
+ 2210 0de4 9342     		cmp	r3, r2
+ 2211 0de6 21D0     		beq	.L289
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2212              		.loc 1 200 5 discriminator 123 view .LVU430
+ 2213 0de8 02F58062 		add	r2, r2, #1024
+ 2214 0dec 9342     		cmp	r3, r2
+ 2215 0dee 02D0     		beq	.L325
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2216              		.loc 1 200 5 view .LVU431
+ 2217 0df0 4FF48003 		mov	r3, #4194304
+ 2218 0df4 03E0     		b	.L58
+ 2219              	.L325:
+ 2220 0df6 4FF48033 		mov	r3, #65536
+ 2221 0dfa 00E0     		b	.L58
+ 2222              	.L279:
+ 2223 0dfc 0123     		movs	r3, #1
+ 2224              	.L58:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2225              		.loc 1 200 5 discriminator 150 view .LVU432
+ 2226 0dfe 0E4A     		ldr	r2, .L335+4
+ 2227 0e00 D360     		str	r3, [r2, #12]
+ 2228 0e02 3EE7     		b	.L54
+ 2229              	.L280:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2230              		.loc 1 200 5 view .LVU433
+ 2231 0e04 0123     		movs	r3, #1
+ 2232 0e06 FAE7     		b	.L58
+ 2233              	.L281:
+ 2234 0e08 0123     		movs	r3, #1
+ 2235 0e0a F8E7     		b	.L58
+ 2236              	.L282:
+ 2237 0e0c 0123     		movs	r3, #1
+ 2238 0e0e F6E7     		b	.L58
+ 2239              	.L283:
+ 2240 0e10 4023     		movs	r3, #64
+ 2241 0e12 F4E7     		b	.L58
+ 2242              	.L284:
+ 2243 0e14 4023     		movs	r3, #64
+ 2244 0e16 F2E7     		b	.L58
+ 2245              	.L285:
+ 2246 0e18 4023     		movs	r3, #64
+ 2247 0e1a F0E7     		b	.L58
+ 2248              	.L286:
+ 2249 0e1c 4023     		movs	r3, #64
+ 2250 0e1e EEE7     		b	.L58
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 53
+
+
+ 2251              	.L287:
+ 2252 0e20 4FF48033 		mov	r3, #65536
+ 2253 0e24 EBE7     		b	.L58
+ 2254              	.L288:
+ 2255 0e26 4FF48033 		mov	r3, #65536
+ 2256 0e2a E8E7     		b	.L58
+ 2257              	.L289:
+ 2258 0e2c 4FF48033 		mov	r3, #65536
+ 2259 0e30 E5E7     		b	.L58
+ 2260              	.L336:
+ 2261 0e32 00BF     		.align	2
+ 2262              	.L335:
+ 2263 0e34 10600240 		.word	1073897488
+ 2264 0e38 00600240 		.word	1073897472
+ 2265 0e3c 00640240 		.word	1073898496
+ 2266 0e40 B8600240 		.word	1073897656
+ 2267 0e44 58600240 		.word	1073897560
+ 2268              	.L57:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2269              		.loc 1 200 5 discriminator 102 view .LVU434
+ 2270 0e48 2B4A     		ldr	r2, .L337
+ 2271 0e4a 9342     		cmp	r3, r2
+ 2272 0e4c 31D0     		beq	.L291
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2273              		.loc 1 200 5 discriminator 151 view .LVU435
+ 2274 0e4e 02F58062 		add	r2, r2, #1024
+ 2275 0e52 9342     		cmp	r3, r2
+ 2276 0e54 31D0     		beq	.L292
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2277              		.loc 1 200 5 discriminator 153 view .LVU436
+ 2278 0e56 A2F56872 		sub	r2, r2, #928
+ 2279 0e5a 9342     		cmp	r3, r2
+ 2280 0e5c 2FD0     		beq	.L293
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2281              		.loc 1 200 5 discriminator 155 view .LVU437
+ 2282 0e5e 02F58062 		add	r2, r2, #1024
+ 2283 0e62 9342     		cmp	r3, r2
+ 2284 0e64 2DD0     		beq	.L294
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2285              		.loc 1 200 5 discriminator 157 view .LVU438
+ 2286 0e66 A2F58962 		sub	r2, r2, #1096
+ 2287 0e6a 9342     		cmp	r3, r2
+ 2288 0e6c 2BD0     		beq	.L295
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2289              		.loc 1 200 5 discriminator 159 view .LVU439
+ 2290 0e6e 02F58062 		add	r2, r2, #1024
+ 2291 0e72 9342     		cmp	r3, r2
+ 2292 0e74 29D0     		beq	.L296
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2293              		.loc 1 200 5 discriminator 161 view .LVU440
+ 2294 0e76 A2F56872 		sub	r2, r2, #928
+ 2295 0e7a 9342     		cmp	r3, r2
+ 2296 0e7c 27D0     		beq	.L297
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2297              		.loc 1 200 5 discriminator 163 view .LVU441
+ 2298 0e7e 02F58062 		add	r2, r2, #1024
+ 2299 0e82 9342     		cmp	r3, r2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 54
+
+
+ 2300 0e84 25D0     		beq	.L298
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2301              		.loc 1 200 5 discriminator 165 view .LVU442
+ 2302 0e86 A2F58962 		sub	r2, r2, #1096
+ 2303 0e8a 9342     		cmp	r3, r2
+ 2304 0e8c 23D0     		beq	.L299
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2305              		.loc 1 200 5 discriminator 167 view .LVU443
+ 2306 0e8e 02F58062 		add	r2, r2, #1024
+ 2307 0e92 9342     		cmp	r3, r2
+ 2308 0e94 22D0     		beq	.L300
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2309              		.loc 1 200 5 discriminator 169 view .LVU444
+ 2310 0e96 A2F56872 		sub	r2, r2, #928
+ 2311 0e9a 9342     		cmp	r3, r2
+ 2312 0e9c 21D0     		beq	.L301
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2313              		.loc 1 200 5 discriminator 171 view .LVU445
+ 2314 0e9e 02F58062 		add	r2, r2, #1024
+ 2315 0ea2 9342     		cmp	r3, r2
+ 2316 0ea4 02D0     		beq	.L326
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2317              		.loc 1 200 5 view .LVU446
+ 2318 0ea6 4FF48003 		mov	r3, #4194304
+ 2319 0eaa 03E0     		b	.L59
+ 2320              	.L326:
+ 2321 0eac 4FF48033 		mov	r3, #65536
+ 2322 0eb0 00E0     		b	.L59
+ 2323              	.L291:
+ 2324 0eb2 0123     		movs	r3, #1
+ 2325              	.L59:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2326              		.loc 1 200 5 discriminator 198 view .LVU447
+ 2327 0eb4 114A     		ldr	r2, .L337+4
+ 2328 0eb6 9360     		str	r3, [r2, #8]
+ 2329 0eb8 E3E6     		b	.L54
+ 2330              	.L292:
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2331              		.loc 1 200 5 view .LVU448
+ 2332 0eba 0123     		movs	r3, #1
+ 2333 0ebc FAE7     		b	.L59
+ 2334              	.L293:
+ 2335 0ebe 0123     		movs	r3, #1
+ 2336 0ec0 F8E7     		b	.L59
+ 2337              	.L294:
+ 2338 0ec2 0123     		movs	r3, #1
+ 2339 0ec4 F6E7     		b	.L59
+ 2340              	.L295:
+ 2341 0ec6 4023     		movs	r3, #64
+ 2342 0ec8 F4E7     		b	.L59
+ 2343              	.L296:
+ 2344 0eca 4023     		movs	r3, #64
+ 2345 0ecc F2E7     		b	.L59
+ 2346              	.L297:
+ 2347 0ece 4023     		movs	r3, #64
+ 2348 0ed0 F0E7     		b	.L59
+ 2349              	.L298:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 55
+
+
+ 2350 0ed2 4023     		movs	r3, #64
+ 2351 0ed4 EEE7     		b	.L59
+ 2352              	.L299:
+ 2353 0ed6 4FF48033 		mov	r3, #65536
+ 2354 0eda EBE7     		b	.L59
+ 2355              	.L300:
+ 2356 0edc 4FF48033 		mov	r3, #65536
+ 2357 0ee0 E8E7     		b	.L59
+ 2358              	.L301:
+ 2359 0ee2 4FF48033 		mov	r3, #65536
+ 2360 0ee6 E5E7     		b	.L59
+ 2361              	.L323:
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 2362              		.loc 1 206 55 discriminator 1 view .LVU449
+ 2363 0ee8 A36C     		ldr	r3, [r4, #72]
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****     {
+ 2364              		.loc 1 206 45 discriminator 1 view .LVU450
+ 2365 0eea 002B     		cmp	r3, #0
+ 2366 0eec 7FF4D7AE 		bne	.L60
+ 2367 0ef0 DAE6     		b	.L61
+ 2368              	.LVL40:
+ 2369              	.L62:
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   
+ 2370              		.loc 1 176 3 view .LVU451
+ 2371 0ef2 0220     		movs	r0, #2
+ 2372 0ef4 FFF7A9B8 		b	.L16
+ 2373              	.L338:
+ 2374              		.align	2
+ 2375              	.L337:
+ 2376 0ef8 10600240 		.word	1073897488
+ 2377 0efc 00600240 		.word	1073897472
+ 2378              		.cfi_endproc
+ 2379              	.LFE236:
+ 2380              		.cantunwind
+ 2381              		.fnend
+ 2383              		.section	.text.HAL_DMAEx_ChangeMemory,"ax",%progbits
+ 2384              		.align	1
+ 2385              		.global	HAL_DMAEx_ChangeMemory
+ 2386              		.syntax unified
+ 2387              		.thumb
+ 2388              		.thumb_func
+ 2390              	HAL_DMAEx_ChangeMemory:
+ 2391              		.fnstart
+ 2392              	.LVL41:
+ 2393              	.LFB237:
+ 240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   if(memory == MEMORY0)
+ 2394              		.loc 1 240 1 is_stmt 1 view -0
+ 2395              		.cfi_startproc
+ 2396              		@ args = 0, pretend = 0, frame = 0
+ 2397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2398              		@ link register save eliminated.
+ 241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   {
+ 2399              		.loc 1 241 3 view .LVU453
+ 2400 0000 1AB9     		cbnz	r2, .L340
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2401              		.loc 1 244 5 view .LVU454
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 56
+
+
+ 2402              		.loc 1 244 11 is_stmt 0 view .LVU455
+ 2403 0002 0368     		ldr	r3, [r0]
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2404              		.loc 1 244 26 view .LVU456
+ 2405 0004 D960     		str	r1, [r3, #12]
+ 2406              	.L341:
+ 252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** }
+ 2407              		.loc 1 252 3 is_stmt 1 view .LVU457
+ 253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2408              		.loc 1 253 1 is_stmt 0 view .LVU458
+ 2409 0006 0020     		movs	r0, #0
+ 2410              	.LVL42:
+ 253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp **** 
+ 2411              		.loc 1 253 1 view .LVU459
+ 2412 0008 7047     		bx	lr
+ 2413              	.LVL43:
+ 2414              	.L340:
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2415              		.loc 1 249 5 is_stmt 1 view .LVU460
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2416              		.loc 1 249 11 is_stmt 0 view .LVU461
+ 2417 000a 0368     		ldr	r3, [r0]
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.cpp ****   }
+ 2418              		.loc 1 249 26 view .LVU462
+ 2419 000c 1961     		str	r1, [r3, #16]
+ 2420 000e FAE7     		b	.L341
+ 2421              		.cfi_endproc
+ 2422              	.LFE237:
+ 2423              		.cantunwind
+ 2424              		.fnend
+ 2426              		.text
+ 2427              	.Letext0:
+ 2428              		.file 2 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 2429              		.file 3 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 2430              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 2431              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 2432              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 2433              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h"
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s 			page 57
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_hal_dma_ex.cpp
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:21     .text._ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:26     .text._ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm:00000000 _ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm
+.ARM.exidx.text._ZL24DMA_MultiBufferSetConfigP19__DMA_HandleTypeDefmmm:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:92     .text.HAL_DMAEx_MultiBufferStart:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:98     .text.HAL_DMAEx_MultiBufferStart:00000000 HAL_DMAEx_MultiBufferStart
+.ARM.exidx.text.HAL_DMAEx_MultiBufferStart:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:208    .text.HAL_DMAEx_MultiBufferStart_IT:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:214    .text.HAL_DMAEx_MultiBufferStart_IT:00000000 HAL_DMAEx_MultiBufferStart_IT
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:700    .text.HAL_DMAEx_MultiBufferStart_IT:00000304 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:707    .text.HAL_DMAEx_MultiBufferStart_IT:00000318 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1094   .text.HAL_DMAEx_MultiBufferStart_IT:000005e0 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1101   .text.HAL_DMAEx_MultiBufferStart_IT:000005f8 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1488   .text.HAL_DMAEx_MultiBufferStart_IT:000008c8 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1495   .text.HAL_DMAEx_MultiBufferStart_IT:000008e0 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1882   .text.HAL_DMAEx_MultiBufferStart_IT:00000bb0 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:1889   .text.HAL_DMAEx_MultiBufferStart_IT:00000bc8 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:2263   .text.HAL_DMAEx_MultiBufferStart_IT:00000e34 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:2270   .text.HAL_DMAEx_MultiBufferStart_IT:00000e48 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:2376   .text.HAL_DMAEx_MultiBufferStart_IT:00000ef8 $d
+.ARM.exidx.text.HAL_DMAEx_MultiBufferStart_IT:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:2384   .text.HAL_DMAEx_ChangeMemory:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccPaiPY3.s:2390   .text.HAL_DMAEx_ChangeMemory:00000000 HAL_DMAEx_ChangeMemory
+.ARM.exidx.text.HAL_DMAEx_ChangeMemory:00000000 $d
+
+NO UNDEFINED SYMBOLS

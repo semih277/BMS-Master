@@ -1,0 +1,4 @@
+../SoC/BatterySOCEstimationV2.c:39:15:look2_binlx	9
+../SoC/BatterySOCEstimationV2.c:140:15:look1_binlx	5
+../SoC/BatterySOCEstimationV2.c:199:6:BatterySOCEstimationV2_step	11
+../SoC/BatterySOCEstimationV2.c:510:6:BatterySOCEstimationV2_initialize	1

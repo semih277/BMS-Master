@@ -1,0 +1,10 @@
+../Core/Src/EEPROM.c:42:10:bytestowrite	16	static
+../Core/Src/EEPROM.c:54:6:EEPROM_Write	64	static
+../Core/Src/EEPROM.c:88:6:float2Bytes	24	static
+../Core/Src/EEPROM.c:103:7:Bytes2float	32	static
+../Core/Src/EEPROM.c:125:6:EEPROM_Write_NUM	16	static
+../Core/Src/EEPROM.c:139:7:EEPROM_Read_NUM	24	static
+../Core/Src/EEPROM.c:154:6:EEPROM_Read	64	static
+../Core/Src/EEPROM.c:180:6:EEPROM_PageErase	168	static
+../Core/Src/EEPROM.c:196:6:EEPROM_GetConfigs	16	static
+../Core/Src/EEPROM.c:202:6:EEPROM_SetConfigs	16	static

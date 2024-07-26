@@ -1,0 +1,605 @@
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"system_stm32f4xx.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/system_stm32f4xx.cpp"
+  20              		.section	.text.SystemInit,"ax",%progbits
+  21              		.align	1
+  22              		.global	SystemInit
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	SystemInit:
+  28              		.fnstart
+  29              	.LFB235:
+   1:Core/Src/system_stm32f4xx.cpp **** /**
+   2:Core/Src/system_stm32f4xx.cpp ****   ******************************************************************************
+   3:Core/Src/system_stm32f4xx.cpp ****   * @file    system_stm32f4xx.c
+   4:Core/Src/system_stm32f4xx.cpp ****   * @author  MCD Application Team
+   5:Core/Src/system_stm32f4xx.cpp ****   * @brief   CMSIS Cortex-M4 Device Peripheral Access Layer System Source File.
+   6:Core/Src/system_stm32f4xx.cpp ****   *
+   7:Core/Src/system_stm32f4xx.cpp ****   *   This file provides two functions and one global variable to be called from 
+   8:Core/Src/system_stm32f4xx.cpp ****   *   user application:
+   9:Core/Src/system_stm32f4xx.cpp ****   *      - SystemInit(): This function is called at startup just after reset and 
+  10:Core/Src/system_stm32f4xx.cpp ****   *                      before branch to main program. This call is made inside
+  11:Core/Src/system_stm32f4xx.cpp ****   *                      the "startup_stm32f4xx.s" file.
+  12:Core/Src/system_stm32f4xx.cpp ****   *
+  13:Core/Src/system_stm32f4xx.cpp ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  14:Core/Src/system_stm32f4xx.cpp ****   *                                  by the user application to setup the SysTick 
+  15:Core/Src/system_stm32f4xx.cpp ****   *                                  timer or configure other parameters.
+  16:Core/Src/system_stm32f4xx.cpp ****   *                                     
+  17:Core/Src/system_stm32f4xx.cpp ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  18:Core/Src/system_stm32f4xx.cpp ****   *                                 be called whenever the core clock is changed
+  19:Core/Src/system_stm32f4xx.cpp ****   *                                 during program execution.
+  20:Core/Src/system_stm32f4xx.cpp ****   *
+  21:Core/Src/system_stm32f4xx.cpp ****   *
+  22:Core/Src/system_stm32f4xx.cpp ****   ******************************************************************************
+  23:Core/Src/system_stm32f4xx.cpp ****   * @attention
+  24:Core/Src/system_stm32f4xx.cpp ****   *
+  25:Core/Src/system_stm32f4xx.cpp ****   * Copyright (c) 2017 STMicroelectronics.
+  26:Core/Src/system_stm32f4xx.cpp ****   * All rights reserved.
+  27:Core/Src/system_stm32f4xx.cpp ****   *
+  28:Core/Src/system_stm32f4xx.cpp ****   * This software is licensed under terms that can be found in the LICENSE file
+  29:Core/Src/system_stm32f4xx.cpp ****   * in the root directory of this software component.
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 2
+
+
+  30:Core/Src/system_stm32f4xx.cpp ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  31:Core/Src/system_stm32f4xx.cpp ****   *
+  32:Core/Src/system_stm32f4xx.cpp ****   ******************************************************************************
+  33:Core/Src/system_stm32f4xx.cpp ****   */
+  34:Core/Src/system_stm32f4xx.cpp **** 
+  35:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup CMSIS
+  36:Core/Src/system_stm32f4xx.cpp ****   * @{
+  37:Core/Src/system_stm32f4xx.cpp ****   */
+  38:Core/Src/system_stm32f4xx.cpp **** 
+  39:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup stm32f4xx_system
+  40:Core/Src/system_stm32f4xx.cpp ****   * @{
+  41:Core/Src/system_stm32f4xx.cpp ****   */  
+  42:Core/Src/system_stm32f4xx.cpp ****   
+  43:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_Includes
+  44:Core/Src/system_stm32f4xx.cpp ****   * @{
+  45:Core/Src/system_stm32f4xx.cpp ****   */
+  46:Core/Src/system_stm32f4xx.cpp **** 
+  47:Core/Src/system_stm32f4xx.cpp **** 
+  48:Core/Src/system_stm32f4xx.cpp **** #include "stm32f4xx.h"
+  49:Core/Src/system_stm32f4xx.cpp **** 
+  50:Core/Src/system_stm32f4xx.cpp **** #if !defined  (HSE_VALUE) 
+  51:Core/Src/system_stm32f4xx.cpp ****   #define HSE_VALUE    ((uint32_t)25000000) /*!< Default value of the External oscillator in Hz */
+  52:Core/Src/system_stm32f4xx.cpp **** #endif /* HSE_VALUE */
+  53:Core/Src/system_stm32f4xx.cpp **** 
+  54:Core/Src/system_stm32f4xx.cpp **** #if !defined  (HSI_VALUE)
+  55:Core/Src/system_stm32f4xx.cpp ****   #define HSI_VALUE    ((uint32_t)16000000) /*!< Value of the Internal oscillator in Hz*/
+  56:Core/Src/system_stm32f4xx.cpp **** #endif /* HSI_VALUE */
+  57:Core/Src/system_stm32f4xx.cpp **** 
+  58:Core/Src/system_stm32f4xx.cpp **** /**
+  59:Core/Src/system_stm32f4xx.cpp ****   * @}
+  60:Core/Src/system_stm32f4xx.cpp ****   */
+  61:Core/Src/system_stm32f4xx.cpp **** 
+  62:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_TypesDefinitions
+  63:Core/Src/system_stm32f4xx.cpp ****   * @{
+  64:Core/Src/system_stm32f4xx.cpp ****   */
+  65:Core/Src/system_stm32f4xx.cpp **** 
+  66:Core/Src/system_stm32f4xx.cpp **** /**
+  67:Core/Src/system_stm32f4xx.cpp ****   * @}
+  68:Core/Src/system_stm32f4xx.cpp ****   */
+  69:Core/Src/system_stm32f4xx.cpp **** 
+  70:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_Defines
+  71:Core/Src/system_stm32f4xx.cpp ****   * @{
+  72:Core/Src/system_stm32f4xx.cpp ****   */
+  73:Core/Src/system_stm32f4xx.cpp **** 
+  74:Core/Src/system_stm32f4xx.cpp **** /************************* Miscellaneous Configuration ************************/
+  75:Core/Src/system_stm32f4xx.cpp **** /*!< Uncomment the following line if you need to use external SRAM or SDRAM as data memory  */
+  76:Core/Src/system_stm32f4xx.cpp **** #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)\
+  77:Core/Src/system_stm32f4xx.cpp ****  || defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx)\
+  78:Core/Src/system_stm32f4xx.cpp ****  || defined(STM32F469xx) || defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx)
+  79:Core/Src/system_stm32f4xx.cpp **** /* #define DATA_IN_ExtSRAM */
+  80:Core/Src/system_stm32f4xx.cpp **** #endif /* STM32F40xxx || STM32F41xxx || STM32F42xxx || STM32F43xxx || STM32F469xx || STM32F479xx ||
+  81:Core/Src/system_stm32f4xx.cpp ****           STM32F412Zx || STM32F412Vx */
+  82:Core/Src/system_stm32f4xx.cpp ****  
+  83:Core/Src/system_stm32f4xx.cpp **** #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx)\
+  84:Core/Src/system_stm32f4xx.cpp ****  || defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx)
+  85:Core/Src/system_stm32f4xx.cpp **** /* #define DATA_IN_ExtSDRAM */
+  86:Core/Src/system_stm32f4xx.cpp **** #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F446xx || STM32F469xx ||
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 3
+
+
+  87:Core/Src/system_stm32f4xx.cpp ****           STM32F479xx */
+  88:Core/Src/system_stm32f4xx.cpp **** 
+  89:Core/Src/system_stm32f4xx.cpp **** /* Note: Following vector table addresses must be defined in line with linker
+  90:Core/Src/system_stm32f4xx.cpp ****          configuration. */
+  91:Core/Src/system_stm32f4xx.cpp **** /*!< Uncomment the following line if you need to relocate the vector table
+  92:Core/Src/system_stm32f4xx.cpp ****      anywhere in Flash or Sram, else the vector table is kept at the automatic
+  93:Core/Src/system_stm32f4xx.cpp ****      remap of boot address selected */
+  94:Core/Src/system_stm32f4xx.cpp **** /* #define USER_VECT_TAB_ADDRESS */
+  95:Core/Src/system_stm32f4xx.cpp **** 
+  96:Core/Src/system_stm32f4xx.cpp **** #if defined(USER_VECT_TAB_ADDRESS)
+  97:Core/Src/system_stm32f4xx.cpp **** /*!< Uncomment the following line if you need to relocate your vector Table
+  98:Core/Src/system_stm32f4xx.cpp ****      in Sram else user remap will be done in Flash. */
+  99:Core/Src/system_stm32f4xx.cpp **** /* #define VECT_TAB_SRAM */
+ 100:Core/Src/system_stm32f4xx.cpp **** #if defined(VECT_TAB_SRAM)
+ 101:Core/Src/system_stm32f4xx.cpp **** #define VECT_TAB_BASE_ADDRESS   SRAM_BASE       /*!< Vector Table base address field.
+ 102:Core/Src/system_stm32f4xx.cpp ****                                                      This value must be a multiple of 0x200. */
+ 103:Core/Src/system_stm32f4xx.cpp **** #define VECT_TAB_OFFSET         0x00000000U     /*!< Vector Table base offset field.
+ 104:Core/Src/system_stm32f4xx.cpp ****                                                      This value must be a multiple of 0x200. */
+ 105:Core/Src/system_stm32f4xx.cpp **** #else
+ 106:Core/Src/system_stm32f4xx.cpp **** #define VECT_TAB_BASE_ADDRESS   FLASH_BASE      /*!< Vector Table base address field.
+ 107:Core/Src/system_stm32f4xx.cpp ****                                                      This value must be a multiple of 0x200. */
+ 108:Core/Src/system_stm32f4xx.cpp **** #define VECT_TAB_OFFSET         0x00000000U     /*!< Vector Table base offset field.
+ 109:Core/Src/system_stm32f4xx.cpp ****                                                      This value must be a multiple of 0x200. */
+ 110:Core/Src/system_stm32f4xx.cpp **** #endif /* VECT_TAB_SRAM */
+ 111:Core/Src/system_stm32f4xx.cpp **** #endif /* USER_VECT_TAB_ADDRESS */
+ 112:Core/Src/system_stm32f4xx.cpp **** /******************************************************************************/
+ 113:Core/Src/system_stm32f4xx.cpp **** 
+ 114:Core/Src/system_stm32f4xx.cpp **** /**
+ 115:Core/Src/system_stm32f4xx.cpp ****   * @}
+ 116:Core/Src/system_stm32f4xx.cpp ****   */
+ 117:Core/Src/system_stm32f4xx.cpp **** 
+ 118:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_Macros
+ 119:Core/Src/system_stm32f4xx.cpp ****   * @{
+ 120:Core/Src/system_stm32f4xx.cpp ****   */
+ 121:Core/Src/system_stm32f4xx.cpp **** 
+ 122:Core/Src/system_stm32f4xx.cpp **** /**
+ 123:Core/Src/system_stm32f4xx.cpp ****   * @}
+ 124:Core/Src/system_stm32f4xx.cpp ****   */
+ 125:Core/Src/system_stm32f4xx.cpp **** 
+ 126:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_Variables
+ 127:Core/Src/system_stm32f4xx.cpp ****   * @{
+ 128:Core/Src/system_stm32f4xx.cpp ****   */
+ 129:Core/Src/system_stm32f4xx.cpp ****   /* This variable is updated in three ways:
+ 130:Core/Src/system_stm32f4xx.cpp ****       1) by calling CMSIS function SystemCoreClockUpdate()
+ 131:Core/Src/system_stm32f4xx.cpp ****       2) by calling HAL API function HAL_RCC_GetHCLKFreq()
+ 132:Core/Src/system_stm32f4xx.cpp ****       3) each time HAL_RCC_ClockConfig() is called to configure the system clock frequency 
+ 133:Core/Src/system_stm32f4xx.cpp ****          Note: If you use this function to configure the system clock; then there
+ 134:Core/Src/system_stm32f4xx.cpp ****                is no need to call the 2 first functions listed above, since SystemCoreClock
+ 135:Core/Src/system_stm32f4xx.cpp ****                variable is updated automatically.
+ 136:Core/Src/system_stm32f4xx.cpp ****   */
+ 137:Core/Src/system_stm32f4xx.cpp **** uint32_t SystemCoreClock = 16000000;
+ 138:Core/Src/system_stm32f4xx.cpp **** const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 139:Core/Src/system_stm32f4xx.cpp **** const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
+ 140:Core/Src/system_stm32f4xx.cpp **** /**
+ 141:Core/Src/system_stm32f4xx.cpp ****   * @}
+ 142:Core/Src/system_stm32f4xx.cpp ****   */
+ 143:Core/Src/system_stm32f4xx.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 4
+
+
+ 144:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_FunctionPrototypes
+ 145:Core/Src/system_stm32f4xx.cpp ****   * @{
+ 146:Core/Src/system_stm32f4xx.cpp ****   */
+ 147:Core/Src/system_stm32f4xx.cpp **** 
+ 148:Core/Src/system_stm32f4xx.cpp **** #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
+ 149:Core/Src/system_stm32f4xx.cpp ****   static void SystemInit_ExtMemCtl(void); 
+ 150:Core/Src/system_stm32f4xx.cpp **** #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
+ 151:Core/Src/system_stm32f4xx.cpp **** 
+ 152:Core/Src/system_stm32f4xx.cpp **** /**
+ 153:Core/Src/system_stm32f4xx.cpp ****   * @}
+ 154:Core/Src/system_stm32f4xx.cpp ****   */
+ 155:Core/Src/system_stm32f4xx.cpp **** 
+ 156:Core/Src/system_stm32f4xx.cpp **** /** @addtogroup STM32F4xx_System_Private_Functions
+ 157:Core/Src/system_stm32f4xx.cpp ****   * @{
+ 158:Core/Src/system_stm32f4xx.cpp ****   */
+ 159:Core/Src/system_stm32f4xx.cpp **** 
+ 160:Core/Src/system_stm32f4xx.cpp **** /**
+ 161:Core/Src/system_stm32f4xx.cpp ****   * @brief  Setup the microcontroller system
+ 162:Core/Src/system_stm32f4xx.cpp ****   *         Initialize the FPU setting, vector table location and External memory 
+ 163:Core/Src/system_stm32f4xx.cpp ****   *         configuration.
+ 164:Core/Src/system_stm32f4xx.cpp ****   * @param  None
+ 165:Core/Src/system_stm32f4xx.cpp ****   * @retval None
+ 166:Core/Src/system_stm32f4xx.cpp ****   */
+ 167:Core/Src/system_stm32f4xx.cpp **** void SystemInit(void)
+ 168:Core/Src/system_stm32f4xx.cpp **** {
+  30              		.loc 1 168 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+ 169:Core/Src/system_stm32f4xx.cpp ****   /* FPU settings ------------------------------------------------------------*/
+ 170:Core/Src/system_stm32f4xx.cpp ****   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 171:Core/Src/system_stm32f4xx.cpp ****     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+  35              		.loc 1 171 5 view .LVU1
+  36              		.loc 1 171 10 is_stmt 0 view .LVU2
+  37 0000 034A     		ldr	r2, .L2
+  38 0002 D2F88830 		ldr	r3, [r2, #136]
+  39              		.loc 1 171 16 view .LVU3
+  40 0006 43F47003 		orr	r3, r3, #15728640
+  41 000a C2F88830 		str	r3, [r2, #136]
+ 172:Core/Src/system_stm32f4xx.cpp ****   #endif
+ 173:Core/Src/system_stm32f4xx.cpp **** 
+ 174:Core/Src/system_stm32f4xx.cpp **** #if defined (DATA_IN_ExtSRAM) || defined (DATA_IN_ExtSDRAM)
+ 175:Core/Src/system_stm32f4xx.cpp ****   SystemInit_ExtMemCtl(); 
+ 176:Core/Src/system_stm32f4xx.cpp **** #endif /* DATA_IN_ExtSRAM || DATA_IN_ExtSDRAM */
+ 177:Core/Src/system_stm32f4xx.cpp **** 
+ 178:Core/Src/system_stm32f4xx.cpp ****   /* Configure the Vector Table location -------------------------------------*/
+ 179:Core/Src/system_stm32f4xx.cpp **** #if defined(USER_VECT_TAB_ADDRESS)
+ 180:Core/Src/system_stm32f4xx.cpp ****   SCB->VTOR = VECT_TAB_BASE_ADDRESS | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM 
+ 181:Core/Src/system_stm32f4xx.cpp **** #endif /* USER_VECT_TAB_ADDRESS */
+ 182:Core/Src/system_stm32f4xx.cpp **** }
+  42              		.loc 1 182 1 view .LVU4
+  43 000e 7047     		bx	lr
+  44              	.L3:
+  45              		.align	2
+  46              	.L2:
+  47 0010 00ED00E0 		.word	-536810240
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 5
+
+
+  48              		.cfi_endproc
+  49              	.LFE235:
+  50              		.cantunwind
+  51              		.fnend
+  53              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  54              		.align	1
+  55              		.global	SystemCoreClockUpdate
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	SystemCoreClockUpdate:
+  61              		.fnstart
+  62              	.LFB236:
+ 183:Core/Src/system_stm32f4xx.cpp **** 
+ 184:Core/Src/system_stm32f4xx.cpp **** /**
+ 185:Core/Src/system_stm32f4xx.cpp ****    * @brief  Update SystemCoreClock variable according to Clock Register Values.
+ 186:Core/Src/system_stm32f4xx.cpp ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 187:Core/Src/system_stm32f4xx.cpp ****   *         be used by the user application to setup the SysTick timer or configure
+ 188:Core/Src/system_stm32f4xx.cpp ****   *         other parameters.
+ 189:Core/Src/system_stm32f4xx.cpp ****   *           
+ 190:Core/Src/system_stm32f4xx.cpp ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 191:Core/Src/system_stm32f4xx.cpp ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ 192:Core/Src/system_stm32f4xx.cpp ****   *         based on this variable will be incorrect.         
+ 193:Core/Src/system_stm32f4xx.cpp ****   *     
+ 194:Core/Src/system_stm32f4xx.cpp ****   * @note   - The system frequency computed by this function is not the real 
+ 195:Core/Src/system_stm32f4xx.cpp ****   *           frequency in the chip. It is calculated based on the predefined 
+ 196:Core/Src/system_stm32f4xx.cpp ****   *           constant and the selected clock source:
+ 197:Core/Src/system_stm32f4xx.cpp ****   *             
+ 198:Core/Src/system_stm32f4xx.cpp ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 199:Core/Src/system_stm32f4xx.cpp ****   *                                              
+ 200:Core/Src/system_stm32f4xx.cpp ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 201:Core/Src/system_stm32f4xx.cpp ****   *                          
+ 202:Core/Src/system_stm32f4xx.cpp ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+ 203:Core/Src/system_stm32f4xx.cpp ****   *             or HSI_VALUE(*) multiplied/divided by the PLL factors.
+ 204:Core/Src/system_stm32f4xx.cpp ****   *         
+ 205:Core/Src/system_stm32f4xx.cpp ****   *         (*) HSI_VALUE is a constant defined in stm32f4xx_hal_conf.h file (default value
+ 206:Core/Src/system_stm32f4xx.cpp ****   *             16 MHz) but the real value may vary depending on the variations
+ 207:Core/Src/system_stm32f4xx.cpp ****   *             in voltage and temperature.   
+ 208:Core/Src/system_stm32f4xx.cpp ****   *    
+ 209:Core/Src/system_stm32f4xx.cpp ****   *         (**) HSE_VALUE is a constant defined in stm32f4xx_hal_conf.h file (its value
+ 210:Core/Src/system_stm32f4xx.cpp ****   *              depends on the application requirements), user has to ensure that HSE_VALUE
+ 211:Core/Src/system_stm32f4xx.cpp ****   *              is same as the real frequency of the crystal used. Otherwise, this function
+ 212:Core/Src/system_stm32f4xx.cpp ****   *              may have wrong result.
+ 213:Core/Src/system_stm32f4xx.cpp ****   *                
+ 214:Core/Src/system_stm32f4xx.cpp ****   *         - The result of this function could be not correct when using fractional
+ 215:Core/Src/system_stm32f4xx.cpp ****   *           value for HSE crystal.
+ 216:Core/Src/system_stm32f4xx.cpp ****   *     
+ 217:Core/Src/system_stm32f4xx.cpp ****   * @param  None
+ 218:Core/Src/system_stm32f4xx.cpp ****   * @retval None
+ 219:Core/Src/system_stm32f4xx.cpp ****   */
+ 220:Core/Src/system_stm32f4xx.cpp **** void SystemCoreClockUpdate(void)
+ 221:Core/Src/system_stm32f4xx.cpp **** {
+  63              		.loc 1 221 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 6
+
+
+ 222:Core/Src/system_stm32f4xx.cpp ****   uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
+  68              		.loc 1 222 3 view .LVU6
+  69              	.LVL0:
+ 223:Core/Src/system_stm32f4xx.cpp ****   
+ 224:Core/Src/system_stm32f4xx.cpp ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 225:Core/Src/system_stm32f4xx.cpp ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+  70              		.loc 1 225 3 view .LVU7
+  71              		.loc 1 225 14 is_stmt 0 view .LVU8
+  72 0000 224B     		ldr	r3, .L12
+  73 0002 9B68     		ldr	r3, [r3, #8]
+  74              		.loc 1 225 7 view .LVU9
+  75 0004 03F00C03 		and	r3, r3, #12
+  76              	.LVL1:
+ 226:Core/Src/system_stm32f4xx.cpp **** 
+ 227:Core/Src/system_stm32f4xx.cpp ****   switch (tmp)
+  77              		.loc 1 227 3 is_stmt 1 view .LVU10
+  78 0008 042B     		cmp	r3, #4
+  79 000a 14D0     		beq	.L5
+  80 000c 082B     		cmp	r3, #8
+  81 000e 16D0     		beq	.L6
+  82 0010 1BB1     		cbz	r3, .L11
+ 228:Core/Src/system_stm32f4xx.cpp ****   {
+ 229:Core/Src/system_stm32f4xx.cpp ****     case 0x00:  /* HSI used as system clock source */
+ 230:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = HSI_VALUE;
+ 231:Core/Src/system_stm32f4xx.cpp ****       break;
+ 232:Core/Src/system_stm32f4xx.cpp ****     case 0x04:  /* HSE used as system clock source */
+ 233:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = HSE_VALUE;
+ 234:Core/Src/system_stm32f4xx.cpp ****       break;
+ 235:Core/Src/system_stm32f4xx.cpp ****     case 0x08:  /* PLL used as system clock source */
+ 236:Core/Src/system_stm32f4xx.cpp **** 
+ 237:Core/Src/system_stm32f4xx.cpp ****       /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N
+ 238:Core/Src/system_stm32f4xx.cpp ****          SYSCLK = PLL_VCO / PLL_P
+ 239:Core/Src/system_stm32f4xx.cpp ****          */    
+ 240:Core/Src/system_stm32f4xx.cpp ****       pllsource = (RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) >> 22;
+ 241:Core/Src/system_stm32f4xx.cpp ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 242:Core/Src/system_stm32f4xx.cpp ****       
+ 243:Core/Src/system_stm32f4xx.cpp ****       if (pllsource != 0)
+ 244:Core/Src/system_stm32f4xx.cpp ****       {
+ 245:Core/Src/system_stm32f4xx.cpp ****         /* HSE used as PLL clock source */
+ 246:Core/Src/system_stm32f4xx.cpp ****         pllvco = (HSE_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 247:Core/Src/system_stm32f4xx.cpp ****       }
+ 248:Core/Src/system_stm32f4xx.cpp ****       else
+ 249:Core/Src/system_stm32f4xx.cpp ****       {
+ 250:Core/Src/system_stm32f4xx.cpp ****         /* HSI used as PLL clock source */
+ 251:Core/Src/system_stm32f4xx.cpp ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 252:Core/Src/system_stm32f4xx.cpp ****       }
+ 253:Core/Src/system_stm32f4xx.cpp **** 
+ 254:Core/Src/system_stm32f4xx.cpp ****       pllp = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >>16) + 1 ) *2;
+ 255:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 256:Core/Src/system_stm32f4xx.cpp ****       break;
+ 257:Core/Src/system_stm32f4xx.cpp ****     default:
+  83              		.loc 1 257 5 view .LVU11
+ 258:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = HSI_VALUE;
+  84              		.loc 1 258 7 view .LVU12
+  85              		.loc 1 258 23 is_stmt 0 view .LVU13
+  86 0012 1F4B     		ldr	r3, .L12+4
+  87              	.LVL2:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 7
+
+
+  88              		.loc 1 258 23 view .LVU14
+  89 0014 1F4A     		ldr	r2, .L12+8
+  90 0016 1A60     		str	r2, [r3]
+ 259:Core/Src/system_stm32f4xx.cpp ****       break;
+  91              		.loc 1 259 7 is_stmt 1 view .LVU15
+  92 0018 02E0     		b	.L8
+  93              	.LVL3:
+  94              	.L11:
+ 229:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = HSI_VALUE;
+  95              		.loc 1 229 5 view .LVU16
+ 230:Core/Src/system_stm32f4xx.cpp ****       break;
+  96              		.loc 1 230 7 view .LVU17
+ 230:Core/Src/system_stm32f4xx.cpp ****       break;
+  97              		.loc 1 230 23 is_stmt 0 view .LVU18
+  98 001a 1D4B     		ldr	r3, .L12+4
+  99              	.LVL4:
+ 230:Core/Src/system_stm32f4xx.cpp ****       break;
+ 100              		.loc 1 230 23 view .LVU19
+ 101 001c 1D4A     		ldr	r2, .L12+8
+ 102 001e 1A60     		str	r2, [r3]
+ 231:Core/Src/system_stm32f4xx.cpp ****     case 0x04:  /* HSE used as system clock source */
+ 103              		.loc 1 231 7 is_stmt 1 view .LVU20
+ 104              	.LVL5:
+ 105              	.L8:
+ 260:Core/Src/system_stm32f4xx.cpp ****   }
+ 261:Core/Src/system_stm32f4xx.cpp ****   /* Compute HCLK frequency --------------------------------------------------*/
+ 262:Core/Src/system_stm32f4xx.cpp ****   /* Get HCLK prescaler */
+ 263:Core/Src/system_stm32f4xx.cpp ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 106              		.loc 1 263 3 view .LVU21
+ 107              		.loc 1 263 30 is_stmt 0 view .LVU22
+ 108 0020 1A4B     		ldr	r3, .L12
+ 109 0022 9B68     		ldr	r3, [r3, #8]
+ 110              		.loc 1 263 52 view .LVU23
+ 111 0024 C3F30313 		ubfx	r3, r3, #4, #4
+ 112              		.loc 1 263 57 view .LVU24
+ 113 0028 1B4A     		ldr	r2, .L12+12
+ 114 002a D15C     		ldrb	r1, [r2, r3]	@ zero_extendqisi2
+ 115              	.LVL6:
+ 264:Core/Src/system_stm32f4xx.cpp ****   /* HCLK frequency */
+ 265:Core/Src/system_stm32f4xx.cpp ****   SystemCoreClock >>= tmp;
+ 116              		.loc 1 265 3 is_stmt 1 view .LVU25
+ 117              		.loc 1 265 19 is_stmt 0 view .LVU26
+ 118 002c 184A     		ldr	r2, .L12+4
+ 119 002e 1368     		ldr	r3, [r2]
+ 120 0030 CB40     		lsrs	r3, r3, r1
+ 121 0032 1360     		str	r3, [r2]
+ 266:Core/Src/system_stm32f4xx.cpp **** }
+ 122              		.loc 1 266 1 view .LVU27
+ 123 0034 7047     		bx	lr
+ 124              	.LVL7:
+ 125              	.L5:
+ 232:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = HSE_VALUE;
+ 126              		.loc 1 232 5 is_stmt 1 view .LVU28
+ 233:Core/Src/system_stm32f4xx.cpp ****       break;
+ 127              		.loc 1 233 7 view .LVU29
+ 233:Core/Src/system_stm32f4xx.cpp ****       break;
+ 128              		.loc 1 233 23 is_stmt 0 view .LVU30
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 8
+
+
+ 129 0036 164B     		ldr	r3, .L12+4
+ 130              	.LVL8:
+ 233:Core/Src/system_stm32f4xx.cpp ****       break;
+ 131              		.loc 1 233 23 view .LVU31
+ 132 0038 184A     		ldr	r2, .L12+16
+ 133 003a 1A60     		str	r2, [r3]
+ 234:Core/Src/system_stm32f4xx.cpp ****     case 0x08:  /* PLL used as system clock source */
+ 134              		.loc 1 234 7 is_stmt 1 view .LVU32
+ 135 003c F0E7     		b	.L8
+ 136              	.LVL9:
+ 137              	.L6:
+ 235:Core/Src/system_stm32f4xx.cpp **** 
+ 138              		.loc 1 235 5 view .LVU33
+ 240:Core/Src/system_stm32f4xx.cpp ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 139              		.loc 1 240 7 view .LVU34
+ 240:Core/Src/system_stm32f4xx.cpp ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 140              		.loc 1 240 25 is_stmt 0 view .LVU35
+ 141 003e 134B     		ldr	r3, .L12
+ 142              	.LVL10:
+ 240:Core/Src/system_stm32f4xx.cpp ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 143              		.loc 1 240 25 view .LVU36
+ 144 0040 5968     		ldr	r1, [r3, #4]
+ 145              	.LVL11:
+ 241:Core/Src/system_stm32f4xx.cpp ****       
+ 146              		.loc 1 241 7 is_stmt 1 view .LVU37
+ 241:Core/Src/system_stm32f4xx.cpp ****       
+ 147              		.loc 1 241 19 is_stmt 0 view .LVU38
+ 148 0042 5A68     		ldr	r2, [r3, #4]
+ 241:Core/Src/system_stm32f4xx.cpp ****       
+ 149              		.loc 1 241 12 view .LVU39
+ 150 0044 02F03F02 		and	r2, r2, #63
+ 151              	.LVL12:
+ 243:Core/Src/system_stm32f4xx.cpp ****       {
+ 152              		.loc 1 243 7 is_stmt 1 view .LVU40
+ 153 0048 11F4800F 		tst	r1, #4194304
+ 154 004c 13D0     		beq	.L9
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 155              		.loc 1 246 9 view .LVU41
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 156              		.loc 1 246 29 is_stmt 0 view .LVU42
+ 157 004e 134B     		ldr	r3, .L12+16
+ 158 0050 B3FBF2F3 		udiv	r3, r3, r2
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 159              		.loc 1 246 46 view .LVU43
+ 160 0054 0D4A     		ldr	r2, .L12
+ 161              	.LVL13:
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 162              		.loc 1 246 46 view .LVU44
+ 163 0056 5268     		ldr	r2, [r2, #4]
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 164              		.loc 1 246 74 view .LVU45
+ 165 0058 C2F38812 		ubfx	r2, r2, #6, #9
+ 246:Core/Src/system_stm32f4xx.cpp ****       }
+ 166              		.loc 1 246 16 view .LVU46
+ 167 005c 02FB03F3 		mul	r3, r2, r3
+ 168              	.LVL14:
+ 169              	.L10:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 9
+
+
+ 254:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 170              		.loc 1 254 7 is_stmt 1 view .LVU47
+ 254:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 171              		.loc 1 254 22 is_stmt 0 view .LVU48
+ 172 0060 0A4A     		ldr	r2, .L12
+ 173 0062 5268     		ldr	r2, [r2, #4]
+ 254:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 174              		.loc 1 254 50 view .LVU49
+ 175 0064 C2F30142 		ubfx	r2, r2, #16, #2
+ 254:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 176              		.loc 1 254 56 view .LVU50
+ 177 0068 0132     		adds	r2, r2, #1
+ 254:Core/Src/system_stm32f4xx.cpp ****       SystemCoreClock = pllvco/pllp;
+ 178              		.loc 1 254 12 view .LVU51
+ 179 006a 5200     		lsls	r2, r2, #1
+ 180              	.LVL15:
+ 255:Core/Src/system_stm32f4xx.cpp ****       break;
+ 181              		.loc 1 255 7 is_stmt 1 view .LVU52
+ 255:Core/Src/system_stm32f4xx.cpp ****       break;
+ 182              		.loc 1 255 31 is_stmt 0 view .LVU53
+ 183 006c B3FBF2F3 		udiv	r3, r3, r2
+ 184              	.LVL16:
+ 255:Core/Src/system_stm32f4xx.cpp ****       break;
+ 185              		.loc 1 255 23 view .LVU54
+ 186 0070 074A     		ldr	r2, .L12+4
+ 187              	.LVL17:
+ 255:Core/Src/system_stm32f4xx.cpp ****       break;
+ 188              		.loc 1 255 23 view .LVU55
+ 189 0072 1360     		str	r3, [r2]
+ 256:Core/Src/system_stm32f4xx.cpp ****     default:
+ 190              		.loc 1 256 7 is_stmt 1 view .LVU56
+ 191 0074 D4E7     		b	.L8
+ 192              	.LVL18:
+ 193              	.L9:
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 194              		.loc 1 251 9 view .LVU57
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 195              		.loc 1 251 29 is_stmt 0 view .LVU58
+ 196 0076 074B     		ldr	r3, .L12+8
+ 197 0078 B3FBF2F3 		udiv	r3, r3, r2
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 198              		.loc 1 251 46 view .LVU59
+ 199 007c 034A     		ldr	r2, .L12
+ 200              	.LVL19:
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 201              		.loc 1 251 46 view .LVU60
+ 202 007e 5268     		ldr	r2, [r2, #4]
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 203              		.loc 1 251 74 view .LVU61
+ 204 0080 C2F38812 		ubfx	r2, r2, #6, #9
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 205              		.loc 1 251 16 view .LVU62
+ 206 0084 02FB03F3 		mul	r3, r2, r3
+ 207              	.LVL20:
+ 251:Core/Src/system_stm32f4xx.cpp ****       }
+ 208              		.loc 1 251 16 view .LVU63
+ 209 0088 EAE7     		b	.L10
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 10
+
+
+ 210              	.L13:
+ 211 008a 00BF     		.align	2
+ 212              	.L12:
+ 213 008c 00380240 		.word	1073887232
+ 214 0090 00000000 		.word	SystemCoreClock
+ 215 0094 0024F400 		.word	16000000
+ 216 0098 00000000 		.word	AHBPrescTable
+ 217 009c 0048E801 		.word	32000000
+ 218              		.cfi_endproc
+ 219              	.LFE236:
+ 220              		.cantunwind
+ 221              		.fnend
+ 223              		.global	APBPrescTable
+ 224              		.section	.rodata.APBPrescTable,"a"
+ 225              		.align	2
+ 228              	APBPrescTable:
+ 229 0000 00000000 		.ascii	"\000\000\000\000\001\002\003\004"
+ 229      01020304 
+ 230              		.global	AHBPrescTable
+ 231              		.section	.rodata.AHBPrescTable,"a"
+ 232              		.align	2
+ 235              	AHBPrescTable:
+ 236 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 236      00000000 
+ 236      01020304 
+ 236      06
+ 237 000d 070809   		.ascii	"\007\010\011"
+ 238              		.global	SystemCoreClock
+ 239              		.section	.data.SystemCoreClock,"aw"
+ 240              		.align	2
+ 243              	SystemCoreClock:
+ 244 0000 0024F400 		.word	16000000
+ 245              		.text
+ 246              	.Letext0:
+ 247              		.file 2 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 248              		.file 3 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 249              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 250              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 251              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 252              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 253              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f4xx.cpp
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:21     .text.SystemInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:27     .text.SystemInit:00000000 SystemInit
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:47     .text.SystemInit:00000010 $d
+       .ARM.exidx.text.SystemInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:54     .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:60     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:213    .text.SystemCoreClockUpdate:0000008c $d
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:243    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:235    .rodata.AHBPrescTable:00000000 AHBPrescTable
+.ARM.exidx.text.SystemCoreClockUpdate:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:228    .rodata.APBPrescTable:00000000 APBPrescTable
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:225    .rodata.APBPrescTable:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:232    .rodata.AHBPrescTable:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\cc2xuiAb.s:240    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,12 @@
+../Core/Src/adBms6830GenericType.c:75:10:Pec15_Calc	24	static
+../Core/Src/adBms6830GenericType.c:91:10:pec10_calc	32	static
+../Core/Src/adBms6830GenericType.c:151:6:spiSendCmd	24	static
+../Core/Src/adBms6830GenericType.c:186:6:spiReadData	56	static
+../Core/Src/adBms6830GenericType.c:265:6:spiWriteData	48	static
+../Core/Src/adBms6830GenericType.c:343:6:adBmsReadData	72	static
+../Core/Src/adBms6830GenericType.c:603:6:adBmsWriteData	48	static
+../Core/Src/adBms6830GenericType.c:719:10:adBmsPollAdc	32	static
+../Core/Src/adBms6830GenericType.c:766:6:adBms6830_Adcv	32	static
+../Core/Src/adBms6830GenericType.c:800:6:adBms6830_Adsv	24	static
+../Core/Src/adBms6830GenericType.c:832:6:adBms6830_Adax	24	static
+../Core/Src/adBms6830GenericType.c:859:6:adBms6830_Adax2	24	static

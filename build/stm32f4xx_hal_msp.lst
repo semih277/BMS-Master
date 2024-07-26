@@ -1,0 +1,1730 @@
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hal_msp.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/stm32f4xx_hal_msp.cpp"
+  20              		.section	.text.HAL_MspInit,"ax",%progbits
+  21              		.align	1
+  22              		.global	HAL_MspInit
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	HAL_MspInit:
+  28              		.fnstart
+  29              	.LFB235:
+   1:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN Header */
+   2:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+   3:Core/Src/stm32f4xx_hal_msp.cpp ****   ******************************************************************************
+   4:Core/Src/stm32f4xx_hal_msp.cpp ****   * @file         stm32f4xx_hal_msp.c
+   5:Core/Src/stm32f4xx_hal_msp.cpp ****   * @brief        This file provides code for the MSP Initialization
+   6:Core/Src/stm32f4xx_hal_msp.cpp ****   *               and de-Initialization codes.
+   7:Core/Src/stm32f4xx_hal_msp.cpp ****   ******************************************************************************
+   8:Core/Src/stm32f4xx_hal_msp.cpp ****   * @attention
+   9:Core/Src/stm32f4xx_hal_msp.cpp ****   *
+  10:Core/Src/stm32f4xx_hal_msp.cpp ****   * Copyright (c) 2024 STMicroelectronics.
+  11:Core/Src/stm32f4xx_hal_msp.cpp ****   * All rights reserved.
+  12:Core/Src/stm32f4xx_hal_msp.cpp ****   *
+  13:Core/Src/stm32f4xx_hal_msp.cpp ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/stm32f4xx_hal_msp.cpp ****   * in the root directory of this software component.
+  15:Core/Src/stm32f4xx_hal_msp.cpp ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/stm32f4xx_hal_msp.cpp ****   *
+  17:Core/Src/stm32f4xx_hal_msp.cpp ****   ******************************************************************************
+  18:Core/Src/stm32f4xx_hal_msp.cpp ****   */
+  19:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END Header */
+  20:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  21:Core/Src/stm32f4xx_hal_msp.cpp **** /* Includes ------------------------------------------------------------------*/
+  22:Core/Src/stm32f4xx_hal_msp.cpp **** #include "main.h"
+  23:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN Includes */
+  24:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  25:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END Includes */
+  26:Core/Src/stm32f4xx_hal_msp.cpp **** extern DMA_HandleTypeDef hdma_adc1;
+  27:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  28:Core/Src/stm32f4xx_hal_msp.cpp **** /* Private typedef -----------------------------------------------------------*/
+  29:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN TD */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 2
+
+
+  30:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  31:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END TD */
+  32:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  33:Core/Src/stm32f4xx_hal_msp.cpp **** /* Private define ------------------------------------------------------------*/
+  34:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN Define */
+  35:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  36:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END Define */
+  37:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  38:Core/Src/stm32f4xx_hal_msp.cpp **** /* Private macro -------------------------------------------------------------*/
+  39:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN Macro */
+  40:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  41:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END Macro */
+  42:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  43:Core/Src/stm32f4xx_hal_msp.cpp **** /* Private variables ---------------------------------------------------------*/
+  44:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN PV */
+  45:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  46:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END PV */
+  47:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  48:Core/Src/stm32f4xx_hal_msp.cpp **** /* Private function prototypes -----------------------------------------------*/
+  49:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN PFP */
+  50:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  51:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END PFP */
+  52:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  53:Core/Src/stm32f4xx_hal_msp.cpp **** /* External functions --------------------------------------------------------*/
+  54:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN ExternalFunctions */
+  55:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  56:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END ExternalFunctions */
+  57:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  58:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE BEGIN 0 */
+  59:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  60:Core/Src/stm32f4xx_hal_msp.cpp **** /* USER CODE END 0 */
+  61:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+  62:Core/Src/stm32f4xx_hal_msp.cpp ****   * Initializes the Global MSP.
+  63:Core/Src/stm32f4xx_hal_msp.cpp ****   */
+  64:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_MspInit(void)
+  65:Core/Src/stm32f4xx_hal_msp.cpp **** {
+  30              		.loc 1 65 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35 0000 82B0     		sub	sp, sp, #8
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  66:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN MspInit 0 */
+  67:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  68:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END MspInit 0 */
+  69:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  70:Core/Src/stm32f4xx_hal_msp.cpp ****   __HAL_RCC_SYSCFG_CLK_ENABLE();
+  38              		.loc 1 70 3 view .LVU1
+  39              	.LBB2:
+  40              		.loc 1 70 3 view .LVU2
+  41 0002 0021     		movs	r1, #0
+  42 0004 0091     		str	r1, [sp]
+  43              		.loc 1 70 3 view .LVU3
+  44 0006 0B4B     		ldr	r3, .L3
+  45 0008 5A6C     		ldr	r2, [r3, #68]
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 3
+
+
+  46 000a 42F48042 		orr	r2, r2, #16384
+  47 000e 5A64     		str	r2, [r3, #68]
+  48              		.loc 1 70 3 view .LVU4
+  49 0010 5A6C     		ldr	r2, [r3, #68]
+  50 0012 02F48042 		and	r2, r2, #16384
+  51 0016 0092     		str	r2, [sp]
+  52              		.loc 1 70 3 view .LVU5
+  53 0018 009A     		ldr	r2, [sp]
+  54              	.LBE2:
+  55              		.loc 1 70 3 view .LVU6
+  71:Core/Src/stm32f4xx_hal_msp.cpp ****   __HAL_RCC_PWR_CLK_ENABLE();
+  56              		.loc 1 71 3 view .LVU7
+  57              	.LBB3:
+  58              		.loc 1 71 3 view .LVU8
+  59 001a 0191     		str	r1, [sp, #4]
+  60              		.loc 1 71 3 view .LVU9
+  61 001c 1A6C     		ldr	r2, [r3, #64]
+  62 001e 42F08052 		orr	r2, r2, #268435456
+  63 0022 1A64     		str	r2, [r3, #64]
+  64              		.loc 1 71 3 view .LVU10
+  65 0024 1B6C     		ldr	r3, [r3, #64]
+  66 0026 03F08053 		and	r3, r3, #268435456
+  67 002a 0193     		str	r3, [sp, #4]
+  68              		.loc 1 71 3 view .LVU11
+  69 002c 019B     		ldr	r3, [sp, #4]
+  70              	.LBE3:
+  71              		.loc 1 71 3 view .LVU12
+  72:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  73:Core/Src/stm32f4xx_hal_msp.cpp ****   /* System interrupt init*/
+  74:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  75:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN MspInit 1 */
+  76:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  77:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END MspInit 1 */
+  78:Core/Src/stm32f4xx_hal_msp.cpp **** }
+  72              		.loc 1 78 1 is_stmt 0 view .LVU13
+  73 002e 02B0     		add	sp, sp, #8
+  74              	.LCFI1:
+  75              		.cfi_def_cfa_offset 0
+  76              		@ sp needed
+  77 0030 7047     		bx	lr
+  78              	.L4:
+  79 0032 00BF     		.align	2
+  80              	.L3:
+  81 0034 00380240 		.word	1073887232
+  82              		.cfi_endproc
+  83              	.LFE235:
+  84              		.cantunwind
+  85              		.fnend
+  87              		.section	.text.HAL_ADC_MspInit,"ax",%progbits
+  88              		.align	1
+  89              		.global	HAL_ADC_MspInit
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  94              	HAL_ADC_MspInit:
+  95              		.fnstart
+  96              	.LVL0:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 4
+
+
+  97              	.LFB236:
+  79:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  80:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+  81:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief ADC MSP Initialization
+  82:Core/Src/stm32f4xx_hal_msp.cpp **** * This function configures the hardware resources used in this example
+  83:Core/Src/stm32f4xx_hal_msp.cpp **** * @param hadc: ADC handle pointer
+  84:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+  85:Core/Src/stm32f4xx_hal_msp.cpp **** */
+  86:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
+  87:Core/Src/stm32f4xx_hal_msp.cpp **** {
+  98              		.loc 1 87 1 is_stmt 1 view -0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 32
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		.loc 1 87 1 is_stmt 0 view .LVU15
+ 103 0000 30B5     		push	{r4, r5, lr}
+ 104              		.save {r4, r5, lr}
+ 105              	.LCFI2:
+ 106              		.cfi_def_cfa_offset 12
+ 107              		.cfi_offset 4, -12
+ 108              		.cfi_offset 5, -8
+ 109              		.cfi_offset 14, -4
+ 110              		.pad #36
+ 111 0002 89B0     		sub	sp, sp, #36
+ 112              	.LCFI3:
+ 113              		.cfi_def_cfa_offset 48
+  88:Core/Src/stm32f4xx_hal_msp.cpp ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 114              		.loc 1 88 3 is_stmt 1 view .LVU16
+ 115              		.loc 1 88 20 is_stmt 0 view .LVU17
+ 116 0004 0023     		movs	r3, #0
+ 117 0006 0393     		str	r3, [sp, #12]
+ 118 0008 0493     		str	r3, [sp, #16]
+ 119 000a 0593     		str	r3, [sp, #20]
+ 120 000c 0693     		str	r3, [sp, #24]
+ 121 000e 0793     		str	r3, [sp, #28]
+  89:Core/Src/stm32f4xx_hal_msp.cpp ****   if(hadc->Instance==ADC1)
+ 122              		.loc 1 89 3 is_stmt 1 view .LVU18
+ 123              	.LBB4:
+ 124              		.loc 1 89 12 is_stmt 0 view .LVU19
+ 125 0010 0268     		ldr	r2, [r0]
+ 126              		.loc 1 89 3 view .LVU20
+ 127 0012 03F18043 		add	r3, r3, #1073741824
+ 128 0016 03F59033 		add	r3, r3, #73728
+ 129 001a 9A42     		cmp	r2, r3
+ 130 001c 01D0     		beq	.L9
+ 131              	.LVL1:
+ 132              	.L5:
+ 133              		.loc 1 89 3 view .LVU21
+ 134              	.LBE4:
+  90:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+  91:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspInit 0 */
+  92:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  93:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END ADC1_MspInit 0 */
+  94:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock enable */
+  95:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_ADC1_CLK_ENABLE();
+  96:Core/Src/stm32f4xx_hal_msp.cpp **** 
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 5
+
+
+  98:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+  99:Core/Src/stm32f4xx_hal_msp.cpp ****     PA1     ------> ADC1_IN1
+ 100:Core/Src/stm32f4xx_hal_msp.cpp ****     PA2     ------> ADC1_IN2
+ 101:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 102:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2;
+ 103:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 104:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 105:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 106:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 107:Core/Src/stm32f4xx_hal_msp.cpp ****     /* ADC1 DMA Init */
+ 108:Core/Src/stm32f4xx_hal_msp.cpp ****     /* ADC1 Init */
+ 109:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Instance = DMA2_Stream0;
+ 110:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Channel = DMA_CHANNEL_0;
+ 111:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 112:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 113:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
+ 114:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 115:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 116:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Mode = DMA_CIRCULAR;
+ 117:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+ 118:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 119:Core/Src/stm32f4xx_hal_msp.cpp ****     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
+ 120:Core/Src/stm32f4xx_hal_msp.cpp ****     {
+ 121:Core/Src/stm32f4xx_hal_msp.cpp ****       Error_Handler();
+ 122:Core/Src/stm32f4xx_hal_msp.cpp ****     }
+ 123:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 124:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_LINKDMA(hadc,DMA_Handle,hdma_adc1);
+ 125:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 126:Core/Src/stm32f4xx_hal_msp.cpp ****     /* ADC1 interrupt Init */
+ 127:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_NVIC_SetPriority(ADC_IRQn, 0, 0);
+ 128:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_NVIC_EnableIRQ(ADC_IRQn);
+ 129:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspInit 1 */
+ 130:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 131:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END ADC1_MspInit 1 */
+ 132:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 133:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 134:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 135              		.loc 1 134 1 view .LVU22
+ 136 001e 09B0     		add	sp, sp, #36
+ 137              	.LCFI4:
+ 138              		.cfi_remember_state
+ 139              		.cfi_def_cfa_offset 12
+ 140              		@ sp needed
+ 141 0020 30BD     		pop	{r4, r5, pc}
+ 142              	.LVL2:
+ 143              	.L9:
+ 144              	.LCFI5:
+ 145              		.cfi_restore_state
+ 146              		.loc 1 134 1 view .LVU23
+ 147 0022 0446     		mov	r4, r0
+ 148              	.LBB9:
+ 149              	.LBB5:
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 150              		.loc 1 95 5 is_stmt 1 view .LVU24
+ 151              	.LBB6:
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 152              		.loc 1 95 5 view .LVU25
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 6
+
+
+ 153 0024 0025     		movs	r5, #0
+ 154 0026 0195     		str	r5, [sp, #4]
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 155              		.loc 1 95 5 view .LVU26
+ 156 0028 03F58C33 		add	r3, r3, #71680
+ 157 002c 5A6C     		ldr	r2, [r3, #68]
+ 158 002e 42F48072 		orr	r2, r2, #256
+ 159 0032 5A64     		str	r2, [r3, #68]
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 160              		.loc 1 95 5 view .LVU27
+ 161 0034 5A6C     		ldr	r2, [r3, #68]
+ 162 0036 02F48072 		and	r2, r2, #256
+ 163 003a 0192     		str	r2, [sp, #4]
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 164              		.loc 1 95 5 view .LVU28
+ 165 003c 019A     		ldr	r2, [sp, #4]
+ 166              	.LBE6:
+  95:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 167              		.loc 1 95 5 view .LVU29
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 168              		.loc 1 97 5 view .LVU30
+ 169              	.LBB7:
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 170              		.loc 1 97 5 view .LVU31
+ 171 003e 0295     		str	r5, [sp, #8]
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 172              		.loc 1 97 5 view .LVU32
+ 173 0040 1A6B     		ldr	r2, [r3, #48]
+ 174 0042 42F00102 		orr	r2, r2, #1
+ 175 0046 1A63     		str	r2, [r3, #48]
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 176              		.loc 1 97 5 view .LVU33
+ 177 0048 1B6B     		ldr	r3, [r3, #48]
+ 178 004a 03F00103 		and	r3, r3, #1
+ 179 004e 0293     		str	r3, [sp, #8]
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 180              		.loc 1 97 5 view .LVU34
+ 181 0050 029B     		ldr	r3, [sp, #8]
+ 182              	.LBE7:
+  97:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 183              		.loc 1 97 5 view .LVU35
+ 102:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 184              		.loc 1 102 5 view .LVU36
+ 102:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+ 185              		.loc 1 102 25 is_stmt 0 view .LVU37
+ 186 0052 0623     		movs	r3, #6
+ 187 0054 0393     		str	r3, [sp, #12]
+ 103:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 188              		.loc 1 103 5 is_stmt 1 view .LVU38
+ 103:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 189              		.loc 1 103 26 is_stmt 0 view .LVU39
+ 190 0056 0323     		movs	r3, #3
+ 191 0058 0493     		str	r3, [sp, #16]
+ 104:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 192              		.loc 1 104 5 is_stmt 1 view .LVU40
+ 105:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 193              		.loc 1 105 5 view .LVU41
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 7
+
+
+ 105:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 194              		.loc 1 105 18 is_stmt 0 view .LVU42
+ 195 005a 03A9     		add	r1, sp, #12
+ 196 005c 1448     		ldr	r0, .L11
+ 197              	.LVL3:
+ 105:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 198              		.loc 1 105 18 view .LVU43
+ 199 005e FFF7FEFF 		bl	HAL_GPIO_Init
+ 200              	.LVL4:
+ 109:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Channel = DMA_CHANNEL_0;
+ 201              		.loc 1 109 5 is_stmt 1 view .LVU44
+ 109:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Channel = DMA_CHANNEL_0;
+ 202              		.loc 1 109 24 is_stmt 0 view .LVU45
+ 203 0062 1448     		ldr	r0, .L11+4
+ 204 0064 144B     		ldr	r3, .L11+8
+ 205 0066 0360     		str	r3, [r0]
+ 110:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 206              		.loc 1 110 5 is_stmt 1 view .LVU46
+ 110:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+ 207              		.loc 1 110 28 is_stmt 0 view .LVU47
+ 208 0068 4560     		str	r5, [r0, #4]
+ 111:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 209              		.loc 1 111 5 is_stmt 1 view .LVU48
+ 111:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
+ 210              		.loc 1 111 30 is_stmt 0 view .LVU49
+ 211 006a 8560     		str	r5, [r0, #8]
+ 112:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
+ 212              		.loc 1 112 5 is_stmt 1 view .LVU50
+ 112:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
+ 213              		.loc 1 112 30 is_stmt 0 view .LVU51
+ 214 006c C560     		str	r5, [r0, #12]
+ 113:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 215              		.loc 1 113 5 is_stmt 1 view .LVU52
+ 113:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+ 216              		.loc 1 113 27 is_stmt 0 view .LVU53
+ 217 006e 4FF48063 		mov	r3, #1024
+ 218 0072 0361     		str	r3, [r0, #16]
+ 114:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 219              		.loc 1 114 5 is_stmt 1 view .LVU54
+ 114:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+ 220              		.loc 1 114 40 is_stmt 0 view .LVU55
+ 221 0074 4FF40063 		mov	r3, #2048
+ 222 0078 4361     		str	r3, [r0, #20]
+ 115:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Mode = DMA_CIRCULAR;
+ 223              		.loc 1 115 5 is_stmt 1 view .LVU56
+ 115:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Mode = DMA_CIRCULAR;
+ 224              		.loc 1 115 37 is_stmt 0 view .LVU57
+ 225 007a 4FF40053 		mov	r3, #8192
+ 226 007e 8361     		str	r3, [r0, #24]
+ 116:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+ 227              		.loc 1 116 5 is_stmt 1 view .LVU58
+ 116:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+ 228              		.loc 1 116 25 is_stmt 0 view .LVU59
+ 229 0080 4FF48073 		mov	r3, #256
+ 230 0084 C361     		str	r3, [r0, #28]
+ 117:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 231              		.loc 1 117 5 is_stmt 1 view .LVU60
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 8
+
+
+ 117:Core/Src/stm32f4xx_hal_msp.cpp ****     hdma_adc1.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+ 232              		.loc 1 117 29 is_stmt 0 view .LVU61
+ 233 0086 0562     		str	r5, [r0, #32]
+ 118:Core/Src/stm32f4xx_hal_msp.cpp ****     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
+ 234              		.loc 1 118 5 is_stmt 1 view .LVU62
+ 118:Core/Src/stm32f4xx_hal_msp.cpp ****     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
+ 235              		.loc 1 118 29 is_stmt 0 view .LVU63
+ 236 0088 4562     		str	r5, [r0, #36]
+ 119:Core/Src/stm32f4xx_hal_msp.cpp ****     {
+ 237              		.loc 1 119 5 is_stmt 1 view .LVU64
+ 119:Core/Src/stm32f4xx_hal_msp.cpp ****     {
+ 238              		.loc 1 119 21 is_stmt 0 view .LVU65
+ 239 008a FFF7FEFF 		bl	HAL_DMA_Init
+ 240              	.LVL5:
+ 119:Core/Src/stm32f4xx_hal_msp.cpp ****     {
+ 241              		.loc 1 119 5 view .LVU66
+ 242 008e 58B9     		cbnz	r0, .L10
+ 243              	.L7:
+ 124:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 244              		.loc 1 124 5 is_stmt 1 view .LVU67
+ 124:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 245              		.loc 1 124 5 view .LVU68
+ 246 0090 084B     		ldr	r3, .L11+4
+ 247 0092 A363     		str	r3, [r4, #56]
+ 124:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 248              		.loc 1 124 5 view .LVU69
+ 249 0094 9C63     		str	r4, [r3, #56]
+ 124:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 250              		.loc 1 124 5 view .LVU70
+ 127:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_NVIC_EnableIRQ(ADC_IRQn);
+ 251              		.loc 1 127 5 view .LVU71
+ 127:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_NVIC_EnableIRQ(ADC_IRQn);
+ 252              		.loc 1 127 25 is_stmt 0 view .LVU72
+ 253 0096 0022     		movs	r2, #0
+ 254 0098 1146     		mov	r1, r2
+ 255 009a 1220     		movs	r0, #18
+ 256 009c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 257              	.LVL6:
+ 128:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspInit 1 */
+ 258              		.loc 1 128 5 is_stmt 1 view .LVU73
+ 128:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspInit 1 */
+ 259              		.loc 1 128 23 is_stmt 0 view .LVU74
+ 260 00a0 1220     		movs	r0, #18
+ 261 00a2 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 262              	.LVL7:
+ 263              	.LBE5:
+ 264              	.LBE9:
+ 265              		.loc 1 134 1 view .LVU75
+ 266 00a6 BAE7     		b	.L5
+ 267              	.L10:
+ 268              	.LBB10:
+ 269              	.LBB8:
+ 121:Core/Src/stm32f4xx_hal_msp.cpp ****     }
+ 270              		.loc 1 121 7 is_stmt 1 view .LVU76
+ 121:Core/Src/stm32f4xx_hal_msp.cpp ****     }
+ 271              		.loc 1 121 20 is_stmt 0 view .LVU77
+ 272 00a8 FFF7FEFF 		bl	Error_Handler
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 9
+
+
+ 273              	.LVL8:
+ 274 00ac F0E7     		b	.L7
+ 275              	.L12:
+ 276 00ae 00BF     		.align	2
+ 277              	.L11:
+ 278 00b0 00000240 		.word	1073872896
+ 279 00b4 00000000 		.word	hdma_adc1
+ 280 00b8 10640240 		.word	1073898512
+ 281              	.LBE8:
+ 282              	.LBE10:
+ 283              		.cfi_endproc
+ 284              	.LFE236:
+ 285              		.fnend
+ 287              		.section	.text.HAL_ADC_MspDeInit,"ax",%progbits
+ 288              		.align	1
+ 289              		.global	HAL_ADC_MspDeInit
+ 290              		.syntax unified
+ 291              		.thumb
+ 292              		.thumb_func
+ 294              	HAL_ADC_MspDeInit:
+ 295              		.fnstart
+ 296              	.LVL9:
+ 297              	.LFB237:
+ 135:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 136:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 137:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief ADC MSP De-Initialization
+ 138:Core/Src/stm32f4xx_hal_msp.cpp **** * This function freeze the hardware resources used in this example
+ 139:Core/Src/stm32f4xx_hal_msp.cpp **** * @param hadc: ADC handle pointer
+ 140:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 141:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 142:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
+ 143:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 298              		.loc 1 143 1 is_stmt 1 view -0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144:Core/Src/stm32f4xx_hal_msp.cpp ****   if(hadc->Instance==ADC1)
+ 302              		.loc 1 144 3 view .LVU79
+ 303              		.loc 1 144 12 is_stmt 0 view .LVU80
+ 304 0000 0268     		ldr	r2, [r0]
+ 305              		.loc 1 144 3 view .LVU81
+ 306 0002 0B4B     		ldr	r3, .L20
+ 307 0004 9A42     		cmp	r2, r3
+ 308 0006 00D0     		beq	.L19
+ 309 0008 7047     		bx	lr
+ 310              	.L19:
+ 143:Core/Src/stm32f4xx_hal_msp.cpp ****   if(hadc->Instance==ADC1)
+ 311              		.loc 1 143 1 view .LVU82
+ 312 000a 10B5     		push	{r4, lr}
+ 313              		.save {r4, lr}
+ 314              	.LCFI6:
+ 315              		.cfi_def_cfa_offset 8
+ 316              		.cfi_offset 4, -8
+ 317              		.cfi_offset 14, -4
+ 318 000c 0446     		mov	r4, r0
+ 145:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 146:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspDeInit 0 */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 10
+
+
+ 147:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 148:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END ADC1_MspDeInit 0 */
+ 149:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock disable */
+ 150:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_ADC1_CLK_DISABLE();
+ 319              		.loc 1 150 5 is_stmt 1 view .LVU83
+ 320 000e 094A     		ldr	r2, .L20+4
+ 321 0010 536C     		ldr	r3, [r2, #68]
+ 322 0012 23F48073 		bic	r3, r3, #256
+ 323 0016 5364     		str	r3, [r2, #68]
+ 151:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 152:Core/Src/stm32f4xx_hal_msp.cpp ****     /**ADC1 GPIO Configuration
+ 153:Core/Src/stm32f4xx_hal_msp.cpp ****     PA1     ------> ADC1_IN1
+ 154:Core/Src/stm32f4xx_hal_msp.cpp ****     PA2     ------> ADC1_IN2
+ 155:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 156:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1|GPIO_PIN_2);
+ 324              		.loc 1 156 5 view .LVU84
+ 325              		.loc 1 156 20 is_stmt 0 view .LVU85
+ 326 0018 0621     		movs	r1, #6
+ 327 001a 0748     		ldr	r0, .L20+8
+ 328              	.LVL10:
+ 329              		.loc 1 156 20 view .LVU86
+ 330 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 331              	.LVL11:
+ 157:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 158:Core/Src/stm32f4xx_hal_msp.cpp ****     /* ADC1 DMA DeInit */
+ 159:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_DMA_DeInit(hadc->DMA_Handle);
+ 332              		.loc 1 159 5 is_stmt 1 view .LVU87
+ 333              		.loc 1 159 19 is_stmt 0 view .LVU88
+ 334 0020 A06B     		ldr	r0, [r4, #56]
+ 335 0022 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 336              	.LVL12:
+ 160:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 161:Core/Src/stm32f4xx_hal_msp.cpp ****     /* ADC1 interrupt DeInit */
+ 162:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_NVIC_DisableIRQ(ADC_IRQn);
+ 337              		.loc 1 162 5 is_stmt 1 view .LVU89
+ 338              		.loc 1 162 24 is_stmt 0 view .LVU90
+ 339 0026 1220     		movs	r0, #18
+ 340 0028 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 341              	.LVL13:
+ 163:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN ADC1_MspDeInit 1 */
+ 164:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 165:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END ADC1_MspDeInit 1 */
+ 166:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 167:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 168:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 342              		.loc 1 168 1 view .LVU91
+ 343 002c 10BD     		pop	{r4, pc}
+ 344              	.LVL14:
+ 345              	.L21:
+ 346              		.loc 1 168 1 view .LVU92
+ 347 002e 00BF     		.align	2
+ 348              	.L20:
+ 349 0030 00200140 		.word	1073815552
+ 350 0034 00380240 		.word	1073887232
+ 351 0038 00000240 		.word	1073872896
+ 352              		.cfi_endproc
+ 353              	.LFE237:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 11
+
+
+ 354              		.fnend
+ 356              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 357              		.align	1
+ 358              		.global	HAL_SPI_MspInit
+ 359              		.syntax unified
+ 360              		.thumb
+ 361              		.thumb_func
+ 363              	HAL_SPI_MspInit:
+ 364              		.fnstart
+ 365              	.LVL15:
+ 366              	.LFB238:
+ 169:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 170:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 171:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief SPI MSP Initialization
+ 172:Core/Src/stm32f4xx_hal_msp.cpp **** * This function configures the hardware resources used in this example
+ 173:Core/Src/stm32f4xx_hal_msp.cpp **** * @param hspi: SPI handle pointer
+ 174:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 175:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 176:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
+ 177:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 367              		.loc 1 177 1 is_stmt 1 view -0
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 40
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		.loc 1 177 1 is_stmt 0 view .LVU94
+ 372 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 373              		.save {r4, r5, r6, r7, r8, lr}
+ 374              	.LCFI7:
+ 375              		.cfi_def_cfa_offset 24
+ 376              		.cfi_offset 4, -24
+ 377              		.cfi_offset 5, -20
+ 378              		.cfi_offset 6, -16
+ 379              		.cfi_offset 7, -12
+ 380              		.cfi_offset 8, -8
+ 381              		.cfi_offset 14, -4
+ 382              		.pad #40
+ 383 0004 8AB0     		sub	sp, sp, #40
+ 384              	.LCFI8:
+ 385              		.cfi_def_cfa_offset 64
+ 178:Core/Src/stm32f4xx_hal_msp.cpp ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 386              		.loc 1 178 3 is_stmt 1 view .LVU95
+ 387              		.loc 1 178 20 is_stmt 0 view .LVU96
+ 388 0006 0023     		movs	r3, #0
+ 389 0008 0593     		str	r3, [sp, #20]
+ 390 000a 0693     		str	r3, [sp, #24]
+ 391 000c 0793     		str	r3, [sp, #28]
+ 392 000e 0893     		str	r3, [sp, #32]
+ 393 0010 0993     		str	r3, [sp, #36]
+ 179:Core/Src/stm32f4xx_hal_msp.cpp ****   if(hspi->Instance==SPI1)
+ 394              		.loc 1 179 3 is_stmt 1 view .LVU97
+ 395              	.LBB11:
+ 396              		.loc 1 179 12 is_stmt 0 view .LVU98
+ 397 0012 0368     		ldr	r3, [r0]
+ 398              		.loc 1 179 3 view .LVU99
+ 399 0014 374A     		ldr	r2, .L28
+ 400 0016 9342     		cmp	r3, r2
+ 401 0018 05D0     		beq	.L26
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 12
+
+
+ 402              	.LBE11:
+ 180:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 181:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI1_MspInit 0 */
+ 182:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 183:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI1_MspInit 0 */
+ 184:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock enable */
+ 185:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_SPI1_CLK_ENABLE();
+ 186:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+ 188:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 189:Core/Src/stm32f4xx_hal_msp.cpp ****     PA5     ------> SPI1_SCK
+ 190:Core/Src/stm32f4xx_hal_msp.cpp ****     PA6     ------> SPI1_MISO
+ 191:Core/Src/stm32f4xx_hal_msp.cpp ****     PA7     ------> SPI1_MOSI
+ 192:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 193:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+ 194:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 195:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 196:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 197:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 198:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 199:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 200:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI1_MspInit 1 */
+ 201:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 202:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI1_MspInit 1 */
+ 203:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 204:Core/Src/stm32f4xx_hal_msp.cpp ****   else if(hspi->Instance==SPI2)
+ 403              		.loc 1 204 8 is_stmt 1 view .LVU100
+ 404              	.LBB21:
+ 405              	.LBB12:
+ 406 001a 374A     		ldr	r2, .L28+4
+ 407 001c 9342     		cmp	r3, r2
+ 408 001e 25D0     		beq	.L27
+ 409              	.LVL16:
+ 410              	.L22:
+ 411              		.loc 1 204 8 is_stmt 0 view .LVU101
+ 412              	.LBE12:
+ 413              	.LBE21:
+ 205:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 206:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI2_MspInit 0 */
+ 207:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 208:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI2_MspInit 0 */
+ 209:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock enable */
+ 210:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_SPI2_CLK_ENABLE();
+ 211:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOC_CLK_ENABLE();
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 214:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 215:Core/Src/stm32f4xx_hal_msp.cpp ****     PC1     ------> SPI2_MOSI
+ 216:Core/Src/stm32f4xx_hal_msp.cpp ****     PC2     ------> SPI2_MISO
+ 217:Core/Src/stm32f4xx_hal_msp.cpp ****     PB10     ------> SPI2_SCK
+ 218:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 219:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_1;
+ 220:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 221:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 222:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 223:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_SPI2;
+ 224:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 13
+
+
+ 225:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 226:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_2;
+ 227:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 228:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 229:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 230:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 231:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 232:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 233:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_10;
+ 234:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 235:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 236:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 237:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 238:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 239:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 240:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI2_MspInit 1 */
+ 241:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 242:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI2_MspInit 1 */
+ 243:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 244:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 245:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 414              		.loc 1 245 1 view .LVU102
+ 415 0020 0AB0     		add	sp, sp, #40
+ 416              	.LCFI9:
+ 417              		.cfi_remember_state
+ 418              		.cfi_def_cfa_offset 24
+ 419              		@ sp needed
+ 420 0022 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 421              	.LVL17:
+ 422              	.L26:
+ 423              	.LCFI10:
+ 424              		.cfi_restore_state
+ 425              	.LBB22:
+ 426              	.LBB17:
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 427              		.loc 1 185 5 is_stmt 1 view .LVU103
+ 428              	.LBB18:
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 429              		.loc 1 185 5 view .LVU104
+ 430 0026 0021     		movs	r1, #0
+ 431 0028 0091     		str	r1, [sp]
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 432              		.loc 1 185 5 view .LVU105
+ 433 002a 344B     		ldr	r3, .L28+8
+ 434 002c 5A6C     		ldr	r2, [r3, #68]
+ 435 002e 42F48052 		orr	r2, r2, #4096
+ 436 0032 5A64     		str	r2, [r3, #68]
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 437              		.loc 1 185 5 view .LVU106
+ 438 0034 5A6C     		ldr	r2, [r3, #68]
+ 439 0036 02F48052 		and	r2, r2, #4096
+ 440 003a 0092     		str	r2, [sp]
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 441              		.loc 1 185 5 view .LVU107
+ 442 003c 009A     		ldr	r2, [sp]
+ 443              	.LBE18:
+ 185:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 14
+
+
+ 444              		.loc 1 185 5 view .LVU108
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 445              		.loc 1 187 5 view .LVU109
+ 446              	.LBB19:
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 447              		.loc 1 187 5 view .LVU110
+ 448 003e 0191     		str	r1, [sp, #4]
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 449              		.loc 1 187 5 view .LVU111
+ 450 0040 1A6B     		ldr	r2, [r3, #48]
+ 451 0042 42F00102 		orr	r2, r2, #1
+ 452 0046 1A63     		str	r2, [r3, #48]
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 453              		.loc 1 187 5 view .LVU112
+ 454 0048 1B6B     		ldr	r3, [r3, #48]
+ 455 004a 03F00103 		and	r3, r3, #1
+ 456 004e 0193     		str	r3, [sp, #4]
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 457              		.loc 1 187 5 view .LVU113
+ 458 0050 019B     		ldr	r3, [sp, #4]
+ 459              	.LBE19:
+ 187:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 460              		.loc 1 187 5 view .LVU114
+ 193:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 461              		.loc 1 193 5 view .LVU115
+ 193:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 462              		.loc 1 193 25 is_stmt 0 view .LVU116
+ 463 0052 E023     		movs	r3, #224
+ 464 0054 0593     		str	r3, [sp, #20]
+ 194:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 465              		.loc 1 194 5 is_stmt 1 view .LVU117
+ 194:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 466              		.loc 1 194 26 is_stmt 0 view .LVU118
+ 467 0056 0223     		movs	r3, #2
+ 468 0058 0693     		str	r3, [sp, #24]
+ 195:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 469              		.loc 1 195 5 is_stmt 1 view .LVU119
+ 196:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 470              		.loc 1 196 5 view .LVU120
+ 196:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 471              		.loc 1 196 27 is_stmt 0 view .LVU121
+ 472 005a 0323     		movs	r3, #3
+ 473 005c 0893     		str	r3, [sp, #32]
+ 197:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 474              		.loc 1 197 5 is_stmt 1 view .LVU122
+ 197:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 475              		.loc 1 197 31 is_stmt 0 view .LVU123
+ 476 005e 0523     		movs	r3, #5
+ 477 0060 0993     		str	r3, [sp, #36]
+ 198:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 478              		.loc 1 198 5 is_stmt 1 view .LVU124
+ 198:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 479              		.loc 1 198 18 is_stmt 0 view .LVU125
+ 480 0062 05A9     		add	r1, sp, #20
+ 481 0064 2648     		ldr	r0, .L28+12
+ 482              	.LVL18:
+ 198:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 15
+
+
+ 483              		.loc 1 198 18 view .LVU126
+ 484 0066 FFF7FEFF 		bl	HAL_GPIO_Init
+ 485              	.LVL19:
+ 486 006a D9E7     		b	.L22
+ 487              	.LVL20:
+ 488              	.L27:
+ 198:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 489              		.loc 1 198 18 view .LVU127
+ 490              	.LBE17:
+ 491              	.LBB20:
+ 492              	.LBB13:
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 493              		.loc 1 210 5 is_stmt 1 view .LVU128
+ 494              	.LBB14:
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 495              		.loc 1 210 5 view .LVU129
+ 496 006c 0024     		movs	r4, #0
+ 497 006e 0294     		str	r4, [sp, #8]
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 498              		.loc 1 210 5 view .LVU130
+ 499 0070 224B     		ldr	r3, .L28+8
+ 500 0072 1A6C     		ldr	r2, [r3, #64]
+ 501 0074 42F48042 		orr	r2, r2, #16384
+ 502 0078 1A64     		str	r2, [r3, #64]
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 503              		.loc 1 210 5 view .LVU131
+ 504 007a 1A6C     		ldr	r2, [r3, #64]
+ 505 007c 02F48042 		and	r2, r2, #16384
+ 506 0080 0292     		str	r2, [sp, #8]
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 507              		.loc 1 210 5 view .LVU132
+ 508 0082 029A     		ldr	r2, [sp, #8]
+ 509              	.LBE14:
+ 210:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 510              		.loc 1 210 5 view .LVU133
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 511              		.loc 1 212 5 view .LVU134
+ 512              	.LBB15:
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 513              		.loc 1 212 5 view .LVU135
+ 514 0084 0394     		str	r4, [sp, #12]
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 515              		.loc 1 212 5 view .LVU136
+ 516 0086 1A6B     		ldr	r2, [r3, #48]
+ 517 0088 42F00402 		orr	r2, r2, #4
+ 518 008c 1A63     		str	r2, [r3, #48]
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 519              		.loc 1 212 5 view .LVU137
+ 520 008e 1A6B     		ldr	r2, [r3, #48]
+ 521 0090 02F00402 		and	r2, r2, #4
+ 522 0094 0392     		str	r2, [sp, #12]
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 523              		.loc 1 212 5 view .LVU138
+ 524 0096 039A     		ldr	r2, [sp, #12]
+ 525              	.LBE15:
+ 212:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 526              		.loc 1 212 5 view .LVU139
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 16
+
+
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 527              		.loc 1 213 5 view .LVU140
+ 528              	.LBB16:
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 529              		.loc 1 213 5 view .LVU141
+ 530 0098 0494     		str	r4, [sp, #16]
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 531              		.loc 1 213 5 view .LVU142
+ 532 009a 1A6B     		ldr	r2, [r3, #48]
+ 533 009c 42F00202 		orr	r2, r2, #2
+ 534 00a0 1A63     		str	r2, [r3, #48]
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 535              		.loc 1 213 5 view .LVU143
+ 536 00a2 1B6B     		ldr	r3, [r3, #48]
+ 537 00a4 03F00203 		and	r3, r3, #2
+ 538 00a8 0493     		str	r3, [sp, #16]
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 539              		.loc 1 213 5 view .LVU144
+ 540 00aa 049B     		ldr	r3, [sp, #16]
+ 541              	.LBE16:
+ 213:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 542              		.loc 1 213 5 view .LVU145
+ 219:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 543              		.loc 1 219 5 view .LVU146
+ 219:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 544              		.loc 1 219 25 is_stmt 0 view .LVU147
+ 545 00ac 0225     		movs	r5, #2
+ 546 00ae 0595     		str	r5, [sp, #20]
+ 220:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 547              		.loc 1 220 5 is_stmt 1 view .LVU148
+ 220:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 548              		.loc 1 220 26 is_stmt 0 view .LVU149
+ 549 00b0 0695     		str	r5, [sp, #24]
+ 221:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 550              		.loc 1 221 5 is_stmt 1 view .LVU150
+ 222:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_SPI2;
+ 551              		.loc 1 222 5 view .LVU151
+ 222:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_SPI2;
+ 552              		.loc 1 222 27 is_stmt 0 view .LVU152
+ 553 00b2 0326     		movs	r6, #3
+ 554 00b4 0896     		str	r6, [sp, #32]
+ 223:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 555              		.loc 1 223 5 is_stmt 1 view .LVU153
+ 223:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 556              		.loc 1 223 31 is_stmt 0 view .LVU154
+ 557 00b6 0723     		movs	r3, #7
+ 558 00b8 0993     		str	r3, [sp, #36]
+ 224:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 559              		.loc 1 224 5 is_stmt 1 view .LVU155
+ 224:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 560              		.loc 1 224 18 is_stmt 0 view .LVU156
+ 561 00ba DFF84C80 		ldr	r8, .L28+20
+ 562 00be 05A9     		add	r1, sp, #20
+ 563 00c0 4046     		mov	r0, r8
+ 564              	.LVL21:
+ 224:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 565              		.loc 1 224 18 view .LVU157
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 17
+
+
+ 566 00c2 FFF7FEFF 		bl	HAL_GPIO_Init
+ 567              	.LVL22:
+ 226:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 568              		.loc 1 226 5 is_stmt 1 view .LVU158
+ 226:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 569              		.loc 1 226 25 is_stmt 0 view .LVU159
+ 570 00c6 0423     		movs	r3, #4
+ 571 00c8 0593     		str	r3, [sp, #20]
+ 227:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 572              		.loc 1 227 5 is_stmt 1 view .LVU160
+ 227:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 573              		.loc 1 227 26 is_stmt 0 view .LVU161
+ 574 00ca 0695     		str	r5, [sp, #24]
+ 228:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 575              		.loc 1 228 5 is_stmt 1 view .LVU162
+ 228:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 576              		.loc 1 228 26 is_stmt 0 view .LVU163
+ 577 00cc 0794     		str	r4, [sp, #28]
+ 229:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 578              		.loc 1 229 5 is_stmt 1 view .LVU164
+ 229:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 579              		.loc 1 229 27 is_stmt 0 view .LVU165
+ 580 00ce 0896     		str	r6, [sp, #32]
+ 230:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 581              		.loc 1 230 5 is_stmt 1 view .LVU166
+ 230:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 582              		.loc 1 230 31 is_stmt 0 view .LVU167
+ 583 00d0 0527     		movs	r7, #5
+ 584 00d2 0997     		str	r7, [sp, #36]
+ 231:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 585              		.loc 1 231 5 is_stmt 1 view .LVU168
+ 231:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 586              		.loc 1 231 18 is_stmt 0 view .LVU169
+ 587 00d4 05A9     		add	r1, sp, #20
+ 588 00d6 4046     		mov	r0, r8
+ 589 00d8 FFF7FEFF 		bl	HAL_GPIO_Init
+ 590              	.LVL23:
+ 233:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 591              		.loc 1 233 5 is_stmt 1 view .LVU170
+ 233:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 592              		.loc 1 233 25 is_stmt 0 view .LVU171
+ 593 00dc 4FF48063 		mov	r3, #1024
+ 594 00e0 0593     		str	r3, [sp, #20]
+ 234:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 595              		.loc 1 234 5 is_stmt 1 view .LVU172
+ 234:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 596              		.loc 1 234 26 is_stmt 0 view .LVU173
+ 597 00e2 0695     		str	r5, [sp, #24]
+ 235:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 598              		.loc 1 235 5 is_stmt 1 view .LVU174
+ 235:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 599              		.loc 1 235 26 is_stmt 0 view .LVU175
+ 600 00e4 0794     		str	r4, [sp, #28]
+ 236:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 601              		.loc 1 236 5 is_stmt 1 view .LVU176
+ 236:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+ 602              		.loc 1 236 27 is_stmt 0 view .LVU177
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 18
+
+
+ 603 00e6 0896     		str	r6, [sp, #32]
+ 237:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 604              		.loc 1 237 5 is_stmt 1 view .LVU178
+ 237:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 605              		.loc 1 237 31 is_stmt 0 view .LVU179
+ 606 00e8 0997     		str	r7, [sp, #36]
+ 238:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 607              		.loc 1 238 5 is_stmt 1 view .LVU180
+ 238:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 608              		.loc 1 238 18 is_stmt 0 view .LVU181
+ 609 00ea 05A9     		add	r1, sp, #20
+ 610 00ec 0548     		ldr	r0, .L28+16
+ 611 00ee FFF7FEFF 		bl	HAL_GPIO_Init
+ 612              	.LVL24:
+ 613              	.LBE13:
+ 614              	.LBE20:
+ 615              	.LBE22:
+ 616              		.loc 1 245 1 view .LVU182
+ 617 00f2 95E7     		b	.L22
+ 618              	.L29:
+ 619              		.align	2
+ 620              	.L28:
+ 621 00f4 00300140 		.word	1073819648
+ 622 00f8 00380040 		.word	1073756160
+ 623 00fc 00380240 		.word	1073887232
+ 624 0100 00000240 		.word	1073872896
+ 625 0104 00040240 		.word	1073873920
+ 626 0108 00080240 		.word	1073874944
+ 627              		.cfi_endproc
+ 628              	.LFE238:
+ 629              		.fnend
+ 631              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	HAL_SPI_MspDeInit
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	HAL_SPI_MspDeInit:
+ 639              		.fnstart
+ 640              	.LVL25:
+ 641              	.LFB239:
+ 246:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 247:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 248:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief SPI MSP De-Initialization
+ 249:Core/Src/stm32f4xx_hal_msp.cpp **** * This function freeze the hardware resources used in this example
+ 250:Core/Src/stm32f4xx_hal_msp.cpp **** * @param hspi: SPI handle pointer
+ 251:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 252:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 253:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
+ 254:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 642              		.loc 1 254 1 is_stmt 1 view -0
+ 643              		.cfi_startproc
+ 644              		@ args = 0, pretend = 0, frame = 0
+ 645              		@ frame_needed = 0, uses_anonymous_args = 0
+ 646              		.loc 1 254 1 is_stmt 0 view .LVU184
+ 647 0000 08B5     		push	{r3, lr}
+ 648              		.save {r3, lr}
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 19
+
+
+ 649              	.LCFI11:
+ 650              		.cfi_def_cfa_offset 8
+ 651              		.cfi_offset 3, -8
+ 652              		.cfi_offset 14, -4
+ 255:Core/Src/stm32f4xx_hal_msp.cpp ****   if(hspi->Instance==SPI1)
+ 653              		.loc 1 255 3 is_stmt 1 view .LVU185
+ 654              		.loc 1 255 12 is_stmt 0 view .LVU186
+ 655 0002 0368     		ldr	r3, [r0]
+ 656              		.loc 1 255 3 view .LVU187
+ 657 0004 104A     		ldr	r2, .L36
+ 658 0006 9342     		cmp	r3, r2
+ 659 0008 03D0     		beq	.L34
+ 256:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 257:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI1_MspDeInit 0 */
+ 258:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 259:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI1_MspDeInit 0 */
+ 260:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock disable */
+ 261:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_SPI1_CLK_DISABLE();
+ 262:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 263:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI1 GPIO Configuration
+ 264:Core/Src/stm32f4xx_hal_msp.cpp ****     PA5     ------> SPI1_SCK
+ 265:Core/Src/stm32f4xx_hal_msp.cpp ****     PA6     ------> SPI1_MISO
+ 266:Core/Src/stm32f4xx_hal_msp.cpp ****     PA7     ------> SPI1_MOSI
+ 267:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 268:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
+ 269:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 270:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI1_MspDeInit 1 */
+ 271:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 272:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI1_MspDeInit 1 */
+ 273:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 274:Core/Src/stm32f4xx_hal_msp.cpp ****   else if(hspi->Instance==SPI2)
+ 660              		.loc 1 274 8 is_stmt 1 view .LVU188
+ 661 000a 104A     		ldr	r2, .L36+4
+ 662 000c 9342     		cmp	r3, r2
+ 663 000e 0BD0     		beq	.L35
+ 664              	.LVL26:
+ 665              	.L30:
+ 275:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 276:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI2_MspDeInit 0 */
+ 277:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 278:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI2_MspDeInit 0 */
+ 279:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock disable */
+ 280:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_SPI2_CLK_DISABLE();
+ 281:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 282:Core/Src/stm32f4xx_hal_msp.cpp ****     /**SPI2 GPIO Configuration
+ 283:Core/Src/stm32f4xx_hal_msp.cpp ****     PC1     ------> SPI2_MOSI
+ 284:Core/Src/stm32f4xx_hal_msp.cpp ****     PC2     ------> SPI2_MISO
+ 285:Core/Src/stm32f4xx_hal_msp.cpp ****     PB10     ------> SPI2_SCK
+ 286:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 287:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_1|GPIO_PIN_2);
+ 288:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 289:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_10);
+ 290:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 291:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN SPI2_MspDeInit 1 */
+ 292:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 293:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END SPI2_MspDeInit 1 */
+ 294:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 20
+
+
+ 295:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 296:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 666              		.loc 1 296 1 is_stmt 0 view .LVU189
+ 667 0010 08BD     		pop	{r3, pc}
+ 668              	.LVL27:
+ 669              	.L34:
+ 261:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 670              		.loc 1 261 5 is_stmt 1 view .LVU190
+ 671 0012 02F58432 		add	r2, r2, #67584
+ 672 0016 536C     		ldr	r3, [r2, #68]
+ 673 0018 23F48053 		bic	r3, r3, #4096
+ 674 001c 5364     		str	r3, [r2, #68]
+ 268:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 675              		.loc 1 268 5 view .LVU191
+ 268:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 676              		.loc 1 268 20 is_stmt 0 view .LVU192
+ 677 001e E021     		movs	r1, #224
+ 678 0020 0B48     		ldr	r0, .L36+8
+ 679              	.LVL28:
+ 268:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 680              		.loc 1 268 20 view .LVU193
+ 681 0022 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 682              	.LVL29:
+ 683 0026 F3E7     		b	.L30
+ 684              	.LVL30:
+ 685              	.L35:
+ 280:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 686              		.loc 1 280 5 is_stmt 1 view .LVU194
+ 687 0028 02F50032 		add	r2, r2, #131072
+ 688 002c 136C     		ldr	r3, [r2, #64]
+ 689 002e 23F48043 		bic	r3, r3, #16384
+ 690 0032 1364     		str	r3, [r2, #64]
+ 287:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 691              		.loc 1 287 5 view .LVU195
+ 287:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 692              		.loc 1 287 20 is_stmt 0 view .LVU196
+ 693 0034 0621     		movs	r1, #6
+ 694 0036 0748     		ldr	r0, .L36+12
+ 695              	.LVL31:
+ 287:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 696              		.loc 1 287 20 view .LVU197
+ 697 0038 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 698              	.LVL32:
+ 289:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 699              		.loc 1 289 5 is_stmt 1 view .LVU198
+ 289:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 700              		.loc 1 289 20 is_stmt 0 view .LVU199
+ 701 003c 4FF48061 		mov	r1, #1024
+ 702 0040 0548     		ldr	r0, .L36+16
+ 703 0042 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 704              	.LVL33:
+ 705              		.loc 1 296 1 view .LVU200
+ 706 0046 E3E7     		b	.L30
+ 707              	.L37:
+ 708              		.align	2
+ 709              	.L36:
+ 710 0048 00300140 		.word	1073819648
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 21
+
+
+ 711 004c 00380040 		.word	1073756160
+ 712 0050 00000240 		.word	1073872896
+ 713 0054 00080240 		.word	1073874944
+ 714 0058 00040240 		.word	1073873920
+ 715              		.cfi_endproc
+ 716              	.LFE239:
+ 717              		.fnend
+ 719              		.section	.text.HAL_TIM_Base_MspInit,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	HAL_TIM_Base_MspInit
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 726              	HAL_TIM_Base_MspInit:
+ 727              		.fnstart
+ 728              	.LVL34:
+ 729              	.LFB240:
+ 297:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 298:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 299:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief TIM_Base MSP Initialization
+ 300:Core/Src/stm32f4xx_hal_msp.cpp **** * This function configures the hardware resources used in this example
+ 301:Core/Src/stm32f4xx_hal_msp.cpp **** * @param htim_base: TIM_Base handle pointer
+ 302:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 303:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 304:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
+ 305:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 730              		.loc 1 305 1 is_stmt 1 view -0
+ 731              		.cfi_startproc
+ 732              		@ args = 0, pretend = 0, frame = 8
+ 733              		@ frame_needed = 0, uses_anonymous_args = 0
+ 734              		@ link register save eliminated.
+ 306:Core/Src/stm32f4xx_hal_msp.cpp ****   if(htim_base->Instance==TIM2)
+ 735              		.loc 1 306 3 view .LVU202
+ 736              	.LBB23:
+ 737              		.loc 1 306 17 is_stmt 0 view .LVU203
+ 738 0000 0368     		ldr	r3, [r0]
+ 739              		.loc 1 306 3 view .LVU204
+ 740 0002 B3F1804F 		cmp	r3, #1073741824
+ 741 0006 00D0     		beq	.L44
+ 742 0008 7047     		bx	lr
+ 743              	.L44:
+ 744              	.LBE23:
+ 305:Core/Src/stm32f4xx_hal_msp.cpp ****   if(htim_base->Instance==TIM2)
+ 745              		.loc 1 305 1 view .LVU205
+ 746 000a 82B0     		sub	sp, sp, #8
+ 747              	.LCFI12:
+ 748              		.cfi_def_cfa_offset 8
+ 307:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 308:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN TIM2_MspInit 0 */
+ 309:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 310:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END TIM2_MspInit 0 */
+ 311:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock enable */
+ 312:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_TIM2_CLK_ENABLE();
+ 749              		.loc 1 312 5 is_stmt 1 view .LVU206
+ 750              	.LBB25:
+ 751              	.LBB24:
+ 752              		.loc 1 312 5 view .LVU207
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 22
+
+
+ 753 000c 0023     		movs	r3, #0
+ 754 000e 0193     		str	r3, [sp, #4]
+ 755              		.loc 1 312 5 view .LVU208
+ 756 0010 054B     		ldr	r3, .L45
+ 757 0012 1A6C     		ldr	r2, [r3, #64]
+ 758 0014 42F00102 		orr	r2, r2, #1
+ 759 0018 1A64     		str	r2, [r3, #64]
+ 760              		.loc 1 312 5 view .LVU209
+ 761 001a 1B6C     		ldr	r3, [r3, #64]
+ 762 001c 03F00103 		and	r3, r3, #1
+ 763 0020 0193     		str	r3, [sp, #4]
+ 764              		.loc 1 312 5 view .LVU210
+ 765 0022 019B     		ldr	r3, [sp, #4]
+ 766              	.LBE24:
+ 767              	.LBE25:
+ 768              		.loc 1 312 5 view .LVU211
+ 313:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN TIM2_MspInit 1 */
+ 314:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 315:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END TIM2_MspInit 1 */
+ 316:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 317:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 318:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 769              		.loc 1 318 1 is_stmt 0 view .LVU212
+ 770 0024 02B0     		add	sp, sp, #8
+ 771              	.LCFI13:
+ 772              		.cfi_def_cfa_offset 0
+ 773              		@ sp needed
+ 774 0026 7047     		bx	lr
+ 775              	.L46:
+ 776              		.align	2
+ 777              	.L45:
+ 778 0028 00380240 		.word	1073887232
+ 779              		.cfi_endproc
+ 780              	.LFE240:
+ 781              		.cantunwind
+ 782              		.fnend
+ 784              		.section	.text.HAL_TIM_Base_MspDeInit,"ax",%progbits
+ 785              		.align	1
+ 786              		.global	HAL_TIM_Base_MspDeInit
+ 787              		.syntax unified
+ 788              		.thumb
+ 789              		.thumb_func
+ 791              	HAL_TIM_Base_MspDeInit:
+ 792              		.fnstart
+ 793              	.LVL35:
+ 794              	.LFB241:
+ 319:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 320:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 321:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief TIM_Base MSP De-Initialization
+ 322:Core/Src/stm32f4xx_hal_msp.cpp **** * This function freeze the hardware resources used in this example
+ 323:Core/Src/stm32f4xx_hal_msp.cpp **** * @param htim_base: TIM_Base handle pointer
+ 324:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 325:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 326:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
+ 327:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 795              		.loc 1 327 1 is_stmt 1 view -0
+ 796              		.cfi_startproc
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 23
+
+
+ 797              		@ args = 0, pretend = 0, frame = 0
+ 798              		@ frame_needed = 0, uses_anonymous_args = 0
+ 799              		@ link register save eliminated.
+ 328:Core/Src/stm32f4xx_hal_msp.cpp ****   if(htim_base->Instance==TIM2)
+ 800              		.loc 1 328 3 view .LVU214
+ 801              		.loc 1 328 17 is_stmt 0 view .LVU215
+ 802 0000 0368     		ldr	r3, [r0]
+ 803              		.loc 1 328 3 view .LVU216
+ 804 0002 B3F1804F 		cmp	r3, #1073741824
+ 805 0006 00D0     		beq	.L49
+ 806              	.L47:
+ 329:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 330:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN TIM2_MspDeInit 0 */
+ 331:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 332:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END TIM2_MspDeInit 0 */
+ 333:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock disable */
+ 334:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_TIM2_CLK_DISABLE();
+ 335:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
+ 336:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 337:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END TIM2_MspDeInit 1 */
+ 338:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 339:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 340:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 807              		.loc 1 340 1 view .LVU217
+ 808 0008 7047     		bx	lr
+ 809              	.L49:
+ 334:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN TIM2_MspDeInit 1 */
+ 810              		.loc 1 334 5 is_stmt 1 view .LVU218
+ 811 000a 034A     		ldr	r2, .L50
+ 812 000c 136C     		ldr	r3, [r2, #64]
+ 813 000e 23F00103 		bic	r3, r3, #1
+ 814 0012 1364     		str	r3, [r2, #64]
+ 815              		.loc 1 340 1 is_stmt 0 view .LVU219
+ 816 0014 F8E7     		b	.L47
+ 817              	.L51:
+ 818 0016 00BF     		.align	2
+ 819              	.L50:
+ 820 0018 00380240 		.word	1073887232
+ 821              		.cfi_endproc
+ 822              	.LFE241:
+ 823              		.cantunwind
+ 824              		.fnend
+ 826              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 827              		.align	1
+ 828              		.global	HAL_UART_MspInit
+ 829              		.syntax unified
+ 830              		.thumb
+ 831              		.thumb_func
+ 833              	HAL_UART_MspInit:
+ 834              		.fnstart
+ 835              	.LVL36:
+ 836              	.LFB242:
+ 341:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 342:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 343:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief UART MSP Initialization
+ 344:Core/Src/stm32f4xx_hal_msp.cpp **** * This function configures the hardware resources used in this example
+ 345:Core/Src/stm32f4xx_hal_msp.cpp **** * @param huart: UART handle pointer
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 24
+
+
+ 346:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 347:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 348:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+ 349:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 837              		.loc 1 349 1 is_stmt 1 view -0
+ 838              		.cfi_startproc
+ 839              		@ args = 0, pretend = 0, frame = 32
+ 840              		@ frame_needed = 0, uses_anonymous_args = 0
+ 841              		.loc 1 349 1 is_stmt 0 view .LVU221
+ 842 0000 00B5     		push	{lr}
+ 843              		.save {lr}
+ 844              	.LCFI14:
+ 845              		.cfi_def_cfa_offset 4
+ 846              		.cfi_offset 14, -4
+ 847              		.pad #36
+ 848 0002 89B0     		sub	sp, sp, #36
+ 849              	.LCFI15:
+ 850              		.cfi_def_cfa_offset 40
+ 350:Core/Src/stm32f4xx_hal_msp.cpp ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 851              		.loc 1 350 3 is_stmt 1 view .LVU222
+ 852              		.loc 1 350 20 is_stmt 0 view .LVU223
+ 853 0004 0023     		movs	r3, #0
+ 854 0006 0393     		str	r3, [sp, #12]
+ 855 0008 0493     		str	r3, [sp, #16]
+ 856 000a 0593     		str	r3, [sp, #20]
+ 857 000c 0693     		str	r3, [sp, #24]
+ 858 000e 0793     		str	r3, [sp, #28]
+ 351:Core/Src/stm32f4xx_hal_msp.cpp ****   if(huart->Instance==USART3)
+ 859              		.loc 1 351 3 is_stmt 1 view .LVU224
+ 860              	.LBB26:
+ 861              		.loc 1 351 13 is_stmt 0 view .LVU225
+ 862 0010 0268     		ldr	r2, [r0]
+ 863              		.loc 1 351 3 view .LVU226
+ 864 0012 154B     		ldr	r3, .L56
+ 865 0014 9A42     		cmp	r2, r3
+ 866 0016 02D0     		beq	.L55
+ 867              	.LVL37:
+ 868              	.L52:
+ 869              		.loc 1 351 3 view .LVU227
+ 870              	.LBE26:
+ 352:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 353:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN USART3_MspInit 0 */
+ 354:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 355:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END USART3_MspInit 0 */
+ 356:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock enable */
+ 357:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_USART3_CLK_ENABLE();
+ 358:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_GPIOC_CLK_ENABLE();
+ 360:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 361:Core/Src/stm32f4xx_hal_msp.cpp ****     PC5     ------> USART3_RX
+ 362:Core/Src/stm32f4xx_hal_msp.cpp ****     PC10     ------> USART3_TX
+ 363:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 364:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_10;
+ 365:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 366:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 367:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 368:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 25
+
+
+ 369:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 370:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 371:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN USART3_MspInit 1 */
+ 372:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 373:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END USART3_MspInit 1 */
+ 374:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 375:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 376:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 871              		.loc 1 376 1 view .LVU228
+ 872 0018 09B0     		add	sp, sp, #36
+ 873              	.LCFI16:
+ 874              		.cfi_remember_state
+ 875              		.cfi_def_cfa_offset 4
+ 876              		@ sp needed
+ 877 001a 5DF804FB 		ldr	pc, [sp], #4
+ 878              	.LVL38:
+ 879              	.L55:
+ 880              	.LCFI17:
+ 881              		.cfi_restore_state
+ 882              	.LBB30:
+ 883              	.LBB27:
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 884              		.loc 1 357 5 is_stmt 1 view .LVU229
+ 885              	.LBB28:
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 886              		.loc 1 357 5 view .LVU230
+ 887 001e 0021     		movs	r1, #0
+ 888 0020 0191     		str	r1, [sp, #4]
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 889              		.loc 1 357 5 view .LVU231
+ 890 0022 03F5F833 		add	r3, r3, #126976
+ 891 0026 1A6C     		ldr	r2, [r3, #64]
+ 892 0028 42F48022 		orr	r2, r2, #262144
+ 893 002c 1A64     		str	r2, [r3, #64]
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 894              		.loc 1 357 5 view .LVU232
+ 895 002e 1A6C     		ldr	r2, [r3, #64]
+ 896 0030 02F48022 		and	r2, r2, #262144
+ 897 0034 0192     		str	r2, [sp, #4]
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 898              		.loc 1 357 5 view .LVU233
+ 899 0036 019A     		ldr	r2, [sp, #4]
+ 900              	.LBE28:
+ 357:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 901              		.loc 1 357 5 view .LVU234
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 902              		.loc 1 359 5 view .LVU235
+ 903              	.LBB29:
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 904              		.loc 1 359 5 view .LVU236
+ 905 0038 0291     		str	r1, [sp, #8]
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 906              		.loc 1 359 5 view .LVU237
+ 907 003a 1A6B     		ldr	r2, [r3, #48]
+ 908 003c 42F00402 		orr	r2, r2, #4
+ 909 0040 1A63     		str	r2, [r3, #48]
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 26
+
+
+ 910              		.loc 1 359 5 view .LVU238
+ 911 0042 1B6B     		ldr	r3, [r3, #48]
+ 912 0044 03F00403 		and	r3, r3, #4
+ 913 0048 0293     		str	r3, [sp, #8]
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 914              		.loc 1 359 5 view .LVU239
+ 915 004a 029B     		ldr	r3, [sp, #8]
+ 916              	.LBE29:
+ 359:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 917              		.loc 1 359 5 view .LVU240
+ 364:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 918              		.loc 1 364 5 view .LVU241
+ 364:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 919              		.loc 1 364 25 is_stmt 0 view .LVU242
+ 920 004c 4FF48463 		mov	r3, #1056
+ 921 0050 0393     		str	r3, [sp, #12]
+ 365:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 922              		.loc 1 365 5 is_stmt 1 view .LVU243
+ 365:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 923              		.loc 1 365 26 is_stmt 0 view .LVU244
+ 924 0052 0223     		movs	r3, #2
+ 925 0054 0493     		str	r3, [sp, #16]
+ 366:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 926              		.loc 1 366 5 is_stmt 1 view .LVU245
+ 367:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 927              		.loc 1 367 5 view .LVU246
+ 367:Core/Src/stm32f4xx_hal_msp.cpp ****     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
+ 928              		.loc 1 367 27 is_stmt 0 view .LVU247
+ 929 0056 0323     		movs	r3, #3
+ 930 0058 0693     		str	r3, [sp, #24]
+ 368:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 931              		.loc 1 368 5 is_stmt 1 view .LVU248
+ 368:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+ 932              		.loc 1 368 31 is_stmt 0 view .LVU249
+ 933 005a 0723     		movs	r3, #7
+ 934 005c 0793     		str	r3, [sp, #28]
+ 369:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 935              		.loc 1 369 5 is_stmt 1 view .LVU250
+ 369:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 936              		.loc 1 369 18 is_stmt 0 view .LVU251
+ 937 005e 03A9     		add	r1, sp, #12
+ 938 0060 0248     		ldr	r0, .L56+4
+ 939              	.LVL39:
+ 369:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 940              		.loc 1 369 18 view .LVU252
+ 941 0062 FFF7FEFF 		bl	HAL_GPIO_Init
+ 942              	.LVL40:
+ 943              	.LBE27:
+ 944              	.LBE30:
+ 945              		.loc 1 376 1 view .LVU253
+ 946 0066 D7E7     		b	.L52
+ 947              	.L57:
+ 948              		.align	2
+ 949              	.L56:
+ 950 0068 00480040 		.word	1073760256
+ 951 006c 00080240 		.word	1073874944
+ 952              		.cfi_endproc
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 27
+
+
+ 953              	.LFE242:
+ 954              		.fnend
+ 956              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 957              		.align	1
+ 958              		.global	HAL_UART_MspDeInit
+ 959              		.syntax unified
+ 960              		.thumb
+ 961              		.thumb_func
+ 963              	HAL_UART_MspDeInit:
+ 964              		.fnstart
+ 965              	.LVL41:
+ 966              	.LFB243:
+ 377:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 378:Core/Src/stm32f4xx_hal_msp.cpp **** /**
+ 379:Core/Src/stm32f4xx_hal_msp.cpp **** * @brief UART MSP De-Initialization
+ 380:Core/Src/stm32f4xx_hal_msp.cpp **** * This function freeze the hardware resources used in this example
+ 381:Core/Src/stm32f4xx_hal_msp.cpp **** * @param huart: UART handle pointer
+ 382:Core/Src/stm32f4xx_hal_msp.cpp **** * @retval None
+ 383:Core/Src/stm32f4xx_hal_msp.cpp **** */
+ 384:Core/Src/stm32f4xx_hal_msp.cpp **** void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+ 385:Core/Src/stm32f4xx_hal_msp.cpp **** {
+ 967              		.loc 1 385 1 is_stmt 1 view -0
+ 968              		.cfi_startproc
+ 969              		@ args = 0, pretend = 0, frame = 0
+ 970              		@ frame_needed = 0, uses_anonymous_args = 0
+ 971              		.loc 1 385 1 is_stmt 0 view .LVU255
+ 972 0000 08B5     		push	{r3, lr}
+ 973              		.save {r3, lr}
+ 974              	.LCFI18:
+ 975              		.cfi_def_cfa_offset 8
+ 976              		.cfi_offset 3, -8
+ 977              		.cfi_offset 14, -4
+ 386:Core/Src/stm32f4xx_hal_msp.cpp ****   if(huart->Instance==USART3)
+ 978              		.loc 1 386 3 is_stmt 1 view .LVU256
+ 979              		.loc 1 386 13 is_stmt 0 view .LVU257
+ 980 0002 0268     		ldr	r2, [r0]
+ 981              		.loc 1 386 3 view .LVU258
+ 982 0004 074B     		ldr	r3, .L62
+ 983 0006 9A42     		cmp	r2, r3
+ 984 0008 00D0     		beq	.L61
+ 985              	.LVL42:
+ 986              	.L58:
+ 387:Core/Src/stm32f4xx_hal_msp.cpp ****   {
+ 388:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN USART3_MspDeInit 0 */
+ 389:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 390:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END USART3_MspDeInit 0 */
+ 391:Core/Src/stm32f4xx_hal_msp.cpp ****     /* Peripheral clock disable */
+ 392:Core/Src/stm32f4xx_hal_msp.cpp ****     __HAL_RCC_USART3_CLK_DISABLE();
+ 393:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 394:Core/Src/stm32f4xx_hal_msp.cpp ****     /**USART3 GPIO Configuration
+ 395:Core/Src/stm32f4xx_hal_msp.cpp ****     PC5     ------> USART3_RX
+ 396:Core/Src/stm32f4xx_hal_msp.cpp ****     PC10     ------> USART3_TX
+ 397:Core/Src/stm32f4xx_hal_msp.cpp ****     */
+ 398:Core/Src/stm32f4xx_hal_msp.cpp ****     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_5|GPIO_PIN_10);
+ 399:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 400:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE BEGIN USART3_MspDeInit 1 */
+ 401:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 28
+
+
+ 402:Core/Src/stm32f4xx_hal_msp.cpp ****   /* USER CODE END USART3_MspDeInit 1 */
+ 403:Core/Src/stm32f4xx_hal_msp.cpp ****   }
+ 404:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 405:Core/Src/stm32f4xx_hal_msp.cpp **** }
+ 987              		.loc 1 405 1 view .LVU259
+ 988 000a 08BD     		pop	{r3, pc}
+ 989              	.LVL43:
+ 990              	.L61:
+ 392:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 991              		.loc 1 392 5 is_stmt 1 view .LVU260
+ 992 000c 064A     		ldr	r2, .L62+4
+ 993 000e 136C     		ldr	r3, [r2, #64]
+ 994 0010 23F48023 		bic	r3, r3, #262144
+ 995 0014 1364     		str	r3, [r2, #64]
+ 398:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 996              		.loc 1 398 5 view .LVU261
+ 398:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 997              		.loc 1 398 20 is_stmt 0 view .LVU262
+ 998 0016 4FF48461 		mov	r1, #1056
+ 999 001a 0448     		ldr	r0, .L62+8
+ 1000              	.LVL44:
+ 398:Core/Src/stm32f4xx_hal_msp.cpp **** 
+ 1001              		.loc 1 398 20 view .LVU263
+ 1002 001c FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 1003              	.LVL45:
+ 1004              		.loc 1 405 1 view .LVU264
+ 1005 0020 F3E7     		b	.L58
+ 1006              	.L63:
+ 1007 0022 00BF     		.align	2
+ 1008              	.L62:
+ 1009 0024 00480040 		.word	1073760256
+ 1010 0028 00380240 		.word	1073887232
+ 1011 002c 00080240 		.word	1073874944
+ 1012              		.cfi_endproc
+ 1013              	.LFE243:
+ 1014              		.fnend
+ 1016              		.text
+ 1017              	.Letext0:
+ 1018              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1019              		.file 3 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 1020              		.file 4 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 1021              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1022              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1023              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1024              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1025              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 1026              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1027              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1028              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1029              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1030              		.file 14 "Core/Inc/main.h"
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_hal_msp.cpp
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:21     .text.HAL_MspInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:27     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:81     .text.HAL_MspInit:00000034 $d
+      .ARM.exidx.text.HAL_MspInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:88     .text.HAL_ADC_MspInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:94     .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:278    .text.HAL_ADC_MspInit:000000b0 $d
+  .ARM.exidx.text.HAL_ADC_MspInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:288    .text.HAL_ADC_MspDeInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:294    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:349    .text.HAL_ADC_MspDeInit:00000030 $d
+.ARM.exidx.text.HAL_ADC_MspDeInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:357    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:363    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:621    .text.HAL_SPI_MspInit:000000f4 $d
+  .ARM.exidx.text.HAL_SPI_MspInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:632    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:638    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:710    .text.HAL_SPI_MspDeInit:00000048 $d
+.ARM.extab.text.HAL_SPI_MspDeInit:00000000 $d
+.ARM.exidx.text.HAL_SPI_MspDeInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:720    .text.HAL_TIM_Base_MspInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:726    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:778    .text.HAL_TIM_Base_MspInit:00000028 $d
+.ARM.exidx.text.HAL_TIM_Base_MspInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:785    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:791    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:820    .text.HAL_TIM_Base_MspDeInit:00000018 $d
+.ARM.exidx.text.HAL_TIM_Base_MspDeInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:827    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:833    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:950    .text.HAL_UART_MspInit:00000068 $d
+ .ARM.exidx.text.HAL_UART_MspInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:957    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:963    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\huawei\AppData\Local\Temp\ccp8M1Zh.s:1009   .text.HAL_UART_MspDeInit:00000024 $d
+.ARM.extab.text.HAL_UART_MspDeInit:00000000 $d
+.ARM.exidx.text.HAL_UART_MspDeInit:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_DMA_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+Error_Handler
+hdma_adc1
+__aeabi_unwind_cpp_pr0
+HAL_GPIO_DeInit
+HAL_DMA_DeInit
+HAL_NVIC_DisableIRQ
+__aeabi_unwind_cpp_pr1

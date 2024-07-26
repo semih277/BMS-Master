@@ -1,0 +1,1441 @@
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"stm32f4xx_hal_pwr.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp"
+  20              		.section	.text.HAL_PWR_DeInit,"ax",%progbits
+  21              		.align	1
+  22              		.global	HAL_PWR_DeInit
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	HAL_PWR_DeInit:
+  28              		.fnstart
+  29              	.LFB235:
+   1:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+   2:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   ******************************************************************************
+   3:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @file    stm32f4xx_hal_pwr.c
+   4:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @author  MCD Application Team
+   5:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief   PWR HAL module driver.
+   6:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          This file provides firmware functions to manage the following 
+   7:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          functionalities of the Power Controller (PWR) peripheral:
+   8:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           + Initialization and de-initialization functions
+   9:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           + Peripheral Control functions 
+  10:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         
+  11:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   ******************************************************************************
+  12:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @attention
+  13:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *
+  14:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * Copyright (c) 2017 STMicroelectronics.
+  15:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * All rights reserved.
+  16:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *
+  17:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * This software is licensed under terms that can be found in the LICENSE file in
+  18:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * the root directory of this software component.
+  19:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  20:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   ******************************************************************************
+  21:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */ 
+  22:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  23:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Includes ------------------------------------------------------------------*/
+  24:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #include "stm32f4xx_hal.h"
+  25:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  26:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @addtogroup STM32F4xx_HAL_Driver
+  27:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 2
+
+
+  30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @defgroup PWR PWR
+  31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief PWR HAL module driver
+  32:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  33:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  34:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  35:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #ifdef HAL_PWR_MODULE_ENABLED
+  36:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  37:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private typedef -----------------------------------------------------------*/
+  38:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private define ------------------------------------------------------------*/
+  39:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @addtogroup PWR_Private_Constants
+  40:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  41:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  42:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+  43:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @defgroup PWR_PVD_Mode_Mask PWR PVD Mode Mask
+  44:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  45:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */     
+  46:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #define PVD_MODE_IT               0x00010000U
+  47:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #define PVD_MODE_EVT              0x00020000U
+  48:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #define PVD_RISING_EDGE           0x00000001U
+  49:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #define PVD_FALLING_EDGE          0x00000002U
+  50:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+  51:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @}
+  52:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  53:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  54:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+  55:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @}
+  56:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */    
+  57:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private macro -------------------------------------------------------------*/
+  58:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private variables ---------------------------------------------------------*/
+  59:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private function prototypes -----------------------------------------------*/
+  60:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /* Private functions ---------------------------------------------------------*/
+  61:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  62:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @defgroup PWR_Exported_Functions PWR Exported Functions
+  63:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  64:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  65:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  66:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @defgroup PWR_Exported_Functions_Group1 Initialization and de-initialization functions 
+  67:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *  @brief    Initialization and de-initialization functions
+  68:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *
+  69:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** @verbatim
+  70:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****  ===============================================================================
+  71:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               ##### Initialization and de-initialization functions #####
+  72:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****  ===============================================================================
+  73:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+  74:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       After reset, the backup domain (RTC registers, RTC backup data 
+  75:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       registers and backup SRAM) is protected against possible unwanted 
+  76:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       write accesses. 
+  77:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       To enable access to the RTC Domain and RTC registers, proceed as follows:
+  78:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (+) Enable the Power Controller (PWR) APB1 interface clock using the
+  79:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****             __HAL_RCC_PWR_CLK_ENABLE() macro.
+  80:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (+) Enable access to RTC domain using the HAL_PWR_EnableBkUpAccess() function.
+  81:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****  
+  82:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** @endverbatim
+  83:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+  84:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 3
+
+
+  87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Deinitializes the HAL PWR peripheral registers to their default reset values.
+  88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+  89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+  90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DeInit(void)
+  91:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+  30              		.loc 1 91 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  92:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_RCC_PWR_FORCE_RESET();
+  35              		.loc 1 92 3 view .LVU1
+  36 0000 044B     		ldr	r3, .L2
+  37 0002 1A6A     		ldr	r2, [r3, #32]
+  38 0004 42F08052 		orr	r2, r2, #268435456
+  39 0008 1A62     		str	r2, [r3, #32]
+  93:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_RCC_PWR_RELEASE_RESET();
+  40              		.loc 1 93 3 view .LVU2
+  41 000a 1A6A     		ldr	r2, [r3, #32]
+  42 000c 22F08052 		bic	r2, r2, #268435456
+  43 0010 1A62     		str	r2, [r3, #32]
+  94:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+  44              		.loc 1 94 1 is_stmt 0 view .LVU3
+  45 0012 7047     		bx	lr
+  46              	.L3:
+  47              		.align	2
+  48              	.L2:
+  49 0014 00380240 		.word	1073887232
+  50              		.cfi_endproc
+  51              	.LFE235:
+  52              		.cantunwind
+  53              		.fnend
+  55              		.section	.text.HAL_PWR_EnableBkUpAccess,"ax",%progbits
+  56              		.align	1
+  57              		.global	HAL_PWR_EnableBkUpAccess
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	HAL_PWR_EnableBkUpAccess:
+  63              		.fnstart
+  64              	.LFB236:
+  95:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+  96:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+  97:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enables access to the backup domain (RTC registers, RTC 
+  98:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         backup data registers and backup SRAM).
+  99:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note If the HSE divided by 2, 3, ..31 is used as the RTC clock, the 
+ 100:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         Backup Domain Access should be kept enabled.
+ 101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note The following sequence is required to bypass the delay between
+ 102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         DBP bit programming and the effective enabling  of the backup domain.
+ 103:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         Please check the Errata Sheet for more details under "Possible delay
+ 104:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         in backup domain protection disabling/enabling after programming the
+ 105:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         DBP bit" section.
+ 106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnableBkUpAccess(void)
+ 109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+  65              		.loc 1 109 1 is_stmt 1 view -0
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 4
+
+
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 8
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69              		@ link register save eliminated.
+  70 0000 82B0     		sub	sp, sp, #8
+  71              	.LCFI0:
+  72              		.cfi_def_cfa_offset 8
+ 110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __IO uint32_t dummyread;
+  73              		.loc 1 110 3 view .LVU5
+ 111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *(__IO uint32_t *) CR_DBP_BB = (uint32_t)ENABLE;
+  74              		.loc 1 111 3 view .LVU6
+  75              		.loc 1 111 32 is_stmt 0 view .LVU7
+  76 0002 044B     		ldr	r3, .L6
+  77 0004 0122     		movs	r2, #1
+  78 0006 1A62     		str	r2, [r3, #32]
+ 112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   dummyread = PWR->CR;
+  79              		.loc 1 112 3 is_stmt 1 view .LVU8
+  80              		.loc 1 112 20 is_stmt 0 view .LVU9
+  81 0008 034B     		ldr	r3, .L6+4
+  82 000a 1B68     		ldr	r3, [r3]
+  83              		.loc 1 112 13 view .LVU10
+  84 000c 0193     		str	r3, [sp, #4]
+ 113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   UNUSED(dummyread);
+  85              		.loc 1 113 3 is_stmt 1 view .LVU11
+  86 000e 019B     		ldr	r3, [sp, #4]
+ 114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+  87              		.loc 1 114 1 is_stmt 0 view .LVU12
+  88 0010 02B0     		add	sp, sp, #8
+  89              	.LCFI1:
+  90              		.cfi_def_cfa_offset 0
+  91              		@ sp needed
+  92 0012 7047     		bx	lr
+  93              	.L7:
+  94              		.align	2
+  95              	.L6:
+  96 0014 00000E42 		.word	1108213760
+  97 0018 00700040 		.word	1073770496
+  98              		.cfi_endproc
+  99              	.LFE236:
+ 100              		.cantunwind
+ 101              		.fnend
+ 103              		.section	.text.HAL_PWR_DisableBkUpAccess,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	HAL_PWR_DisableBkUpAccess
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	HAL_PWR_DisableBkUpAccess:
+ 111              		.fnstart
+ 112              	.LFB237:
+ 115:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 117:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Disables access to the backup domain (RTC registers, RTC 
+ 118:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         backup data registers and backup SRAM).
+ 119:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note If the HSE divided by 2, 3, ..31 is used as the RTC clock, the 
+ 120:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         Backup Domain Access should be kept enabled.
+ 121:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note The following sequence is required to bypass the delay between
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 5
+
+
+ 122:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         DBP bit programming and the effective disabling  of the backup domain.
+ 123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         Please check the Errata Sheet for more details under "Possible delay
+ 124:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         in backup domain protection disabling/enabling after programming the
+ 125:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         DBP bit" section.
+ 126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DisableBkUpAccess(void)
+ 129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 113              		.loc 1 129 1 is_stmt 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 8
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 82B0     		sub	sp, sp, #8
+ 119              	.LCFI2:
+ 120              		.cfi_def_cfa_offset 8
+ 130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __IO uint32_t dummyread;
+ 121              		.loc 1 130 3 view .LVU14
+ 131:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *(__IO uint32_t *) CR_DBP_BB = (uint32_t)DISABLE;
+ 122              		.loc 1 131 3 view .LVU15
+ 123              		.loc 1 131 32 is_stmt 0 view .LVU16
+ 124 0002 044B     		ldr	r3, .L10
+ 125 0004 0022     		movs	r2, #0
+ 126 0006 1A62     		str	r2, [r3, #32]
+ 132:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   dummyread = PWR->CR;
+ 127              		.loc 1 132 3 is_stmt 1 view .LVU17
+ 128              		.loc 1 132 20 is_stmt 0 view .LVU18
+ 129 0008 034B     		ldr	r3, .L10+4
+ 130 000a 1B68     		ldr	r3, [r3]
+ 131              		.loc 1 132 13 view .LVU19
+ 132 000c 0193     		str	r3, [sp, #4]
+ 133:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   UNUSED(dummyread);
+ 133              		.loc 1 133 3 is_stmt 1 view .LVU20
+ 134 000e 019B     		ldr	r3, [sp, #4]
+ 134:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 135              		.loc 1 134 1 is_stmt 0 view .LVU21
+ 136 0010 02B0     		add	sp, sp, #8
+ 137              	.LCFI3:
+ 138              		.cfi_def_cfa_offset 0
+ 139              		@ sp needed
+ 140 0012 7047     		bx	lr
+ 141              	.L11:
+ 142              		.align	2
+ 143              	.L10:
+ 144 0014 00000E42 		.word	1108213760
+ 145 0018 00700040 		.word	1073770496
+ 146              		.cfi_endproc
+ 147              	.LFE237:
+ 148              		.cantunwind
+ 149              		.fnend
+ 151              		.section	.text.HAL_PWR_ConfigPVD,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	HAL_PWR_ConfigPVD
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 158              	HAL_PWR_ConfigPVD:
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 6
+
+
+ 159              		.fnstart
+ 160              	.LVL0:
+ 161              	.LFB238:
+ 135:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 136:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @}
+ 138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control functions 
+ 141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *  @brief Low Power modes configuration functions 
+ 142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *
+ 143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** @verbatim
+ 144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****  ===============================================================================
+ 146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****                  ##### Peripheral Control functions #####
+ 147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****  ===============================================================================
+ 148:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****      
+ 149:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     *** PVD configuration ***
+ 150:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     =========================
+ 151:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 152:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) The PVD is used to monitor the VDD power supply by comparing it to a 
+ 153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           threshold selected by the PVD Level (PLS[2:0] bits in the PWR_CR).
+ 154:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) A PVDO flag is available to indicate if VDD/VDDA is higher or lower 
+ 155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           than the PVD threshold. This event is internally connected to the EXTI 
+ 156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           line16 and can generate an interrupt if enabled. This is done through
+ 157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           __HAL_PWR_PVD_EXTI_ENABLE_IT() macro.
+ 158:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) The PVD is stopped in Standby mode.
+ 159:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 160:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     *** Wake-up pin configuration ***
+ 161:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     ================================
+ 162:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 163:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Wake-up pin is used to wake up the system from Standby mode. This pin is 
+ 164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           forced in input pull-down configuration and is active on rising edges.
+ 165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) There is one Wake-up pin: Wake-up Pin 1 on PA.00.
+ 166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 	   (++) For STM32F446xx there are two Wake-Up pins: Pin1 on PA.00 and Pin2 on PC.13
+ 167:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****            (++) For STM32F410xx/STM32F412xx/STM32F413xx/STM32F423xx  there are three Wake-Up pins: 
+ 168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     *** Low Power modes configuration ***
+ 170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     =====================================
+ 171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 172:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       The devices feature 3 low-power modes:
+ 173:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Sleep mode: Cortex-M4 core stopped, peripherals kept running.
+ 174:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Stop mode: all clocks are stopped, regulator running, regulator 
+ 175:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           in low power mode
+ 176:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Standby mode: 1.2V domain powered off.
+ 177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    
+ 178:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    *** Sleep mode ***
+ 179:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    ==================
+ 180:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 181:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Entry:
+ 182:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         The Sleep mode is entered by using the HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLE
+ 183:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               functions with
+ 184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           (++) PWR_SLEEPENTRY_WFI: enter SLEEP mode with WFI instruction
+ 185:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           (++) PWR_SLEEPENTRY_WFE: enter SLEEP mode with WFE instruction
+ 186:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       
+ 187:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       -@@- The Regulator parameter is not used for the STM32F4 family 
+ 188:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               and is kept as parameter just to maintain compatibility with the 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 7
+
+
+ 189:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               lower power families (STM32L).
+ 190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Exit:
+ 191:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         Any peripheral interrupt acknowledged by the nested vectored interrupt 
+ 192:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               controller (NVIC) can wake up the device from Sleep mode.
+ 193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    *** Stop mode ***
+ 195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    =================
+ 196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       In Stop mode, all clocks in the 1.2V domain are stopped, the PLL, the HSI,
+ 198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       and the HSE RC oscillators are disabled. Internal SRAM and register contents 
+ 199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       are preserved.
+ 200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       The voltage regulator can be configured either in normal or low-power mode.
+ 201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       To minimize the consumption In Stop mode, FLASH can be powered off before 
+ 202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       entering the Stop mode using the HAL_PWREx_EnableFlashPowerDown() function.
+ 203:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       It can be switched on again by software after exiting the Stop mode using
+ 204:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       the HAL_PWREx_DisableFlashPowerDown() function. 
+ 205:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 206:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Entry:
+ 207:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****          The Stop mode is entered using the HAL_PWR_EnterSTOPMode(PWR_MAINREGULATOR_ON) 
+ 208:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****              function with:
+ 209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           (++) Main regulator ON.
+ 210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****           (++) Low Power regulator ON.
+ 211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) Exit:
+ 212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         Any EXTI Line (Internal or External) configured in Interrupt/Event mode.
+ 213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    *** Standby mode ***
+ 215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    ====================
+ 216:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     (+)
+ 218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       The Standby mode allows to achieve the lowest power consumption. It is based 
+ 219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       on the Cortex-M4 deep sleep mode, with the voltage regulator disabled. 
+ 220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       The 1.2V domain is consequently powered off. The PLL, the HSI oscillator and 
+ 221:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       the HSE oscillator are also switched off. SRAM and register contents are lost 
+ 222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       except for the RTC registers, RTC backup registers, backup SRAM and Standby 
+ 223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       circuitry.
+ 224:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    
+ 225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       The voltage regulator is OFF.
+ 226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       
+ 227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (++) Entry:
+ 228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (+++) The Standby mode is entered using the HAL_PWR_EnterSTANDBYMode() function.
+ 229:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (++) Exit:
+ 230:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (+++) WKUP pin rising edge, RTC alarm (Alarm A and Alarm B), RTC wake-up,
+ 231:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****              tamper event, time-stamp event, external reset in NRST pin, IWDG reset.
+ 232:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 233:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    *** Auto-wake-up (AWU) from low-power mode ***
+ 234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    =============================================
+ 235:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     [..]
+ 236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     
+ 237:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****      (+) The MCU can be woken up from low-power mode by an RTC Alarm event, an RTC 
+ 238:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       Wake-up event, a tamper event or a time-stamp event, without depending on 
+ 239:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       an external interrupt (Auto-wake-up mode).
+ 240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****       (+) RTC auto-wake-up (AWU) from the Stop and Standby modes
+ 242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****        
+ 243:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (++) To wake up from the Stop mode with an RTC alarm event, it is necessary to 
+ 244:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               configure the RTC to generate the RTC alarm using the HAL_RTC_SetAlarm_IT() function.
+ 245:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 8
+
+
+ 246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (++) To wake up from the Stop mode with an RTC Tamper or time stamp event, it 
+ 247:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****              is necessary to configure the RTC to detect the tamper or time stamp event using the
+ 248:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****                 HAL_RTCEx_SetTimeStamp_IT() or HAL_RTCEx_SetTamper_IT() functions.
+ 249:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****                   
+ 250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****         (++) To wake up from the Stop mode with an RTC Wake-up event, it is necessary to
+ 251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****               configure the RTC to generate the RTC Wake-up event using the HAL_RTCEx_SetWakeUpTime
+ 252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** @endverbatim
+ 254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @{
+ 255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Configures the voltage threshold detected by the Power Voltage Detector(PVD).
+ 259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param sConfigPVD pointer to an PWR_PVDTypeDef structure that contains the configuration
+ 260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *        information for the PVD.
+ 261:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note Refer to the electrical characteristics of your device datasheet for
+ 262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         more details about the voltage threshold corresponding to each 
+ 263:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         detection level.
+ 264:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 266:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
+ 267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 162              		.loc 1 267 1 is_stmt 1 view -0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 268:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check the parameters */
+ 269:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_PVD_LEVEL(sConfigPVD->PVDLevel));
+ 167              		.loc 1 269 3 view .LVU23
+ 270:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_PVD_MODE(sConfigPVD->Mode));
+ 168              		.loc 1 270 3 view .LVU24
+ 271:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 272:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Set PLS[7:5] bits according to PVDLevel value */
+ 273:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   MODIFY_REG(PWR->CR, PWR_CR_PLS, sConfigPVD->PVDLevel);
+ 169              		.loc 1 273 3 view .LVU25
+ 170 0000 1E4A     		ldr	r2, .L17
+ 171 0002 1368     		ldr	r3, [r2]
+ 172 0004 23F0E003 		bic	r3, r3, #224
+ 173 0008 0168     		ldr	r1, [r0]
+ 174 000a 0B43     		orrs	r3, r3, r1
+ 175 000c 1360     		str	r3, [r2]
+ 274:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Clear any previous config. Keep it clear if no event or IT mode is selected */
+ 276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_PWR_PVD_EXTI_DISABLE_EVENT();
+ 176              		.loc 1 276 3 view .LVU26
+ 177 000e 1C4B     		ldr	r3, .L17+4
+ 178 0010 5A68     		ldr	r2, [r3, #4]
+ 179 0012 22F48032 		bic	r2, r2, #65536
+ 180 0016 5A60     		str	r2, [r3, #4]
+ 277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_PWR_PVD_EXTI_DISABLE_IT();
+ 181              		.loc 1 277 3 view .LVU27
+ 182 0018 1A68     		ldr	r2, [r3]
+ 183 001a 22F48032 		bic	r2, r2, #65536
+ 184 001e 1A60     		str	r2, [r3]
+ 278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE();
+ 185              		.loc 1 278 3 view .LVU28
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 9
+
+
+ 186 0020 9A68     		ldr	r2, [r3, #8]
+ 187 0022 22F48032 		bic	r2, r2, #65536
+ 188 0026 9A60     		str	r2, [r3, #8]
+ 279:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE(); 
+ 189              		.loc 1 279 3 view .LVU29
+ 190 0028 DA68     		ldr	r2, [r3, #12]
+ 191 002a 22F48032 		bic	r2, r2, #65536
+ 192 002e DA60     		str	r2, [r3, #12]
+ 280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Configure interrupt mode */
+ 282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
+ 193              		.loc 1 282 3 view .LVU30
+ 194              		.loc 1 282 19 is_stmt 0 view .LVU31
+ 195 0030 4368     		ldr	r3, [r0, #4]
+ 196              		.loc 1 282 3 view .LVU32
+ 197 0032 13F4803F 		tst	r3, #65536
+ 198 0036 04D0     		beq	.L13
+ 283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __HAL_PWR_PVD_EXTI_ENABLE_IT();
+ 199              		.loc 1 284 5 is_stmt 1 view .LVU33
+ 200 0038 114A     		ldr	r2, .L17+4
+ 201 003a 1368     		ldr	r3, [r2]
+ 202 003c 43F48033 		orr	r3, r3, #65536
+ 203 0040 1360     		str	r3, [r2]
+ 204              	.L13:
+ 285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 286:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Configure event mode */
+ 288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if((sConfigPVD->Mode & PVD_MODE_EVT) == PVD_MODE_EVT)
+ 205              		.loc 1 288 3 view .LVU34
+ 206              		.loc 1 288 19 is_stmt 0 view .LVU35
+ 207 0042 4368     		ldr	r3, [r0, #4]
+ 208              		.loc 1 288 3 view .LVU36
+ 209 0044 13F4003F 		tst	r3, #131072
+ 210 0048 04D0     		beq	.L14
+ 289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __HAL_PWR_PVD_EXTI_ENABLE_EVENT();
+ 211              		.loc 1 290 5 is_stmt 1 view .LVU37
+ 212 004a 0D4A     		ldr	r2, .L17+4
+ 213 004c 5368     		ldr	r3, [r2, #4]
+ 214 004e 43F48033 		orr	r3, r3, #65536
+ 215 0052 5360     		str	r3, [r2, #4]
+ 216              	.L14:
+ 291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 293:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Configure the edge */
+ 294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if((sConfigPVD->Mode & PVD_RISING_EDGE) == PVD_RISING_EDGE)
+ 217              		.loc 1 294 3 view .LVU38
+ 218              		.loc 1 294 19 is_stmt 0 view .LVU39
+ 219 0054 4368     		ldr	r3, [r0, #4]
+ 220              		.loc 1 294 3 view .LVU40
+ 221 0056 13F0010F 		tst	r3, #1
+ 222 005a 04D0     		beq	.L15
+ 295:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE();
+ 223              		.loc 1 296 5 is_stmt 1 view .LVU41
+ 224 005c 084A     		ldr	r2, .L17+4
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 10
+
+
+ 225 005e 9368     		ldr	r3, [r2, #8]
+ 226 0060 43F48033 		orr	r3, r3, #65536
+ 227 0064 9360     		str	r3, [r2, #8]
+ 228              	.L15:
+ 297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 298:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if((sConfigPVD->Mode & PVD_FALLING_EDGE) == PVD_FALLING_EDGE)
+ 229              		.loc 1 299 3 view .LVU42
+ 230              		.loc 1 299 19 is_stmt 0 view .LVU43
+ 231 0066 4368     		ldr	r3, [r0, #4]
+ 232              		.loc 1 299 3 view .LVU44
+ 233 0068 13F0020F 		tst	r3, #2
+ 234 006c 04D0     		beq	.L12
+ 300:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 301:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE();
+ 235              		.loc 1 301 5 is_stmt 1 view .LVU45
+ 236 006e 044A     		ldr	r2, .L17+4
+ 237 0070 D368     		ldr	r3, [r2, #12]
+ 238 0072 43F48033 		orr	r3, r3, #65536
+ 239 0076 D360     		str	r3, [r2, #12]
+ 240              	.L12:
+ 302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 303:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 241              		.loc 1 303 1 is_stmt 0 view .LVU46
+ 242 0078 7047     		bx	lr
+ 243              	.L18:
+ 244 007a 00BF     		.align	2
+ 245              	.L17:
+ 246 007c 00700040 		.word	1073770496
+ 247 0080 003C0140 		.word	1073822720
+ 248              		.cfi_endproc
+ 249              	.LFE238:
+ 250              		.cantunwind
+ 251              		.fnend
+ 253              		.section	.text.HAL_PWR_EnablePVD,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	HAL_PWR_EnablePVD
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	HAL_PWR_EnablePVD:
+ 261              		.fnstart
+ 262              	.LFB239:
+ 304:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 305:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 306:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enables the Power Voltage Detector(PVD).
+ 307:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnablePVD(void)
+ 310:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 263              		.loc 1 310 1 is_stmt 1 view -0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              		@ link register save eliminated.
+ 311:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *(__IO uint32_t *) CR_PVDE_BB = (uint32_t)ENABLE;
+ 268              		.loc 1 311 3 view .LVU48
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 11
+
+
+ 269              		.loc 1 311 33 is_stmt 0 view .LVU49
+ 270 0000 014B     		ldr	r3, .L20
+ 271 0002 0122     		movs	r2, #1
+ 272 0004 1A61     		str	r2, [r3, #16]
+ 312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 273              		.loc 1 312 1 view .LVU50
+ 274 0006 7047     		bx	lr
+ 275              	.L21:
+ 276              		.align	2
+ 277              	.L20:
+ 278 0008 00000E42 		.word	1108213760
+ 279              		.cfi_endproc
+ 280              	.LFE239:
+ 281              		.cantunwind
+ 282              		.fnend
+ 284              		.section	.text.HAL_PWR_DisablePVD,"ax",%progbits
+ 285              		.align	1
+ 286              		.global	HAL_PWR_DisablePVD
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 291              	HAL_PWR_DisablePVD:
+ 292              		.fnstart
+ 293              	.LFB240:
+ 313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Disables the Power Voltage Detector(PVD).
+ 316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DisablePVD(void)
+ 319:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 294              		.loc 1 319 1 is_stmt 1 view -0
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              		@ link register save eliminated.
+ 320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *(__IO uint32_t *) CR_PVDE_BB = (uint32_t)DISABLE;
+ 299              		.loc 1 320 3 view .LVU52
+ 300              		.loc 1 320 33 is_stmt 0 view .LVU53
+ 301 0000 014B     		ldr	r3, .L23
+ 302 0002 0022     		movs	r2, #0
+ 303 0004 1A61     		str	r2, [r3, #16]
+ 321:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 304              		.loc 1 321 1 view .LVU54
+ 305 0006 7047     		bx	lr
+ 306              	.L24:
+ 307              		.align	2
+ 308              	.L23:
+ 309 0008 00000E42 		.word	1108213760
+ 310              		.cfi_endproc
+ 311              	.LFE240:
+ 312              		.cantunwind
+ 313              		.fnend
+ 315              		.section	.text.HAL_PWR_EnableWakeUpPin,"ax",%progbits
+ 316              		.align	1
+ 317              		.global	HAL_PWR_EnableWakeUpPin
+ 318              		.syntax unified
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 12
+
+
+ 319              		.thumb
+ 320              		.thumb_func
+ 322              	HAL_PWR_EnableWakeUpPin:
+ 323              		.fnstart
+ 324              	.LVL1:
+ 325              	.LFB241:
+ 322:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 324:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enables the Wake-up PINx functionality.
+ 325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param WakeUpPinx Specifies the Power Wake-Up pin to enable.
+ 326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         This parameter can be one of the following values:
+ 327:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN1
+ 328:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN2 available only on STM32F410xx/STM32F446xx/STM32F412xx/STM32F413x
+ 329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN3 available only on STM32F410xx/STM32F412xx/STM32F413xx/STM32F423x
+ 330:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 331:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
+ 333:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 326              		.loc 1 333 1 is_stmt 1 view -0
+ 327              		.cfi_startproc
+ 328              		@ args = 0, pretend = 0, frame = 0
+ 329              		@ frame_needed = 0, uses_anonymous_args = 0
+ 330              		@ link register save eliminated.
+ 334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check the parameter */
+ 335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));
+ 331              		.loc 1 335 3 view .LVU56
+ 336:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Enable the wake up pin */
+ 338:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(PWR->CSR, WakeUpPinx);
+ 332              		.loc 1 338 3 view .LVU57
+ 333 0000 024A     		ldr	r2, .L26
+ 334 0002 5368     		ldr	r3, [r2, #4]
+ 335 0004 0343     		orrs	r3, r3, r0
+ 336 0006 5360     		str	r3, [r2, #4]
+ 339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 337              		.loc 1 339 1 is_stmt 0 view .LVU58
+ 338 0008 7047     		bx	lr
+ 339              	.L27:
+ 340 000a 00BF     		.align	2
+ 341              	.L26:
+ 342 000c 00700040 		.word	1073770496
+ 343              		.cfi_endproc
+ 344              	.LFE241:
+ 345              		.cantunwind
+ 346              		.fnend
+ 348              		.section	.text.HAL_PWR_DisableWakeUpPin,"ax",%progbits
+ 349              		.align	1
+ 350              		.global	HAL_PWR_DisableWakeUpPin
+ 351              		.syntax unified
+ 352              		.thumb
+ 353              		.thumb_func
+ 355              	HAL_PWR_DisableWakeUpPin:
+ 356              		.fnstart
+ 357              	.LVL2:
+ 358              	.LFB242:
+ 340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 13
+
+
+ 342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Disables the Wake-up PINx functionality.
+ 343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param WakeUpPinx Specifies the Power Wake-Up pin to disable.
+ 344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         This parameter can be one of the following values:
+ 345:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN1
+ 346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN2 available only on STM32F410xx/STM32F446xx/STM32F412xx/STM32F413x
+ 347:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *           @arg PWR_WAKEUP_PIN3 available only on STM32F410xx/STM32F412xx/STM32F413xx/STM32F423x
+ 348:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
+ 351:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 359              		.loc 1 351 1 is_stmt 1 view -0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 352:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check the parameter */
+ 353:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));  
+ 364              		.loc 1 353 3 view .LVU60
+ 354:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 355:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Disable the wake up pin */
+ 356:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   CLEAR_BIT(PWR->CSR, WakeUpPinx);
+ 365              		.loc 1 356 3 view .LVU61
+ 366 0000 024A     		ldr	r2, .L29
+ 367 0002 5368     		ldr	r3, [r2, #4]
+ 368 0004 23EA0003 		bic	r3, r3, r0
+ 369 0008 5360     		str	r3, [r2, #4]
+ 357:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 370              		.loc 1 357 1 is_stmt 0 view .LVU62
+ 371 000a 7047     		bx	lr
+ 372              	.L30:
+ 373              		.align	2
+ 374              	.L29:
+ 375 000c 00700040 		.word	1073770496
+ 376              		.cfi_endproc
+ 377              	.LFE242:
+ 378              		.cantunwind
+ 379              		.fnend
+ 381              		.section	.text.HAL_PWR_EnterSLEEPMode,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	HAL_PWR_EnterSLEEPMode
+ 384              		.syntax unified
+ 385              		.thumb
+ 386              		.thumb_func
+ 388              	HAL_PWR_EnterSLEEPMode:
+ 389              		.fnstart
+ 390              	.LVL3:
+ 391              	.LFB243:
+ 358:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 359:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 360:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enters Sleep mode.
+ 361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *   
+ 362:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note In Sleep mode, all I/O pins keep the same state as in Run mode.
+ 363:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * 
+ 364:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note In Sleep mode, the systick is stopped to avoid exit from this mode with
+ 365:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       systick interrupt when used as time base for Timeout 
+ 366:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *                
+ 367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param Regulator Specifies the regulator state in SLEEP mode.
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 14
+
+
+ 368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            This parameter can be one of the following values:
+ 369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_MAINREGULATOR_ON: SLEEP mode with regulator ON
+ 370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_LOWPOWERREGULATOR_ON: SLEEP mode with low power regulator ON
+ 371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note This parameter is not used for the STM32F4 family and is kept as parameter
+ 372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       just to maintain compatibility with the lower power families.
+ 373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param SLEEPEntry Specifies if SLEEP mode in entered with WFI or WFE instruction.
+ 374:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          This parameter can be one of the following values:
+ 375:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_SLEEPENTRY_WFI: enter SLEEP mode with WFI instruction
+ 376:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_SLEEPENTRY_WFE: enter SLEEP mode with WFE instruction
+ 377:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 378:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 379:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
+ 380:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 392              		.loc 1 380 1 is_stmt 1 view -0
+ 393              		.cfi_startproc
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		@ link register save eliminated.
+ 381:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check the parameters */
+ 382:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_REGULATOR(Regulator));
+ 397              		.loc 1 382 3 view .LVU64
+ 383:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_SLEEP_ENTRY(SLEEPEntry));
+ 398              		.loc 1 383 3 view .LVU65
+ 384:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 385:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Clear SLEEPDEEP bit of Cortex System Control Register */
+ 386:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
+ 399              		.loc 1 386 3 view .LVU66
+ 400 0000 064A     		ldr	r2, .L35
+ 401 0002 1369     		ldr	r3, [r2, #16]
+ 402 0004 23F00403 		bic	r3, r3, #4
+ 403 0008 1361     		str	r3, [r2, #16]
+ 387:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 388:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Select SLEEP mode entry -------------------------------------------------*/
+ 389:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if(SLEEPEntry == PWR_SLEEPENTRY_WFI)
+ 404              		.loc 1 389 3 view .LVU67
+ 405 000a 0129     		cmp	r1, #1
+ 406 000c 03D0     		beq	.L34
+ 390:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {   
+ 391:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* Request Wait For Interrupt */
+ 392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFI();
+ 393:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 394:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   else
+ 395:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* Request Wait For Event */
+ 397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __SEV();
+ 407              		.loc 1 397 5 view .LVU68
+ 408              		.syntax unified
+ 409              	@ 397 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 410 000e 40BF     		sev
+ 411              	@ 0 "" 2
+ 398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFE();
+ 412              		.loc 1 398 5 view .LVU69
+ 413              	@ 398 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 414 0010 20BF     		wfe
+ 415              	@ 0 "" 2
+ 399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFE();
+ 416              		.loc 1 399 5 view .LVU70
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 15
+
+
+ 417              	@ 399 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 418 0012 20BF     		wfe
+ 419              	@ 0 "" 2
+ 400:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 401:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 420              		.loc 1 401 1 is_stmt 0 view .LVU71
+ 421              		.thumb
+ 422              		.syntax unified
+ 423 0014 7047     		bx	lr
+ 424              	.L34:
+ 392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 425              		.loc 1 392 5 is_stmt 1 view .LVU72
+ 426              		.syntax unified
+ 427              	@ 392 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 428 0016 30BF     		wfi
+ 429              	@ 0 "" 2
+ 430              		.thumb
+ 431              		.syntax unified
+ 432 0018 7047     		bx	lr
+ 433              	.L36:
+ 434 001a 00BF     		.align	2
+ 435              	.L35:
+ 436 001c 00ED00E0 		.word	-536810240
+ 437              		.cfi_endproc
+ 438              	.LFE243:
+ 439              		.cantunwind
+ 440              		.fnend
+ 442              		.section	.text.HAL_PWR_EnterSTOPMode,"ax",%progbits
+ 443              		.align	1
+ 444              		.global	HAL_PWR_EnterSTOPMode
+ 445              		.syntax unified
+ 446              		.thumb
+ 447              		.thumb_func
+ 449              	HAL_PWR_EnterSTOPMode:
+ 450              		.fnstart
+ 451              	.LVL4:
+ 452              	.LFB244:
+ 402:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 403:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 404:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enters Stop mode. 
+ 405:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note In Stop mode, all I/O pins keep the same state as in Run mode.
+ 406:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note When exiting Stop mode by issuing an interrupt or a wake-up event, 
+ 407:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         the HSI RC oscillator is selected as system clock.
+ 408:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note When the voltage regulator operates in low power mode, an additional 
+ 409:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         startup delay is incurred when waking up from Stop mode. 
+ 410:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         By keeping the internal regulator ON during Stop mode, the consumption 
+ 411:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *         is higher although the startup time is reduced.    
+ 412:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param Regulator Specifies the regulator state in Stop mode.
+ 413:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          This parameter can be one of the following values:
+ 414:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_MAINREGULATOR_ON: Stop mode with regulator ON
+ 415:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_LOWPOWERREGULATOR_ON: Stop mode with low power regulator ON
+ 416:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @param STOPEntry Specifies if Stop mode in entered with WFI or WFE instruction.
+ 417:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          This parameter can be one of the following values:
+ 418:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_STOPENTRY_WFI: Enter Stop mode with WFI instruction
+ 419:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            @arg PWR_STOPENTRY_WFE: Enter Stop mode with WFE instruction
+ 420:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 16
+
+
+ 422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
+ 423:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 453              		.loc 1 423 1 view -0
+ 454              		.cfi_startproc
+ 455              		@ args = 0, pretend = 0, frame = 0
+ 456              		@ frame_needed = 0, uses_anonymous_args = 0
+ 457              		@ link register save eliminated.
+ 424:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check the parameters */
+ 425:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_REGULATOR(Regulator));
+ 458              		.loc 1 425 3 view .LVU74
+ 426:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   assert_param(IS_PWR_STOP_ENTRY(STOPEntry));
+ 459              		.loc 1 426 3 view .LVU75
+ 427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Select the regulator state in Stop mode: Set PDDS and LPDS bits according to PWR_Regulator val
+ 429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   MODIFY_REG(PWR->CR, (PWR_CR_PDDS | PWR_CR_LPDS), Regulator);
+ 460              		.loc 1 429 3 view .LVU76
+ 461 0000 0B4A     		ldr	r2, .L41
+ 462 0002 1368     		ldr	r3, [r2]
+ 463 0004 23F00303 		bic	r3, r3, #3
+ 464 0008 0343     		orrs	r3, r3, r0
+ 465 000a 1360     		str	r3, [r2]
+ 430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 431:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Set SLEEPDEEP bit of Cortex System Control Register */
+ 432:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
+ 466              		.loc 1 432 3 view .LVU77
+ 467 000c 094A     		ldr	r2, .L41+4
+ 468 000e 1369     		ldr	r3, [r2, #16]
+ 469 0010 43F00403 		orr	r3, r3, #4
+ 470 0014 1361     		str	r3, [r2, #16]
+ 433:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 434:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Select Stop mode entry --------------------------------------------------*/
+ 435:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if(STOPEntry == PWR_STOPENTRY_WFI)
+ 471              		.loc 1 435 3 view .LVU78
+ 472 0016 0129     		cmp	r1, #1
+ 473 0018 08D0     		beq	.L40
+ 436:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {   
+ 437:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* Request Wait For Interrupt */
+ 438:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFI();
+ 439:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 440:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   else
+ 441:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 442:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* Request Wait For Event */
+ 443:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __SEV();
+ 474              		.loc 1 443 5 view .LVU79
+ 475              		.syntax unified
+ 476              	@ 443 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 477 001a 40BF     		sev
+ 478              	@ 0 "" 2
+ 444:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFE();
+ 479              		.loc 1 444 5 view .LVU80
+ 480              	@ 444 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 481 001c 20BF     		wfe
+ 482              	@ 0 "" 2
+ 445:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __WFE();
+ 483              		.loc 1 445 5 view .LVU81
+ 484              	@ 445 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 485 001e 20BF     		wfe
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 17
+
+
+ 486              	@ 0 "" 2
+ 487              		.thumb
+ 488              		.syntax unified
+ 489              	.L39:
+ 446:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 447:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Reset SLEEPDEEP bit of Cortex System Control Register */
+ 448:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));  
+ 490              		.loc 1 448 3 view .LVU82
+ 491 0020 044A     		ldr	r2, .L41+4
+ 492 0022 1369     		ldr	r3, [r2, #16]
+ 493 0024 23F00403 		bic	r3, r3, #4
+ 494 0028 1361     		str	r3, [r2, #16]
+ 449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 495              		.loc 1 449 1 is_stmt 0 view .LVU83
+ 496 002a 7047     		bx	lr
+ 497              	.L40:
+ 438:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 498              		.loc 1 438 5 is_stmt 1 view .LVU84
+ 499              		.syntax unified
+ 500              	@ 438 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 501 002c 30BF     		wfi
+ 502              	@ 0 "" 2
+ 503              		.thumb
+ 504              		.syntax unified
+ 505 002e F7E7     		b	.L39
+ 506              	.L42:
+ 507              		.align	2
+ 508              	.L41:
+ 509 0030 00700040 		.word	1073770496
+ 510 0034 00ED00E0 		.word	-536810240
+ 511              		.cfi_endproc
+ 512              	.LFE244:
+ 513              		.cantunwind
+ 514              		.fnend
+ 516              		.section	.text.HAL_PWR_EnterSTANDBYMode,"ax",%progbits
+ 517              		.align	1
+ 518              		.global	HAL_PWR_EnterSTANDBYMode
+ 519              		.syntax unified
+ 520              		.thumb
+ 521              		.thumb_func
+ 523              	HAL_PWR_EnterSTANDBYMode:
+ 524              		.fnstart
+ 525              	.LFB245:
+ 450:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 451:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 452:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enters Standby mode.
+ 453:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note In Standby mode, all I/O pins are high impedance except for:
+ 454:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          - Reset pad (still available) 
+ 455:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          - RTC_AF1 pin (PC13) if configured for tamper, time-stamp, RTC 
+ 456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *            Alarm out, or RTC clock calibration out.
+ 457:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          - RTC_AF2 pin (PI8) if configured for tamper or time-stamp.  
+ 458:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *          - WKUP pin 1 (PA0) if enabled.       
+ 459:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 460:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 461:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnterSTANDBYMode(void)
+ 462:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 526              		.loc 1 462 1 view -0
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 18
+
+
+ 527              		.cfi_startproc
+ 528              		@ args = 0, pretend = 0, frame = 0
+ 529              		@ frame_needed = 0, uses_anonymous_args = 0
+ 530              		@ link register save eliminated.
+ 463:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Select Standby mode */
+ 464:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(PWR->CR, PWR_CR_PDDS);
+ 531              		.loc 1 464 3 view .LVU86
+ 532 0000 054A     		ldr	r2, .L44
+ 533 0002 1368     		ldr	r3, [r2]
+ 534 0004 43F00203 		orr	r3, r3, #2
+ 535 0008 1360     		str	r3, [r2]
+ 465:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 466:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Set SLEEPDEEP bit of Cortex System Control Register */
+ 467:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
+ 536              		.loc 1 467 3 view .LVU87
+ 537 000a 044A     		ldr	r2, .L44+4
+ 538 000c 1369     		ldr	r3, [r2, #16]
+ 539 000e 43F00403 		orr	r3, r3, #4
+ 540 0012 1361     		str	r3, [r2, #16]
+ 468:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   
+ 469:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* This option is used to ensure that store operations are completed */
+ 470:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #if defined ( __CC_ARM)
+ 471:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __force_stores();
+ 472:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** #endif
+ 473:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Request Wait For Interrupt */
+ 474:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   __WFI();
+ 541              		.loc 1 474 3 view .LVU88
+ 542              		.syntax unified
+ 543              	@ 474 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp" 1
+ 544 0014 30BF     		wfi
+ 545              	@ 0 "" 2
+ 475:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 546              		.loc 1 475 1 is_stmt 0 view .LVU89
+ 547              		.thumb
+ 548              		.syntax unified
+ 549 0016 7047     		bx	lr
+ 550              	.L45:
+ 551              		.align	2
+ 552              	.L44:
+ 553 0018 00700040 		.word	1073770496
+ 554 001c 00ED00E0 		.word	-536810240
+ 555              		.cfi_endproc
+ 556              	.LFE245:
+ 557              		.cantunwind
+ 558              		.fnend
+ 560              		.section	.text.HAL_PWR_PVDCallback,"ax",%progbits
+ 561              		.align	1
+ 562              		.weak	HAL_PWR_PVDCallback
+ 563              		.syntax unified
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	HAL_PWR_PVDCallback:
+ 568              		.fnstart
+ 569              	.LFB247:
+ 476:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 477:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 478:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief This function handles the PWR PVD interrupt request.
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 19
+
+
+ 479:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note This API should be called under the PVD_IRQHandler().
+ 480:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 481:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 482:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_PVD_IRQHandler(void)
+ 483:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check PWR Exti flag */
+ 485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   if(__HAL_PWR_PVD_EXTI_GET_FLAG() != RESET)
+ 486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* PWR PVD interrupt user callback */
+ 488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     HAL_PWR_PVDCallback();
+ 489:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     
+ 490:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     /* Clear PWR Exti pending bit */
+ 491:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     __HAL_PWR_PVD_EXTI_CLEAR_FLAG();
+ 492:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 493:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 494:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 495:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 496:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief  PWR PVD interrupt callback
+ 497:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 498:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 499:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** __weak void HAL_PWR_PVDCallback(void)
+ 500:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 570              		.loc 1 500 1 is_stmt 1 view -0
+ 571              		.cfi_startproc
+ 572              		@ args = 0, pretend = 0, frame = 0
+ 573              		@ frame_needed = 0, uses_anonymous_args = 0
+ 574              		@ link register save eliminated.
+ 501:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* NOTE : This function Should not be modified, when the callback is needed,
+ 502:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****             the HAL_PWR_PVDCallback could be implemented in the user file
+ 503:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****    */ 
+ 504:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 575              		.loc 1 504 1 is_stmt 0 view .LVU91
+ 576 0000 7047     		bx	lr
+ 577              		.cfi_endproc
+ 578              	.LFE247:
+ 579              		.cantunwind
+ 580              		.fnend
+ 582              		.section	.text.HAL_PWR_PVD_IRQHandler,"ax",%progbits
+ 583              		.align	1
+ 584              		.global	HAL_PWR_PVD_IRQHandler
+ 585              		.syntax unified
+ 586              		.thumb
+ 587              		.thumb_func
+ 589              	HAL_PWR_PVD_IRQHandler:
+ 590              		.fnstart
+ 591              	.LFB246:
+ 483:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Check PWR Exti flag */
+ 592              		.loc 1 483 1 is_stmt 1 view -0
+ 593              		.cfi_startproc
+ 594              		@ args = 0, pretend = 0, frame = 0
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596 0000 08B5     		push	{r3, lr}
+ 597              		.save {r3, lr}
+ 598              	.LCFI4:
+ 599              		.cfi_def_cfa_offset 8
+ 600              		.cfi_offset 3, -8
+ 601              		.cfi_offset 14, -4
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 20
+
+
+ 485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 602              		.loc 1 485 3 view .LVU93
+ 485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 603              		.loc 1 485 6 is_stmt 0 view .LVU94
+ 604 0002 064B     		ldr	r3, .L51
+ 605 0004 5B69     		ldr	r3, [r3, #20]
+ 485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   {
+ 606              		.loc 1 485 3 view .LVU95
+ 607 0006 13F4803F 		tst	r3, #65536
+ 608 000a 00D1     		bne	.L50
+ 609              	.L47:
+ 493:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 610              		.loc 1 493 1 view .LVU96
+ 611 000c 08BD     		pop	{r3, pc}
+ 612              	.L50:
+ 488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     
+ 613              		.loc 1 488 5 is_stmt 1 view .LVU97
+ 488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****     
+ 614              		.loc 1 488 24 is_stmt 0 view .LVU98
+ 615 000e FFF7FEFF 		bl	HAL_PWR_PVDCallback
+ 616              	.LVL5:
+ 491:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   }
+ 617              		.loc 1 491 5 is_stmt 1 view .LVU99
+ 618 0012 024B     		ldr	r3, .L51
+ 619 0014 4FF48032 		mov	r2, #65536
+ 620 0018 5A61     		str	r2, [r3, #20]
+ 493:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 621              		.loc 1 493 1 is_stmt 0 view .LVU100
+ 622 001a F7E7     		b	.L47
+ 623              	.L52:
+ 624              		.align	2
+ 625              	.L51:
+ 626 001c 003C0140 		.word	1073822720
+ 627              		.cfi_endproc
+ 628              	.LFE246:
+ 629              		.fnend
+ 631              		.section	.text.HAL_PWR_EnableSleepOnExit,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	HAL_PWR_EnableSleepOnExit
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	HAL_PWR_EnableSleepOnExit:
+ 639              		.fnstart
+ 640              	.LFB248:
+ 505:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 506:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 507:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Indicates Sleep-On-Exit when returning from Handler mode to Thread mode. 
+ 508:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note Set SLEEPONEXIT bit of SCR register. When this bit is set, the processor 
+ 509:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       re-enters SLEEP mode when an interruption handling is over.
+ 510:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       Setting this bit is useful when the processor is expected to run only on
+ 511:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       interruptions handling.         
+ 512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 513:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 514:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnableSleepOnExit(void)
+ 515:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 641              		.loc 1 515 1 is_stmt 1 view -0
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 21
+
+
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 0
+ 644              		@ frame_needed = 0, uses_anonymous_args = 0
+ 645              		@ link register save eliminated.
+ 516:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Set SLEEPONEXIT bit of Cortex System Control Register */
+ 517:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
+ 646              		.loc 1 517 3 view .LVU102
+ 647 0000 024A     		ldr	r2, .L54
+ 648 0002 1369     		ldr	r3, [r2, #16]
+ 649 0004 43F00203 		orr	r3, r3, #2
+ 650 0008 1361     		str	r3, [r2, #16]
+ 518:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 651              		.loc 1 518 1 is_stmt 0 view .LVU103
+ 652 000a 7047     		bx	lr
+ 653              	.L55:
+ 654              		.align	2
+ 655              	.L54:
+ 656 000c 00ED00E0 		.word	-536810240
+ 657              		.cfi_endproc
+ 658              	.LFE248:
+ 659              		.cantunwind
+ 660              		.fnend
+ 662              		.section	.text.HAL_PWR_DisableSleepOnExit,"ax",%progbits
+ 663              		.align	1
+ 664              		.global	HAL_PWR_DisableSleepOnExit
+ 665              		.syntax unified
+ 666              		.thumb
+ 667              		.thumb_func
+ 669              	HAL_PWR_DisableSleepOnExit:
+ 670              		.fnstart
+ 671              	.LFB249:
+ 519:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 520:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 521:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Disables Sleep-On-Exit feature when returning from Handler mode to Thread mode. 
+ 522:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note Clears SLEEPONEXIT bit of SCR register. When this bit is set, the processor 
+ 523:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       re-enters SLEEP mode when an interruption handling is over.          
+ 524:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 525:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 526:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DisableSleepOnExit(void)
+ 527:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 672              		.loc 1 527 1 is_stmt 1 view -0
+ 673              		.cfi_startproc
+ 674              		@ args = 0, pretend = 0, frame = 0
+ 675              		@ frame_needed = 0, uses_anonymous_args = 0
+ 676              		@ link register save eliminated.
+ 528:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Clear SLEEPONEXIT bit of Cortex System Control Register */
+ 529:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
+ 677              		.loc 1 529 3 view .LVU105
+ 678 0000 024A     		ldr	r2, .L57
+ 679 0002 1369     		ldr	r3, [r2, #16]
+ 680 0004 23F00203 		bic	r3, r3, #2
+ 681 0008 1361     		str	r3, [r2, #16]
+ 530:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 682              		.loc 1 530 1 is_stmt 0 view .LVU106
+ 683 000a 7047     		bx	lr
+ 684              	.L58:
+ 685              		.align	2
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 22
+
+
+ 686              	.L57:
+ 687 000c 00ED00E0 		.word	-536810240
+ 688              		.cfi_endproc
+ 689              	.LFE249:
+ 690              		.cantunwind
+ 691              		.fnend
+ 693              		.section	.text.HAL_PWR_EnableSEVOnPend,"ax",%progbits
+ 694              		.align	1
+ 695              		.global	HAL_PWR_EnableSEVOnPend
+ 696              		.syntax unified
+ 697              		.thumb
+ 698              		.thumb_func
+ 700              	HAL_PWR_EnableSEVOnPend:
+ 701              		.fnstart
+ 702              	.LFB250:
+ 531:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ 532:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 533:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Enables CORTEX M4 SEVONPEND bit. 
+ 534:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note Sets SEVONPEND bit of SCR register. When this bit is set, this causes 
+ 535:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       WFE to wake up when an interrupt moves from inactive to pended.
+ 536:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 537:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 538:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_EnableSEVOnPend(void)
+ 539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 703              		.loc 1 539 1 is_stmt 1 view -0
+ 704              		.cfi_startproc
+ 705              		@ args = 0, pretend = 0, frame = 0
+ 706              		@ frame_needed = 0, uses_anonymous_args = 0
+ 707              		@ link register save eliminated.
+ 540:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Set SEVONPEND bit of Cortex System Control Register */
+ 541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
+ 708              		.loc 1 541 3 view .LVU108
+ 709 0000 024A     		ldr	r2, .L60
+ 710 0002 1369     		ldr	r3, [r2, #16]
+ 711 0004 43F01003 		orr	r3, r3, #16
+ 712 0008 1361     		str	r3, [r2, #16]
+ 542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 713              		.loc 1 542 1 is_stmt 0 view .LVU109
+ 714 000a 7047     		bx	lr
+ 715              	.L61:
+ 716              		.align	2
+ 717              	.L60:
+ 718 000c 00ED00E0 		.word	-536810240
+ 719              		.cfi_endproc
+ 720              	.LFE250:
+ 721              		.cantunwind
+ 722              		.fnend
+ 724              		.section	.text.HAL_PWR_DisableSEVOnPend,"ax",%progbits
+ 725              		.align	1
+ 726              		.global	HAL_PWR_DisableSEVOnPend
+ 727              		.syntax unified
+ 728              		.thumb
+ 729              		.thumb_func
+ 731              	HAL_PWR_DisableSEVOnPend:
+ 732              		.fnstart
+ 733              	.LFB251:
+ 543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** 
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 23
+
+
+ 544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** /**
+ 545:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @brief Disables CORTEX M4 SEVONPEND bit. 
+ 546:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @note Clears SEVONPEND bit of SCR register. When this bit is set, this causes 
+ 547:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   *       WFE to wake up when an interrupt moves from inactive to pended.         
+ 548:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   * @retval None
+ 549:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   */
+ 550:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** void HAL_PWR_DisableSEVOnPend(void)
+ 551:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** {
+ 734              		.loc 1 551 1 is_stmt 1 view -0
+ 735              		.cfi_startproc
+ 736              		@ args = 0, pretend = 0, frame = 0
+ 737              		@ frame_needed = 0, uses_anonymous_args = 0
+ 738              		@ link register save eliminated.
+ 552:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   /* Clear SEVONPEND bit of Cortex System Control Register */
+ 553:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
+ 739              		.loc 1 553 3 view .LVU111
+ 740 0000 024A     		ldr	r2, .L63
+ 741 0002 1369     		ldr	r3, [r2, #16]
+ 742 0004 23F01003 		bic	r3, r3, #16
+ 743 0008 1361     		str	r3, [r2, #16]
+ 554:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.cpp **** }
+ 744              		.loc 1 554 1 is_stmt 0 view .LVU112
+ 745 000a 7047     		bx	lr
+ 746              	.L64:
+ 747              		.align	2
+ 748              	.L63:
+ 749 000c 00ED00E0 		.word	-536810240
+ 750              		.cfi_endproc
+ 751              	.LFE251:
+ 752              		.cantunwind
+ 753              		.fnend
+ 755              		.text
+ 756              	.Letext0:
+ 757              		.file 2 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 758              		.file 3 "c:\\users\\huawei\\desktop\\workspace\\stm32\\vs code tools\\arm-gnu-toolchain-12.2.rel1-
+ 759              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 760              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 761              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 762              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_hal_pwr.cpp
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:21     .text.HAL_PWR_DeInit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:27     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:49     .text.HAL_PWR_DeInit:00000014 $d
+   .ARM.exidx.text.HAL_PWR_DeInit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:56     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:62     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:96     .text.HAL_PWR_EnableBkUpAccess:00000014 $d
+.ARM.exidx.text.HAL_PWR_EnableBkUpAccess:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:104    .text.HAL_PWR_DisableBkUpAccess:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:110    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:144    .text.HAL_PWR_DisableBkUpAccess:00000014 $d
+.ARM.exidx.text.HAL_PWR_DisableBkUpAccess:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:152    .text.HAL_PWR_ConfigPVD:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:158    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:246    .text.HAL_PWR_ConfigPVD:0000007c $d
+.ARM.exidx.text.HAL_PWR_ConfigPVD:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:254    .text.HAL_PWR_EnablePVD:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:260    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:278    .text.HAL_PWR_EnablePVD:00000008 $d
+.ARM.exidx.text.HAL_PWR_EnablePVD:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:285    .text.HAL_PWR_DisablePVD:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:291    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:309    .text.HAL_PWR_DisablePVD:00000008 $d
+.ARM.exidx.text.HAL_PWR_DisablePVD:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:316    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:322    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:342    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
+.ARM.exidx.text.HAL_PWR_EnableWakeUpPin:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:349    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:355    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:375    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
+.ARM.exidx.text.HAL_PWR_DisableWakeUpPin:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:382    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:388    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:436    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
+.ARM.exidx.text.HAL_PWR_EnterSLEEPMode:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:443    .text.HAL_PWR_EnterSTOPMode:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:449    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:509    .text.HAL_PWR_EnterSTOPMode:00000030 $d
+.ARM.exidx.text.HAL_PWR_EnterSTOPMode:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:517    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:523    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:553    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
+.ARM.exidx.text.HAL_PWR_EnterSTANDBYMode:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:561    .text.HAL_PWR_PVDCallback:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:567    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
+.ARM.exidx.text.HAL_PWR_PVDCallback:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:583    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:589    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:626    .text.HAL_PWR_PVD_IRQHandler:0000001c $d
+.ARM.extab.text.HAL_PWR_PVD_IRQHandler:00000000 $d
+.ARM.exidx.text.HAL_PWR_PVD_IRQHandler:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:632    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:638    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:656    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
+ARM GAS  C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s 			page 25
+
+
+.ARM.exidx.text.HAL_PWR_EnableSleepOnExit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:663    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:669    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:687    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
+.ARM.exidx.text.HAL_PWR_DisableSleepOnExit:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:694    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:700    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:718    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
+.ARM.exidx.text.HAL_PWR_EnableSEVOnPend:00000000 $d
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:725    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:731    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
+C:\Users\huawei\AppData\Local\Temp\ccoMR3Tw.s:749    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
+.ARM.exidx.text.HAL_PWR_DisableSEVOnPend:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_unwind_cpp_pr1
